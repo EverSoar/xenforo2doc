@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>模板语法 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A54.141896%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6a21\u677f\u8bed\u6cd5";
+    var mkdocs_page_input_path = "template-syntax.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">最佳示例</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">有帮助的消息</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_4">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">对模板进行注释</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_5">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">在模板中加入另一个模板</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_6">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">模板巨集</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_7">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">定义巨集</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_9">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">加入和使用巨集</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_11">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">模板控制结构</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#if">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">If 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#elseelse-if">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Else/Else-If 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#for-each">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">For-each 标签</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_14">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">模板标签</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_15">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">头像标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_17">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">页面路径导览列标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_19">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">按钮标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#callback">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Callback 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#css">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">CSS 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#js">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">JS 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#set">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Set 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#likes">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Likes 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sidebar">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Sidebar 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sidenav">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">SideNav 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#title">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Title 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#widget">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Widget 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#useractivity">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserActivity 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#userbanners">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserBanners 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#userblurb-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserBlurb tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#username">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Username 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#usertitle">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserTitle 标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sectioned">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Sectioned 标签</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>模板语法</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/template-syntax.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">模板语法<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>XenForo 2 模板语法对于开发人员和论坛管理员都是强大的工具，使您可以完全控制 XenForo 页面的排版。</p>
+<h2 id="_2">最佳示例<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<ul>
+<li>按照惯例，XenForo 的标签是 <code>lowercase</code>。</li>
+<li>所有 XenForo 标签都以 <code>xf:</code> 命名空间为前缀。</li>
+</ul>
+<h2 id="_3">有帮助的消息<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">对模板进行注释<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>如果您想注释掉一些您不想在最终页面原代码中看到的模板代码（或者励志的消息），则可以使用 <code>xf:comment</code> 标签。</p>
+<pre><code class="language-html">&lt;xf:comment&gt;
+如果你不再以你喜欢什麽和不喜欢什麽来看待这个世界，
+而是看到了事物本身的真实面目，
+你就会发现你的生活将会更加地祥和。
+&lt;/xf:comment&gt;
+</code></pre>
+<h3 id="_5">在模板中加入另一个模板<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p><code>xf:include</code> 标签允许你在当前模板中加入一个不同的模板。</p>
+<pre><code class="language-html">&lt;xf:include template=&quot;my_template&quot; /&gt;
+</code></pre>
+<p>只需将 <code>template</code> 属性设置为你想加入的模板名称即可。</p>
+<h2 id="_6">模板巨集<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>模板巨集是 XenForo 模板语法的一个非常强大的部分。</p>
+<p>通常，你应该在编程语言中使用函数或子程序的任何地方使用巨集。 对于非程序员来说，我把这一点总结为：<strong>要么在</strong>任何您想在多个不同文件中多次生成相同事物的地方使用巨集，<strong>或者</strong>在不同情况下生成不同的东西（如果你查看定义巨集的指南，这可能会更有帮助）。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>出于可读性原因，您不应该使用巨集标签作为变量。 您应该使用 Set 标签，并像对待任何模板变量一样对待变量。</p>
+</div>
+<h3 id="_7">定义巨集<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<pre><code class="language-html">&lt;xf:macro
+    name=&quot;my_macro_name&quot;&gt;
+
+    &lt;!-- 你的巨集内容 --&gt;
+
+&lt;/xf:macro&gt;
+</code></pre>
+<p>最简単的，可以用 <code>name</code> 属性定义一个巨集，并在巨集标签中重复你想要的内容。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>当您在多个文件中使用巨集时，最佳做法是将巨集放入自己的模板中。</p>
+</div>
+<h4 id="_8">巨集参数<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:macro
+    name=&quot;my_macro_name&quot;
+    arg-message=&quot;我超厉害的巨集消息！&quot;&gt;
+
+    &lt;h1&gt;消息&lt;/h1&gt;
+    &lt;p&gt;{$message}&lt;/p&gt;
+
+&lt;/xf:macro&gt;
+</code></pre>
+<p>在此示例中，为巨集定义了 <code>arg-message</code> (<code>我惊人的巨集消息！</code>) 的默认值。 如果使用 message 参数调用巨集，则该值将被复盖。</p>
+<p>有时需要将一个参数标记为必填项。 这可以通过在巨集定义中把参数值设置为 <code>!</code> 来实现。</p>
+<h3 id="_9">加入和使用巨集<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<pre><code class="language-html">&lt;xf:macro template=&quot;my_macro_template&quot; name=&quot;my_macro_name&quot; /&gt;
+</code></pre>
+<p>最简単的方法是，通过设置 <code>name</code> 属性并将标签保留为空来加入巨集。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>使用巨集标签时，你应该使用标签的自动关闭形式，以便让别人更容易区分巨集的定义和用法的区别。</p>
+</div>
+<h4 id="_10">巨集参数<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>您还可以为巨集提供参数：</p>
+<pre><code class="language-html">&lt;xf:macro template=&quot;my_macro_template&quot; name=&quot;my_macro_name&quot; arg-argName=&quot;argValue&quot; /&gt;
+</code></pre>
+<p>其中 <code>argName</code> 是巨集参数的名称。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>您应该使用 <code>lowerCamelCase</code> 来命名你的巨集参数。</p>
+</div>
+<h2 id="_11">模板控制结构<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>XenForo 2 模板语法支援某些控件结构，以使某些任务更易于实现。</p>
+<h3 id="if">If 标签<a class="headerlink" href="#if" title="Permanent link">&para;</a></h3>
+<p>if 模板标签可用于有条件地显示一些 HTML 或模板的一部分。</p>
+<pre><code class="language-html">&lt;!-- Shows content only if a user is signed in... --&gt;
+&lt;xf:if is=&quot;$xf.visitor.user_id&quot;&gt;
+    &lt;!-- 做点什麽... --&gt;
+&lt;/xf:if&gt;
+</code></pre>
+<p>if 标签具有以下属性：</p>
+<ul>
+<li><code>is</code> - 满足条件时应显示标签内容的条件。</li>
+</ul>
+<h4 id="_12">条件<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>该 <code>is</code> 属性支援一些逻辑运算符：</p>
+<ul>
+<li><code>OR</code> - 用于连接替代条件。（二择一： <code>||</code>）</li>
+<li><code>AND</code> - 用于连接其他条件。 (二择一: <code>&amp;&amp;</code>）</li>
+<li><code>!</code> - 放在条件前，使其反転。（称为："否"）</li>
+<li><code>XOR</code> - 如果两个条件中只有一个为 true，则返回 true。（称为："异或"）</li>
+</ul>
+<h3 id="elseelse-if">Else/Else-If 标签<a class="headerlink" href="#elseelse-if" title="Permanent link">&para;</a></h3>
+<p>else 和 else-if 标签与 if 标签结合使用，以按名称建议的方式有条件地显示 HTML。</p>
+<p><strong>else 用法示例：</strong></p>
+<pre><code class="language-html">&lt;xf:if is=&quot;$xf.visitor.is_admin&quot;&gt;
+    &lt;!-- 这里的内容只有管理员才会看到... --&gt;
+&lt;xf:else /&gt;
+    &lt;!-- 这里的内容将被显示给任何非管理员的人看到！ --&gt;
+&lt;/xf:if&gt;
+</code></pre>
+<p><strong>else-if 的用法示例：</strong></p>
+<pre><code class="language-html">&lt;xf:if is=&quot;$xf.visitor.is_admin&quot;&gt;
+    &lt;!-- 这里的内容只有管理员才会看到... --&gt;
+&lt;xf:elseif is=&quot;$xf.visitor.is_moderator&quot; /&gt;
+    &lt;!-- 这里的内容只会显示给版主(不包括兼任管理员的用户)。 --&gt;
+&lt;xf:else /&gt;
+    &lt;!-- 这里的内容将显示给非管理员或版主的任何人。 --&gt;
+&lt;/xf:if&gt;
+</code></pre>
+<p>正如你所看到的，一旦一个条件被满足，其余的 if 语句将被忽略。（所以，在这种情况下，如果用户是管理员，上面的 <code>xf:if</code> 部分被运行，其余的 if 语句则被忽略。)</p>
+<h3 id="for-each">For-each 标签<a class="headerlink" href="#for-each" title="Permanent link">&para;</a></h3>
+<p>for-each 标签使您可以遍历项目数组，为每个项目印出 HTML 区块。</p>
+<pre><code class="language-html">&lt;xf:set var=&quot;$names&quot; value=&quot;{{ ['派翠克', '特丽莎', '金博尔', '韦恩', '格雷斯'] }}&quot; /&gt;
+
+&lt;xf:foreach loop=&quot;$names&quot; key=&quot;$key&quot; value=&quot;$name&quot; i=&quot;$i&quot;&gt;
+    &lt;p&gt;你好， {$name}。 这是名字 {$i} 。 该元素的数组 key 值为： {$key}&lt;/p&gt;
+&lt;/xf:foreach&gt;
+</code></pre>
+<p>for-each 标签具有以下属性：</p>
+<ul>
+<li><code>loop</code> - 要循环的数组。</li>
+<li><code>key</code> - 在循环中使用的变量名称，以获取当前元素的数组 key。 可以是整数（普通数组）或字符串（关联数组）。</li>
+<li><code>value</code> - 在循环中使用的变量名称，包含当前数组项。</li>
+<li><code>i</code> -  在循环中用于当前索引的变量名称。</li>
+</ul>
+<h4 id="_13">输出示例<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>你好，派翠克。 这是名字 1。</p>
+<p>你好，特丽莎。 这是名字 2。</p>
+<p>你好，金博尔。 这是名字 3。</p>
+<p>你好，韦恩。 这是名字 4。</p>
+<p>你好，格雷斯。 这是名字 5。</p>
+</blockquote>
+<h2 id="_14">模板标签<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<h3 id="_15">头像标签<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>在页面中插入用户的头像。</p>
+<pre><code class="language-html">&lt;xf:avatar user=&quot;{$xf.visitor}&quot; size=&quot;o&quot; canonical=&quot;true&quot; /&gt;
+</code></pre>
+<p>头像标签具有以下属性：</p>
+<ul>
+<li><code>user</code> - 要生成头像的 XenForo 用户物件。</li>
+<li><code>size</code> - 要生成的图像大小。(参见图像尺寸)</li>
+<li><code>canonical</code> - 是否使用有利于 SEO 的完整 URL。该值只对 <code>custom</code> 头象有效。</li>
+<li><code>notooltip</code> - 当鼠标悬停在头像上时显示的工具提示是否应该被关闭。</li>
+<li><code>forcetype</code> - 可以用来强制取得 <code>gravatar</code> 或 <code>custom</code> 头像，设置值为其中之一。</li>
+<li><code>defaultname</code> - 如果 <code>user</code> 属性包含一个无效的用户时，默认要使用的用户名称。</li>
+</ul>
+<h4 id="_16">图像大小<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>如果提供的头像大小无效，则代码将回退到大小 '<code>s</code>'。</p>
+<ul>
+<li><code>o</code> - <code>384px</code></li>
+<li><code>h</code> - <code>384px</code></li>
+<li><code>l</code> - <code>192px</code></li>
+<li><code>m</code> - <code>96px</code></li>
+<li><code>s</code> - <code>48px</code></li>
+</ul>
+<h3 id="_17">页面路径导览列标签<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h3>
+<p>修改页面路径导览列。</p>
+<pre><code class="language-html">&lt;xf:breadcrumb href=&quot;{{ link('my_page') }}&quot;&gt;{{ phrase('my_page_name') }}&lt;/xf:breadcrumb&gt;
+</code></pre>
+<p>页面路径导览列标签具有以下属性：</p>
+<ul>
+<li><code>href</code> - 为页面路径导览列中的最后一个元素设置的链接。</li>
+</ul>
+<p>标签的值可用于设置页面路径导览列中最后一个元素的名称。</p>
+<h4 id="_18">其他用法<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:breadcrumb source=&quot;$category.getBreadcrumbs(false)&quot; /&gt;
+</code></pre>
+<p>您还可以通过 <code>source</code> 在页面路径导览列标签的属性中调用函数来以编程方式定义自己的页面路径导览列。</p>
+<p>该 <code>source</code> 参数基本上采用一个具有 <code>href</code> 和 <code>value</code> 属性的物件数组（多维数组），其中每个物件都是一个页面路径导览列元素。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果要更改根目录页面路径导览列，可以在 "基本信息面板" 选项部分中更改 "Root breadcrumb" 选项。</p>
+</div>
+<h3 id="_19">按钮标签<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>添加具有适当类的按钮元素以及（可选）图标。</p>
+<pre><code class="language-html">&lt;xf:button icon=&quot;save&quot;&gt;&lt;/xf:button&gt;
+</code></pre>
+<p>button 标签具有以下属性：</p>
+<ul>
+<li><code>icon</code> - 应用于按钮的图标类。(参见按钮图标)</li>
+</ul>
+<h4 id="_20">按钮图标<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h4>
+<p>默认情况下，XenForo 按钮支援以下图标（使用CSS创建）：</p>
+<ul>
+<li><code>add</code></li>
+<li><code>confirm</code></li>
+<li><code>write</code></li>
+<li><code>import</code></li>
+<li><code>export</code></li>
+<li><code>download</code></li>
+<li><code>disable</code></li>
+<li><code>edit</code></li>
+<li><code>save</code></li>
+<li><code>reply</code></li>
+<li><code>quote</code></li>
+<li><code>purchase</code></li>
+<li><code>payment</code></li>
+<li><code>convert</code></li>
+<li><code>search</code></li>
+<li><code>sort</code></li>
+<li><code>upload</code></li>
+<li><code>attach</code></li>
+<li><code>login</code></li>
+<li><code>rate</code></li>
+<li><code>config</code></li>
+<li><code>refresh</code></li>
+<li><code>translate</code></li>
+<li><code>vote</code></li>
+<li><code>result</code></li>
+<li><code>history</code></li>
+<li><code>cancel</code></li>
+<li><code>preview</code></li>
+<li><code>conversation</code></li>
+<li><code>bolt</code></li>
+<li><code>list</code></li>
+<li><code>prev</code></li>
+<li><code>next</code></li>
+<li><code>markRead</code></li>
+<li><code>notificationsOn</code></li>
+<li><code>notificationsOff</code></li>
+<li><code>merge</code></li>
+<li><code>move</code></li>
+<li><code>copy</code></li>
+<li><code>approve</code></li>
+<li><code>unapprove</code></li>
+<li><code>delete</code></li>
+<li><code>undelete</code></li>
+<li><code>stick</code></li>
+<li><code>unstick</code></li>
+<li><code>lock</code></li>
+<li><code>unlock</code></li>
+</ul>
+<h3 id="callback">Callback 标签<a class="headerlink" href="#callback" title="Permanent link">&para;</a></h3>
+<p>运行一个 PHP Callback 方法。</p>
+<pre><code class="language-html">&lt;xf:callback class=&quot;Vendor\Addon\Class&quot; method=&quot;getX&quot; params=&quot;['abc']&quot;&gt;&lt;/xf:callback&gt;
+</code></pre>
+<p>此 callback 标签具有以下属性：</p>
+<ul>
+<li><code>class</code> - 该 class（从 root 命名空间）包含要运行的方法。</li>
+<li><code>method</code> - 要运行的方法。 (参见 callback 方法)</li>
+<li><code>params</code> - 提供给此方法的参数数组。</li>
+</ul>
+<h4 id="callback_1">Callback 方法<a class="headerlink" href="#callback_1" title="Permanent link">&para;</a></h4>
+<p>为了使一个方法被认为是 callback 方法，必须对其进行适当的命名，否则它将抛出错误 '<code>callback_method_x_does_not_appear_to_indicate_read_only</code>'。为了使它被认为是唯读的，方法名称必须以下列前缀之一开头：</p>
+<ul>
+<li><code>are</code></li>
+<li><code>can</code></li>
+<li><code>count</code></li>
+<li><code>data</code></li>
+<li><code>display</code></li>
+<li><code>does</code></li>
+<li><code>exists</code></li>
+<li><code>fetch</code></li>
+<li><code>filter</code></li>
+<li><code>find</code></li>
+<li><code>get</code></li>
+<li><code>has</code></li>
+<li><code>is</code></li>
+<li><code>pluck</code></li>
+<li><code>print</code></li>
+<li><code>render</code></li>
+<li><code>return</code></li>
+<li><code>show</code></li>
+<li><code>total</code></li>
+<li><code>validate</code></li>
+<li><code>verify</code></li>
+<li><code>view</code></li>
+</ul>
+<h3 id="css">CSS 标签<a class="headerlink" href="#css" title="Permanent link">&para;</a></h3>
+<p>加入一个外部 CSS 或 LESS 模板文件。</p>
+<pre><code class="language-html">&lt;xf:css src=&quot;mycss_file.css&quot;  /&gt;
+</code></pre>
+<p>CSS 标签具有以下属性：</p>
+<ul>
+<li><code>src</code> - 要加入的 CSS 或 LESS 模板文件。</li>
+</ul>
+<h4 id="_21">其他用法<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:css&gt;
+html, body {
+ font-family: &quot;Roboto&quot;, sans-serif;
+}
+&lt;/xf:css&gt;
+</code></pre>
+<p>如果 CSS 标签不为空，则标签中的所有内容都将転换为嵌入式 CSS。</p>
+<h4 id="_22">进一步说明<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<p>对于[CSS]，不用再将它们称为文件了。将它们复制并粘贴到新模板中，并按如下所示进行调用：<br>
+来源自：<a href="https://xenforo.com/community/threads/including-external-library-js-and-css.136153/post-1185631"><strong>克里斯·D，XenForo 开发人员</strong></a></p>
+<pre><code class="language-html">&lt;xf:css src=&quot;questionthreads_fonticonpicker.css&quot; /&gt;
+&lt;xf:css src=&quot;questionthreads_fonticonpicker_grey.css&quot; /&gt;
+</code></pre>
+<h3 id="js">JS 标签<a class="headerlink" href="#js" title="Permanent link">&para;</a></h3>
+<p>加入一个JavaScript文件。</p>
+<pre><code class="language-html">&lt;xf:js src=&quot;myaddon/vendor/scripts/myjs_file.js&quot;  /&gt;
+</code></pre>
+<p>JS 标签具有以下属性：</p>
+<ul>
+<li><code>src</code> - 要加入到模板中的 JS 文件。</li>
+<li><code>prod</code> - 要加入到模板中的 JS 文件，只适用于生产模式。</li>
+<li><code>dev</code> - 要加入到模板中的 JS 文件，只适用于开发模式。</li>
+<li><code>min</code> - 是否要加入最小化版本的文件。(用 <code>.min.js</code> 取代 <code>.js</code>)   -   只需要在生产模式下关心。</li>
+<li><code>addon</code> - 是否要使用开发中 JS 的 URL。  -   只需要在开发模式下关心。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>src</code> tag cannot be used in conjunction with either the <code>prod</code> or <code>dev</code> tags.</p>
+</div>
+<h4 id="_23">其他用法<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:js&gt;
+alert(&quot;真相很伤人，我知道。其实这是基于生物学上的。&quot;);
+&lt;/xf:js&gt;
+</code></pre>
+<p>如果 JS 标签不为空，则标签中的所有内容都会転换为嵌入式 JS。</p>
+<h4 id="_24">进一步说明<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<p>JavaScript 文件是相对于 <code>/js</code> 目录提供的。尽管不建议这样做，但您也可以在此标签中加入外部资源。</p>
+<p>这个标签在 <code>editor</code> 模板中就是一个很好的例子。</p>
+<h3 id="set">Set 标签<a class="headerlink" href="#set" title="Permanent link">&para;</a></h3>
+<p>set 标签允许您创建一个对另一个变量的参考或创建一个新的变量。你应该在编程语言中使用变量的任何地方使用 set 标签。</p>
+<pre><code class="language-html">&lt;xf:set var=&quot;$visitor&quot; value=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>不要对要在多个模板中使用的一组元素使用 Set 标签，而应使用 Macro 标签。</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>变量名称（<code>var</code> 属性）必须以 <code>$</code> 开头。</p>
+</div>
+<p>set 标签具有以下属性：:</p>
+<ul>
+<li><code>var</code> - 您想定义变量的名称（本质上是别名）。</li>
+<li><code>value</code> - 要参考的变量或变量值。</li>
+</ul>
+<h4 id="_25">其他用法<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:set var=&quot;$myVariableName&quot;&gt;
+我的变量值!
+这可以是一个 callback，或者只是一组短语。
+&lt;/xf:set&gt;
+</code></pre>
+<p>如果 <code>value</code> 未提供属性且标签不为空，则变量值将设置为标签的内容。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>当您以这种形式使用 Set 标签时，该值将被転义，并且结果值将是一个字符串。该 <code>value</code> 属性虽然不支援 HTML 或类似 HTML 的标签，但没有此限制。</p>
+</div>
+<h3 id="likes">Likes 标签<a class="headerlink" href="#likes" title="Permanent link">&para;</a></h3>
+<p>显示帖子的喜欢次数以及一些喜欢该帖子的用户。</p>
+<pre><code class="language-html">&lt;xf:likes content=&quot;{$post}&quot; url=&quot;&quot; /&gt;
+</code></pre>
+<p>likes 标签具有以下属性：</p>
+<ul>
+<li><code>content</code> - 要显示 '喜欢' 文本的 <code>XF\Entity\Post</code> 或 <code>XF\Entity\ProfilePost</code> 数据实体。</li>
+<li><code>url</code> - 点击 '喜欢' 文本时显示的 URL。</li>
+</ul>
+<h4 id="_26">格式<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>你, 里斯本, kcho 和 2 其他人</p>
+</blockquote>
+<p>格式为 [👍 <code>abc</code> 和 2 其他人]（其中 👍 "大拇指" 表情符代表 "点賛" 图标，<code>abc</code> 代表最后三个点賛该帖子的用户名字。）</p>
+<h3 id="sidebar">Sidebar 标签<a class="headerlink" href="#sidebar" title="Permanent link">&para;</a></h3>
+<p>参见 <a href="#sectioned">Sectioned 标签</a>.</p>
+<h3 id="sidenav">SideNav 标签<a class="headerlink" href="#sidenav" title="Permanent link">&para;</a></h3>
+<p>参见 <a href="#sectioned">Sectioned 标签</a>.</p>
+<h3 id="title">Title 标签<a class="headerlink" href="#title" title="Permanent link">&para;</a></h3>
+<p>设置页面的标题，包括页面上的 <code>h1</code> 标签和浏览器标签。</p>
+<pre><code class="language-html">&lt;xf:title&gt;{{ phrase('my_page_title') }}&lt;/xf:title&gt;
+</code></pre>
+<h4 id="_27">进一步说明<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h4>
+<p>虽然可以对 Title 进行永久性编辑，但是 <strong>强烈建议</strong> 您使用一个短语，以实现国际化，并增加网站管理员端的可定制性。</p>
+<h3 id="widget">Widget 标签<a class="headerlink" href="#widget" title="Permanent link">&para;</a></h3>
+<p>在页面中包含小组件，或将小组件添加到小组件的位置上。</p>
+<pre><code class="language-html">&lt;xf:widget key=&quot;widget_name&quot; /&gt;
+</code></pre>
+<p>widget 标签具有以下属性：</p>
+<ul>
+<li><code>key</code> - 小组件的 key，如小组件设置中定义的。</li>
+<li><code>position</code> - 如果设置，则改变小组件将被喧染的位置。</li>
+<li><code>class</code> - 不要与 HTML 的 class 混肴，这是包含小组件定义的 PHP 类。<ul>
+<li><code>title</code> - 当使用 <code>class</code> 属性时，您可以使用 <code>title</code> 属性来设置小组件的标题。</li>
+<li>当使用<code>class</code>属性时，你也可以提供小组件特定的选项作为属性。</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>class</code> 标签不能与 <code>key</code> 标签一起使用。</p>
+</div>
+<h3 id="useractivity">UserActivity 标签<a class="headerlink" href="#useractivity" title="Permanent link">&para;</a></h3>
+<p>根据用户上一次操作以及该操作发生的时间来显示用户的状态。</p>
+<pre><code class="language-html">&lt;xf:useractivity user=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<p>UserActivity 标签具有以下属性：</p>
+<ul>
+<li><code>user</code> - 用户显示的状态。</li>
+</ul>
+<h4 id="_28">格式<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>查看页面 <em>最新案例文件</em> · 4分锺前</p>
+</blockquote>
+<p>格式为 <strong>[活动名称]</strong>  <strong>· [时间]</strong></p>
+<h3 id="userbanners">UserBanners 标签<a class="headerlink" href="#userbanners" title="Permanent link">&para;</a></h3>
+<p>在水平列表中显示用户的横幅。</p>
+<pre><code class="language-html">&lt;xf:userbanners user=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<p>UserBanners 标签具有以下属性：</p>
+<ul>
+<li><code>user</code> - 显示该用户的用户横幅。</li>
+</ul>
+<h4 id="_29">示例<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<p><img alt="UserBanners 标签的示例结果。" src="/files/images/example-userbanners-tag.png" /></p>
+<p>UserBanners 标签的示例结果。</p>
+<h3 id="userblurb-tag">UserBlurb tag<a class="headerlink" href="#userblurb-tag" title="Permanent link">&para;</a></h3>
+<p>显示用户个人资料的単行摘要。</p>
+<pre><code class="language-html">&lt;xf:userblurb user=&quot;${xf.visitor}&quot; /&gt;
+</code></pre>
+<p>UserBlurb 标签具有以下属性：</p>
+<ul>
+<li><code>user</code> - 显示 XenForo 用户对象的简介。</li>
+</ul>
+<h4 id="_30">格式<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>FBI 顾问 · 43 · 来自美国</p>
+</blockquote>
+<p>格式为 <strong>[角色 / 自定义标题] · 年龄 · 位置</strong></p>
+<h3 id="username">Username 标签<a class="headerlink" href="#username" title="Permanent link">&para;</a></h3>
+<p>Displays the user's username, optionally with a tool-tip.
+显示用户的用户名，可选择使用工具提示。
+显示用户的用户名（可选）和工具提示。</p>
+<pre><code class="language-html">&lt;xf:username user=&quot;{$xf.visitor.username}&quot; notooltip=&quot;true&quot; /&gt;
+</code></pre>
+<p>Username 标签具有以下属性：</p>
+<ul>
+<li><code>user</code> - 要显示其名称的 XenForo 用户对象。</li>
+<li><code>notooltip</code> - 是否关闭工具提示。</li>
+<li><code>href</code> - 点击用户名时所导向到的链接。</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果设置了 <code>href</code>，则不会显示工具提示，因为它不起作用，而且可能会误导用户。</p>
+</div>
+<h3 id="usertitle">UserTitle 标签<a class="headerlink" href="#usertitle" title="Permanent link">&para;</a></h3>
+<p>Displays the user's title.显示用户的头衔。</p>
+<pre><code class="language-html">&lt;xf:usertitle user=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<p>UserTitle 标签具有以下属性：</p>
+<ul>
+<li><code>user</code> - 此 XenForo 用户物件，用于显示用户头衔。</li>
+</ul>
+<h3 id="sectioned">Sectioned 标签<a class="headerlink" href="#sectioned" title="Permanent link">&para;</a></h3>
+<p>Sectioned 标签全都会调用函数 <code>modifySectionedHtml</code>。 它们修改的 HTML 元素就是标签名称。因此 <code>sidebar</code> 标签会修改侧边栏的 HTML 等等。</p>
+<h4 id="_31">示例<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:sidebar&gt;
+ &lt;h1&gt;我的神奇侧边栏！&lt;/h1&gt;
+&lt;/xf:sidebar&gt;
+</code></pre>
+<h4 id="_32">共同属性<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>mode</code> - 修改模式。（请参阅修改模式）</li>
+</ul>
+<h4 id="_33">修改方式<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h4>
+<p>默认情况下，修改方式为 <code>replace</code>。（即，如果没有指定属性。）</p>
+<ul>
+<li><code>prepend</code> - 将标签的内容放在 HTML 元素的开头。</li>
+<li><code>append</code> - 将标签的内容放在 HTML 元素的末尾。</li>
+<li><code>replace</code> - 用标签的内容替换 HTML 的元素。</li>
+</ul>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="rest-api/" class="btn btn-neutral float-right" title="REST API">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="" class="btn btn-neutral" title="入门须知"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../rest-api/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

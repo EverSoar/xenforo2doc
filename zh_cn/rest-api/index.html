@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>REST API - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A54.110087%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "REST API";
+    var mkdocs_page_input_path = "rest-api.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#api">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">API 密钥</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_1">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">密钥类型</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_2">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">密钥作用域</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#api_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">访问 API</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_3">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">错误处理</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#api_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">API 端点</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>REST API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/rest-api.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">&para;</a></h1>
+<p>在 XenForo 2.1 中，添加了 REST API。这使您可以通过编程的方式与 XenForo 安装的许多区域进行交互。</p>
+<p>要访问 API，需要通过管理员控制面板生成密钥。未经认证的 API 没有办法访问，此时用户也不能自己生成密钥来访问 API。</p>
+<p>特定 XenForo 安装的 API 可通过 <code>&lt;XenForo 基本 URL&gt;/api/</code> 访问。所有端点都以该 URL 为前缀。例如，如果 XenForo 安装在 <code>https://example.com/community/</code>，那麽API URL将以 <code>https://example.com/community/api/</code> 开头。在本例中，访问线程列表可通过 <code>https://example.com/community/api/threads/</code> 进行。</p>
+<p>默认情况下 API 是激活的。如果需要，可以通过在 <strong>src/config.php</strong> 中添加以下内容来快速关闭所有 API 访问：</p>
+<pre><code class="language-php">$config['enableApi'] = false;
+</code></pre>
+<h2 id="api">API 密钥<a class="headerlink" href="#api" title="Permanent link">&para;</a></h2>
+<p>通过管理员控制面板到 <strong>设置 &gt; API 密钥</strong> 创建 API 密钥。 由于生成 API 密钥可以允许访问高度特权的数据，因此只有超级管理员可以访问本系统。 当生成 API 密钥时，所有超级管理员都会収到一封邮件，以确保请求有效。</p>
+<p>创建密钥后，将生成一个随机字符串，该字符串将用于通过 API 进行身分验证。 将此密钥保密是很重要的。 如果您认为 API 密钥已被盗用，你应该立即重新生成新的密钥并更新任何使用旧密钥的代码。 </p>
+<h3 id="_1">密钥类型<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
+<p>所有的 API 访问都是在特定用户的 Context 中进行的。 例如，如果我以 "John" 的身分访问 API，并且我提出了一个发布主题的请求，那麽这个主题将由 "John" 创建。 在大多数情况下，API 也会遵守为这个用户指定对应的权限，所以他们不能访问他们在正常浏览论坛时看不到的数据。</p>
+<p>为了对此进行控制，共有三种类型的 API 密钥：</p>
+<ul>
+<li><strong>访客密钥</strong> - 此密钥总是以访客用户身分存取 API。这些请求将始终遵守访客的权限。例如，如果客人不能回覆主题，那麽回覆主题的 API 请求将生成一个没有权限的错误。</li>
+<li><strong>用户密钥</strong> - 这个密钥总是以指定用户的身分访问 API，并始终遵守该用户的权限，类似于访客密钥。</li>
+<li><strong>超级用户密钥</strong> - 这个密钥可以通过传递一个额外的值，以任何用户的身分访问 API。（可选）此密钥可以绕过用户发出请求的权限，从而允许他们运行操作或查看通常不具有访问权限的内容。</li>
+</ul>
+<p>超级用户密钥对于与其他系统或应用程序的整合非常有用。 例如，您可能会与第三方 CMS 整合，每当您发布一篇新文章时，该 CMS 就会创建一个主题。 这种类型的密钥将允许您根据文章作者或在用户通常不能发布的论坛中创建一个不同用户的主题。</p>
+<h3 id="_2">密钥作用域<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>为了帮助限制被泄露的密钥所造成的损害，每个密钥都可以控制其可以访问的 API 作用域。 作用域限制了对 API 区域的访问，与用户的请求权限无关。</p>
+<p>API 中的每个端点都会被一个或多个作用域所复盖。如果 API 没有被授予任何这些作用域，则请求将失败。</p>
+<p>为了安全起见，我们建议您仅为密钥授予所需的作用域。如果您在以后需要其他的作用域，则可以在需要时添加它们。</p>
+<h2 id="api_1">访问 API<a class="headerlink" href="#api_1" title="Permanent link">&para;</a></h2>
+<p>一旦知道访问 API 的 URL 并获得密钥后，就可以开始对其发出请求。</p>
+<p>所有的 API Response 都将以 JSON 格式返回，除非是特别要求二进制文件（例如，下载附件时）。错误将返回一个 400 范围内的 Response 状态码。成功的请求将返回一个 200 状态码。虽然不常用，但重定向将返回一个 300 范围的状态码。</p>
+<p>Request body 必须使用 <code>application/x-www-form-urlencoded</code> 编码发送，或者，如果是上传文件，则使用 <code>multipart/form-data</code> 编码发送。参数也可以通过查找字符串来传递。</p>
+<p>所有 Request 数据必须使用 UTF-8 字符集。</p>
+<p>Request 必须通过 <code>XF-API-Key</code> Header 传递要使用的 API 密钥。所有 Request 中都必须有这个密钥。</p>
+<p>如果选择的 API 密钥是超级用户密钥，你可以通过 <code>XF-API-User</code> Header 传递 Context User 的用户ID。 如果没有传递用户 ID，Context 将默认为访客。</p>
+<p>如果 Request 是用超级用户密钥发出的，并且你希望绕过 Context User 的权限，则可以通过将 <code>api_bypass_permissions</code> 参数设置为 1 来实现。(这个参数可以通过 query string 或作为 Request body 的一部分来进行传递。)</p>
+<h3 id="_3">错误处理<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>当遇到 Error 时，response 状态码将在 400 范围内。有时，可能会出现 500 范围的错误，不过这表明服务器无法处理该 request。 API 可能被暂时关闭，或者发生了其他服务器错误。</p>
+<p>错误消息具有标准格式。 这是一个例子：</p>
+<pre><code class="language-json">{
+    &quot;errors&quot;: [
+        {
+            &quot;code&quot;: &quot;api_key_not_found&quot;,
+            &quot;message&quot;: &quot;未找到 Request 中提供的 API 密钥。&quot;,
+            &quot;params&quot;: []
+        }
+    ]
+}
+</code></pre>
+<p>最上层将是一个帯有 <code>errors</code> key 的物件。这将是包含 1 个或多个 entry 的数组。每个 entry 都是一个物件，参数如下：</p>
+<ul>
+<li><code>code</code> - 这是机器可以读懂的错误码。 有许多可能的错误码，因为它们取决于情况。</li>
+<li><code>message</code> - 人类可以读懂的错误消息。 这可能会改变，也可能会被翻译，不应该用于识别错误类型。</li>
+<li><code>params</code> - 这是触发错误相关的 key-value 参数表表。它们可以补充错误码和消息，以提供有关错误的更多明确的详细消息。</li>
+</ul>
+<h2 id="api_2">API 端点<a class="headerlink" href="#api_2" title="Permanent link">&para;</a></h2>
+<p>该 API 具有许多 Endpoints 和可以采取的措施。将来可能会添加其他 Endpoint 和数据。</p>
+<p><strong><a href="https://xenforo.com/community/pages/api-endpoints/">查看 API 端点文档</a></strong></p>
+<p>该 Endpoint 文档是根据 API 数据和代码中的注释生成的。它将随着时间的推移进行扩展和更新。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="add-on-structure/" class="btn btn-neutral float-right" title="附加组件架构">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="template-syntax/" class="btn btn-neutral" title="模板语法"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../template-syntax/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../add-on-structure/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

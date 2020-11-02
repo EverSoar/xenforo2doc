@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="XenForo 2.0 开发人员说明文档。">
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+		<link href="extra.css?d=2020-11-02%2006%3A05%3A53.894541%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5165\u95e8\u987b\u77e5";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href="." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1 current"><a class="current" href=".">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">开发人员有什麽新功能？</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">入门须知</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#xf-20">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">下载 XF 2.0</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#xf-20_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">XF 2.0 环境要求</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">设置本地服务器</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_5">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">预先构建的虚拟机</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#stack">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">预构建 Stack</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_6">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">上传</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#srcconfigphp">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">创建 src/config.php</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_7">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">关于文件权限说明</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_8">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">安装</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_9">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">重新安装</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_10">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">验证文件完整性</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#add-on">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Add-on 管理命令</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_11">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">安装</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_12">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">升级</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_13">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">重建</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_14">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">卸载</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">首页</a> &raquo;</li>
+    
+      
+    
+    <li>入门须知</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/index.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">入门须知<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>欢迎使用 XenForo 2！</p>
+<p>本文档旨在帮助您开始 XenForo 2.0 开发。 本文档的前提条件假设您已熟悉 PHP 和 MySQL。 并非一定要拥有 XenForo 以前版本的经验，但这将是一个优势。</p>
+<p>在接下来的页面中，我们将向您简要介绍如何设置本地服务器，准备安装，全新安装 XenForo 2.0 以及运行 XF2 开发的一些概念。</p>
+<h2 id="_2">开发人员有什麽新功能？<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>尽管 XenForo 2.0 为您的论坛及其成员增加了许多改进，但我们仍投入了大量精力来改进 XenForo 的底层框架。 您可以在以下帖子中阅读更多关于这些更改的更多信息：</p>
+<ul>
+<li><a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205086" target="_blank">
+    XenForo 2 中的开发人员新功能（第1部分）
+   </a></li>
+<li><a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
+    XenForo 2 开发人员的添加功能（第2部分）
+   </a></li>
+</ul>
+<h2 id="_3">入门须知<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>XF 开发入门很容易。 您只需要下载文件，将它们上传到 Web 服务器并触发安装即可。</p>
+<p>如果你还没有 Web 服务器，不用担心，你可以在本地端电脑上设置一个。</p>
+<h2 id="xf-20">下载 XF 2.0<a class="headerlink" href="#xf-20" title="Permanent link">&para;</a></h2>
+<p>要下载 XF 2.0，只需访问 <a href="https://xenforo.com/customers">客户区</a> 并正常登录即可。 找到正确的许可证，然后単击 "下载 XenForo" 链接。 选择您要下载的版本，套件类型并接受许可协议。 最后，単击下载按钮以下载文件。</p>
+<h2 id="xf-20_1">XF 2.0 环境要求<a class="headerlink" href="#xf-20_1" title="Permanent link">&para;</a></h2>
+<p>从 XF 1.5 开始，运行 XF 2.0 的环境要求已更改。建议的环境要求如下：</p>
+<ul>
+<li>PHP: 5.4.0+ 以上</li>
+<li>MySQL: 5.5+ 以上</li>
+<li>PHP 扩充套件: MySQLi，GD (支持 JPEG)，PCRE，SPL，SimpleXML，DOM，JSON，iconv，ctype，cURL</li>
+</ul>
+<p><a href="https://xenforo.com/purchase/requirements-zip">下载环境要求测试脚本。</a></p>
+<h2 id="_4">设置本地服务器<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>设置用于开发的本地 Web 服务器通常更方便。 通常有两种方法可以解决此问题：</p>
+<ol>
+<li>自己安装 Apache（或 nginx ），MySQL（或 MariaDB ）和 PHP。</li>
+<li>安装预构建的虚拟机</li>
+<li>安装预构建的 Stack。</li>
+</ol>
+<p>自己进行设置比较复杂，但往往可以让您更好地控制所有设置。</p>
+<h3 id="_5">预先构建的虚拟机<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>网络上有多种预构建的虚拟机，这些虚拟机的优势在于，将所需的所有服务以整齐的方式打包到一个地方即可运行 XenForo，而不必直接在自己的计算机上安装和维护它们。</p>
+<p>一些 XenForo 开发人员使用名为 <a href="https://box.scotch.io/">Scotch Box</a> 的虚拟机，它包含了运行 XenForo 所需的一切，无需任何配置。 我们有逐步安装和运行 XenForo 开发服务器的 <a href="/scotchbox">逐步指南</a> - 您可以通过运行一些命令，在短短几分锺内就使虚拟网络和数据库服务器正常运行。</p>
+<p><a href="/scotchbox">安装用于 XenForo 的 Scotch Box 虚拟机</a></p>
+<h3 id="stack">预构建 Stack<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
+<p>那里有许多预构建 Stack，它们在功能集，性能和可靠性方面可能会有所不同。Bitnami 维护许多 Stack，包括分别用于 Linux，Mac 和 Windows 的 <a href="https://bitnami.com/stack/lamp">LAMP</a>,
+<a href="https://bitnami.com/stack/mamp">MAMP</a> 和 <a href="https://bitnami.com/stack/wamp">WAMP</a> Stacks。 它们都包括对 Apache，MySQL 和 PHP 的完全配置安装，并包括用于管理 MySQL 的 PhPMyAdmin。</p>
+<h2 id="_6">上传<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>要安装 XF 2.0，您只需要提取从客户区下载的 ZIP 文件并上传其中的一些文件和目录。</p>
+<p>解压缩后，您会看到一个名为 <code>upload</code> 的目录。 您需要进入该目录，然后将文件和目录上载到你服务器的 Web 根目录。 这通常会在一个名为
+<code>public_html</code>, <code>htdocs</code> 或 <code>www</code> 的目录。</p>
+<h2 id="srcconfigphp">创建 src/config.php<a class="headerlink" href="#srcconfigphp" title="Permanent link">&para;</a></h2>
+<p>如果使用 CLI 安装 XF 2.0，则需要手动创建 config.php 文件。 要做到这一点，请在您上载到服务器的 XF 2.0 文件中输入 <code>src</code> 目录。 创建一个名为 config.php 的新文件，并填入你的 MySQL 服务器的主机，端口，用户名，密码和数据库名称。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>确保在 <code>src</code> 目录中创建配置文件。 该 <code>library</code> 目录仅用于旧版目的。</p>
+</div>
+<p>完成后，它应如下所示：</p>
+<pre><code class="language-php">&lt;?php
+
+$config['db']['host'] = 'localhost';
+$config['db']['port'] = '3306';
+$config['db']['username'] = 'root';
+$config['db']['password'] = 'mypassword';
+$config['db']['dbname'] = 'xf2';
+</code></pre>
+<p>您现在可以安装了！</p>
+<p>如果您使用的是 MySQL 5.5 及以上版本，并且希望获得完整的 unicode 支持（例如 emoji 表情），则还应该在安装前添加以下内容：</p>
+<pre><code class="language-php">$config['fullUnicode'] = true;
+</code></pre>
+<h2 id="_7">关于文件权限说明<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>XenForo 在运行时需要将文件写入特定位置。 在正常操作中，这仅限于 <code>data</code> 和 <code>internal_data</code> 目录（及其子目录）。 这些文件写入将由附件上传之类的东西触发，因此它们通常将由用户 PHP 象在 Web 服务器中一样运行来触发。 因此，必须确保在这些目录中设置了权限，以便 Web 伺务器可以对其进行写入。 您必须先运行此操作，然后才能开始安装。</p>
+<p>当涉及到 CLI 时，这种情况变得更加棘手，因为现在可能有两个用户需要能够写入文件。 因此，采取措施避免写入这些文件的问题很重要。 这里有几个选择。</p>
+<ol>
+<li>在 CLI 和 Web 服务器使用相同的用户。 这可以采取以下形式：在运行任何安装或升级命令（或任何其他将写入文件的命令）之前切换到 Web 服务器用户。</li>
+<li>如果可用，请考虑将 ACL 应用于 <code>data</code> 和 <code>internal_data</code> 目录中。 该概念因操作系统和配置而异，但 <a href="http://symfony.com/doc/current/setup/file_permissions.html">此处</a> 描述的是总体思路。</li>
+<li>对 PHP 写入的内容强制授予特定的权限。 这可以通过 src / config.php 文件中帯有如下一行的代码来完成： <code>$config['chmodWritableValue'] = 0666;</code> 这种方法对于开发目的来说可能是最简単的。</li>
+</ol>
+<p>请注意，如果您正在开发附加组件，则可能会有其他需要由 CLI 和 Web 服务器用户写入的位置。 值得注意的是，这包括附加组件中的 <code>_output</code> 目录。 在这种情况下，以您的 CLI 用户身分运行 Web 服务器可能会减少摩擦。 
+如果您采用其他任何方法，则可能需要确保您的 Web 服务器可以写入整个 XenForo 安装；在生产中不建议这样做。                              </p>
+<h2 id="_8">安装<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>当前安装 XF 2.0 的方式是通过新的 CLI 系统。 许多开发过程只能使用 CLI 来进行，所以我们就来使用它来安装 XF 2.0。 要运行这些命令，您将需要访问 终端/shell，使用 php CLI 命令和当前工作目录应该是您上传 XF 2.0 文件的根目录。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>为消除文件权限问题，我们建议以与 PHP 在 web 服务器上运行的相同用户来运行安装程序。 如果不这样做，则应该采取措施确保权限设置正确。 有关更多详细信息，请参见上面的章节。</p>
+</div>
+<p>要开始安装，只需输入以下命令：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:install</p>
+</div>
+<p>您会被问到许多问题，例如初始管理员用户名和密码，板块标题。 此后，将导入 XF 2.0 数据库表和主要的数据。</p>
+<p>XF 2.0 现在已安装完成！</p>
+<h2 id="_9">重新安装<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>有时可能需要重新安装 XF2。 在不支持升级的 "开发预览" 阶段尤其如此。 如果准备好重新安装，请按照上面的 <a href="#downloading-xf-20">下载 XF 2.0</a> 部分下载新文件（如果适用）。 一般来说，应该可以合并和复盖现有文件。 如果要进行完全干净的重新安装，则可能需要保存 config.php 文件的副本，或者按照 <a href="#creating-srcconfigphp">创建 src/config.php</a> 中的说明重新创建它。</p>
+<p>在上传新文件之前，您应该删除 <code>data</code> 和 <code>internal_data</code> 目录的内容。</p>
+<p>最后，您只需要开始安装即可，与上面类似。 您将需要使用此 <code>--clear</code> 选项来删除所有现有的 xf_ 资料表。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:install --clear</p>
+</div>
+<p>重新安装完成后，您现在应该可以重新登录了。</p>
+<p>如果您正在开发附加组件，并且选择保留或备份现有 <code>src/addons</code> 目录，则可以使用 <a href="/development-tools/#_15">导入开发输出</a> 命令来还原附加组件数据。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果选择备份和还原 <code>src/addons</code> 目录，请小心。 其中的 <code>XF</code> 目录包含 XF 主要的数据，因此不应从备份中还原，以确保您始终拥有最新版本的文件。</p>
+<p>以这种方式运行重新安装是破坏性的操作，它将删除您创建的所有数据。 此外，请记住，仅帯有 <code>xf_</code> 前缀的资料表才会被清除。 这也是建议所有资料表（甚至是附加组件）都应该以 <code>xf_</code> 为前缀的一个重要原因。</p>
+</div>
+<h2 id="_10">验证文件完整性<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>当您安装 XF2 时，我们会在安装过程中运行文件完整性检查。 如有必要，并且您无法通过 Admin CP 中的页面运行检查，则可以运行 CLI 命令来运行该检查。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:file-check <em>[addon_id]</em></p>
+</div>
+<p>如果您希望对所有文件（包括 XF 本身）进行文件运行健康检查，只需省略 <code>[addon_id]</code> 参数即可。 仅对于 XF，仅使用 <code>XF</code> 代替该参数，或者对于特定的附加组件，只需指定您要检查的附加组件 ID。</p>
+<h2 id="add-on">Add-on 管理命令<a class="headerlink" href="#add-on" title="Permanent link">&para;</a></h2>
+<p>除了上述用于安装 XF2 的命令之外，还有一些用于管理附加组件的命令。</p>
+<h3 id="_11">安装<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-install <em>[addon_id]</em></p>
+</div>
+<p>安装指定的附加组件，只要它是可用的，并通过文件运行健康检查。 如果有可用的开发输出，您将被要求确认是否要将其用于安装，而不是导出的数据 XML 文件。</p>
+<h3 id="_12">升级<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-upgrade <em>[addon_id]</em></p>
+</div>
+<p>只要指定的附加组件是可升级的，就对其进行升级，并通过文件运行健康检查。 可以选择从开发输出中进行导入。</p>
+<h3 id="_13">重建<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-rebuild <em>[addon_id]</em></p>
+</div>
+<p>只要指定的附加组件是可重建的，就为其重建主要的数据，并通过文件运行健康检查。 这将重新导入附加组件的数据。 可以选择性地运行从开发输出中导入。</p>
+<h3 id="_14">卸载<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-uninstall <em>[addon_id]</em></p>
+</div>
+<p>卸载指定的附加组件，只要它是不可卸载的。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="template-syntax/" class="btn btn-neutral float-right" title="模板语法">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="template-syntax/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2020-11-02 06:05:53.894541+00:00
+-->

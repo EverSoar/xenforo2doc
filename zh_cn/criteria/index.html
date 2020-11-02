@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>准则 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A53.949592%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u51c6\u5219";
+    var mkdocs_page_input_path = "criteria.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">准则类型</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">准则</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_4">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">规则</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_5">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">数据</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_6">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">准则系统如何运作</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_7">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">模板</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_8">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">(可选) 保存选定的准则</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_9">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">准则物件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_10">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">匹配</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_11">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">准则是如何运作的 (例子)</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_12">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">额外准则数据</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_13">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">在自定义准则类型中添加数据</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_14">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">在现有准则类型中添加数据</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#helper_criteria">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">"helper_criteria" 模板</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_15">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">标签</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#panes">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Panes (窗格)</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#helper_criteria_1">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">使用 "helper_criteria"</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#helper_criteria_2">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">在 "helper_criteria" 中添加自定义准则类型</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_19">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">自定义用户/页面准则范例</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_20">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">增加模板修改</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_21">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">增加代码事件监听器</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_22">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">处理准则</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_23">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">测试（成就）</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_24">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">测试（通知）</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_25">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">自定义准则类型范例</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#criteria-type-class-class">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Criteria type class 准则类型 class</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_26">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">模板</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_27">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">匹配准则</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_28">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">测试</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>准则</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/criteria.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">准则<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>当 XenForo 需要根据一些 <strong>用户选择的</strong> 条件（准则）来测试某些东西（用户/页面/帖子......）时，它使用准则系统。</p>
+<p>使用到准则系统的一些地方：</p>
+<ul>
+<li>成就</li>
+<li>用户组提升</li>
+<li>论坛公告</li>
+</ul>
+<p>附加组件也可以使用这个系统。</p>
+<h2 id="_2">准则类型<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>考虑以下准则：
+- 用户 有/没有 头像
+- 用户有 300 多条留言
+- 用户正在创建一个主题
+- 当前用户选择的导览标签为 "会员"</p>
+<p>前两个准则是指用户本人。 其余的准则是指他当前在论坛上的位置。 这样看起来我们应该有不同类别或 <strong>类型</strong> 的准则。</p>
+<p>在 XenForo 中，有两种开箱即用的准则类型：</p>
+<ul>
+<li>用户准则 — 处理关于用户本身的准则</li>
+<li>页面准则 — 处理用户当前位置的准则 + 时间准则</li>
+</ul>
+<p>一些附加组件也可以添加自己的准则类型。</p>
+<p>从代码的角度来看，准则类型只是一个抽象类 <code>AbstractCriteria</code> 的子类。 它们包含用于处理某些类型的选定准则代码。</p>
+<p>反之，<code>AbstractCriteria</code> 则提供了处理准则的通用方法，而不论其含义如何。</p>
+<h2 id="_3">准则<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>准则是一个用户可选择的预定义条件。</p>
+<p><strong>为什麽是可选的？</strong> 因为管理员/用户可以选择它们（记得成就创建过程）。</p>
+<p><strong>为什麽是预定义？</strong> 因为 XenForo 已经知道如何处理它们（使用准则类方法）。</p>
+<p>每个准则由两部分组成：<strong>规则</strong> 和（可选）<strong>数据</strong>。</p>
+<h3 id="_4">规则<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>准则规则简直就是 <a href="https://en.wikipedia.org/wiki/Snake_case">蛇形命名</a> 的痛处  (words_are_separated_with_underscore_character)。</p>
+<p>它有两个基本宗旨：</p>
+<ol>
+<li>它用于区分准则</li>
+<li>在进行匹配时，该规则被転换为处理该准则方法的 <a href="https://en.wikipedia.org/wiki/Camel_case">驼峰式</a> 命名 (请参阅 <a href="#_11">"准则如何运作"</a>)。</li>
+</ol>
+<h3 id="_5">数据<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>它只是一个可选的附加准则数据数组。 例如，"用户至少发布了 X 条留言" 准则有一个包含一个要素的数据数组：数则消息。</p>
+<h2 id="_6">准则系统如何运作<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>在本节中，我们将介绍准则系统是如何从 A 到 Z 运作的。</p>
+<h3 id="_7">模板<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>这一切都要从模板代码说起。 以下是准则在模板中看起来的样子：</p>
+<pre><code class="language-html">&lt;xf:checkbox label=&quot;Criteria container&quot;&gt;
+
+    &lt;!-- 准则 --&gt;
+    &lt;xf:option name=&quot;foo_criteria[criterion_1_rule][rule]&quot; value=&quot;criterion_1_rule&quot; ... /&gt;
+
+    &lt;!-- 含数据的准则 --&gt;
+    &lt;xf:option name=&quot;bar_criteria[criterion_2_rule][rule]&quot; value=&quot;criterion_2_rule&quot; ... &gt;
+        &lt;xf:... name=&quot;bar_criteria[criterion_2_rule][data][param_1]&quot; ... /&gt;
+        &lt;xf:... name=&quot;bar_criteria[criterion_2_rule][data][param_2]&quot; ... /&gt;
+    &lt;/xf:option&gt;
+
+&lt;/xf:checkbox&gt;
+</code></pre>
+<p>如你所见，准则只是一个复选框，里面有可选的输入字段（准则数据）。 我们来分析一下代码：</p>
+<ul>
+<li><code>foo_criteria</code> 和 <code>bar_criteria</code> 是 input 容器，通常 <code>foo</code> 和 <code>bar</code> 部分是指准则类型。 例如，<code>user_criteria[...]</code> 让我们知道这个准则属於用户准则。</li>
+<li><code>value="criterion_1_rule"</code> 和 <code>value="criterion_2_rule"</code> 显然是准则的规则。</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>请记住，<code>name</code> 属性中的 <code>criterion_1/2_rule</code> 不一定是准则规则！ 这些只是 input 容器的名称。 你可以轻而易举地写下 <code>&lt;xf:option name="foo[bar][rule]" value="criterion_rule" /&gt;</code>，它就会正确地运作。 准则规则会是 <code>criterion_rule</code>，而不是 <code>bar</code>。</p>
+</div>
+<h3 id="_8">(可选) 保存选定的准则<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>在 Controller 内部，可以将上一节的准则表单数据进行筛选、编码，并保存在 <code>mediumblob</code> 类型的数据库 Column 中，以便更好地使用：</p>
+<pre><code class="language-php">$fooCriteriaInput = $this-&gt;filter('foo_criteria', 'array');
+$barCriteriaInput = $this-&gt;filter('bar_criteria', 'array');
+
+$form-&gt;basicEntitySave($bazEntity, [
+    'foo_criteria' =&gt; $fooCriteriaInput,
+    'bar_criteria' =&gt; $barCriteriaInput
+]);
+</code></pre>
+<p><code>$bazEntity</code> Structure 示例：</p>
+<pre><code class="language-php">public static function getStructure(Structure $structure)
+{
+    $structure-&gt;table = 'xf_baz';
+    $structure-&gt;shortName = 'XF:Baz';
+    $structure-&gt;primaryKey = 'baz_id';
+    $structure-&gt;columns = [
+        'baz_id' =&gt; ['type' =&gt; self::UINT, 'autoIncrement' =&gt; true],
+        'foo_criteria' =&gt; ['type' =&gt; self::JSON_ARRAY, 'default' =&gt; [], 'required' =&gt; 'please_select_criteria_that_must_be_met'],
+        'bar_criteria' =&gt; ['type' =&gt; self::JSON_ARRAY, 'default' =&gt; []]
+    ];
+
+    return $structure;
+}
+</code></pre>
+<h3 id="_9">准则物件<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>为了使用准则系统，我们需要从选定的准则表单数据中创建一个准则物件，这可以通过 app 的 <code>criteria()</code> 方法来完成：</p>
+<pre><code class="language-php">/** @var \Qux\Criteria\Foo $fooCriteria */
+$fooCriteria = \XF::app()-&gt;criteria('Qux:Foo', $bazEntity-&gt;foo_criteria);
+
+/** @var \Qux\Criteria\Bar $barCriteria */
+$barCriteria = \XF::app()-&gt;criteria('Qux:Bar', $bazEntity-&gt;bar_criteria);
+</code></pre>
+<p>从现在开始，我们可以使用所有的 <code>AbstractCriteria</code> 功能，加上我们在子类 <code>Foo</code>/<code>Bar</code> 中额外编写的所有内容。</p>
+<h3 id="_10">匹配<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>当我们想检查某个东西（User）是否符合选定的准则时，我们可以使用 <code>isMatched</code> 方法：</p>
+<pre><code class="language-php">$visitor= \XF::visitor();
+
+if ($fooCriteria-&gt;isMatched($visitor))
+{
+    // 访客符合所有选定的准则
+}
+else
+{
+    // 访客不符合一个或多个准则
+}
+</code></pre>
+<p><code>isMacthed()</code> 将准则规则転换为帯有 <code>_match</code> 前缀的驼峰式命名方法： <code>criterion_1_rule</code> &gt; <code>_matchCriterion1Rule</code>，并尝试在准则：型 class 中找到这样一个方法（在我们的例子中是 <code>Foo</code> 类）：</p>
+<pre><code class="language-php">// Qux/Criteria/Foo.php
+
+protected function _matchCriterion1Rule(array $data, \XF\Entity\User $user)
+{
+    /* ... 处理准则 ... */
+
+    return true; // 用户符合当前准则
+
+    /* 或者 */
+
+    return false; // 用户不符合当前准则
+}
+</code></pre>
+<p>如果在 class 中找不到某个方法，<code>isMatched()</code> 会调用 <code>isUnknownMatched()</code>，其行为可以在 <code>AbstractCriteria</code> 祖先中设置（默认返回 <code>false</code>）。</p>
+<p>如果没有选定任何准则，<code>isMatched()</code> 将返回 <code>$matchOnEmpty</code> 变量，默认为 <code>true</code>。 你可以在使用 <code>isMatched()</code> 方法 <strong>之前</strong> 调用 <code>$crteriaObj-&gt;setMatchOnEmpty(false)</code> 来改变这种行为：</p>
+<pre><code class="language-php">$visitor= \XF::visitor();
+
+$fooCriteria-&gt;setMatchOnEmpty(false);
+
+if ($fooCriteria-&gt;isMatched($visitor))
+{
+    // 访客符合所有选定的准则
+}
+else
+{
+    // 访客不符合一个或多个准则
+}
+</code></pre>
+<h2 id="_11">准则是如何运作的 (例子)<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>想象一下，你想给所有拥有头像并获得至少 5 个赞的用户颁发一个成就。</p>
+<p>在创建成就时，你选择 "用户有头像"（规则 <code>has_avatar</code>）和 "用户至少収到 X 个賛"（规则 <code>like_count</code>）准则。 最后一个还具有一个包含一个元素的数据数组：喜欢的数量。</p>
+<p>您所选择的准则保存在 <code>xf_trophy</code> 资料表中的 <code>user_criteria</code> column。</p>
+<p>当 XenForo 决定检查，是否给用户颁发成就时，它会将规则転换为驼峰式命名方法：</p>
+<ul>
+<li><code>like_count</code> &gt; <code>_matchLikeCount()</code></li>
+<li><code>has_avatar</code> &gt; <code>_matchHasAvatar()</code></li>
+</ul>
+<p>由于所选的两个准则都是用户准则，因此 XenForo 满足用户准则 class，并试图在其中找到这些方法：</p>
+<pre><code class="language-php">// XF/Criteria/User.php
+
+//...
+protected function _matchLikeCount(array $data, \XF\Entity\User $user)
+{
+    return ($user-&gt;like_count &amp;&amp; $user-&gt;like_count &gt;= $data['likes']);
+}
+//...
+protected function _matchHasAvatar(array $data, \XF\Entity\User $user)
+{
+    return $user-&gt;user_id &amp;&amp; ($user-&gt;avatar_date || $user-&gt;gravatar);
+}
+//...
+</code></pre>
+<p>如果 <strong>所有</strong> 位置的方法都返回 <code>true</code>，我们的用户就符合选定的准则，因此将获得一个成就。</p>
+<p>如果在 User 准则类中找不到某些方法，XenForo 会调用 <code>isUnknownMatched()</code> 方法，进而触发 <code>criteria_user</code> 事件，允许附加组件制作者添加他们的自定义准则处理程序。 （参见<a href="#_12">"自定义用户/页面准则范例"</a>）。</p>
+<h2 id="_12">额外准则数据<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>有时，在编写准则模板代码时，你需要访问额外的数据，而这些数据不是通过 view 参数传递的。</p>
+<p>这就是 <code>getExtraTemplateData()</code> 方法存在的意义。 默认情况下，它包含现有的用户组、语言、风格样式、时区。</p>
+<p>你可以在你的自定义准则类型 class 中复盖这个方法。</p>
+<h3 id="_13">在自定义准则类型中添加数据<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>在您的自定义准则 class 中复盖 <code>getExtraTemplateData()</code> 方法：</p>
+<pre><code class="language-php">public function getExtraTemplateData()
+{
+    $templateData = parent::getExtraTemplateData();
+
+    $additionalData = [];
+
+    /** @var \XF\Repository\Smilie $smilieRepo */
+    $smilieRepo = \XF::repository('XF:Smilie');
+
+    $additionalData['smilies'] = $smilieRepo-&gt;findSmiliesForList()-&gt;fetch();
+
+    return array_merge($templateData, $additionalData);
+}
+</code></pre>
+<h3 id="_14">在现有准则类型中添加数据<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<p>你可以使用 <code>criteria_template_data</code> 事件监听器来添加你自己的额外准则数据：</p>
+<pre><code class="language-php">public static function criteriaTemplateData(array &amp;$templateData)
+{
+    /** @var \XF\Repository\Smilie $smilieRepo */
+    $smilieRepo = \XF::repository('XF:Smilie');
+
+    $templateData['smilies'] = $smilieRepo-&gt;findSmiliesForList()-&gt;fetch();
+}
+</code></pre>
+<h2 id="helper_criteria">"helper_criteria" 模板<a class="headerlink" href="#helper_criteria" title="Permanent link">&para;</a></h2>
+<p>每当你作为附加组件制作者想让目标 用户/管理员 有办法选择 用户/页面/其他附加组件 的准则时（甚至全部一起），你可以简単地使用 <code>helper_criteria</code>。</p>
+<p>简而言之，<code>helper_criteria</code> 是一个允许在多处使用基于准则类型的核取方块介面的管理模板，无需复制粘贴相同代码。</p>
+<p><code>helper_criteria</code> 包含 <strong>两个</strong> 类型的巨集：<code>*criteria_name*_tabs</code> 和 <code>*criteria_name*_panes</code>，适用于每个准则类型。 例如：用户准则类型的 <code>user_tabs</code> 和 <code>user_panes</code> 巨集。</p>
+<h3 id="_15">标签<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>标签用于区分他们所使用模板内的不同准则类型：</p>
+<p><img alt="准则标签演示。" src="/files/images/helper_criteria_tabs_example.png" /></p>
+<p>使用标签时，第一个标签往往包含与准则无关的字段/选项。 然后到准则标签。</p>
+<p>在上图中，第一个标签包含通知的选项。 红框中的前两个标签与用户准则类型有关。 最后一个与页面准则类型有关。</p>
+<p><code>helper_criteria</code> 中的标签被归类在准则类型巨集下：</p>
+<pre><code class="language-html">&lt;xf:macro name=&quot;foo_tabs&quot; arg-container=&quot;&quot; arg-active=&quot;&quot;&gt;
+    &lt;xf:set var=&quot;$tabs&quot;&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}&quot;
+            role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;Foo criteria&lt;/a&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}&quot;
+           role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFooExtra') }}&quot;&gt;Foo criteria extra&lt;/a&gt;
+    &lt;/xf:set&gt;
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+            {$tabs|raw}
+        &lt;/div&gt;
+    &lt;xf:else /&gt;
+        {$tabs|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<p>In the code above, <code>foo</code> is a criteria type. It has two tabs, one for general foo criteria and another for extra foo criteria.
+在上面的代码中，<code>foo</code> 是一个准则类型。 它有两个标签，一个用于一般的 foo 准则，另一个用于额外的 foo 准则。</p>
+<h3 id="panes">Panes (窗格)<a class="headerlink" href="#panes" title="Permanent link">&para;</a></h3>
+<p>Panes 仅仅包含准则。</p>
+<p>和标签一样，<code>helper_criteria</code> 中的 Panes 也是按照准则类型巨集来归类的：</p>
+<pre><code class="language-html">&lt;xf:macro name=&quot;foo_panes&quot; arg-container=&quot;&quot; arg-active=&quot;&quot; arg-criteria=&quot;!&quot; arg-data=&quot;!&quot;&gt;
+    &lt;xf:set var=&quot;$panes&quot;&gt;
+        &lt;li class=&quot;{{ $active == 'foo' ? ' is-active' : '' }}&quot; role=&quot;tabpanel&quot; id=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 1&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_1_rule][rule]&quot; value=&quot;criterion_1_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_2_rule][rule]&quot; value=&quot;criterion_2_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 2&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_3_rule][rule]&quot; value=&quot;criterion_3_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_4_rule][rule]&quot; value=&quot;criterion_4_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+        &lt;/li&gt;
+    &lt;/xf:set&gt;
+
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;ul class=&quot;tabPanes&quot;&gt;
+            {$panes|raw}
+        &lt;/ul&gt;
+    &lt;xf:else /&gt;
+        {$panes|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<h3 id="helper_criteria_1">使用 "helper_criteria"<a class="headerlink" href="#helper_criteria_1" title="Permanent link">&para;</a></h3>
+<p>要使用 "helper_criteria" 的功能，你需要加入它的巨集。</p>
+<h4 id="_16">准备数据<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>如果您 <strong>没有</strong> 您所选定的准则保存在数据库中的某个地方，或者您要使用的准则类型 <strong>不需要</strong> 任何额外的数据，可以跳过本节。</p>
+<p>首先，您需要检索已保存的选定准则，并从中创建一个准则物件。 在本节中，我们将以 Page 准则为例子：</p>
+<pre><code class="language-php">$savedCriteria = /* Retrieve it somehow... */
+
+// 准则物件
+$criteria = $this-&gt;app()-&gt;criteria('XF:Page', $savedCriteria)-&gt;getCriteriaForTemplate();
+
+// 准则额外数据
+$criteriaData = $criteria-&gt;getExtraTemplateData();
+
+$viewParams = [
+    /* ... */
+    'criteria' =&gt; $criteria,
+    'criteriaData' =&gt; $criteriaData
+];
+
+return $this-&gt;view(/* ... */, $viewParams);
+</code></pre>
+<h4 id="_17">包含没有内容的标签<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>要包含没有内容的标签准则，你需要使用 <code>&lt;xf:macro...</code> 标签，并将 <code>arg-container</code> 属性设置为 <code>0</code>。</p>
+<pre><code class="language-html">&lt;xf:macro template=&quot;helper_criteria&quot; name=&quot;page_panes&quot; arg-container=&quot;0&quot; arg-criteria=&quot;{$criteria}&quot; arg-data=&quot;{$criteriaData}&quot; /&gt;
+</code></pre>
+<p>如果你没有保存准则，你可以直接将空数组 <code>{{ [] }}</code> 传递给 <code>arg-criteria</code> 属性。 不要忘记把 <code>page_panes</code> 中的 <code>page</code> 替换成你想使用的准则类型名称。</p>
+<p>请记住，所有的准则都是用 <code>&lt;li&gt;</code> 标签包住的，所以你需要应用一些 CSS 样式（例如 <code>list-style-type: none;</code>）。</p>
+<h4 id="_18">有内容的标签<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<p>为了使用准则标签，你需要组织页面。 坚持以下范例结构：</p>
+<pre><code class="language-html">&lt;xf:form ... class=&quot;block&quot;&gt;
+    &lt;div class=&quot;block-container&quot;&gt;
+
+        &lt;!-- 标签 --&gt;
+        &lt;h2 class=&quot;block-tabHeader tabs hScroller&quot; data-xf-init=&quot;h-scroller tabs&quot; role=&quot;tablist&quot;&gt;
+            &lt;span class=&quot;hScroller-scroll&quot;&gt;
+                &lt;!-- Main tab where fields/options are located --&gt;
+                &lt;a class=&quot;tabs-tab is-active&quot; role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;MAIN_TAB_ID&quot;&gt;Main tab title&lt;/a&gt;
+
+                &lt;!-- 准则标签 --&gt;
+                &lt;xf:macro template=&quot;helper_criteria&quot; name=&quot;page_tabs&quot; arg-userTabTitle=&quot;Custom tab name (optionally)&quot; /&gt;
+            &lt;/span&gt;
+        &lt;/h2&gt;
+
+        &lt;!-- 窗格 --&gt;
+        &lt;ul class=&quot;block-body tabPanes&quot;&gt;
+            &lt;!-- Main pane --&gt;
+            &lt;li class=&quot;is-active&quot; role=&quot;tabpanel&quot; id=&quot;MAIN_TAB_ID&quot;&gt;
+                &lt;!-- Fields and options --&gt;
+            &lt;/li&gt;
+
+            &lt;!-- 准则窗格 --&gt;
+            &lt;xf:macro template=&quot;helper_criteria&quot; name=&quot;page_panes&quot;
+                arg-criteria=&quot;{$criteria}&quot;
+                arg-data=&quot;{$criteriaData}&quot; /&gt;
+        &lt;/ul&gt;
+
+        &lt;xf:submitrow sticky=&quot;true&quot; icon=&quot;save&quot; /&gt;
+    &lt;/div&gt;
+&lt;/xf:form&gt;
+</code></pre>
+<p>同样，如果你没有任何准则数据，或者甚至假设没有，请将 <code>{{ [] }}</code> 传递给 <code>arg-criteria</code> 属性。</p>
+<h3 id="helper_criteria_2">在 "helper_criteria" 中添加自定义准则类型<a class="headerlink" href="#helper_criteria_2" title="Permanent link">&para;</a></h3>
+<p>如果你想在 <code>helper_criteira</code> 模板中添加自定义准则类型，你需要创建一个 <code>helper_criteria</code> 模板的模板修改。</p>
+<p>进入 Admin CP 中的 "外観 &gt; 模板修改"，切换到 "管理" 标签，点击 "添加模板修改" 按钮。</p>
+<p>我们要在模板的最底部添加我们的标签和窗格，所以将 "搜寻类型" 切换为 "正规表达式"。</p>
+<p>在 "查找" 栏中输入 <code>/$/</code>。</p>
+<p>最后，在 "替换" 字段中添加标签和窗格的巨集代码。 举例：</p>
+<pre><code class="language-html">&lt;xf:macro name=&quot;foo_tabs&quot; arg-container=&quot;&quot; arg-active=&quot;&quot;&gt;
+    &lt;xf:set var=&quot;$tabs&quot;&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}&quot;
+            role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;Foo criteria&lt;/a&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}&quot;
+           role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFooExtra') }}&quot;&gt;Foo criteria extra&lt;/a&gt;
+    &lt;/xf:set&gt;
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+            {$tabs|raw}
+        &lt;/div&gt;
+    &lt;xf:else /&gt;
+        {$tabs|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+
+&lt;xf:macro name=&quot;foo_panes&quot; arg-container=&quot;&quot; arg-active=&quot;&quot; arg-criteria=&quot;!&quot; arg-data=&quot;!&quot;&gt;
+    &lt;xf:set var=&quot;$panes&quot;&gt;
+        &lt;li class=&quot;{{ $active == 'foo' ? ' is-active' : '' }}&quot; role=&quot;tabpanel&quot; id=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 1&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_1_rule][rule]&quot; value=&quot;criterion_1_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_2_rule][rule]&quot; value=&quot;criterion_2_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 2&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_3_rule][rule]&quot; value=&quot;criterion_3_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_4_rule][rule]&quot; value=&quot;criterion_4_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+        &lt;/li&gt;
+    &lt;/xf:set&gt;
+
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;ul class=&quot;tabPanes&quot;&gt;
+            {$panes|raw}
+        &lt;/ul&gt;
+    &lt;xf:else /&gt;
+        {$panes|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<p>现在，您可以在任何地方使用您的准则（请参见 <a href="#helper_criteria_1">"使用helper_criteria"</a> )。</p>
+<h2 id="_19">自定义用户/页面准则范例<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<p>比方说，我们想创建一个准则来检查我们的用户是否在単则留言上有 X 个或更多的賛。</p>
+<p>由于我们的准则是指用户，所以我们将创建一个属於用户准则的准则。</p>
+<h3 id="_20">增加模板修改<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>首先，我们需要将我们的准则添加到用户准则列表中。 进入 Admin CP 中的 "模板修改" 页面，选择 "Admin" 标签，点击右上角的 "添加模板修改" 按钮。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果没有 "Admin" 标签，请确保你已经激活了<a href="../development-tools/#_3">开发模式</a>。</p>
+</div>
+<p>我们将修改 <code>helper_criteria</code> 模板，因此将其写入到 "模板" 字段。 在这个例子中，我将使用 <code>likes_on_single_message</code> "修改 key 值" 来修改这个模板。</p>
+<p>我们的准则是关于留言的点賛数。 这意味着它应该在 "内容和成就" 部分下。 这表示我们只需要找到 <code>&lt;！--[XF:user:content_bottom]--&gt;</code>，然后用下面的代码替换。</p>
+<pre><code class="language-html">&lt;xf:option name=&quot;user_criteria[likes_on_single][rule]&quot; value=&quot;likes_on_single&quot; selected=&quot;{$criteria.likes_on_single}&quot;  label=&quot;Likes on single message:&quot;&gt;
+    &lt;xf:numberbox name=&quot;user_criteria[likes_on_single][data][likes]&quot; value=&quot;{$criteria.likes_on_single.likes}&quot; size=&quot;5&quot; min=&quot;0&quot; step=&quot;1&quot; /&gt;
+&lt;/xf:option&gt;
+
+$0
+</code></pre>
+<p>从这一刻起，我们已经可以看到，甚至可以在创建成就、通知和提升用户组时为我们的准则设置一个值。</p>
+<h3 id="_21">增加代码事件监听器<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>我们已经创建了我们的准则。 但对于 XenForo 来说，它是未知的，当符合这种准则时，它总是返回 "false"。 我们需要告诉 XenForo，当它符合未知准则时该怎麽做。</p>
+<p>进入 "开发 &gt; 代码事件监听器" 页面，点击 "添加代码事件监听器" 按钮。</p>
+<p>在 "监听事件" 字段中选择 <code>criteria_user</code>（<code>user</code> 因为我们的准则属於用户准则）。 在 "运行 callback" 字段中，我们应该指定匹配准则时要调用的类和方法。</p>
+<p>在 addon 根目录下创建一个文件 <code>Listener.php</code>，如果你还没有的话，在那里添加一个新的方法 <code>criteriaUser</code>：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace YOUR_ADDON_ID;
+
+class Listener
+{
+    public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &amp;$returnValue)
+    {
+
+    }
+}
+</code></pre>
+<p>你可以用 <code>YOUR_ADDON_ID\Listener</code> 和 <code>criteriaUser</code> 分别填写 "Class" 和 "Method" 字段。</p>
+<h3 id="_22">处理准则<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>由于我们的 <code>criteriaUser</code> 方法对每个未知的准则都会被触发，我们需要确保 <code>$rule</code> 等于 <code>likes_on_single</code> （我们在 HTML 标签中指定的规则）。</p>
+<pre><code class="language-php">public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &amp;$returnValue)
+{
+    switch ($rule)
+    {
+        case 'likes_on_single':
+            /** 处理代码在这里! */
+            break;
+    }
+}
+</code></pre>
+<p>现在，我们需要写代码来实际检查一个用户是否有 X 个或更多赞的留言。</p>
+<p>这可以通过简単的 SQL 查找轻松实现，从 <code>xf_post</code> 中选择一条超过 X 个赞的记录（ <code>likes</code> column ），并且 <code>user_id</code> 等于当前匹配的用户 ID。</p>
+<p>所以，下面是查找语句：</p>
+<pre><code class="language-SQL">SELECT `likes` FROM `xf_post` WHERE `user_id` = ? ORDER BY `likes` DESC LIMIT 1
+</code></pre>
+<p>以及方法代码：</p>
+<pre><code class="language-php">public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &amp;$returnValue)
+{
+    switch ($rule)
+    {
+        case 'likes_on_single':
+
+            // 获取数据库
+            $db = \XF::db();
+
+            // 用于选择単个用户帖子的最大点賛数的数据库查找
+            $query = &quot;SELECT `likes` FROM `xf_post` WHERE `user_id` = ? ORDER BY `likes` DESC LIMIT 1&quot;;
+
+            // 检索最大点賛数
+            $likes = $db-&gt;fetchOne($query, [$user-&gt;user_id]);
+
+            // 检查我们是否有来自数据库的结果(我们期望有一个数字)
+            if (is_int($likes)) {
+                // 如果用户的信息有 X 个或更多的賛，则返回 true；如果没有，则返回 false
+                $returnValue = ($likes &gt;= $data['likes']);
+            } else {
+                $returnValue = false;
+            }
+
+            break;
+    }
+}
+</code></pre>
+<p>要注意以下几点：</p>
+<ul>
+<li>我们使用 <code>$user</code> 变量来检索当前匹配的用户。 我们可以使用这个变量，因为我们的准则属於 <strong>用户</strong> 准则。</li>
+<li>我们可以通过 <code>$data</code> 数组访问数据。 它包含了我们在 <a href="#_17">模板修改中已添加</a> 的字段的数据。 我们只添加了一个 <code>&lt;xf:numberbox...</code>，其中 <code>name</code> 属性等于 <code>user_criteria[likes_on_single][data][likes]</code>。 这就是为什麽我们可以在上面的代码中使用 <code>$data['likes']</code>。</li>
+</ul>
+<p>现在一切都搞定了。 让我们测试一下吧！</p>
+<h3 id="_23">测试（成就）<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>创建一个 "人人为我" 的成就。 在 "用户准则" 标签上，"単则留言的点賛数" 字段，例如，5。</p>
+<p>接下来，在你论坛的某处创建一个测试留言，然后用五个不同的用户点賛五次（或者直接手动设置 <code>likes</code> 栏的值）。</p>
+<p>然后，进入 "工具 &gt; 计画任务"，通过点击运行按钮 (循环-箭头) "更新用户成就值" 计画。</p>
+<p><img alt="获得 &quot;人人为我&quot; 成就通知。" src="/files/images/example-custom-criteria-awarded.png" /></p>
+<p>很好！</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果您没有获得 "人人为我" 成就，请尝试登出、登录并重新运行 "更新用户成就值" 计画。</p>
+</div>
+<h3 id="_24">测试（通知）<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>进入 "联系 &gt; 通知"，点击 "添加通知" 按钮。 在 "用户准则" 标签上，将 "単则留言的点賛数" 字段同样设置为 5。 保存通知。</p>
+<p>接下来，在你论坛的某处创建一个测试留言，然后用五个不同的用户点賛五次（或者直接手动设置 <code>likes</code> 栏的值）。</p>
+<p>现在，你应该会看到一则通知：</p>
+<p><img alt="通知演示。" src="/files/images/example-custom-criteria-notice.png" /></p>
+<p>你可以 <a href="/files/example-sources/all-for-one-criterion-2.0.10.zip">下载</a> 基于这个范例构建的附加组件资源 (2.0.10)。</p>
+<h2 id="_25">自定义准则类型范例<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
+<p>想象一下，我们正在创建一个附加组件（附加组件 ID：<code>PostsRemover</code>），用于删除所有符合选定准则的帖子。 一个可用准则的列表：</p>
+<ul>
+<li>帖子至少有 X 个点賛数</li>
+<li>帖子作者有一个 X 用户名</li>
+<li>帖子至少被编辑了 X 次</li>
+<li>帖子被编辑的次数不超过 X 次</li>
+<li>帖子在 X 之前发表</li>
+<li>帖子发表于 X 之后</li>
+</ul>
+<p>显然，对于这样的准则，我们需要一种新的准则类型：帖子准则。</p>
+<h3 id="criteria-type-class-class">Criteria type class 准则类型 class<a class="headerlink" href="#criteria-type-class-class" title="Permanent link">&para;</a></h3>
+<p>我们应该先在 addon 的 <code>Criteria</code> 目录下创建一个继承 <code>AbstractCriteria</code> 的新 class <code>Post</code>：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace PostsRemover\Criteria;
+
+use XF\Criteria\AbstractCriteria;
+
+class Post extends AbstractCriteria
+{
+
+}
+</code></pre>
+<p>现在我们需要为 addon 支援的所有准则写代码。 在这个例子中，我将为上面列表中的前三个准则写代码：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace PostsRemover\Criteria;
+
+use XF\Criteria\AbstractCriteria;
+
+class Post extends AbstractCriteria
+{
+    // 帖子至少有 X 个点賛数
+    protected function _matchLikeCount(array $data, \XF\Entity\Post $post)
+    {
+        return ($post-&gt;likes &amp;&amp; $post-&gt;likes &gt;= $data['likes']);
+    }
+
+    // 帖子作者有一个 X 用户名
+    protected function _matchUsername(array $data, \XF\Entity\Post $post)
+    {
+        return $post-&gt;username === $data['name'];
+    }
+
+    // 帖子至少被编辑了 X 次
+    protected function _matchEditedCount(array $data, \XF\Entity\Post $post)
+    {
+        return $post-&gt;edit_count &amp;&amp; $post-&gt;edit_count &gt;= $data['count'];
+    }
+
+    /* ================ 处理其他准则 ================ */
+}
+</code></pre>
+<p><code>isMatched(...)</code> 方法用于调用我们刚才创建的 <code>_match</code> 方法，只接受 User 实体，我们要写一个自定义的 <code>isMatched()</code>、 <code>isUnknownMatched()</code> 和 <code>isSpecialMatched()</code> 方法的变体。</p>
+<p>由于我们正在创建帖子准则，我们需要创建自己的 <code>isMatchedPost()</code> 方法：</p>
+<pre><code class="language-php">public function isMatchedPost(\XF\Entity\Post $post)
+{
+    if (!$this-&gt;criteria)
+    {
+        return $this-&gt;matchOnEmpty;
+    }
+
+    foreach ($this-&gt;criteria AS $criterion)
+    {
+        $rule = $criterion['rule'];
+        $data = $criterion['data'];
+
+        $specialResult = $this-&gt;isSpecialMatchedPost($rule, $data, $post);
+        if ($specialResult === false)
+        {
+            return false;
+        }
+        else if ($specialResult === true)
+        {
+            continue;
+        }
+
+        $method = '_match' . \XF\Util\Php::camelCase($rule);
+        if (method_exists($this, $method))
+        {
+            $result = $this-&gt;$method($data, $post);
+            if (!$result)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (!$this-&gt;isUnknownMatched($rule, $data, $post))
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+protected function isSpecialMatchedPost($rule, array $data, \XF\Entity\Post $post)
+{
+    return null;
+}
+
+protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $post)
+{
+    return false;
+}
+</code></pre>
+<p>我们只需用 <code>isMatched(...)</code> 方法代码将 User 实体类型的 <code>$user</code> 变量替换为 Post 实体类型的 <code>$post</code> 变量。</p>
+<p>由于我们不打算处理特殊和未知的准则，我们在 <code>isSpecialMatchedPost</code> 中返回 null，在 <code>isUnknownMathcedPost</code> 方法中返回 <code>false</code>。</p>
+<h3 id="_26">模板<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h3>
+<p>抛开添加 admin 路由、编写 Controller 和在后台做其他操作的过程，直接跳到我们页面的模板代码：</p>
+<pre><code class="language-html">&lt;xf:title&gt;Posts Remover&lt;/xf:title&gt;
+
+&lt;xf:form action=&quot;{{ link('posts-remover/remove') }}&quot; ajax=&quot;true&quot; class=&quot;block&quot;&gt;
+    &lt;div class=&quot;block-container&quot;&gt;
+        &lt;xf:checkboxrow label=&quot;Post criteria&quot;&gt;
+
+            &lt;xf:option label=&quot;Post has at least X likes&quot; name=&quot;post_criteria[like_count][rule]&quot; value=&quot;like_count&quot;&gt;
+                &lt;xf:numberbox name=&quot;post_criteria[like_count][data][likes]&quot; size=&quot;5&quot; min=&quot;0&quot; step=&quot;1&quot; /&gt;
+            &lt;/xf:option&gt;
+
+            &lt;xf:option label=&quot;Post author has an X username&quot; name=&quot;post_criteria[username][rule]&quot; value=&quot;username&quot;&gt;
+                &lt;xf:textbox name=&quot;post_criteria[username][data][name]&quot; ac=&quot;true&quot; /&gt;
+            &lt;/xf:option&gt;
+
+            &lt;xf:option label=&quot;Post was edited at least X times&quot; name=&quot;post_criteria[edited_count][rule]&quot; value=&quot;edited_count&quot;&gt;
+                &lt;xf:numberbox name=&quot;post_criteria[edited_count][data][count]&quot; size=&quot;5&quot; min=&quot;0&quot; step=&quot;1&quot; /&gt;
+            &lt;/xf:option&gt;
+
+        &lt;/xf:checkboxrow&gt;
+
+        &lt;!-- 其他准则的模板代码 --&gt;
+
+        &lt;xf:submitrow sticky=&quot;true&quot; icon=&quot;delete&quot;/&gt;
+    &lt;/div&gt;
+&lt;/xf:form&gt;
+</code></pre>
+<h3 id="_27">匹配准则<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<p>在我们页面的 Controller 中，我们需要创建一个名为 <code>actionRemove</code> 的方法来处理 "移除" 按钮的点击：</p>
+<pre><code class="language-php">public function actionRemove()
+{
+}
+</code></pre>
+<p>首先，让我们从页面表单中检索 <code>post_criteria</code> 数组：</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+}
+</code></pre>
+<p>其次，我们需要从检索到的页面表单数据中创建一个准则物件：</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+
+    /** @var \PostsRemover\Criteria\Post $postCriteria */
+    $postCriteria = $this-&gt;app()-&gt;criteria('PostsRemover:Post', $postCriteriaInput);
+}
+</code></pre>
+<p>默认情况下，发布帖子 <strong>将匹配</strong> empty 准则（当没有选择任何内容时），这将导致所有论坛帖子都被删除。 为了避免这种情况，我们需要通过 <code>setMatchOnEmpty()</code> 方法手动设置匹配 empty 准则的结果：</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+
+    /** @var \PostsRemover\Criteria\Post $postCriteria */
+    $postCriteria = $this-&gt;app()-&gt;criteria('PostsRemover:Post', $postCriteriaInput);
+
+    $postCriteria-&gt;setMatchOnEmpty(false); // 如果没有选定准则，则不会删除任何内容
+}
+</code></pre>
+<p>最后，我们需要根据选定的准则来匹配所有论坛帖子。 如果帖子符合准则，我们将删除它。</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+
+    /** @var \PostsRemover\Criteria\Post $postCriteria */
+    $postCriteria = $this-&gt;app()-&gt;criteria('PostsRemover:Post', $postCriteriaInput);
+
+    $postCriteria-&gt;setMatchOnEmpty(false); // 如果没有选择准则，则不会删除任何内容
+
+    // 取得所有论坛帖子
+    $posts = $this-&gt;finder('XF:Post')-&gt;fetch();
+
+    $deletedCounter = 0;
+
+    /** @var \XF\Entity\Post $post */
+    foreach ($posts as $post)
+    {
+        if ($postCriteria-&gt;isMatchedPost($post)) // 针对所选定的准则检查帖子
+        {
+            $post-&gt;delete(); // 如果帖子符合选定的准则，则将其删除。
+            $deletedCounter++;
+        }
+    }
+
+    return $this-&gt;message('Done! ' . $deletedCounter . ' posts were removed!');
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>请注意，对于 XenForo 2.1 以下的版本，我们使用 <code>isMatchedPost($post)</code> 方法！</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>一般来说，一次从数据库中检索所有的实体是一种不好的做法（上面代码中的 <code>$this-&gt;finder('XF:Post')-&gt;fetch();</code>）。 论坛的帖子可能有几百万个，如果一次全部选取会是一个非常漫长的过程，最后可能还会出现错误。
+考虑使用 Job 系统来处理数十个（100+）数据库项目。</p>
+</div>
+<h3 id="_28">测试<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
+<p>是时候测试我们的自定义准则类型了！</p>
+<p>我在我的测试论坛上创建了三个帖子。 第一个帖子被点賛 500 次，第二个帖子被编辑 5 次。 第三个只是一个原封不动的没有被点赞的帖子。</p>
+<p><img alt="在删除演示之前。" src="/files/images/example-custom-criteria-type-messages-before.png" /></p>
+<p>现在，在我们的 "帖子删除器" Admin CP 页面上，让我们选择 "帖子至少有 X 个点賛数"（值为 250）和 "帖子至少被编辑过 X 次"（值为 5）。</p>
+<p><img alt="选定的准则。" src="/files/images/example-custom-criteria-type-remover.png" /></p>
+<p>当我按下 "删除" 键时，我看到一条即时消息，告诉我什麽都没有删除。 为什麽呢？ 很显然，因为在 <strong>同一时间内</strong> 没有至少 250 个点賛数和至少编辑过 5 次的帖子。</p>
+<p>所以我们只需要选择第一个准则，然后点击 "删除"。 这样就会删除一个有 500 个点賛数的帖子。 接下来，我们只需要选择最后一个准则，然后预先进行删除。 有编辑过 5 次的帖子将被删除。</p>
+<p>结果，只有一个测试帖子在测试中幸存下来：</p>
+<p><img alt="在删除演示之后。" src="/files/images/example-custom-criteria-type-messages-after.png" /></p>
+<p>你可以 <a href="/files/example-sources/posts-remover-2.0.10.zip">下载</a> 基于这个范例 (2.0.10) 所构建的插件原代码。 在 Admin CP 里你可以在 "工具" 的部分找到 "帖子删除器"。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="managing-the-schema/" class="btn btn-neutral float-right" title="管理 Schema">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="entities-finders-repositories/" class="btn btn-neutral" title="数据实体、查找器、保存库"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../entities-finders-repositories/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../managing-the-schema/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>控制器基础知识 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A53.937580%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u63a7\u5236\u5668\u57fa\u7840\u77e5\u8bc6";
+    var mkdocs_page_input_path = "controller-basics.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#view">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">View 回应</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">重新导向回应</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">错误回应</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">消息回应</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_5">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">异常回应</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_6">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">重定路由回应</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#controller-action-properly">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">修改 Controller Action 回应 （properly）</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>控制器基础知识</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/controller-basics.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">控制器基础知识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在基本层面上，Controller 是当你在 XF 中访问一个页面时运行的代码。 在基本层面上，Controller 一般负责处理用户的输入，并将用户的输入传递到适当的地方，通常是运行某种数据库操作（Model）或加载可视化内容（View）。</p>
+<p>当用户点击链接时，请求的 URL 会被路由导到特定的 Controller 和 Controller action。 参见 <a href="/routing-basics">路由基础知识</a>。 例如，在 XF 中，如果你点击一个类似于 <code>index.php?conversations/add</code> 的 URL，你将被路由导到 <code>XF\Pub\Controller\Conversation</code> Controller 和 <code>add</code> action。</p>
+<p>如果你在文件系统中查看这个 class（参见 <a href="/general-concepts/#_2">自动加载器</a>，以了解 class 和文件路径如何相互映射的描述），你会注意到有许多方法以 <code>action</code> 为前缀命名。 所有这些方法都表示一个特定的 Controller action。 所以，要想在查看上面提到的 conversations/add 页面时看到相关代码，请在这个文件中查找 <code>public function actionAdd()</code>。</p>
+<p>XF Controller 负责返回一个 reply 物件，该物件一般包括以下类型之一：</p>
+<h2 id="view">View 回应<a class="headerlink" href="#view" title="Permanent link">&para;</a></h2>
+<p>这是 XF 开发过程中最常见的回应之一。 一个返回 View 回应的 Controller 通常需要传递多达三个参数。 一个 View class (下面会有更多的介绍)，一个模板名称，以及一个由 <code>$viewParams</code> 组成的数组，这个数组是模板应该有的数据。</p>
+<p>这里是一个典型的 Controller action 的例子，它返回一个 View 回应：</p>
+<pre><code class="language-php">public function actionExample()
+{
+    $hello = 'Hello';
+    $world = 'world!';
+
+    $viewParams = [
+        'hello' =&gt; $hello,
+        'world' =&gt; $world
+    ];
+    return $this-&gt;view('Demo:Example', 'demo_example', $viewParams);
+}
+</code></pre>
+<p>第一个参数是一个特定 View class 的简短 class 名。 这个 class 可能存在，也可能不存在（通常情况下，它不需要存在，我们在后面会介绍更多地 View class ），但它应该有一个 Controller 和 action 的大致唯一名称。 与其他 <a href="/general-concepts/#_4">短类名</a> 一样，上面的特定短类名将解析为 <code>Demo/Pub/View/Example</code>。 同样，<code>Pub</code> 是由 Controller 类型自动推断出来的。</p>
+<p>第二个参数是模板名称。 在本例中，我们正在寻找一个名为 <code>demo_example</code> 的模板。</p>
+<p>第三个参数是 应该提供给 view 模板 参数/值 的数组。 这个数组一般应该是一对 <code>key =&gt; value</code>。 上面的例子是将两个模板参数传递给模板。 数组中的 <code>key</code> 部分表示模板中可用的变量名称。 数组中的 <code>value</code> 部分表示值。</p>
+<p>因此，如果我们在 <code>demo_example</code> 模板中有以下内容：</p>
+<pre><code class="language-html">{$hello} {$world}
+</code></pre>
+<p>该模板将输出以下内容：</p>
+<pre><code class="language-plain">Hello world!
+</code></pre>
+<h2 id="_2">重新导向回应<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>当你希望在用户完成某种操作后将其重新导向到不同的 URL 时，会返回这个回应。</p>
+<p>一个常见的使用案例是在用户通过表单提交数据后，你可能希望将他们重新导向到不同的页面，例如将用户返回到一个项目清単。</p>
+<p>下面是一个典型的 Controller action 的例子，它运行了一个重新导向：</p>
+<pre><code class="language-php">public function actionRedirect()
+{
+    return $this-&gt;redirect($this-&gt;buildLink('demo/example'), '这是一个重定向信息。', 'permanent');
+}
+</code></pre>
+<p>第一个参数是要重新导向的 URL。 这个例子将把用户重新导向到 <code>index.php?demo/example</code> 的 URL。</p>
+<p>第二个参数只有在表单通过 AJAX 请求提交时才会显示，AJAX 请求选择防止重新导向。 结果将是一个 "即时消息"，从荧幕顶部出现您选择的消息。 您不必提供您自己的信息。 如果没有提供，它将默认为 "您的更改已被保存"。</p>
+<p>第三个参数默认为 <code>temporary</code>，但你也可以选择将其设置为 permanent，就象本例一样。 这里唯一的区别是服务器提供的 HTTP 回应码的类型。 在大多数情况下，临时是理想的，这将以 303 码回应。 <code>permanent</code> 将发出 301 回应码。</p>
+<p>虽然你可以通过这种方式触发一个 permanent 重新导向，但实际上有一个特定的方法，可以使用如下。 它也需要一个 'message' 参数，但和上面一样，它是可选的。</p>
+<pre><code class="language-php">public function actionRedirect()
+{
+    return $this-&gt;redirectPermanently($this-&gt;buildLink('demo/example'));
+}
+</code></pre>
+<h2 id="_3">错误回应<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>顾名思义，这个回应就是你需要向用户显示错误时返回的内容。 这稍稍简単，下面是一个例子：</p>
+<pre><code class="language-php">public function actionError()
+{
+    return $this-&gt;error('很不幸，你要找的东西无法找到。', 404);
+}
+</code></pre>
+<p>这里只支援两个参数。 第一个是你想显示的错误信息，第二个是你想让服务器发送的 HTTP 回应码。 404 将代表在没有找到东西时的适当回应。</p>
+<h2 id="_4">消息回应<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>这个回应与错误回应非常相似，支援相同的参数。 主要的区别是，在外観上，显示的信息不是以错误的形式出现。</p>
+<h2 id="_5">异常回应<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>有时有必要中断 Controller 代码的正常流程，并用异常回应来代替。 异常回应不一定代表一个错误；例如，它们可以用来强制 Controller 运行一个重新导向。 然而，通常情况下，它们通常会被用来中断 Controller 的流程以显示一个错误，就象下面的例子一样：</p>
+<pre><code class="language-php">public function actionException()
+{
+    throw $this-&gt;exception($this-&gt;error('发生意外错误'));
+}
+</code></pre>
+<p>异常回应只接受一个参数，实际上这个参数必须是其他形式的 Reply 物件，比如 <a href="#_3">错误回应</a>。 这个特殊的例子会抛出一个异常，此时整个控制器的代码会停止，并显示一个标准的错误。</p>
+<p>请注意，异常回应必须用 <code>throw</code> 来 "抛出"，而不是用 <code>return</code> 来 "返回"。</p>
+<h2 id="_6">重定路由回应<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>在某些情况下，需要将用户重新导向到一个完全不同的 Controller 或同一 Controller 内的 action，而不需要运行完全的重新导向，不需要改变用户登陆的 URL，也不需要重复目标 action 的代码。</p>
+<p>这看起来有点象这样：</p>
+<pre><code class="language-php">public function actionReroute()
+{
+    return $this-&gt;rerouteController(__CLASS__, 'error');
+}
+
+public function actionError()
+{
+    return $this-&gt;error('糟了！出了点问题！');
+}
+</code></pre>
+<p>在这个特殊的例子中，如果用户导览到 <code>index.php?demo/reroute</code> URL，他们会看到 <code>actionError()</code> 方法的错误回应。 他们不会被重新导向，浏览器中的 URL 也不会改变，他们只是収到错误 action 的回应。</p>
+<p>重定路由回应还支持第三个参数，它允许将各种参数从一个 Controller action 传递到另一个 Controller。 这可以是一个数组或一个 <code>ParameterBag</code> 物件（稍后将详细介绍）。</p>
+<h2 id="controller-action-properly">修改 Controller Action 回应 （properly）<a class="headerlink" href="#controller-action-properly" title="Permanent link">&para;</a></h2>
+<p>在 <a href="/general-concepts/#_5">继承 class</a> 章节中，我们已经看到了继承一个 class 是多么的简単，但是当继承一个已经存在的 Controller action 时，需要格外小心。</p>
+<p>除非你有特殊的须求，需要完全复盖一个现有的 action，并用新的东西来代替它（一般不建议这样做），否则你应该修改父类的现有回应。 这非常简単，举个例子，让我们修改上面 <a href="#view">view 回应</a> 例子中的 view 回应。</p>
+<pre><code class="language-php">public function actionExample()
+{
+    $reply = parent::actionExample();
+
+    return $reply;
+}
+</code></pre>
+<p>假设上面的内容被添加到一个已经存在 <code>actionExample()</code> 方法的继承 Controller 中，上面的内容除了返回原来的 view 回应外，实际上并没有做任何事情。 现在让我们把现有的 <code>hello</code> 参数改为 "Bonjour" 而不是 "Hello"。</p>
+<pre><code class="language-php">public function actionExample()
+{
+    $reply = parent::actionExample();
+
+    if ($reply instanceof \XF\Mvc\Reply\View)
+    {
+        $reply-&gt;setParam('hello', 'Bonjour');
+    }
+
+    return $reply;
+}
+</code></pre>
+<p>因为一个 Controller 回应实际上可以代表许多不同的物件，这些物件具有不同的行为和方法，所以我们必须只尝试继承正确的回应类型。 在上面的例子中，我们通过检查父 <code>$reply</code> 物件是否真的是 <code>View</code> 类型来做到这一点。 如果我们没有这样做，我们继承了这个 action，而 Controller action 却用重新导向来回应，那麽很可能会出现错误。</p>
+<p>在继承这个动作之前，访问这个页面会显示 "Hello world！"。 继承后，现在 view 将显示 "Bonjour world！"。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="entities-finders-repositories/" class="btn btn-neutral float-right" title="数据实体、查找器、保存库">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="routing-basics/" class="btn btn-neutral" title="路由基础知识"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../routing-basics/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../entities-finders-repositories/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

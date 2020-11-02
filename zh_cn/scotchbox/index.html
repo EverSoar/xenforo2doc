@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>附录：Scotch Box - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A54.130612%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u9644\u5f55\uff1aScotch Box";
+    var mkdocs_page_input_path = "scotchbox.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#scotch-box_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">安装 Scotch Box 虚拟机</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">文件都在哪儿？</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">停止和重新启动服务器</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">官方文档</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#scotch-box-pro">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Scotch Box Pro</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>附录：Scotch Box</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/scotchbox.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="scotch-box">附录: Scotch Box<a class="headerlink" href="#scotch-box" title="Permanent link">&para;</a></h1>
+<p>下面介绍如何将优秀的 <a href="https://box.scotch.io/">Scotch Box</a> 安装到自己的电脑上，以便在几分钟内通过简単的命令就能拥有一个完全可操作的 XenForo 开发环境。</p>
+<p>XenForo 有自定义的 Scotch Box 配置，它提供了运行 XenForo 所需的一切，包括调试器和性能增强的数据缓存。</p>
+<p>Scotch Box 的运行环境在 <a href="https://www.virtualbox.org/">VirtualBox</a> / <a href="https://www.vagrantup.com/">Vagrant</a> 中。</p>
+<h2 id="scotch-box_1">安装 Scotch Box 虚拟机<a class="headerlink" href="#scotch-box_1" title="Permanent link">&para;</a></h2>
+<p>首先确定您希望虚拟 Web 服务器在电脑上保存其文件的位置。建议您在自己的用户主目录中选择一个位置。</p>
+<p>在以下示例位置，我们将使用名为 <em>MyServer</em> 的目录，此目录位于您自己用户目录的根目录中，并由您的名称 <em>{username}</em> 标识：</p>
+<ul>
+<li><code>/Users/{username}/MyServer</code> （Mac）</li>
+<li><code>C:\Users\{username}\MyServer</code> （Windows）</li>
+<li><code>/home/{username}/MyServer</code> （某些 Linux 发行版本）</li>
+<li><code>/users/{username}/MyServer</code> （其他 Linux 发行版本）</li>
+</ul>
+<p>选择位置后，请按照以下步骤操作：</p>
+<ol>
+<li>在电脑上安装 <a href="https://www.virtualbox.org/">VirtualBox</a></li>
+<li>在电脑上安装 <a href="https://www.vagrantup.com/">Vagrant</a></li>
+<li>
+<p>使用 <strong>git</strong> 客户端，clone <code>https://github.com/scotch-io/scotch-box</code> 到 <em>MyServer</em> 目录中。在上面的 Mac 示例位置中使用命令行 Client 端，命令是：</p>
+<p><code>git clone https://github.com/scotch-io/scotch-box /Users/{username}/MyServer</code></p>
+</li>
+<li>
+<p>clone 过程完成后，下载此自定义 <strong>Vagrantfile</strong> 并复盖在 */Users/{username}/MyServer/Vagrantfile 中创建的 Vagrantfile : <a href="/files/scotchbox/Vagrantfile">下载自定义 Vagrantfile</a>。</p>
+</li>
+<li>
+<p>自定义 Vagrantfile 放置到位后，运行以下命令：</p>
+<p><code>cd /Users/{username}/MyServer
+vagrant up</code></p>
+</li>
+</ol>
+<p>您的 Scotch Box 虚拟机现在已经创建并可以使用。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scotch Box 还提供了一个 '<a href="https://box.scotch.io/pro/">Scotch Box Pro</a>' 版本的虚拟机，购买价格合理。如果你比较偏向喜欢使用 Scotch Box Pro，请参阅下面的部分 <a href="#scotch-box-pro">介绍 Scotch Box 和 Scotch Box Pro 在配置和运行之间的差异</a>。</p>
+</div>
+<h2 id="_1">文件都在哪儿？<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>一旦您的 Scotch Box 启动并运行后，您可以将 XenForo 的 PHP 和 JS 文件保留在您的主机上，从而允许您使用您所选择的文本编辑器或 IDE，而虚拟机则负责通过其 Web 服务器编译和提供这些文件。</p>
+<p>您将能够通过以下地址在 Web 浏览器中访问新的 Web 服务器：</p>
+<p><code>http://192.168.33.10</code></p>
+<p>Web 服务器将从以下位置提取要提供的文件</p>
+<p><code>/Users/{username}/MyServer/public</code></p>
+<p>如果你希望 XenForo 安装在 <code>http://192.168.33.10/xenforo</code>，你应该把 XenForo 包中 <code>upload</code> 文件夹的内容放到 <code>/Users/{username}/MyServer/public/xenforo</code> 中。</p>
+<h2 id="_2">停止和重新启动服务器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>您可以在任何时候通过运行以下命令停止 Scotch Box 服务器</p>
+<pre><code>cd /Users/{username}/MyServer
+vagrant halt
+</code></pre>
+<p>... ，并且您可以通过运行重新启动它</p>
+<pre><code>cd /Users/{username}/MyServer
+vagrant up
+
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>虽然 Vagrant / Scotch Box 会在您重新启动电脑时自动关闭，但它不会自动再次启动。</p>
+<p>每当您重新启动时，您需要再次运行 vagrant up 命令才能使用服务器。</p>
+</div>
+<h2 id="_3">官方文档<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>本指南摘自 Scotch Box 官方文档，该文档位于 <a href="https://box.scotch.io">https://box.scotch.io</a></p>
+<h2 id="scotch-box-pro">Scotch Box Pro<a class="headerlink" href="#scotch-box-pro" title="Permanent link">&para;</a></h2>
+<p>基本的 Scotch Box 需要一些额外的配置（通过自定义的 Vagrantfile 来传递）才能运行 XenForo 2，而 <a href="https://box.scotch.io/pro/">Scotch Box Pro</a> 不需要额外的配置，无需下载额外的包就可以运行 XenForo 2。</p>
+<p>要运行 Scotch Box Pro，请从 Scotch Box Pro 网站购买它，在您购买后将会収到一部分运行 <em>git clone</em> 命令的指示说明。</p>
+<p>现在您可以使用与上述相同的说明进行安装，唯一的例外是您应该下载 <a href="/files/scotchboxpro/Vagrantfile">此自定义的 Vagrantfile</a>，而不是 Scotch Box 说明中列出的那个内容。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  
+  <a href="designing-styles/" class="btn btn-neutral" title="设计样式"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../designing-styles/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

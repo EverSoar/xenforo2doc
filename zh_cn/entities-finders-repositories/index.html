@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>数据实体、查找器、保存库 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A54.015115%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u6570\u636e\u5b9e\u4f53\u3001\u67e5\u627e\u5668\u3001\u4fdd\u5b58\u5e93";
+    var mkdocs_page_input_path = "entities-finders-repositories.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#finder">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Finder (查找器系统)</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#where">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">where 方法</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#whereor">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">whereOr 方法</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#with">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">with 方法</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#order-limit-limitbypage">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">order, limit 和 limitByPage 方法</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#getquery">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">getQuery 方法</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#finder_1">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">自定义 finder 方法</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#the-entity-system">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">The Entity system (实体系统)</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#entity-structure">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Entity structure (实体结构)</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#entity">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Entity 生命周期</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#repository">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Repository (保存库)</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>数据实体、查找器、保存库</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/entities-finders-repositories.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">数据实体、查找器、保存库<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在 XF2 中，有许多与数据交互的方法。 在 XF1 中，这主要是针对在 Model 文件中写出原始 SQL 语句。 XF2 中的方法已经脱离了这一点，我们增加了一些新的方法。 我们首先来看一下运行数据库查找的首选方法 - Finder。</p>
+<h2 id="finder">Finder (查找器系统)<a class="headerlink" href="#finder" title="Permanent link">&para;</a></h2>
+<p>我们引入了一个新的 "Finder" 系统，它允许以物件导向的方式以编程方式创建查找，这样就不需要编写原始数据库查找。 Finder 系统与 Entity 系统携手合作，我们在下面详细介绍。 传入 finder 方法的第一个参数是你要处理的 Entity 的短类名。 我们就把上面一节中提到的一些查找転换为使用 finder 系统来代替。 例如，要访问単个用户记录：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;fetchOne();
+</code></pre>
+<p>直接查找方法与使用 Finder 之间的主要区别之一是 Finder 返回的数据基本単位不是一个数组。 在 Finder 物件调用 <code>fetchOne</code> 方法的情况下（该方法只从数据库中返回単个 row ），将返回単个 Entity 物件。</p>
+<p>让我们看看一个稍微不同的方法，它将返回多个 row：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limit(10)-&gt;fetch();
+</code></pre>
+<p>这个例子将从 xf_user 资料表中查找 10 条记录，并以 <code>ArrayCollection</code> 物件的形式返回。 这是一个特殊的物件，它的作用类似于一个数组，因为它是可以遍历的（你可以在它里面循环），而且它有一些特殊的方法，可以告诉你它所拥有的条目总数，通过某些值进行分组，或者其他类似于数组的操作，如过滤、合并、获取第一个或最后一个条目等。</p>
+<p>Finder 查找，一般应该是期望从资料表中检索所有的 Column，因此，没有特定的对应关系仅获取某些 Column 中的某些值。</p>
+<p>相反，如果要获得単个值，你只需要获取一个 Entity，然后直接从这个 Entity 中读取值：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$username = $finder-&gt;where('user_id', 1)-&gt;fetchOne()-&gt;username;
+</code></pre>
+<p>同样地，如果要从 Column 中获取一个数组的值，可以使用 <code>pluckFrom</code> 方法：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$usernames = $finder-&gt;limit(10)-&gt;pluckFrom('username')-&gt;fetch();
+</code></pre>
+<p>到当前为止，我们已经看到 Finder 应用了一些简単的 where 和 limit 约束。 所以我们来看看 Finder 的更多详细内容，包括关于 <code>where</code> 方法本身的更多细节。</p>
+<h3 id="where">where 方法<a class="headerlink" href="#where" title="Permanent link">&para;</a></h3>
+<p><code>where</code> 方法最多可以支援三个参数。 第一个参数是条件本身，例如你要搜寻的 Column。 第二个参数通常是运算符。 第三个是被搜寻的 value。 如果你只提供了两个参数，就象你在上面看到的那样，那麽它自动意味着运算符是 <code>=</code>。 以下是其他有效的运算符列表：</p>
+<ul>
+<li><code>=</code></li>
+<li><code>&lt;&gt;</code></li>
+<li><code>!=</code></li>
+<li><code>&gt;</code></li>
+<li><code>&gt;=</code></li>
+<li><code>&lt;</code></li>
+<li><code>&lt;=</code></li>
+<li><code>LIKE</code></li>
+<li><code>BETWEEN</code></li>
+</ul>
+<p>所以，如果我们想要得到最近 7 天内注册的有效用户名単：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;where('user_state', 'valid')-&gt;where('register_date', '&gt;=', time() - 86400 * 7)-&gt;fetch();
+</code></pre>
+<p>正如你所看到的，你可以随意调用 <code>where</code> 方法，但除此之外，你还可以选择传入一个数组做为该方法的唯一参数，并在一次调用中创建你的条件。 数组方法支援两种类型，我们可以在上面创建的查找中使用这两种类型：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;where([
+    'user_state' =&gt; 'valid',
+    ['register_date', '&gt;=', time() - 86400 * 7]
+])
+-&gt;fetch();
+</code></pre>
+<p>通常不建议或明确地这样混合使用，但它确实在一定程度上展示了该方法的霊活性。 现在条件已经在一个数组中，我们可以指定 Column 名（作为数组的 key）和隐式的 <code>=</code> 运算符的 value，或者我们可以实际定义另一个包含 column、运算符和 value 的数组。</p>
+<h3 id="whereor">whereOr 方法<a class="headerlink" href="#whereor" title="Permanent link">&para;</a></h3>
+<p>在上面的例子中，两个条件都需要满足，即每个条件都由 <code>AND</code> 运算符连接。 然而，有时需要只满足部分条件，这可以通过使用 <code>whereOr</code> 方法来实现。 例如，如果你想搜寻那些无效的用户或者是发布了零则留言的用户，你可以创建如下：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;whereOr(
+    ['user_state', '&lt;&gt;', 'valid'],
+    ['message_count', 0]
+)-&gt;fetch();
+</code></pre>
+<p>与上一节的例子类似，除了传递最多两个条件作为単独的参数外，你也可以只传递一个条件数组到第一个参数：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;whereOr([
+    ['user_state', '&lt;&gt;', 'valid'],
+    ['message_count', 0],
+    ['is_banned', 1]
+])-&gt;fetch();
+</code></pre>
+<h3 id="with">with 方法<a class="headerlink" href="#with" title="Permanent link">&para;</a></h3>
+<p><code>with</code> 方法本质上等同于使用 <code>INNER|LEFT JOIN</code> 语句，尽管它依赖于 Entity 已经定义了它的 "Relation"。 我们在下一页才会讨论这个问题，但这应该只是让你了解它是如何运作的。 现在让我们使用主题 finder 来检索一个特定的主题：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:Thread');
+$thread = $finder-&gt;with('Forum', true)-&gt;where('thread_id', 123)-&gt;fetchOne();
+</code></pre>
+<p>这个查找将获取 <code>thread_id = 123</code> 的主题实体，但它也会在背景与 xf_forum 资料表进行 join。 在控制如何做 <code>INNER JOIN</code> 而不是 <code>LEFT JOIN</code> 方面，这就是第二个参数的作用。 在本例中，我们将 "must exist" 参数设置为 true，所以它会把连接语句転换为使用 <code>INNER</code> 而不是默认的 <code>LEFT</code>。</p>
+<p>我们将在下一节详细介绍如何访问从这个 join 获取的数据。</p>
+<p>也可以在 <code>with</code> 方法中传递一个 Relation 数组来进行多重 join。</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:Thread');
+$thread = $finder-&gt;with(['Forum', 'User'], true)-&gt;where('thread_id', 123)-&gt;fetchOne();
+</code></pre>
+<p>这将会 join 到 xf_user 资料表以获得主题作者。 然而，由于第二个参数仍然是 <code>true</code>，我们可能不需要为 User join 做一个 <code>INNER</code> join，所以，我们可以用 chain 方法代替：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:Thread');
+$thread = $finder-&gt;with('Forum', true)-&gt;with('User')-&gt;where('thread_id', 123)-&gt;fetchOne();
+</code></pre>
+<h3 id="order-limit-limitbypage">order, limit 和 limitByPage 方法<a class="headerlink" href="#order-limit-limitbypage" title="Permanent link">&para;</a></h3>
+<h4 id="order">order 方法<a class="headerlink" href="#order" title="Permanent link">&para;</a></h4>
+<p>这个方法允许你按照特定的顺序来修改你的查找获取结果。 它需要两个参数，第一个是 column 名，第二个是可选的排序方向。 所以，如果你想列出拥有最多留言的 10 个用户，你可以创建像这样的查找：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;order('message_count', 'DESC')-&gt;limit(10);
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>现在可能是一个很好的时机来提及，finder 方法大多可以按照任何顺序调用。 例如： <code>$threads = $finder-&gt;limit(10)-&gt;where('thread_id', '&gt;', 123)-&gt;order('post_date')-&gt;with('User')-&gt;fetch();</code> 虽然如果你按照这个顺序写一个 MySQL 查找，肯定会遇到一些语法问题，但 Finder 系统还是会按照正确的顺序来构建，上面的代码虽然看起来很奇怪，可能也不建议使用，但那样写确实是完全正确的。</p>
+</div>
+<p>与标准的 MySQL 查找一样，可以对多个 Column 的结果集进行排序。 要做到这一点，你可以再次调用 order 方法。 
+也可以使用数组将多个 order 子句传递到 order 方法中。</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;order('message_count', 'DESC')-&gt;order('register_date')-&gt;limit(10);
+</code></pre>
+<h4 id="limit">limit 方法<a class="headerlink" href="#limit" title="Permanent link">&para;</a></h4>
+<p>我们已经看到了如何将查找 limit 在特定数量的记录上：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limit(10)-&gt;fetch();
+</code></pre>
+<p>不过，其实还有一个办法可以直接调用 limit 方法：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;fetch(10);
+</code></pre>
+<p>可以直接将你的 limit 传入 <code>fetch()</code> 方法。 另外值得注意的是，<code>limit</code>（和 <code>fetch</code>）方法支援两个参数。 第一个显然是 limit，第二个是 offset。</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limit(10, 100)-&gt;fetch();
+</code></pre>
+<p>这里的 offset 基本上意味着前 100 个结果将被弃用，之后的前 10 个结果将被返回。 这种方法对于提供分页结果是很有用的，不过我们其实也有一个更简単的方法...</p>
+<h4 id="limitbypage">limitByPage 方法<a class="headerlink" href="#limitbypage" title="Permanent link">&para;</a></h4>
+<p>这个方法是一种辅助方法，最终会根据你当前视图的 "页面" 和你所需要的 "每页" 数量来设置相应的 limit 和 offset。</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limitByPage(3, 20);
+</code></pre>
+<p>在这种情况下，limit 将被设置为 20（这是我们每页的值），offset 将被设置为 40，因为我们从第 3 页开始。</p>
+<p>偶尔，我们需要抓取超过 limit 的额外数据。 Over-fetching 可以帮助侦测你在当前页面之后是否有额外的数据要显示，或者你是否需要根据权限过滤设置下来的初始结果。 我们可以通过第三个参数来实现：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limitByPage(3, 20, 1);
+</code></pre>
+<p>这样一来，从第 3 页开始，总共最多可获得 <strong>21个</strong> 用户（20+1）。</p>
+<h3 id="getquery">getQuery 方法<a class="headerlink" href="#getquery" title="Permanent link">&para;</a></h3>
+<p>当你第一次开始使用 finder 时，尽管它很直観，但你可能偶尔会想知道你是否正确地使用了它，以及它是否会创建你期望的查找。 我们有一个名为 <code>getQuery</code> 的方法，它可以告诉我们当前的 finder 物件将创建的查找。 例如：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User')
+    -&gt;where('user_id', 1);
+
+\XF::dumpSimple($finder-&gt;getQuery());
+</code></pre>
+<p>这将输出类似于以下的语句：</p>
+<pre><code class="language-plain">string(67) &quot;SELECT `xf_user`.*
+FROM `xf_user`
+WHERE (`xf_user`.`user_id` = 1)&quot;
+</code></pre>
+<p>你可能不会经常需要它，但如果 finder 没有返回你所期望的结果，那它可能会很有帮助。 在 <a href="/development-tools/#dump">Dump 变量</a> 部分阅读更多关于 <code>dumpSimple</code> 方法的内容。</p>
+<h3 id="finder_1">自定义 finder 方法<a class="headerlink" href="#finder_1" title="Permanent link">&para;</a></h3>
+<p>到当前为止，我们已经看到 finder 物件被设置了一个类似于 <code>XF:User</code> 和 <code>XF:Thread</code> 的参数。 在大多数情况下，这标识了 finder 正在处理的 Entity 类，并将解析为，例如，<code>XF/Entity/User</code>。 然而，它也可以另外代表一个 finder 类。 finder 类是可选的，但它们可以作为一种方法来为特定的 finder 类型添加自定义 finder 方法。 为了看到这一点，让我们看看与 <code>XF:User</code> 相关的 finder 类，它可以在 <code>XF\FinderUser</code> 类中找到。</p>
+<p>下面示例是该 class 中的一个 finder 方法：</p>
+<pre><code class="language-php">public function isRecentlyActive($days = 180)
+{
+    $this-&gt;where('last_activity', '&gt;', time() - ($days * 86400));
+    return $this;
+}
+</code></pre>
+<p>现在，我们可以在任何 User finder 物件上调用该方法。 所以，如果我们拿前面的一个例子来说：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;isRecentlyActive(20)-&gt;order('message_count', 'DESC')-&gt;limit(10);
+</code></pre>
+<p>这个查找，之前只是按照留言数降序返回 10 个用户，现在将按这个顺序返回最近 20 天内活跃的 10 个用户。</p>
+<p>尽管对于很多 Entity 类型来说，finder 类是不存在的，但仍然可以通过 <a href="/general-concepts/#_5">继承类</a> 一节中提到的相同方式来继承这些不存在的类。</p>
+<h2 id="the-entity-system">The Entity system (实体系统)<a class="headerlink" href="#the-entity-system" title="Permanent link">&para;</a></h2>
+<p>如果您熟悉 XF1，您可能会熟悉 Entity 背后的一些概念，因为它们最终是从那里的 DataWriter 系统衍生出来的。 如果您对它们不是很熟悉，下面的部分应该会让您有所了解。</p>
+<h3 id="entity-structure">Entity structure (实体结构)<a class="headerlink" href="#entity-structure" title="Permanent link">&para;</a></h3>
+<p><code>Structure</code> 物件由一些属性组成，这些属性定义了 Entity 的 Structure 和它所涉及的资料表。 Structure 物件本身就设置在它所涉及的 Entity 内部。 我们来看看 User Entity 中的一些常用属性：</p>
+<h4 id="table">Table (资料表)<a class="headerlink" href="#table" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;table = 'xf_user';
+</code></pre>
+<p>它说明了 Entity 在 Update 和 Insert 记录时使用哪张资料表，也告诉我们 Finder 在构建查找运行时从哪张资料表读取。 此外，它还知道你的查找需要 join 到哪些其他资料表中起到了作用。</p>
+<h4 id="short-name">Short name (简短名)<a class="headerlink" href="#short-name" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;shortName = 'XF:User';
+</code></pre>
+<p>这只是 Entity 本身和 Finder 类（如果适用）的短类名。</p>
+<h4 id="content-type">Content type (内容类型)<a class="headerlink" href="#content-type" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;contentType = 'user';
+</code></pre>
+<p>这定义了这个 Entity 代表的内容类型。 在大多数 Entity 结构中不会需要这个。 它用于连接到 "content type" 系统使用的特定事物（这将在另一节中介绍）。</p>
+<h4 id="primary-key">Primary key (主键)<a class="headerlink" href="#primary-key" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;primaryKey = 'user_id';
+</code></pre>
+<p>定义了代表资料表中 Primary key 的 Column，如果一个资料表支援多个 Column 作为 Primary key，那麽可以定义为数组。 </p>
+<h4 id="columns">Columns (多行数据)<a class="headerlink" href="#columns" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;columns = [
+    'user_id' =&gt; ['type' =&gt; self::UINT, 'autoIncrement' =&gt; true, 'nullable' =&gt; true, 'changeLog' =&gt; false],
+    'username' =&gt; ['type' =&gt; self::STR, 'maxLength' =&gt; 50,
+        'required' =&gt; 'please_enter_valid_name'
+    ]
+    // 还有更多的 columns...
+];
+</code></pre>
+<p>这是 Entity 设置的关键部分，因为这里面会详细解释 Entity 负责的每个数据库 column 的具体情况。 这告诉我们预期的数据类型，是否需要一个值，它应该匹配什麽格式，是否应该是唯一值，它的默认值是什麽，等等。</p>
+<p>根据 <code>type</code>，Entity 管理器知道是否以某种方式对一个值进行编码或解码。 这可以是一个简単的过程，将一个值転换为一个字符串或整数，或者稍微复杂一点，例如在向数据库写入时，对一个数组使用 <code>json_encode()</code>，或者在从数据库读取时，对一个 JSON 字符串使用 <code>json_decode()</code>，以便将该值作为一个数组正确地返回给 Entity 物件，而不需要我们手动这样做。 它还可以支援对逗号分隔的值进行适当的编码/解码。</p>
+<p>偶尔需要在写入一个值之前对其进行一些额外的验证或修改。 举个例子，在 User Entity 中，请看 <code>verifyStyleId()</code> 方法。 当在 <code>style_id</code> 字段上设置一个值时，我们会自动检查是否存在一个名为 <code>verifyStyleId()</code> 的方法，如果存在，我们会先通过该方法运行该值。</p>
+<h4 id="behaviors">Behaviors (行为)<a class="headerlink" href="#behaviors" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;behaviors = [
+    'XF:ChangeLoggable' =&gt; []
+];
+</code></pre>
+<p>这是该 Entity 应使用的 Behaviors 类数组。 Behaviors 类是一种允许某些代码在多种 Entity 类型中通用重复使用的方式（仅在 Entity 变化时，而不是在读取时）。 一个很好的例子是 <code>XF:Likeable</code> Behaviors，它能够对支援可被 "点賛" 的内容实体自动运行某些操作。 这包括当内容中发生可见性变化时自动重新计数，以及当内容被删除时自动删除点賛数。</p>
+<h4 id="getters">Getters (获取器)<a class="headerlink" href="#getters" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;getters = [
+    'is_super_admin' =&gt; true,
+    'last_activity' =&gt; true
+];
+</code></pre>
+<p>当调用 name 字段时，会自动调用 Getter 方法。 例如，如果我们从 User Entity 中请求 <code>is_super_admin</code>，就会自动检查并使用 <code>getIsSuperAdmin()</code> 方法。 有趣的是，xf_user 资料表实际上并没有一个名为 <code>is_super_admin</code> 的字段。 这个字段实际上存在于 Admin Entity 中，但我们将其作为一个 getter 方法添加到了资料表中，作为访问该值的一种简写方式。 Getter 方法也可以用来直接复盖现有字段的值，这里的 <code>last_activity</code> 值就是如此。 <code>last_activity</code> 实际上是一个缓存值，通常在用户登出时才会更新。 然而，我们在 xf_session_activity 资料表中保存了用户最新的活动日期，所以我们可以使用 <code>getLastActivity</code> 方法来返回该值而不是缓存的最后活动值。 如果你需要完全绕过 getter 方法，只需要得到真正的 Entity 值，只需要在 column 名后加上下划线，例如 <code>$user-&gt;last_activity_</code>。</p>
+<p>因为一个 Entity 就象其他的 PHP 物件一样，你可以给它们添加更多的方法。 一个常见的使用案例是添加一些象权限检查这样的方法，这些方法可以在 Entity 自身上面调用。</p>
+<h4 id="relations">Relations (关联)<a class="headerlink" href="#relations" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;relations = [
+    'Admin' =&gt; [
+        'entity' =&gt; 'XF:Admin',
+        'type' =&gt; self::TO_ONE,
+        'conditions' =&gt; 'user_id',
+        'primary' =&gt; true
+    ]
+];
+</code></pre>
+<p>这就是 Relations 的定义。 什麽是 Relations？ 它们定义了 Entity 之间的关联，这些关联可以被用来对其他资料表运行 join 查找，或者快速获取与 Entity 相关的记录。 如果我们还记得 finder 中的 <code>with</code> 方法，假如我们想获取一个特定的用户，并预先获取该用户的 Admin 记录（如果它存在的话），那麽我们将做如下操作：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;with('Admin')-&gt;fetchOne();
+</code></pre>
+<p>这将使用 User Entity 中定义的 <code>Admin</code> 相关的信息和 <code>XF:Admin</code> Entity Structure 的细节，知道这个用户查找应该在 xf_admin 资料表和 <code>user_id</code> column 上运行 <code>LEFT JOIN</code>。 要从 User Entity 中获取 Admin 最后登录日期，请运行以下操作：</p>
+<pre><code class="language-php">$lastLogin = $user-&gt;Admin-&gt;last_login; // 返回最后一次 Admin 登录的时间戳
+</code></pre>
+<p>然而，并不总是需要在 finder 中进行 join 来获取 Entity 的相关信息。 例如，如果我们以上面的例子为例，不调用 <code>with</code> 方法：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;fetchOne();
+$lastLogin = $user-&gt;Admin-&gt;last_login; // 返回最后一次 Admin 登录的时间戳
+</code></pre>
+<p>我们在这里仍然得到 <code>last_login</code> 值。 它是通过运行额外的查找来快速获取 Admin Entity 的。</p>
+<p>上面的例子使用了 <code>TO_ONE</code> 类型，因此，这种关联将一个 Entity 与另一个 Entity 联系起来。 我们还有一个 <code>TO_MANY</code> 类型。</p>
+<p>它不可能获取整个 <code>TO_MANY</code> 关联（例如在 finder 上使用 join / <code>with</code> 方法），但以查找为代价，它可以在任何时候快速读取，例如在上面最后的 <code>last_login</code> 例子中。</p>
+<p>在 User Entity 上定义的一个这样的 Relation 是 <code>ConnectedAccounts</code> 关联：</p>
+<pre><code class="language-php">$structure-&gt;relations = [
+    'ConnectedAccounts' =&gt; [
+        'entity' =&gt; 'XF:UserConnectedAccount',
+        'type' =&gt; self::TO_MANY,
+        'conditions' =&gt; 'user_id',
+        'key' =&gt; 'provider'
+    ]
+];
+</code></pre>
+<p>这个 relation 能够从 xf_user_connected_account 资料表中返回与当前用户 ID 相匹配的记录，作为一个 <code>FinderCollection</code>。 这类似于我们在上面 <a href="#finder">Finder</a> 部分提到的 <code>ArrayCollection</code> 物件。 在 Relation 定义中，指定该集合应该由 <code>provider</code> 字段作为 key。</p>
+<p>虽然在运行 finder 查找时不可能获取多条记录，但可以使用 <code>TO_MANY</code> 关联从该 Relation 中获取 <strong>単个</strong> 记录。 举个例子，如果我们想查看用户是否与特定的关联帐户提供商相关联，我们至少可以在查找时获取该记录：</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;with('ConnectedAccounts|facebook')-&gt;fetchOne();
+</code></pre>
+<h4 id="options">Options (选项)<a class="headerlink" href="#options" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;options = [
+    'custom_title_disallowed' =&gt; preg_split('/\r?\n/', $options-&gt;disallowedCustomTitles),
+    'admin_edit' =&gt; false,
+    'skip_email_confirm' =&gt; false
+];
+</code></pre>
+<p>Entity Option 是在某些条件下修改 Entity Behavior 的一种方式。 例如，如果我们将 <code>admin_edit</code> 设置为 true（在 Admin CP 中编辑用户时就是如此），那麽某些检查将被跳过，例如允许用户的电子邮件地址为空。</p>
+<h3 id="entity">Entity 生命周期<a class="headerlink" href="#entity" title="Permanent link">&para;</a></h3>
+<p>Entity 在管理数据库内记录的生命周期方面扮演着重要角色。 除了从它那里读取值，向它写入值之外，Entity 还可以用来删除记录，并在所有这些操作发生时触发某些事件，从而可以运行某些任务，或者也可以更新某些相关记录。 让我们来看看 Entity 在保存时发生的一些事件：</p>
+<ul>
+<li><code>_preSave()</code> - 在保存过程开始之前发生，主要用于运行任何其他保存前的验证或在保存发生之前设置其他数据。</li>
+<li><code>_postSave()</code> - 在数据被保存后，但在任何交易被提交之前，将调用此方法，您可以使用此方法来运行 Entity 被保存后应触发的任何其他事。</li>
+</ul>
+<p>另外还有 <code>_preDelete()</code> 和 <code>_postDelete()</code>，它们的运作方式类似，但在删除发生时。</p>
+<p>Entity 还能够提供有关它当前状态的信息。 例如，有一个 <code>isInsert()</code> 和 <code>isUpdate()</code> 方法，这样你就可以检测到这是一个新记录被插入还是一个现有记录被更新。 还有一个 <code>isChanged()</code> 方法，可以告诉你自上次保存后，某个特定字段是否发生了变化。</p>
+<p>让我们看看这些方法在 User Entity 中的一些实际例子。</p>
+<pre><code class="language-php"> protected function _preSave()
+ {
+    if ($this-&gt;isChanged('user_group_id') || $this-&gt;isChanged('secondary_group_ids'))
+    {
+        $groupRepo = $this-&gt;getUserGroupRepo();
+        $this-&gt;display_style_group_id = $groupRepo-&gt;getDisplayGroupIdForUser($this);
+    }
+
+    // ...
+ }
+
+ protected function _postSave()
+ {
+    // ...
+
+    if ($this-&gt;isUpdate() &amp;&amp; $this-&gt;isChanged('username') &amp;&amp; $this-&gt;getExistingValue('username') != null)
+    {
+        $this-&gt;app()-&gt;jobManager()-&gt;enqueue('XF:UserRenameCleanUp', [
+            'originalUserId' =&gt; $this-&gt;user_id,
+            'originalUserName' =&gt; $this-&gt;getExistingValue('username'),
+            'newUserName' =&gt; $this-&gt;username
+        ]);
+    }
+
+    // ...
+</code></pre>
+<p>在 <code>_preSave()</code> 的例子中，我们根据用户改变后的用户组来获取并缓存新的显示 Group ID。 在 <code>_postSave()</code> 的例子中，我们在用户的名字被更改后触发一个作业来运行。</p>
+<h2 id="repository">Repository (保存库)<a class="headerlink" href="#repository" title="Permanent link">&para;</a></h2>
+<p>对于 XF2 来说，Repository 是一个新的概念，但是如果把它们与 XF1 中的 "Model" 物件进行比较，你可能不会受到指责。 我们在 XF2 中没有 Model 物件，因为我们有更好的地方和方法来获取和写入数据到数据库。 所以，与其说我们有一个庞大的 class，其中包含了你的附加组件所需要的所有查找，以及各种不同的方法来操作这些查找，不如说我们有 finder，它增加了更多的弾性。</p>
+<p>另外值得注意的是，在 XF1 中，Model 物件对于许多东西来说有点象 "dumping ground"。 其中很多东西现在都是多余的。 例如，在 XF1 中，所有的权限重建代码都在权限 Model 中。 在 XF2 中，我们有特定的服务和物件来处理这个问题。</p>
+<p>那麽，什麽是 Repository 呢？ 它们对应着一个 Entity 和一个 Finder，并持有方法，一般会返回一个为特定目的设置的 Finder 物件。 为什麽不直接返回 Finder 查找的结果呢？ 好吧，如果我们返回 Finder 物件本身，那麽它可以作为一个有用的继承点，让附加组件在 Entity 或集合返回之前，对其进行继承并修改 Finder 物件。</p>
+<p>Repository 也可以包含一些具体的方法，比如缓存重建。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="criteria/" class="btn btn-neutral float-right" title="准则">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="controller-basics/" class="btn btn-neutral" title="控制器基础知识"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../controller-basics/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../criteria/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

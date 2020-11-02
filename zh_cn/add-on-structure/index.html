@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>附加组件架构 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A53.918564%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u9644\u52a0\u7ec4\u4ef6\u67b6\u6784";
+    var mkdocs_page_input_path = "add-on-structure.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#id">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">附加组件 ID 和附加组件路径</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">建议版本字符串格式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#id_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">建议版本 ID 格式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">常见的附加组件文件和目录</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#addonjson">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">addon.json 文件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#hashesjson">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">hashes.json 文件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#setupphp">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Setup.php 文件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_data">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">_data 目录</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_output">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">_output 目录</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#setup">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Setup 类</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>附加组件架构</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/add-on-structure.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">附加组件结构<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在以前的 XF 版本中，很少有关于附加组件开发的标准和约定。 在 XF 2.0 的功能中，我们已经做了很多修改。 让我们来看看其中的一些变化：</p>
+<h2 id="id">附加组件 ID 和附加组件路径<a class="headerlink" href="#id" title="Permanent link">&para;</a></h2>
+<p>每个安装的附加组件都必须有一个唯一的 ID，这个 ID 决定了附加组件应该在文件系统中的哪个位置保存其文件。附加组件的 ID 有两种可能的格式。</p>
+<p>第一个 "简単" 类型应该是一个単字，不包含任何特殊字符。例如，<code>Demo</code>。</p>
+<p>简単的附加组件 ID 必须遵守以下规则：</p>
+<ul>
+<li>必须只包含 a-z 或 A-Z。</li>
+<li>可以包含 0-9，但不能放在 ID 开头。</li>
+<li>不能包含任何特殊字符，例如斜线、破折号或下划线。</li>
+</ul>
+<p>第二个包含一个供应商前缀，所以如果你在一个特定的品牌或公司下发布附加组件，附加组件 ID 可以表明这一点。例如，<code>SomeVendor/Demo</code>。</p>
+<p>供应商类型的附加 ID 应遵守以下规则：</p>
+<ul>
+<li>必须只包含 a-z 或 A-Z</li>
+<li>可包含一个 <code>/</code> 字符，但不能在开头或结尾处</li>
+<li>可以包含 0-9，但不在附加组件 ID 的任何一个部分的开头</li>
+</ul>
+<p>一旦您决定了附加组件的 ID，我们就知道这个附加组件的文件将保存在哪里。 所有 XF 2.0 附加组件都保存在 <code>src/addons</code> 目录的子目录中。</p>
+<p>如果你有一个简単的附加组件 ID，例如 <code>Demo</code>，你的附加组件文件将保存在以下位置：
+ <code>src/addons/Demo</code>。</p>
+<p>如果你有一个基于厂商的附加组件 ID，例如 <code>SomeVendor/Demo</code>，文件将保存在以下位置：
+<code>src/addons/SomeVendor/Demo</code>。</p>
+<p>您选择的附加组件 ID 也将成为您的类别命名空间前缀（更多信息请参见 <a href="/general-concepts/#_3">命名空间</a>）。</p>
+<h2 id="_2">建议版本字符串格式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>XF 本身使用 MAJOR.MINOR.PATCH 原则（例如 2.0.0 代表第一个稳定的 XF2 版本）来进行版本编号，我们建议对您自己的附加组件的版本编号采取类似的方法。 基本上，在版本号中增加</p>
+<ul>
+<li>MAJOR 版本，当你做了重大的功能改变，特别是破坏了向后兼容性的改变</li>
+<li>MINOR 版本，当你添加功能时，最好是以向后兼容的方式添加</li>
+<li>PATCH 版本，当你进行向后兼容的 Bug 修复时使用</li>
+</ul>
+<h2 id="id_1">建议版本 ID 格式<a class="headerlink" href="#id_1" title="Permanent link">&para;</a></h2>
+<p>附加组件的版本 ID 是基本的整数，用于内部版本比较。 它让我们可以更容易地检测到一个版本比另一个版本旧。 您的附加组件每个版本都应该将版本号 ID 至少增加 1，但我们内部对 XF 本身使用的惯例，对附加组件也有潜在的作用。 我们的版本 ID 的格式为 <code>aabbccde</code>。</p>
+<ul>
+<li><code>aa</code> 代表 MAJOR 版本</li>
+<li><code>bb</code> 代表 MINOR 版本</li>
+<li><code>cc</code> 代表 PATCH 版本</li>
+<li><code>d</code> 代表状态，例如 <code>1</code> 代表 alpha 版本，<code>3</code> 代表 beta 版本，<code>5</code> 代表候选版本，<code>7</code> 代表稳定版本</li>
+<li><code>e</code> 代表版本 Level 状态</li>
+</ul>
+<p>例如，一个版本号是 1.7.3 候选版本 4 它的附加组件 ID 为 "1070354"。 最终稳定版 XF2 的ID为 <code>2000070</code>。 XF 的 1.5.0 Beta 3 版本的 ID 为 <code>1050033</code>。 稳定版 99.99.99 会有一个ID为 <code>99999970</code> ... 也许你应该慢一点 😉。</p>
+<h2 id="_3">常见的附加组件文件和目录<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在附加组件的目录中，有一些文件和目录有特殊的用途和意义。</p>
+<h3 id="addonjson">addon.json 文件<a class="headerlink" href="#addonjson" title="Permanent link">&para;</a></h3>
+<p><code>addon.json</code> 是一个包含一些信息的文件，这些信息是帮助 XF 2.0 识别附加组件并在 Admin CP 中显示其信息所必需的。 最起码，你的 <code>addon.json</code> 文件应该看起来象这样：</p>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;My Add-on by Some Company&quot;,
+    &quot;version_string&quot;: &quot;2.0.0&quot;,
+    &quot;version_id&quot;: 2000070,
+    &quot;dev&quot;: &quot;Some Company&quot;
+}
+</code></pre>
+<p>创建附加组件时，会自动为您创建一个基本文件。</p>
+<p>包含一个有效的 <code>addon.json</code> 文件是你的附加组件被识别的必要条件，你可以随时 <a href="/development-tools/#addonjson_1">验证你的 addon.json 文件</a>。</p>
+<h4 id="_4">属性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>legacy_addon_id</code></td>
+<td>当从 XenForo 1 升级至 XenForo 2 时，用来开启自动处理附加组件 ID 更改。</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td>附加组件的标题。 这将显示在管理面板中。</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td>附加组件的描述。这将显示在管理面板中。</td>
+</tr>
+<tr>
+<td><code>version_id</code></td>
+<td>XenForo 用来追踪附加组件更新的内部 ID。 每次发布时必须递增。</td>
+</tr>
+<tr>
+<td><code>version_string</code></td>
+<td>人类可以读懂的附加组件版本。 这将在管理面板中显示，而不是 <code>version_id</code> 属性。</td>
+</tr>
+<tr>
+<td><code>dev</code></td>
+<td>附加组件开发者的名字。这将显示在管理面板中。</td>
+</tr>
+<tr>
+<td><code>dev_url</code></td>
+<td>如果设置了，开发者的名字将以超链接的形式显示在管理面板中，并以 (href) 此为目标。</td>
+</tr>
+<tr>
+<td><code>faq_url</code></td>
+<td>如果设置了，一个 FAQ 的超链接将显示在管理面板中，并以 (href) 此为目标。</td>
+</tr>
+<tr>
+<td><code>support_url</code></td>
+<td>如果设置了，支援帮助的超链接将显示在管理面板中，并以 (href) 此为目标。</td>
+</tr>
+<tr>
+<td><code>extra_urls</code></td>
+<td>这允许您显示与附加组件相关的其他内容链接（可能是错误报告链接，手册 - 随您喜欢）。 <br>一个 JSON 物件的数组，其中 key 是链接文本，value 是链接目标 (href)。</td>
+</tr>
+<tr>
+<td><code>require</code></td>
+<td>XenForo 允许安装附加组件时需要满足的一系列要求。 更多信息请参见 <a href="#require">'require 属性'</a>。</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td>资源的图标。 这可以是一个 Font Awesome 图标名称（例如 <code>fa-shopping-bag</code>，或一个图像文件的路径）。</td>
+</tr>
+</tbody>
+</table>
+<h5 id="require">require 属性<a class="headerlink" href="#require" title="Permanent link">&para;</a></h5>
+<p>如果环境不支援或不满足要求，require 属性是阻止附加组件安装或升级的标准方法。 
+你可以用它来要求先安装其他附加组件，要求某些 PHP 扩展必须存在或激活，和/或 强制执行一个最低的 PHP 版本。</p>
+<p>这是一个示例片段：</p>
+<pre><code class="language-json">...
+  &quot;require&quot;: {
+      &quot;XF&quot;: [2000010, &quot;XenForo 2.0.0+&quot;],
+      &quot;php&quot;: [&quot;5.4.0&quot;, &quot;PHP 5.4.0+&quot;],
+      &quot;php-ext/json&quot;: [&quot;*&quot;, &quot;JSON extension&quot;]
+  }
+...
+</code></pre>
+<p>每个 require，都是一个命名数组。</p>
+<ul>
+<li>数组的名称是产品 ID (如 <code>XF</code> 或 <code>php</code> )。 </li>
+<li>第一个数组元素是产品的版本 (如 <code>2000010</code> 或 <code>5.4.0</code> )。 你可以使用 <code>*</code> 来表示产品的任何版本。 </li>
+<li>第二个数组元素是该 require 人类可以阅读的文本，这是在消息中使用的内容（例如 <code>XenForo 2.0.0+</code> 或 <code>PHP 5.4.0+</code>）。</li>
+</ul>
+<p>下面是受支援的产品 ID 的概述：</p>
+<table>
+<thead>
+<tr>
+<th>产品 / Require 名称</th>
+<th>参考...</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>XF</code></td>
+<td>XenForo 的安装版本。</td>
+<td>XenForo 版本 ID，例如 <code>200010</code>。 <br>你可以通过检查 <code>/src/XF.php</code> 文件顶部的 <code>$versionId</code> 定义或者打印 <code>/XF::$versionId</code> 的值来获取当前 XenForo 的版本。</td>
+</tr>
+<tr>
+<td><code>php</code></td>
+<td>PHP 版本。</td>
+<td>PHP 版本，例如 <code>5.4.0</code>。 <br>建议你尽可能降低这个值；更新一个 PHP 版本可能是一个相当复杂的工作 - 特别是当其他附加组件与新的 PHP 版本冲突时。</td>
+</tr>
+<tr>
+<td><code>php-ext / (extension name)</code></td>
+<td>一个 PHP 扩展 - 其中 <code>(extension name)</code> 是扩展的名称。</td>
+<td>PHP 扩展版本。 <br>这是用 PHP 的 <code>version_compare</code> 函数来检查的，所以它甚至适用于官方完整 PHP 格式的版本字符串，比如 <code>7.1.19-1+ubuntu16.04.1+deb.sury.org+1</code>。</td>
+</tr>
+<tr>
+<td><code>(any addon ID)</code></td>
+<td>任何 XenForo 附加组件，如 <code>Demo/Addon</code>。如果您不确定某个附加组件的 ID，请查看它的 <code>addon.json</code> 文件。</td>
+<td>附加组件的版本 ID。 <br>您可以参考 <a href="#id_1">建议版本 ID 格式</a> 了解更多信息。</td>
+</tr>
+</tbody>
+</table>
+<h3 id="hashesjson">hashes.json 文件<a class="headerlink" href="#hashesjson" title="Permanent link">&para;</a></h3>
+<p><code>hashes.json</code> 是为文件健检系统添加支援的新方法，而且最好的部分是 - 它是自动生成的！</p>
+<p>作为构建过程的一部分（稍后会有更多说明），我们将对您所有附加组件的文件进行快速清点，并将计算出的文件内容哈希码写入其中。</p>
+<h3 id="setupphp">Setup.php 文件<a class="headerlink" href="#setupphp" title="Permanent link">&para;</a></h3>
+<p><code>Setup.php</code> 是您安装、升级或卸载附加组件时需要运行的任何代码的新主页。</p>
+<p><a href="#setup">下面</a> 我们将详细介绍如何创建一个 Setup 类。</p>
+<h3 id="_data">_data 目录<a class="headerlink" href="#_data" title="Permanent link">&para;</a></h3>
+<p><code>_data</code> 目录是保存您的附加组件主要数据的地方。 每个附加组件的数据类型都会有自己的 XML 文件（而不是所有类型的単个文件）。这些文件的哈希值被包含在 <code>hashes.json</code> 中，因此我们可以在允许安装附加组件之前确保附加组件拥有完整和一致的数据。</p>
+<h3 id="_output">_output 目录<a class="headerlink" href="#_output" title="Permanent link">&para;</a></h3>
+<p><code>_output</code> 目录不是成功安装附加组件所必需的，而且在发布附加组件时也不应该包括在内。 这个目录纯粹是为了开发目的，只有在激活开发模式时才会使用（参见 <a href="/development-tools/#_3">激活开发模式</a>）。</p>
+<p>每项附加组件数据都保存在一个単独的文件中。 大多数情况下，它们被保存成 JSON 文件，但对于短语，它们被保存为 TXT 文件，对于模板，它们被保存为 HTML/CSS/LESS 文件。 所有的模板类型都可以在文件系统中直接编辑，对这些文件的修改会在加载时自动写回数据库。</p>
+<h2 id="setup">Setup 类<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>要为您的附加组件创建一个 Setup 类，您需要做的就是在您附加组件目录的根目录下创建一个名为 <code>Setup.php</code> 的文件。</p>
+<p>Setup 类应该继承 <code>/XF/AddOn/AbstractSetup</code>，它至少需要实作 <code>install()</code>、 <code>upgrade()</code> 和 <code>uninstall()</code> 方法。 下面是一个简単的附加组件 Setup 类的样子。</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo;
+
+class Setup extends \XF\AddOn\AbstractSetup
+{
+    public function install(array $stepParams = [])
+    {
+        $this-&gt;schemaManager()-&gt;createTable('xf_demo', function(\XF\Db\Schema\Create $table)
+        {
+            $table-&gt;addColumn('demo_id', 'int');
+        });
+    }
+
+    public function upgrade(array $stepParams = [])
+    {
+        if ($this-&gt;addOn-&gt;version_id &lt; 1000170)
+        {
+            $this-&gt;schemaManager()-&gt;alterTable('xf_demo', function(\XF\Db\Schema\Alter $table)
+            {
+                $table-&gt;addColumn('foo', 'varchar', 10)-&gt;setDefault('');
+            });
+        }
+    }
+
+    public function uninstall(array $stepParams = [])
+    {
+        $this-&gt;schemaManager()-&gt;dropTable('xf_demo');
+    }
+}
+</code></pre>
+<p>Setup 类也支援在不同的步骤中运行每个操作。 为了实现这种行为，您的 Setup 类可以使用 <code>StepRunnerInstallTrait</code> 、 <code>StepRunnerUpgradeTrait</code> 和/或 <code>StepRunnerUninstallTrait</code> <a href="http://php.net/manual/en/language.oop5.traits.php">特性</a>。 这些都会自动实作所需的方法，你只需要添加相关的步骤，例如 <code>installStep1()</code> 、 <code>upgrade1000170Step1()</code> 、 <code>upgrade1000170Step2()</code> 和 <code>uninstallStep1()</code>，其中升级方法中的 <code>1000170</code> 等... 是附加组件的版本 ID (参见<a href="#id_1">建议版本 ID 格式</a>)。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="development-tools/" class="btn btn-neutral float-right" title="开发工具">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="rest-api/" class="btn btn-neutral" title="REST API"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../rest-api/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../development-tools/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

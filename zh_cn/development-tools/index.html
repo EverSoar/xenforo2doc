@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>开发工具 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A53.996634%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u5f00\u53d1\u5de5\u5177";
+    var mkdocs_page_input_path = "development-tools.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">调试模式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">激活开发模式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">开发命令</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_5">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">附加组件特定命令</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_6">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">新建一个附加组件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_data-xml">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">导出 _data .XML 文件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_7">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">升级您的附加组件版本</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#addonjson">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">同步你的 addon.json 到数据库</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#addonjson_1">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">验证您的 addon.json 文件</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_8">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">运行特定的设置步骤</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_12">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">构建附加组件发行版</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_13">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">自定义构建过程</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_14">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">开发命令</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_15">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">导入开发输出</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_16">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">导出开发输出</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_17">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">调试代码</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#dump">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Dump 变量</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>开发工具</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/development-tools.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">开发工具<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>XF2 为开发者提供了大量的内置工具，您可以使用这些工具来加快附加组件的开发，下面我们将介绍其中的一些。</p>
+<h2 id="_2">调试模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>调试模式可以在你的 <code>config.php</code> 中激活，这将允许你访问 Admin CP 中的某些开发工具（如创建路由，权限，管理导览等），它还将在每个页面的底部激活一个控制台输出，详细说明页面处理的时间，有多少查找被运行来喧染页面和使用了多少内存。 悬停时，会有一个包含当前 Controller、 Action 和模板名称等信息的工具提示。 你也可以点击时间输出，这将让你详细了解到底运行了哪些查找，以及导致该查找被运行的堆栈追踪。</p>
+<p>你可以通过在 <code>config.php</code> 中添加以下内容来激活调试模式：</p>
+<pre><code class="language-php">$config['debug'] = true;
+</code></pre>
+<h2 id="_3">激活开发模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>开发模式是一种特殊的模式，在您的 <code>config.php</code> 文件中激活，它将触发 XF 自动将您的开发文件写入 <code>_output</code> 目录。 这个模式需要在文件系统模板编辑时激活。 由于开发模式会将文件写入你的文件系统，确保你有适当的文件权限是很重要的。 这可能会根据环境的不同而有所不同，但典型的配置是确保你正在使用的任何附加组件的 <code>_output</code> 目录的 chmod 设置为<code>0777</code>。 例如，如果你正在使用一个 ID 为 <code>Demo</code> 的附加组件，它的开发输出将被写入到 <code>src/addons/Demo/_output</code>，因此该目录需要是完全可写的。</p>
+<p>激活开发模式，也会自动激活 <a href="#_2">调试模式</a>。</p>
+<p>要激活开发模式，请在你的 <code>config.php</code> 文件中添加以下行：</p>
+<pre><code class="language-php">$config['development']['enabled'] = true;
+$config['development']['defaultAddOn'] = 'SomeCompany/MyAddOn';
+</code></pre>
+<p><code>defaultAddOn</code> 值是可选的，但当创建新内容时，添加该值会在 XF Admin CP 中自动填充指定的附加组件，该附加组件将与附加组件相关联。</p>
+<p>除了上述，你可能会发现有必要添加一些额外的配置，特别是当你使用多个 XF 安装时。</p>
+<pre><code class="language-php">$config['enableMail'] = false;
+</code></pre>
+<p>这将关闭所有从您的论坛发送的邮件。 如果您使用的是真实用户和真实邮件地址的实时数据副本，这一点尤为重要（尽管我们建议不要这样做！）。</p>
+<p>除了直接关闭邮件之外, 您可以考虑使用一个服务, 例如 <a href="https://mailtrap.io">MailTrap.io</a>。 这将为您提供一个免费的邮箱，可以接収所有从您的论坛发送的邮件，这对于测试您的新附加组件可能发送的任何电子邮件非常有用。</p>
+<pre><code class="language-php">$config['cookie']['prefix'] = 'anything_';
+</code></pre>
+<p>如果您在同一域名上使用两个或更多的 XF 安装，您可能会遇到 Cookie 被复盖的问题，这是由安装共享相同的 Cookie 前缀引起的。 因此，建议您确保为您设置的每个 XF 安装更改 Cookie 前缀。 如果不这样做，您将会遇到一些问题，例如，当登录到另一个 XF 安装时，会被注销。</p>
+<h2 id="_4">开发命令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>XF 2.0 提供了一些通用的开发和附加组件的 CLI 命令，这些命令的目的是帮助您更有效地开发，甚至可能使一些常见的过程自动化/脚本化。</p>
+<p>在本节中，我们将介绍一些常用的工具，并解释它们的作用。</p>
+<h2 id="_5">附加组件特定命令<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h3 id="_6">新建一个附加组件<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:create</p>
+</div>
+<p><code>xf-addon:create</code> 命令是如何初始设置和创建一个新的附加组件。 一旦它运行，你只需要回答一些基本问题：</p>
+<ul>
+<li>输入此附加组件的 ID</li>
+<li>输入标题</li>
+<li>输入版本 ID（如 1000010 ）。</li>
+<li>输入版本字符串（如 1.0.0 Alpha）。</li>
+</ul>
+<p>然后你会得到一个选项来创建附加组件并写出它的 addon.json 文件，并询问你一些关于是否要添加 Setup.php 文件的问题。</p>
+<h3 id="_data-xml">导出 _data .XML 文件<a class="headerlink" href="#_data-xml" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:export <em>[addon_id]</em></p>
+</div>
+<p>这条命令将用于导出所有附加组件的数据到 <code>_data</code> 目录下的 XML 文件。 它从当前数据库中导出数据（而不是从开发输出文件中导出）。</p>
+<h3 id="_7">升级您的附加组件版本<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:bump-version <em>[addon_id]</em> --version-id 1020370 --version-string 1.2.3</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你的版本字符串包含空格，你需要用引号将其包围。</p>
+</div>
+<p>该命令获取您的附加组件的附加组件 ID、新版本 ID 和新版本字符串。 这样您就可以轻松完成升级附加组件的版本，而无需自己运行升级和重建。 上面的选项是可选的，如果没有提供这些选项，系统会提示您输入。 如果您只指定版本 ID，如果它符合我们<a href="/add-on-structure/#id_1">推荐的版本ID格式</a>，我们将尝试并自动从中推断出正确的版本字符串。 一旦命令完成，它将自动更新 <code>addon.json</code> 文件和数据库，并提供正确的版本详细信息。</p>
+<h3 id="addonjson">同步你的 addon.json 到数据库<a class="headerlink" href="#addonjson" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:sync-json <em>[addon_id]</em></p>
+</div>
+<p>有时你可能更喜欢直接编辑 JSON 文件中的某些细节，这可能是版本，或新的图标，或更改标题或描述。 以这种方式更改 JSON 可能会导致附加组件系统认为有待定的更改或附加组件是可升级的。 如果您尚未导出当前数据，则重建或升级可能是一种破坏性的操作。 因此，建议运行此命令作为导入该数据的方式，而不影响您的现有数据。</p>
+<h3 id="addonjson_1">验证您的 addon.json 文件<a class="headerlink" href="#addonjson_1" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:validate-json <em>[addon_id]</em></p>
+</div>
+<p>如果你想检查你的 JSON 文件是否包含正确的内容和正确的格式，你现在可以验证它。 验证器将检查内容是否可以解码，是否包含所有正确的必填字段（如标题和版本 ID ），还检查是否存在可选的 Key（如描述和图标）。 如果有任何 Key 丢失，我们将为您提供修复问题的服务。 我们还检查 JSON 文件中是否有任何意外的字段。 这些可能是故意的，也可能是错别字。 您可以手动运行该命令，或者在构建发行版时自动运行该命令。</p>
+<h3 id="_8">运行特定的设置步骤<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<p>有时，无需进行卸载和重新安装过程即可检查 Setup class 步骤是否正常运行，这是很有帮助的。</p>
+<p>有三条命令可以帮助解决这个问题，这些命令只适用于使用默认的 <code>StepRunner</code> 特性创建的 Setup class。</p>
+<h4 id="_9">运行安装步骤<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:install-step <em>[addon_id]</em> <em>[step]</em></p>
+</div>
+<h4 id="_10">运行升级步骤<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:upgrade-step <em>[addon_id]</em> <em>[version]</em> <em>[step]</em></p>
+</div>
+<h4 id="_11">运行卸载步骤<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:uninstall-step <em>[addon_id]</em> <em>[step]</em></p>
+</div>
+<h2 id="_12">构建附加组件发行版<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>一旦所有的艰苦工作都完成了，很遗撼，在真正发布之前还要经历一些其他的过程。 即使是将所有的文件収集到正确的地方，并手动创建 ZIP 文件的过程也是很耗时的，而且容易出现错误。 我们可以自动处理这些问题，包括用一个简単的命令生成 <code>hash.json</code> 文件。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:build-release <em>[addon_id]</em></p>
+</div>
+<p>当你运行这个命令时，它会先运行 <code>xf-addon:export</code> 命令，然后将所有的文件一起収集到一个临时的 <code>_build</code> 目录中，并将它们写入一个 ZIP 文件。 完成后的 ZIP 文件还将包含 <code>hashes.json</code> 文件。 一旦 ZIP 文件被创建，它将被保存到你的 <code>_releases</code> 目录中，并命名为 <code>&lt;ADDON ID&gt;-&lt;VERSION STRING&gt;.zip</code>。</p>
+<h3 id="_13">自定义构建过程<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>除了创建发布的 ZIP 之外，您可能还希望在 ZIP 中包含其他的文件，您希望运行其他更高级的构建过程，如最小化或连接 JS 或运行某些 shell 命令。 所有这些都可以在你的 <code>build.json</code> 文件中处理。 这是一个典型的 <code>build.json</code> 文件。</p>
+<pre><code class="language-json">{
+    &quot;additional_files&quot;: [
+        &quot;js/demo/portal&quot;
+    ],
+    &quot;minify&quot;: [
+        &quot;js/demo/portal/a.js&quot;,
+        &quot;js/demo/portal/b.js&quot;
+    ],
+    &quot;rollup&quot;: {
+        &quot;js/demo/portal/ab-rollup.js&quot;: [
+            &quot;js/demo/portal/a.min.js&quot;,
+            &quot;js/demo/portal/b.min.js&quot;
+        ]
+    },
+    &quot;exec&quot;: [
+        &quot;echo '{title} version {version_string} ({version_id}) has been built successfully!' &gt; 'src/addons/Demo/Portal/_build/built.txt'&quot;
+    ]
+}
+</code></pre>
+<p>如果你有一些需要在 add-on 目录之外提供服务的 assets，比如 JavaScript，你可以使用 <code>build.json</code> 中的 <code>additional_files</code> 数组告诉构建过程复制文件或目录。 在开发过程中，将文件保存在 add-on 目录之外并不总是可行的，所以如果你愿意，你可以将文件保存在 add-on 的 <code>_files</code> 目录中。 在复制附加文件时，我们将首先检查该文件。</p>
+<p>如果您的附加组件附带了一些 JS 文件，出于性能考虑，您可能会希望对这些文件进行最小化。 您可以在您的 <code>build.json</code> 中指定您要最小化的文件。 您可以将这些文件以数组的形式列出，也可以直接指定为 <code>'*'</code>，这样就会对 <code>js</code> 目录中的所有文件进行最小化，只要该路径中存在 JS 文件，并将额外的文件复制到构建中即可。 任何被最小化的文件都会自动以 <code>.min.js</code> 作为后缀，而不是 <code>.js</code> ，并且源文件案仍然在包中。</p>
+<p>你可能更喜欢将多个 JS 文件捆成一个文件。 如果你这样做，你可以使用 <code>rollup</code> 数组来定义。 key 是合并后的文件名，数组中的 item 是 JS 文件的路径，这些文件将被合并成一个文件。</p>
+<p>最后，您可能需要在打包构建和最终定案之前运行某些进程。 这可能是任何东西的组合。 归根结底，如果它是一个可以从 shell 中运行的命令（包括 PHP 脚本），那麽你可以在这里指定它。 当然，上面的示例是毫无用处的，但它至少证明了某些保留区是可以使用的。 这些保留区被替换为标量值，你可以从 <code>XF\AddOn\AddOn</code> 物件中获得，一般来说，这个物件是 <code>addon.json</code> 文件中的任何可用值，或者 <code>AddOn</code> 实体。</p>
+<h2 id="_14">开发命令<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>其实与开发相关的命令有不少，但这里只介绍最重要的两个。</p>
+<p>要使用这些命令，你必须在你的 <code>config.php</code> 文件中激活<a href="#_3">开发模式</a>。</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>如果出现数据库和 <code>_output</code> 目录不同步的情况，以下两个命令都有可能导致数据丢失。建议使用 VCS (版本控制系统)，如<a href="https://github.com">GitHub</a> 来减轻这种错误的影响。</p>
+</div>
+<h3 id="_15">导入开发输出<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-dev:import --addon <em>[addon_id]</em></p>
+</div>
+<p>运行此命令将把你的附加组件 <code>_output</code> 目录下的所有开发时输出的文件导入进数据库里。</p>
+<h3 id="_16">导出开发输出<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-dev:export --addon <em>[addon_id]</em></p>
+</div>
+<p>这将把当前数据库中与附加组件相关联的所有数据导出到 <code>_output</code> 目录下的文件中。</p>
+<h2 id="_17">调试代码<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<p>应该可以设置你喜欢的调试工具（ XDebug，Zend Debugger 等）来与 XF2 一起运作。 虽然，有时候，调试代码可能象快速查看一个变量在给定时间内持有的值（或值类型）一样简陋。</p>
+<h3 id="dump">Dump 变量<a class="headerlink" href="#dump" title="Permanent link">&para;</a></h3>
+<p>当然 PHP 有一个内置的工具来处理这个问题，您可能将其称为 <code>var_dump()</code>。 XF 提供了两个替代方法来处理这个问题：</p>
+<pre><code class="language-php">\XF::dump($var);
+\XF::dumpSimple($var);
+</code></pre>
+<p>简単版本主要是将一个变量的值以纯文本的形式転储出来。 例如，如果你只是用它来転储一个数组的值，你会在页面顶部看到这样的输出：</p>
+<pre><code class="language-plain">array(2) {
+  [&quot;user_id&quot;] =&gt; int(1)
+  [&quot;username&quot;] =&gt; string(5) &quot;Admin&quot;
+}
+</code></pre>
+<p>这实际上是与标准的 var_dump 相同的输出，但为了可读性稍作修改，并将其包裹在 <code>&lt;pre&gt;</code> 标签中，以确保在喧染时保留空白。</p>
+<p>这个替代方案实际上是 Symfony 项目中的一个名为 VarDumper 的组件。 它输出 HTML、 CSS 和 JS 来创建一个功能更强、更容易阅读的输出。 它允许你折叠某些部分，对于某些可以输出大量数据的值，比如物件，它可以自动折叠这些部分。 </p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="general-concepts/" class="btn btn-neutral float-right" title="通用概念">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="add-on-structure/" class="btn btn-neutral" title="附加组件架构"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../add-on-structure/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../general-concepts/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

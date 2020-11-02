@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>创建一个附加组件 - XenForo 2.0 开发人员说明文档</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A05%3A54.054659%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u521b\u5efa\u4e00\u4e2a\u9644\u52a0\u7ec4\u4ef6";
+    var mkdocs_page_input_path = "lets-build-an-add-on.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁体中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>开发人员说明文档</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜寻文档" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入门须知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板语法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加组件架构</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">开发工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基础知识</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">数据实体、查找器、保存库</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">准则</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">创建一个附加组件</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">创建附加组件</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#setup">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">创建 Setup 类</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">继承论坛实体</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">继承主题实体</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_5">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">创建一个新实体</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_6">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">修改论坛编辑表单</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_7">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">继承论坛的保存过程</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_8">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">设置主题自动显示</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#portal">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">创建 Portal 页面</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_9">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">实作导览标签</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_10">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">手动显示（或不显示）主题</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_11">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">改进门户网站页面</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_12">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">实现权限和优化</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_13">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">创建一些选项</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_14">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">在可见性变更上取消精选</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_15">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">最后一些未交待清楚的事情</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_16">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">构建附加组件</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">设计样式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附录：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>开发人员说明文档</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首页</a> &raquo;</li>
+    
+      
+    
+    <li>创建一个附加组件</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/lets-build-an-add-on.md"
+          class="icon icon-github"> 在 GitHub 上编辑</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">创建一个附加组件<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>对于一些人来说，直接进入一个项目是最好的学习方式，我们的目的是在下面的章节中，您将学习如何从头开始构建一个附加组件。 做好准备；这不是一个简単的 'Hello world' 类型的演示。 这实际上是一个功能相当齐全的演示插件，函盖了 XF2 中的许多概念。</p>
+<p>我们要创建的附加组件将允许拥有适当权限的用户 "精选" 一个主题，并允许该主题在新页面上显示。 我们甚至会设置一个流程，自动在特定的论坛中对主题进行精选处理。 我们将为此使用一个新的路由，命名为 <code>portal</code>，并最终将其设置为索引页路由，并设置在浏览该页面时选择 "Home" 标签。</p>
+<h2 id="_2">创建附加组件<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在整个附加组件中，我们将使用附加组件 ID 为 <code>Demo/Portal</code>。 首先我们需要做的是创建附加组件，为此我们需要打开 命令提示字符 / shell / 终端窗口，将目录改为你的 XF 安装根目录（即 <code>cmd.php</code> 所在的位置），然后运行以下命令，并输入下面显示的对策：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:create</p>
+<p><strong>Enter an ID for this add-on:</strong> Demo/Portal</p>
+<p><strong>Enter a title:</strong> Demo - Portal</p>
+<p><strong>Enter a version ID:</strong> This integer will be used for internal variable comparisons.<br />
+Each release of your addon should increase this number:  1000010</p>
+<p>Version string set to: 1.0.0 Alpha</p>
+<p><strong>Does this add-on supersede a XenForo 1 add-on? (y/n)</strong> n</p>
+<p>The addon.json file was successfully written out to /var/www/src/addons/Demo/Portal/addon.json</p>
+<p><strong>Does your add-on need a Setup file? (y/n)</strong> y</p>
+<p><strong>Does your Setup need to support running multiple steps? (y/n)</strong> y</p>
+<p>The Setup.php file was successfully written out to /var/www/src/addons/Demo/Portal/Setup.php</p>
+</div>
+<p>附加组件现在已经创建，你会发现你在 <code>src/addons</code> 目录下有一个新的目录，你会在 Admin CP 的 "已安装 add-ons" 列表中找到该附加组件。</p>
+<p>其中一个已经创建的文件是 <code>addon.json</code> 文件，它当前的样子是这样的：</p>
+<pre><code class="language-json">{
+    &quot;legacy_addon_id&quot;: &quot;&quot;,
+    &quot;title&quot;: &quot;Demo - Portal&quot;,
+    &quot;description&quot;: &quot;&quot;,
+    &quot;version_id&quot;: 1000010,
+    &quot;version_string&quot;: &quot;1.0.0 Alpha&quot;,
+    &quot;dev&quot;: &quot;&quot;,
+    &quot;dev_url&quot;: &quot;&quot;,
+    &quot;faq_url&quot;: &quot;&quot;,
+    &quot;support_url&quot;: &quot;&quot;,
+    &quot;extra_urls&quot;: [],
+    &quot;require&quot;: [],
+    &quot;icon&quot;: &quot;&quot;
+}
+</code></pre>
+<p>让我们来填一下这些详细内容：</p>
+<pre><code class="language-json">{
+    &quot;legacy_addon_id&quot;: &quot;&quot;,
+    &quot;title&quot;: &quot;Demo - Portal&quot;,
+    &quot;description&quot;: &quot;Add-on which will display featured threads on the forum home page.&quot;,
+    &quot;version_id&quot;: 1000010,
+    &quot;version_string&quot;: &quot;1.0.0 Alpha&quot;,
+    &quot;dev&quot;: &quot;You!&quot;,
+    &quot;dev_url&quot;: &quot;&quot;,
+    &quot;faq_url&quot;: &quot;&quot;,
+    &quot;support_url&quot;: &quot;&quot;,
+    &quot;extra_urls&quot;: [],
+    &quot;require&quot;: [],
+    &quot;icon&quot;: &quot;fa-home&quot;
+}
+</code></pre>
+<p>现在，我们已经添加了 <code>description</code>，开发者的名字 (<code>dev</code>)，并指定我们要显示一个图标 (<code>icon</code>)。 图标可以是一个路径（相对于你的 add-on 根目录），也可以是一个 <a href="http://fontawesome.io/icons/">Font Awesome 图标</a> 的名称，就象我们在这里做的那样。</p>
+<p>由于我们不是要取代 XenForo 1 附加组件，所以我们可以忽略 <code>legacy_addon_id</code>。 关于 <code>addon.json</code> 文件中所有属性的完整解释，请参考 <a href="../add-on-structure/#addonjson">附加组件结构部分</a>。</p>
+<h2 id="setup">创建 Setup 类<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
+<p>好吧，严格来说，这个类已经被创建并写入了 <code>Setup.php</code>，但现在它并没有真正做什麽。 我们基本上已经有了一个 class 骨架，它看起来象这样：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal;
+
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
+
+class Setup extends AbstractSetup
+{
+        use StepRunnerInstallTrait;
+        use StepRunnerUpgradeTrait;
+        use StepRunnerUninstallTrait;
+}
+</code></pre>
+<p>我们已经谈过一点关于 Setup 类的内容。 我们将把安装、升级和卸载过程分成不同的步骤。</p>
+<p>让我们从导入一些有用的 Schema 类开始。 如果你想了解更多关于它们的信息，你可以参考 <a href="/managing-the-schema">管理 Schema 部分</a>。 
+在最后一个 <code>use</code> 声明之后，添加以下几行：</p>
+<pre><code class="language-php">use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+</code></pre>
+<p>这里的 StepRunner 特性将处理所有可用步骤的循环过程，所以我们要做的就是开始创建这些步骤。 我们首先添加一些代码，在 <code>xf_forum</code> 资料表中创建一个新的 column：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal;
+
+use XF\AddOn\AbstractSetup;
+use XF\AddOn\StepRunnerInstallTrait;
+use XF\AddOn\StepRunnerUninstallTrait;
+use XF\AddOn\StepRunnerUpgradeTrait;
+
+use XF\Db\Schema\Alter;
+use XF\Db\Schema\Create;
+
+class Setup extends \XF\AddOn\AbstractSetup
+{
+    use StepRunnerInstallTrait;
+    use StepRunnerUpgradeTrait;
+    use StepRunnerUninstallTrait;
+
+    public function installStep1()
+    {
+        $this-&gt;schemaManager()-&gt;alterTable('xf_forum', function(Alter $table)
+        {
+            $table-&gt;addColumn('demo_portal_auto_feature', 'tinyint')-&gt;setDefault(0);
+        });
+    }
+}
+
+</code></pre>
+<p>这一 column 被添加到 <code>xf_forum</code> 资料表中，这样我们就可以设置某些论坛在创建主题时自动显示。 这里的命名很重要，添加到核心 XF 资料表中的 columns 总是应该有前缀。 这有两个重要的目的。 第一个是减少了重复 column 名发生冲突的风险，以防 XF 或其他附加组件有理由在将来添加该 column。 第二个目的是，它有助于更容易地识别哪些 columns 属於哪些附加组件，以防将来出现一些问题。</p>
+<p>既然如此，我们不妨在安装程序中再增加一个步骤。 为了简洁起见，我们只显示新代码，而不是整个类。 它应该直接放在 <code>installStep1()</code> 方法的下面：</p>
+<pre><code class="language-php">public function installStep2()
+{
+    $this-&gt;schemaManager()-&gt;alterTable('xf_thread', function(Alter $table)
+    {
+        $table-&gt;addColumn('demo_portal_featured', 'tinyint')-&gt;setDefault(0);
+    });
+}
+</code></pre>
+<p>这一步骤与上面的步骤类似，这次将在 <code>xf_thread</code> 资料表中添加一个新 column。 我们将使用这一 column 作为一个缓存值来快速识别一个主题是否有精选，而不需要针对 <code>xf_demo_portal_featured_thread</code> 资料表查找或进行额外的查找。</p>
+<p>说到这里，我们现在应该把那个资料表加进去了。 这次直接加在 <code>installStep2()</code> 下面：</p>
+<pre><code class="language-php">public function installStep3()
+{
+    $this-&gt;schemaManager()-&gt;createTable('xf_demo_portal_featured_thread', function(Create $table)
+    {
+        $table-&gt;addColumn('thread_id', 'int');
+        $table-&gt;addColumn('featured_date', 'int');
+        $table-&gt;addPrimaryKey('thread_id');
+    });
+}
+</code></pre>
+<p>这一步将创建新的资料表。 这张资料表将用来记录所有被精选的主题，以及它们被精选的时间。</p>
+<p>在命名方面，同样的原则也适用于此。 一个重要的区别是，所有的资料表都应该另外加上 <code>xf_</code> 的前缀。 这样做的原因是，如果进行了干净的 XF 安装，我们可以删除所有帯有 <code>xf_</code> 前缀的资料表，包括那些由附加组件创建的资料表。</p>
+<p>在添加代码时，最容易忘记的一件事就是，添加了各种 schema 更改后忘记自己套用的 schema 更改。 你可以使用 CLI 命令运行 安装/升级 步骤。 在这种情况下，运行以下命令：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:install-step Demo/Portal 1
+<em>$</em> php cmd.php xf-addon:install-step Demo/Portal 2
+<em>$</em> php cmd.php xf-addon:install-step Demo/Portal 3</p>
+</div>
+<h2 id="_3">继承论坛实体<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>到当前为止，我们已经在 <code>xf_forum</code> 资料表中添加了一 column，现在是时候继承论坛 Entity 结构了。 我们需要这样做，以便 Entity 知道我们的新 column，并且可以通过 Entity 向其读写数据。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>以下步骤需要激活 <a href="/development-tools/#_3">开发模式</a>。 记得在 <code>config.php</code> 中设置 <code>Demo/Portal</code> 为 <code>defaultAddOn</code> 值。</p>
+</div>
+<p>这个过程的第一步是创建一个 "代码事件监听器"。 这可以在开发下的 Admin CP 中，点击 "代码事件监听器" 链接，然后点击 "添加代码事件监听器" 按钮。</p>
+<p>我们需要监听 <code>entity_structure</code> 事件。 我们将使用它来修改默认的论坛 Entity 结构，以添加我们新创建的 <code>demo_portal_auto_feature</code> column。</p>
+<p>在 "事件提示" 字段中，我们将输入要继承的类名，例如 <code>XF\Entity\Forum</code>。 这将确保我们的监听器只在论坛 Entity 上运行。</p>
+<p>对于 "运行 callback" 类输入 <code>Demo\Portal\Listener</code>，对于方法输入 <code>forumEntityStructure</code>。</p>
+<p>值得添加一个描述来解释这个监听器的用途，因为这将有助于更容易地在代码事件监听器列表中识别监听器。 "继承 XF\Entity\Forum 结构" 应该就够了。 最后，确保 "Demo - Portal" 附加组件被选中。</p>
+<p>在点击 "保存" 之前，我们需要实际创建 Listener 类。 所以在 <code>src/addons/Demo/Portal</code> 中创建一个名为 <code>Listener.php</code> 的新文件。 这个文件的内容最初应该是这样的。 我们从代码事件选择器下面的文件中知道这个函数需要的参数。</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal;
+
+use XF\Mvc\Entity\Entity;
+
+class Listener
+{
+    public static function forumEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &amp;$structure)
+    {
+
+    }
+}
+</code></pre>
+<p>注意 <code>namespace</code> 和 <code>class</code> 名称之间的 <code>use</code> 声明。 我们将不止一次地引用这里声明的 class，因此在这里声明它确实允许我们用它更短的别名来引用它，在本例中是 <code>Entity</code>。</p>
+<p>这段代码实际上还不会做任何事情，但现在是保存代码事件监听器的好时机，所以请继续点击 "保存" 按钮。</p>
+<p>在我们为新函数添加一些功能代码之前，现在也许是个很好的时机来看看开发输出系统是如何运作的。 检查一下添加到你 add-on 目录中的新目录和文件。 特别是在 <code>_output/code_event_listeners</code> 目录下有一个新的 JSON 文件，它应该是这样的：</p>
+<pre><code class="language-json">{
+    &quot;event_id&quot;: &quot;entity_structure&quot;,
+    &quot;execute_order&quot;: 10,
+    &quot;callback_class&quot;: &quot;Demo\\Portal\\Listener&quot;,
+    &quot;callback_method&quot;: &quot;forumEntityStructure&quot;,
+    &quot;active&quot;: true,
+    &quot;hint&quot;: &quot;XF\\Entity\\Forum&quot;,
+    &quot;description&quot;: &quot;Extends the XF\\Entity\\Forum structure&quot;
+}
+</code></pre>
+<p>每当监听器发生变化时，这个文件会自动更新。</p>
+<p>好了，我们再来添加一些代码。 回到 <code>Listener</code> 类中，在 <code>forumEntityStructure</code> 函数中添加以下内容：</p>
+<pre><code class="language-php">$structure-&gt;columns['demo_portal_auto_feature'] = ['type' =&gt; Entity::BOOL, 'default' =&gt; false];
+</code></pre>
+<p>论坛 Entity 现在已经知道了我们的新 column，但在开始实作对该 column 进行实际设置值的方法之前，我们还需要先处理几个步骤。</p>
+<h2 id="_4">继承主题实体<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>同样，由于我们在 xf_thread 资料表中添加了一个新的 column，我们应该让主题实体知道这一点。 这与我们上面的作法非常相似。</p>
+<p>回到 "添加代码事件监听器"，再次监听 <code>entity_structure</code>。 这次的 "事件提示" 将是 <code>XF\Entity\Thread</code>。 我们可以使用与之前相同的 callback 类（<code>Demo\Portal\Listener</code>），但这次的方法将命名为 <code>threadEntityStructure</code>。 添加类似之前的描述。 在保存之前，我们应该在 <code>forumEntityStructure</code> 函数下面直接添加代码：</p>
+<pre><code class="language-php">public static function threadEntityStructure(\XF\Mvc\Entity\Manager $em, \XF\Mvc\Entity\Structure &amp;$structure)
+{
+    $structure-&gt;columns['demo_portal_featured'] = ['type' =&gt; Entity::BOOL, 'default' =&gt; false];
+}
+</code></pre>
+<p>这段代码与我们在论坛 Entity 结构中添加的代码几乎相同，唯一不同的是 column 名。 但是，我们确实需要添加一些其他的东西。 我们应该创建一个 Entity 关联，这样，以后我们需要访问精选主题 Entity（我们在下一节创建）时，我们就可以很容易地通过 Finder 查找来实现。 在 <code>$structure-&gt;columns</code> 行下面添加：</p>
+<pre><code class="language-php">$structure-&gt;relations['FeaturedThread'] = [
+    'entity' =&gt; 'Demo\Portal:FeaturedThread',
+    'type' =&gt; Entity::TO_ONE,
+    'conditions' =&gt; 'thread_id',
+    'primary' =&gt; true
+];
+</code></pre>
+<p>有关 <a href="/entities-finders-repositories/#relations">关联</a> 的更多信息，请参见关联。 点击 "保存" 来保存监听器。</p>
+<h2 id="_5">创建一个新实体<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>上面在 <code>installStep3()</code> 中，我们创建了一个新资料表。 我们需要创建一个 Entity 来与这个资料表交互并创建新的记录。 因为这是一个全新的 Entity，我们除了在 <code>src/addons/Demo/Portal/Entity/FeaturedThread.php</code> 中创建 class 之外，不需要做任何其他的事情，它的架构看起来象这样：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\Entity;
+
+use XF\Mvc\Entity\Structure;
+
+class FeaturedThread extends \XF\Mvc\Entity\Entity
+{
+
+}
+</code></pre>
+<p>我们需要用它来定义 Entity 结构，它代表我们之前创建的新 <code>xf_demo_portal_featured_thread</code> 资料表。 这个 Entity 的结构应该是这样的：</p>
+<pre><code class="language-php">public static function getStructure(Structure $structure)
+{
+    $structure-&gt;table = 'xf_demo_portal_featured_thread';
+    $structure-&gt;shortName = 'Demo\Portal:FeaturedThread';
+    $structure-&gt;primaryKey = 'thread_id';
+    $structure-&gt;columns = [
+        'thread_id' =&gt; ['type' =&gt; self::UINT, 'required' =&gt; true],
+        'featured_date' =&gt; ['type' =&gt; self::UINT, 'default' =&gt; time()]
+    ];
+    $structure-&gt;getters = [];
+    $structure-&gt;relations = [
+        'Thread' =&gt; [
+            'entity' =&gt; 'XF:Thread',
+            'type' =&gt; self::TO_ONE,
+            'conditions' =&gt; 'thread_id',
+            'primary' =&gt; true
+        ],
+    ];
+
+    return $structure;
+}
+</code></pre>
+<p>根据我们前面写的 MySQL 创建资料表，columns 的列表大概不需要加以说明。 关联中包括一个 <code>Thread</code> 关联，它将允许我们从这个 Entity 中获得相关的主题 Entity 记录（甚至主题 Entity 关联）。</p>
+<h2 id="_6">修改论坛编辑表单<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>我们现在需要一种方法来修改 <code>forum_edit</code> 模板，在那里添加一个新的 checkbox，最终可以写回我们现在创建的新 column。 我们将通过创建一个模板修改来实现。 这是在 Admin CP 下的外観中完成的，然后点击模板修改。 点击 "Admin" 标签，然后再点击 "添加模板修改" 按钮。</p>
+<p>在 "模板" 栏中，输入 "forum_edit"。 这就是我们需要修改的模板。</p>
+<p>在 "修改 key" 字段中，输入 "demo_portal_forum_edit"。 这是一个唯一的 key，用于标识您的模板修改。 这部分最好的习惯是，最起码要在被修改的模板名称后面注明附加组件。</p>
+<p>"描述" 字段应该包含一些文本，以帮助您在查看模板修改列表时确定此修改的目的。 就象是 "添加自动精选 checkbox 到 forum_edit 模板" 这样的内容应该足够了。</p>
+<p>当您在 "模板" 字段中输入模板名称时，您可能会注意到显示了模板内容的预览。 我们需要利用这个来确定 checkbox 的偏好位置。 在查看论坛编辑页面时，你可能会注意到有一系列的 checkbox，这看起来是一个合理的位置。</p>
+<p>最简単的方法是在这个部分放置一个 checkbox，对上面的 checkbox 进行简単的替换，所以在 "查找" 栏中添加：</p>
+<pre><code class="language-plain">&lt;xf:option name=&quot;allow_posting&quot;
+</code></pre>
+<p>并在字段中替换：</p>
+<pre><code class="language-html">&lt;xf:option name=&quot;demo_portal_auto_feature&quot; selected=&quot;$forum.demo_portal_auto_feature&quot;
+    label=&quot;Automatically feature threads in this forum&quot;
+    hint=&quot;If selected, any new threads posted in this forum will be automatically featured.&quot; /&gt;
+$0
+</code></pre>
+<p>我们还不需要担心创建短语的问题，我们可以稍后再来拾取这些。 注意，名称属性必须与我们之前创建的 column 名相匹配，更重要的是，checkbox row 的勾选状态也是从论坛 Entity 中读取添加加的 column。</p>
+<p>当我们稍后保存模板修改时，如果查找字段的内容与模板的任何部分相匹配，那麽它将被替换字段的内容所取代。 实际上我们并没有删除匹配的内容，因为替换字段中的 <code>$0</code> 是重新插入匹配的文本。</p>
+<p>我们可以使用 "测试" 按钮来检查替换的运作是否符合预期。 当点击测试按钮时，会出现一个复盖层帯有修改后的模板。 如果一切顺利，一个緑色区域应该高亮显示我们要添加的新代码。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>这是一个相当简単的替换。 对于更进阶的匹配，你也可以使用 "正规表达式" 类型。 关于使用正规表达式的详细解释超出了本指南的范围，但网上有很多资源可能会有所帮助。</p>
+</div>
+<p>最后，点击保存，保存你的模板修改。 如果一切顺利，当你返回模板修改列表时，你会看到日志摘要显示
+<span style="color: green; font-weight: 700;">1</span> / 0 / <span style="color: red;">0</span>
+因此表明修改成功套用一次。 一个更好的指示是进入 Admin CP 中 "论坛" 下的 "节点" 页面，编辑一个现有的论坛。 现在应该会出现我们新添加的模板修改。</p>
+<h2 id="_7">继承论坛的保存过程<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>我们有了 column，有了一个 UI 来传递 input 到该 column，现在我们必须处理保存数据到该 column。 我们将通过继承论坛 Controller 和继承一个特殊的方法来实现这个目的，当一个节点及其数据被保存时，该方法将被调用。 首先，让我们创建一个 "Class extension"，它可以在 Admin CP 的 "开发" 条目下找到。 点击 "添加 Class extension"。</p>
+<p>在这里，我们需要指定一个 "父类名称"，也就是我们要继承的 class 名称，在本例中是 <code>XF\Admin\Controller\Forum</code>。 并且我们需要指定一个 "继承 class 名称"，也就是继承父类的 class。 输入 <code>Demo\Portal\XF\Admin\Controller\Forum</code>。 我们应该在点击保存之前创建这个 class。</p>
+<p>在 <code>src/addons/Demo/Portal/XF/Admin/Controller</code> 中创建一个新文件，命名为 <code>Forum.php</code>。 这可能看起来象一个很长的路径，但我们建议继承 class 使用这样的路径。 它可以让你更容易地识别出代表继承 class 的文件，因为它们在一个与继承的 "add-on" ID (本例中为 <code>XF</code>) 同名的目录中。 它还可以清楚地说明到底是哪个 class 被继承了，因为目录结构与默认 class 的路径相同。 当前，文件的内容应该是这样的：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\XF\Admin\Controller;
+
+class Forum extends XFCP_Forum
+{
+
+}
+</code></pre>
+<p>更多信息请参见 <a href="/general-concepts/#_5">继承类</a> 和 <a href="/general-concepts/#_6">类型提示</a>。</p>
+<p>点击保存，保存 Class extension。 现在我们可以添加一些代码了。 我们需要继承的特定方法是一个名为 <code>saveTypeData</code> 的 protected 函数。 当继承任何类中现有的方法时，检查原始方法是很重要的，原因有几个。 第一个原因是我们要确保我们在继承方法中使用的参数与我们要继承的方法相匹配。 第二个原因是，我们需要知道这个方法实际上是做什麽的。 例如，这个方法应该返回某个特定类型的东西，还是某个物件？ 这在大多数 Controller action 中肯定是这样的，我们在 <a href="/controller-basics/#controller-action-properly">修改 Controller action 回应（properly）</a> 一节中提到过。 然而，虽然这个方法是在一个 Controller 内，但实际上它本身并不是一个 Controller action。 事实上，这个方法是一个 "void" 方法；它不需要返回任何东西。 然而，我们应该始终确保我们在继承方法中调用父类方法，所以我们只需添加新方法本身，而不需要添加新的代码：</p>
+<pre><code class="language-php">protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
+{
+    parent::saveTypeData($form, $node, $data);
+}
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>此特定方法的参数表表假定我们有一个 <code>use</code> 声明，它将完整的 <code>\XF\Mvc\FormAction</code> 类别名为简単的 <code>FormAction</code>。 因此你需要自己添加那个 use 声明。 在 <code>namespace</code> 和 <code>class</code> 行之间添加 <code>use XF\Mvc\FormAction;</code>。</p>
+</div>
+<p>所以，现在，我们已经继承了那个方法，而我们的继承应该被调用，但现在它除了调用它的父类方法外，没有做任何事情。 现在我们需要从论坛编辑页面获取输入值，并将其套用到 <code>$data</code> 实体（在本例中是论坛实体）。</p>
+<pre><code class="language-php">protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
+{
+    parent::saveTypeData($form, $node, $data);
+
+    $form-&gt;setup(function() use ($data)
+    {
+        $data-&gt;demo_portal_auto_feature = $this-&gt;filter('demo_portal_auto_feature', 'bool');
+    });
+}
+</code></pre>
+<p>使用 <code>FormAction</code> 物件允许我们在典型的表单提交过程中，具有各种不同的 extension points 到进程中运行。 并不是所有的 Controller action 都可以使用。 例如，它在 Admin CP 中更为普遍，它通常遵循简単的 CRUD 模型（添加、查找、修改、删除）。 XF 中的许多其他进程都发生在 Service 物件内，Service 物件通常有与正在运行的服务相关特定 extension points。 <code>FormAction</code> 物件的这种特殊用法与你通常会遇到的情况有些不同。 保存一个节点是个有些不同的进程，因为除了与节点实体一起运作外，你还会与相关的节点类型一起运作，例如一个论坛 Entity。 不过在这个方法中，我们确实可以访问表单 action 物件，所以我们应该使用它。 我们在这里使用它来为进程的 "设置" 阶段添加一个特定的行为。 也就是说，当调用 <code>FormAction</code> 物件的 <code>run()</code> 方法时，它将按照特定的顺序运行各个阶段。 不管这些行为是以哪种顺序添加到物件中的，它们仍然会按照 <code>setup</code>、<code>validate</code>、<code>apply</code>、<code>complete</code> 的顺序运行。</p>
+<p>通过上面的代码，我们可以将论坛 Entity 中的 <code>demo_portal_auto_feature</code> column 设置为我们添加到论坛编辑页面的 <code>demo_portal_auto_feature</code> 输入存储的任何值。 现在应该可以测试所有这些工作了。 只需编辑您选择的论坛并勾选 checkbox。 你应该可以観察到两件事。 首先，当你回到编辑那个论坛时，checkbox 现在应该被勾选了。 第二，如果你在 xf_forum 资料表中查看你刚刚编辑的论坛，<code>demo_portal_auto_feature</code> 字段现在应该设置为 1。 请保持这个值，因为我们最终会自动精选该论坛的主题。</p>
+<h2 id="_8">设置主题自动显示<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>我们已经在论坛 Entity 中添加了一个新的 column，这将允许我们在论坛中新创建一个主题时自动进行精选介绍，所以现在是时候添加代码来实现这个功能了。</p>
+<p>在 XF2 中，我们大量使用 Service 物件。 这些物件通常采用 "setup and go" 类型的方法；你设置你的配置，然后调用一个方法来完成动作。 我们使用 Service 物件来设置和完成主题创建，所以这是一个完美的位置来添加我们需要的代码。 这一切都要从另一个 Class extension 开始，所以进入 "添加 Class extension" 页面。</p>
+<p>这一次，基类会是 <code>XF\Service\Thread\Creator</code>，继承类则是 <code>Demo\Portal\XF\Service\Thread\Creator</code>，和往常一样，这个新 class 将看起来象下面的代码。 在路径 <code>src/addons/Demo/Portal/XF/Service/Thread/Creator.php</code> 中创建该代码，然后点击 "保存" 来创建继承类。</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\XF\Service\Thread;
+
+class Creator extends XFCP_Creator
+{
+
+}
+</code></pre>
+<p>在这里，我们还将创建另一个继承类。 基础类是 <code>XF\Pub\Controller\Forum</code>，继承类是 <code>Demo\Portal\XF\Pub\Controller\Forum</code>。 在路径 <code>src/addons/Demo/Portal/XF/Pub/Controller/Forum.php</code> 中创建以下代码，并点击 "保存"：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\XF\Pub\Controller;
+
+class Forum extends XFCP_Forum
+{
+
+}
+</code></pre>
+<p>我们最终将在被继承的主题作者物件中继承 <code>_save()</code> 方法，这样我们就可以在创建主题后对其进行精选。 为了配合 "setup and go" 的方针，我们将创建一个方法，它可以用来指示主题是否应该被创建为精选，或者不应该。 为此，我们需要两样东西：一个是用来保存 value 的 class 属性（默认为 null ）和一个允许设置该属性的 public 方法。</p>
+<pre><code class="language-php">protected $featureThread;
+
+public function setFeatureThread($featureThread)
+{
+    $this-&gt;featureThread = $featureThread;
+}
+</code></pre>
+<p>回到我们新继承的论坛 Controller，我们现在将继承设置 creator 服务的方法，如果论坛 Entity 有必要的设置值，则选择加入精选。 请记住，在继承一个方法之前，我们需要知道它预计会返回什麽（如果有的话），并确保我们调用父类方法。 如果父类方法确实返回了些什麽，那麽我们应该在代码完成后返回这个方法。 在这种情况下，<code>setupThreadCreate()</code> 方法会返回设置好的 creator 服务，所以我们将按照以下方式开始：</p>
+<pre><code class="language-php">protected function setupThreadCreate(\XF\Entity\Forum $forum)
+{
+    /** @var \Demo\Portal\XF\Service\Thread\Creator $creator */
+    $creator = parent::setupThreadCreate($forum);
+
+    return $creator;
+}
+</code></pre>
+<p>正如预期的那样，这实际上并没有做任何事情；继承的代码被调用了，但它所做的只是返回父类调用所返回的内容。 现在我们应该修改 <code>$creator</code> 来设置精选，如果它适用于我们当前正在使用的论坛。</p>
+<p>在 <code>$creator</code> 行和 <code>return</code> 行之间加上：</p>
+<pre><code class="language-php">if ($forum-&gt;demo_portal_auto_feature)
+{
+    $creator-&gt;setFeatureThread(true);
+}
+</code></pre>
+<p>现在我们可以在继承的 creator 类中添加 <code>_save()</code> 方法：</p>
+<pre><code class="language-php">protected function _save()
+{
+    $thread = parent::_save();
+
+    return $thread;
+}
+</code></pre>
+<p>为了确保这条主题被精选，在 <code>$thread</code> 行和 <code>return</code> 行之间，我们只需要添加：</p>
+<pre><code class="language-php">if ($this-&gt;featureThread &amp;&amp; $thread-&gt;discussion_state == 'visible')
+{
+    /** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
+    $featuredThread = $thread-&gt;getRelationOrDefault('FeaturedThread');
+    $featuredThread-&gt;save();
+
+    $thread-&gt;fastUpdate('demo_portal_featured', true);
+}
+</code></pre>
+<p>因为我们之前在主题 Entity 上创建了 <code>FeaturedThread</code> 关联，所以实际上我们也可以使用这个关联来创建！ 我们在这里使用了一个名为 <code>getRelationOrDefault()</code> 的方法。 它将查看该关联是否实际返回一个现有的记录，如果没有，它将创建该 Entity 并使用任何默认值（包括主题ID）对其进行设置！ 这意味着我们实际上需要做的只是获取默认的关联，并将其保存下来插入到数据库中。</p>
+<p>此外，我们应该将 <code>demo_portal_featured</code> 字段设置为 true。 因为主题 Entity 已经被保存了（当原 class 保存 Entity 时），我们可以使用 <code>fastUpdate()</code> 方法来快速修改该字段。</p>
+<p>我们现在需要尝试这一切，并确保它能正常运作。 前往您之前激活了 <code>demo_portal_auto_feature</code> 选项的论坛，并创建一个新的主题。 现在唯一的方法就是检查 <code>xf_demo_portal_featured_thread</code> 资料表，在那里我们应该可以看到一条新的记录。</p>
+<h2 id="portal">创建 Portal 页面<a class="headerlink" href="#portal" title="Permanent link">&para;</a></h2>
+<p>在我们完成之前，还有相当多的工作要做，但现在我们已经有了精选主题的能力，如果我们能在某个地方显示它们，当然会很好，所以让我们开始创建我们的入口页面。</p>
+<p>要做到这一点，我们需要新建一条 Public 路由。 进入 Admin CP，在 "开发" 下点击 "路由"，然后点击 "添加路由： Public"。 我们暂时先把事情简単化。 路由的前缀是 "portal"，Section context 是 "home"，Controller 是 "Demo\Portal:Portal"。</p>
+<p>现在我们应该在路径 <code>src/addons/Demo/Portal/Pub/Controller/Portal.php</code> 中创建 Controller，基本内容如下：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\Pub\Controller;
+
+class Portal extends \XF\Pub\Controller\AbstractController
+{
+
+}
+</code></pre>
+<p>我们希望当人们访问 <code>index.php?portal</code> 页面时，我们的 portal 页面会显示在他们面前。 这个 URL 没有 "action" 部分 - 只有我们刚刚创建的路由前缀。 考虑到这一点，我们需要在 <code>actionIndex()</code> 方法中添加显示 portal 页面的代码。 我们在其中需要的基本代码是：</p>
+<pre><code class="language-php">public function actionIndex()
+{
+    $viewParams = [];
+    return $this-&gt;view('Demo\Portal:View', 'demo_portal_view', $viewParams);
+}
+</code></pre>
+<p>现在，这还不能完全正常运作，因为我们还没有创建模板，但这已经足够了，至少证明了我们的 Route 和 Controller 是相互沟通的。 所以访问 <code>index.php?portal</code> 至少应该显示 '模板错误'。</p>
+<p>正如在 <a href="/controller-basics/#view">View 回应</a> 一节中提到的，第一个参数是一个 View class，但我们并不需要实际创建这个类。 如果有必要，这个 class 可以由其他附加组件继承，即使它不存在。 第二个参数是模板，我们现在需要在路径 <code>src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html</code> 中创建这个模板。 当前，这个模板应该简単地包含以下内容。</p>
+<pre><code class="language-html">&lt;xf:title&gt;Portal&lt;/xf:title&gt;
+</code></pre>
+<p>如果我们现在访问 portal 页面，模板错误就会消失，虽然我们仍然会有一个看起来相当空白的页面，但至少现在会有 "Portal" 标题。</p>
+<p>现在，是时候开始添加代码了，它将显示精选主题的列表。 第一步是为我们常见的一些基础 Finder 查找创建一个 repository。 因此，在路径 <code>src/addons/Demo/Portal/Repository/FeaturedThread.php</code> 中创建一个新文件，并添加以下代码。</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\Repository;
+
+use XF\Mvc\Entity\Finder;
+use XF\Mvc\Entity\Repository;
+
+class FeaturedThread extends Repository
+{
+    /**
+     * @return Finder
+     */
+    public function findFeaturedThreadsForPortalView()
+    {
+        $visitor = \XF::visitor();
+
+        $finder = $this-&gt;finder('Demo\Portal:FeaturedThread');
+        $finder
+            -&gt;setDefaultOrder('featured_date', 'DESC')
+            -&gt;with('Thread', true)
+            -&gt;with('Thread.User')
+            -&gt;with('Thread.Forum', true)
+            -&gt;with('Thread.Forum.Node.Permissions|' . $visitor-&gt;permission_combination_id)
+            -&gt;with('Thread.FirstPost', true)
+            -&gt;with('Thread.FirstPost.User')
+            -&gt;where('Thread.discussion_type', '&lt;&gt;', 'redirect')
+            -&gt;where('Thread.discussion_state', 'visible');
+
+        return $finder;
+    }
+}
+</code></pre>
+<p>我们在这里做的是使用 finder 查找所有的精选主题，按照相反的 <code>featured_date</code> 顺序，join 到 <code>xf_thread</code> 资料表，并从该资料表 join 到主题创建者的 <code>xf_user</code> 资料表、<code>xf_forum</code> 资料表、<code>xf_post</code> 资料表，然后再从那里 join 到 <code>xf_user</code> 资料表，重新创建帖子资料表。 我们通过指定参数 <code>true</code> 来确定主题、论坛和第一个帖子必须存在，所以这些将以 <code>INNER JOIN</code> 的方式运行，而用户查找将以 <code>LEFT JOIN</code> 的方式运行。 有些主题和帖子的作者可能不存在（例如，如果它们是由 RSS feed 系统自动发布的，或由访客发布的）。</p>
+<p>我们在这里还有一个特殊的 join，可以在查找的同时获取当前访问者的权限。 这将减少喧染 portal 页面所需的查找次数，因为我们将做一些事情（之后），只向有权限查看的用户显示精选主题。</p>
+<p>这并不能返回这个查找的结果。 这将返回 Finder 物件本身。 这样就可以在其他附加组件需要继承我们的代码时，有一个明确的 extension point，同时也允许我们在获取数据之前做进一步的修改（例如为分页设置一个 limit/offset，或者设置不同的排序）。</p>
+<p>现在让我们在 Portal Controller 的 <code>actionIndex()</code> 方法中使用它。 将现有的这一行 <code>$viewParams = [];</code> 改为如下：</p>
+<pre><code class="language-php">/** @var \Demo\Portal\Repository\FeaturedThread $repo */
+$repo = $this-&gt;repository('Demo\Portal:FeaturedThread');
+
+$finder = $repo-&gt;findFeaturedThreadsForPortalView();
+
+$viewParams = [
+    'featuredThreads' =&gt; $finder-&gt;fetch()
+];
+</code></pre>
+<p>在这个阶段，我们不打算担心修改我们从 repo 中检索到的基础 finder。 相反，我们开始实际看到一些结果，并更新 demo_portal_view 模板如下（在 <code>&lt;xf:title&gt;</code> 标签之后）：</p>
+<pre><code class="language-html">&lt;xf:if is=&quot;$featuredThreads is not empty&quot;&gt;
+    &lt;xf:foreach loop=&quot;$featuredThreads&quot; value=&quot;$featuredThread&quot;&gt;
+        &lt;xf:macro name=&quot;thread_block&quot;
+            arg-thread=&quot;{$featuredThread.Thread}&quot;
+            arg-post=&quot;{$featuredThread.Thread.FirstPost}&quot;
+            arg-featuredThread=&quot;{$featuredThread}&quot;
+        /&gt;
+    &lt;/xf:foreach&gt;
+&lt;xf:else /&gt;
+    &lt;div class=&quot;blockMessage&quot;&gt;当前还没有任何帖子被精选。&lt;/div&gt;
+&lt;/xf:if&gt;
+
+&lt;xf:macro name=&quot;thread_block&quot; arg-thread=&quot;!&quot; arg-post=&quot;!&quot; arg-featuredThread=&quot;!&quot;&gt;
+    &lt;xf:css src=&quot;message.less&quot; /&gt;
+
+    &lt;div class=&quot;block&quot;&gt;
+        &lt;div class=&quot;block-container&quot; data-xf-init=&quot;lightbox&quot;&gt;
+            &lt;h4 class=&quot;block-header&quot;&gt;&lt;a href=&quot;{{ link('threads', $thread) }}&quot;&gt;{$thread.title}&lt;/a&gt;&lt;/h4&gt;
+            &lt;div class=&quot;block-body&quot;&gt;
+                &lt;xf:macro name=&quot;message&quot;
+                    arg-post=&quot;{$post}&quot;
+                    arg-thread=&quot;{$thread}&quot;
+                    arg-featuredThread=&quot;{$featuredThread}&quot;
+                /&gt;
+            &lt;/div&gt;
+            &lt;div class=&quot;block-footer&quot;&gt;
+                &lt;a href=&quot;{{ link('threads', $thread) }}&quot;&gt;继续阅读...&lt;/a&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/xf:macro&gt;
+
+&lt;xf:macro name=&quot;message&quot; arg-post=&quot;!&quot; arg-thread=&quot;!&quot; arg-featuredThread=&quot;!&quot;&gt;
+    &lt;div class=&quot;message message--post message--simple&quot;&gt;
+        &lt;div class=&quot;message-inner&quot;&gt;
+            &lt;div class=&quot;message-cell message-cell--main&quot;&gt;
+                &lt;div class=&quot;message-content js-messageContent&quot;&gt;
+                    &lt;div class=&quot;message-attribution&quot;&gt;
+                        &lt;div class=&quot;contentRow contentRow--alignMiddle&quot;&gt;
+                            &lt;div class=&quot;contentRow-figure&quot;&gt;
+                                &lt;xf:avatar user=&quot;{$post.User}&quot; size=&quot;xxs&quot; defaultname=&quot;{$post.username}&quot; href=&quot;&quot; /&gt;
+                            &lt;/div&gt;
+                            &lt;div class=&quot;contentRow-main contentRow-main--close&quot;&gt;
+                                &lt;ul class=&quot;listInline listInline--bullet u-muted&quot;&gt;
+                                    &lt;li&gt;&lt;xf:username user=&quot;{$thread.User}&quot; /&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;xf:date time=&quot;{$featuredThread.featured_date}&quot; /&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href=&quot;{{ link('forums', $thread.Forum) }}&quot;&gt;{$thread.Forum.title}&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;{{ phrase('replies:') }} {$thread.reply_count|number}&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div class=&quot;message-userContent lbContainer js-lbContainer&quot;
+                         data-lb-id=&quot;post-{$post.post_id}&quot;
+                         data-lb-caption-desc=&quot;{{ $post.User ? $post.User.username : $post.username }} &amp;middot; {{ date_time($post.post_date) }}&quot;
+                    &gt;
+                        &lt;blockquote class=&quot;message-body&quot;&gt;
+                            {{ bb_code($post.message, 'post', $post.User, {
+                                'attachments': $post.attach_count ? $post.Attachments : [],
+                                'viewAttachments': $thread.canViewAttachments()
+                            }) }}
+                        &lt;/blockquote&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<p>现在，我承认，这里有 <strong>很多</strong> 的内容。 虽然它可能看起来令人生畏，但它主要是以合理的风格来显示我们的精选主题的标记。 不过有几件事值得注意。</p>
+<p>我们用一个条件开始模板，这个条件是 <code>&lt;xf:if is="$featuredThreads is not empty"&gt;</code>。 这是为了检查 finder 返回的物件是否真的包含精选主题记录。 如果不包含，我们将显示一个适当的消息。</p>
+<p>如果确实有一些记录，我们需要循环浏览每一条记录来显示它。 对于每条记录，我们调用一个 <code>macro</code>。 巨集是模板代码中可重复使用的部分，它是自行记录的（你可以看到哪些参数是支援的），并保持自己的作用域，不能被调用巨集模板中的参数所污染；这意味着巨集只知道明确传递进来的参数和全域的 <code>$xf</code> 参数。</p>
+<p>主题区块巨集显示精选主题的基本区块，然后调用另一个巨集来显示每个消息。</p>
+<h2 id="_9">实作导览标签<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>你可能已经发现，在设置路径时，我们将 Section context 指定为 "主页"，当你访问 portal 页面时，主页标签被选中，或者如果在选项中没有设置 <code>homePageUrl</code>，你可能根本不会看到主页标签。 我们希望使用默认的主页标签，而不是自己创建一个标签，这样可能会有一个重复的标签。</p>
+<p>要做到这一点，我们应该使用代码事件监听器将 URL 改为我们的 portal URL。 在 Admin CP 下的开发中点击 "代码事件监听器"，然后点击 "添加代码事件监听器"。 监听事件 <code>home_page_url</code>，callback class 又会是 <code>Demo\Portal\Listener</code>，这次的方法命名为 <code>homePageUrl</code>。</p>
+<p>这个新方法的代码应该相当简単：</p>
+<pre><code class="language-php">public static function homePageUrl(&amp;$homePageUrl, \XF\Mvc\Router $router)
+{
+    $homePageUrl = $router-&gt;buildLink('canonical:portal');
+}
+</code></pre>
+<p>最后，我们应该考虑更改我们 portal 页面的首页路径。 进入 Admin CP，在设置下点击选项，然后点击 "基本板块信息"。 将 "首页路径" 选项改为 <code>portal/</code>。</p>
+<p>当你在 Admin CP 中时，来看看当你点击 Header 的板块标题时，会发生什麽。 这应该会帯你到你的首页。 一切正常，那个首页现在应该是你的 portal 页面了！ 除此之外，主页标签应该是可见的，并且被选中了。</p>
+<p>作为可选步骤，你可以选择在主页标签下添加一些额外的导览条目。 不过，现在让我们先继续往下。</p>
+<h2 id="_10">手动显示（或不显示）主题<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>所以，我们可以自动精选新主题。 那麽手动显示现有的主题呢？ 或者是在创建过程中，在不支援自动精选的情况下，手动精选主题？ 这将是一个很好的方法，让我们当前的 portal 页面看起来更忙碌。</p>
+<p>为了达到这个目的，我们将在一个特定的巨集中添加一个模板修改，这个巨集实际上是在主题回覆、主题编辑和创建主题时使用的。 这将牵涉到继承编辑器服务，并对处理自动精选的现有代码进行修改。</p>
+<p>第一步就是新建模板修改。 进到 "添加模板修改"（确保在 "模板修改" 列表中选择 "Public" 标签）。 这次我们要修改的模板是 <code>helper_thread_options</code>，我们用 <code>demo_portal_helper_thread_options</code> 作为 key，你可以写一个合理的描述。 实际上，我们可以在这里做一个 "简単替换"，所以请选中这个単选按钮，并在 "查找" 字段中填上：</p>
+<pre><code class="language-html">&lt;xf:if is=&quot;$thread.canLockUnlock()&quot;&gt;
+</code></pre>
+<p>在 "替换" 字段中填上：</p>
+<pre><code class="language-html">&lt;xf:if is=&quot;($thread.isInsert() AND !$thread.Forum.demo_portal_auto_feature AND $thread.canFeatureUnfeature())
+    OR ($thread.isUpdate() &amp;&amp; $thread.canFeatureUnfeature())&quot;
+&gt;
+    &lt;xf:option label=&quot;{{ phrase('demo_portal_featured') }}&quot; name=&quot;featured&quot; value=&quot;1&quot; selected=&quot;{$thread.demo_portal_featured}&quot;&gt;
+        &lt;xf:hint&gt;{{ phrase('demo_portal_featured_hint') }}&lt;/xf:hint&gt;
+        &lt;xf:afterhtml&gt;
+            &lt;xf:hiddenval name=&quot;_xfSet[featured]&quot; value=&quot;1&quot; /&gt;
+        &lt;/xf:afterhtml&gt;
+    &lt;/xf:option&gt;
+&lt;/xf:if&gt;
+$0
+</code></pre>
+<p>这个条件判断有点偏长了，但它允许我们在两个特定的条件下显示精选 checkbox：
+a)如果帖子还没有创建，并且论坛的自动精选选项被关闭，并且有精选的权限，或者
+b)它是一个已经存在的帖子，并且有 精选/非精选 的权限。</p>
+<p>一个快速的 "测试" 应该会显示这个附加的代码将被插入到现有的 <code>&lt;xf:checkboxrow&gt;</code> 中 "打开" checkbox 上方。 如果这一切看起来都正常，就点击 "保存"。</p>
+<p>我们不得不在这里直接在修改中使用模板代码，因为在已经存在的 input 或 row 标签中加入一个模板（象我们之前做的那样）这样是会无法运作的。 我们现在还需要为标签和提示创建短语，因为以后将无法检测到这些了。</p>
+<p>在 "外観" 下进入 "短语" 并点击 "添加短语"。 确保你的附加组件被选中。 第一个短语的 "Title" 将是 "demo_portal_featured"，文本将是简単的 "精选"。 点击 "保存并退出"。 再次点击 "添加短语"。 第二个短语的 "标题" 会是 "demo_portal_featured_hint"，文本会是 "精选主题将出现在 Portal 页面"。</p>
+<p>回到我们刚刚添加修改的模板代码，你可能已经注意到了一些事情。 我们在主题 Entity 上调用了一个方法，<code>canFeatureUnfeature()</code>，而这个方法还不存在。 我们最终要用这个来做一个权限检查，控制用户是否可以手动对一个主题进行精选操作。</p>
+<p>为了添加这个方法，我们需要为 <code>XF\Entity\Thread</code> Entity 新建一个 Class extension。 所以，现在就象我们之前做的那样做。 继承 class 将是 <code>Demo\Portal\XF\Entity\Thread</code>，所以在路径 <code>src/addons/Demo/Portal/XF/Entity/Thread.php</code> 中创建这个 class，内容如下：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\XF\Entity;
+
+class Thread extends XFCP_Thread
+{
+    public function canFeatureUnfeature()
+    {
+        return true;
+    }
+}
+</code></pre>
+<p>好吧，所以，我们并没有在这里做太多有价值的事情。 <code>canFeatureUnfeature()</code> 方法现在所做的就是返回 <code>true</code>。 以后，我们会实作一些适当的权限，并在这里添加。</p>
+<p>测试一下当前的效果，打开你之前精选的一个主题，在工具选単中选择 "编辑主题"。 我们应该看到 "设置主题状态" checkbox row 有我们添加的 "精选" checkbox，而且应该是勾选的，说明这个主题确实是具有精选的。</p>
+<p>我们现在可以继续改变主题编辑器服务来寻找这个值，并相应地进行精选或取消精选。 为此我们需要两个新的 Class extensions。 回到 "Class extensions" 页面。 第一个将有一个基类 <code>XF\Pub\Controller\Thread</code> 和继承类 <code>Demo\Portal\XF\Pub\Controller\Thread</code>。 第二个将有一个 <code>XF\Service\Thread\Editor</code> 的基类和一个 <code>Demo\Portal\XF\Service\Thread\Editor</code> 的继承类。</p>
+<p>编辑器服务其实要和我们之前创建的继承 creator 服务非常相似，所以在相关位置创建。 下面是继承类的所有代码：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\XF\Service\Thread;
+
+class Editor extends XFCP_Editor
+{
+    protected $featureThread;
+
+    public function setFeatureThread($featureThread)
+    {
+        $this-&gt;featureThread = $featureThread;
+    }
+
+    protected function _save()
+    {
+        $thread = parent::_save();
+
+        if ($this-&gt;featureThread !== null &amp;&amp; $thread-&gt;discussion_state == 'visible')
+        {
+            /** @var \Demo\Portal\Entity\FeaturedThread $featuredThread */
+            $featuredThread = $thread-&gt;getRelationOrDefault('FeaturedThread', false);
+
+            if ($this-&gt;featureThread)
+            {
+                if (!$featuredThread-&gt;exists())
+                {
+                    $featuredThread-&gt;save();
+                    $thread-&gt;fastUpdate('demo_portal_featured', true);
+                }
+            }
+            else
+            {
+                if ($featuredThread-&gt;exists())
+                {
+                    $featuredThread-&gt;delete();
+                    $thread-&gt;fastUpdate('demo_portal_featured', false);
+                }
+            }
+        }
+
+        return $thread;
+    }
+}
+</code></pre>
+<p>这比 creator 服务中的代码要复杂一些。 例如，有可能会出现这样的情况，一个主题被编辑了，而用户没有编辑该主题的权限，因此我们不显示 checkbox。 在这些情况下，我们不希望自动认为该主题应该是无精选的。 由于类 <code>$featureThread</code> 属性的默认值是 <code>null</code>，我们可以使用这个属性，这样本质上该属性有三种状态。 在这种情况下，<code>null</code> 表示 "没有变化"，<code>true</code> 表示我们对该主题进行了精选设置，<code>false</code> 表示我们取消了它的精选。</p>
+<p>在非精选化的情况下，我们实际上只是通过调用 <code>delete()</code> 方法来删除精选主题 Entity。 在这两种情况下，我们再次使用 <code>fastUpdate()</code> 方法更新主题 Entity 中的缓存值，以表示当前的精选状态。</p>
+<p>在完成编辑过程之前，我们需要为我们的继承主题 Controller 添加代码，特别是继承 <code>setupThreadEdit()</code> 方法。 整个继承主题 Controller 的代码看起来将会是这样：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\XF\Pub\Controller;
+
+class Thread extends XFCP_Thread
+{
+    public function setupThreadEdit(\XF\Entity\Thread $thread)
+    {
+        /** @var \Demo\Portal\XF\Service\Thread\Editor $editor */
+        $editor = parent::setupThreadEdit($thread);
+
+        $canFeatureUnfeature = $thread-&gt;canFeatureUnfeature();
+        if ($canFeatureUnfeature)
+        {
+            $editor-&gt;setFeatureThread($this-&gt;filter('featured', 'bool'));
+        }
+
+        return $editor;
+    }
+}
+</code></pre>
+<p>这应该足以让您编辑一个主题，并将其状态设置为精选（或非精选）。 如果您现在尝试一下，您应该可以看到主题相应地从您的 portal 页面出现和消失。</p>
+<p>我们需要在主题 Controller 中继承另一个方法，以处理主题状态控制也显示在一些主题回覆表单上的情况。</p>
+<p>我们只需要在上面添加的 <code>setupThreadEdit()</code> 方法下面添加以下代码即可：</p>
+<pre><code class="language-php">public function finalizeThreadReply(\XF\Service\Thread\Replier $replier)
+{
+    parent::finalizeThreadReply($replier);
+
+    $setOptions = $this-&gt;filter('_xfSet', 'array-bool');
+    if ($setOptions)
+    {
+        $thread = $replier-&gt;getThread();
+
+        if ($thread-&gt;canFeatureUnfeature() &amp;&amp; isset($setOptions['featured']))
+        {
+            $replier-&gt;setFeatureThread($this-&gt;filter('featured', 'bool'));
+        }
+    }
+}
+</code></pre>
+<p>请注意，我们在这个方法中并没有实际返回任何东西，因为并不期望它返回任何东西。</p>
+<p>最后一步，我们需要回到论坛 Controller，稍微修改一下我们现有的代码，这样，如果精选不是自动的，我们可以手动处理。 这应该是相当直接的。 进入您的继承论坛 Controller，然后将替换这个：</p>
+<pre><code class="language-php">if ($forum-&gt;demo_portal_auto_feature)
+{
+    $creator-&gt;setFeatureThread(true);
+}
+</code></pre>
+<p>改成下面这样：</p>
+<pre><code class="language-php">if ($forum-&gt;demo_portal_auto_feature)
+{
+    $creator-&gt;setFeatureThread(true);
+}
+else
+{
+    $setOptions = $this-&gt;filter('_xfSet', 'array-bool');
+    if ($setOptions)
+    {
+        $thread = $creator-&gt;getThread();
+
+        if ($thread-&gt;canFeatureUnfeature() &amp;&amp; isset($setOptions['featured']))
+        {
+            $creator-&gt;setFeatureThread($this-&gt;filter('featured', 'bool'));
+        }
+    }
+}
+</code></pre>
+<p>这和我们已经拥有的基本相同，例如，如果论坛开启了自动精选，那麽我们只需将该主题设置为精选，否则，我们检查是否有 checkbox，就象我们对其他情况所做的那样，将其设置为 checkbox 状态。</p>
+<p>我们现在应该测试创建 3 个主题，以确保其运作正常。 第一个是在开启了自动精选的论坛中，确保它仍然有效，然后是在没有开启自动精选的论坛中，勾选 "精选" checkbox，再勾选它。 假设一切正常，让我们继续前进。</p>
+<h2 id="_11">改进门户网站页面<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<p>虽然，portal 页面看起来很合理，但我们可以做得更好一些。</p>
+<p>首先，我们应该调整我们的代码，使我们只显示 X 个特色主题，我们还应该添加一些页面导览。 在这一点上，如果你还没有的话，可能值得再多精选一些主题，这样我们就可以实际测试分页了！</p>
+<p>首先，我们需要回到我们的 portal Controller，并在 <code>actionIndex()</code> 方法的顶部添加一些代码：</p>
+<pre><code class="language-php">$page = $this-&gt;filterPage();
+$perPage = 5;
+</code></pre>
+<p>这里的第一行是一个特定的 helper 方法，用来获取当前的页码。 第二行是我们每页要加载多少个项目，这通常来自一个选项，但我们现在将硬写死为 5。</p>
+<p>接下来要做的就是把这一行：</p>
+<pre><code class="language-php">$finder = $repo-&gt;findFeaturedThreadsForPortalView();
+</code></pre>
+<p>修改成这样：</p>
+<pre><code class="language-php">$finder = $repo-&gt;findFeaturedThreadsForPortalView()
+    -&gt;limitByPage($page, $perPage);
+</code></pre>
+<p>这就改变了我们的查找，使它能根据我们上面定义的 页/每页 值进行 limit。 这将自动计算出当前页面的正确 limit (<code>$perPage</code>) 和 offset (<code>($page - 1) * $perPage</code>)。 接下来，我们需要再传递一些参数到我们的 view 参数中，所以将下面：</p>
+<pre><code class="language-php">$viewParams = [
+    'featuredThreads' =&gt; $finder-&gt;fetch()
+];
+</code></pre>
+<p>改变成：</p>
+<pre><code class="language-php">$viewParams = [
+    'featuredThreads' =&gt; $finder-&gt;fetch(),
+    'total' =&gt; $finder-&gt;total(),
+    'page' =&gt; $page,
+    'perPage' =&gt; $perPage
+];
+</code></pre>
+<p>要使用显示我们的页面导览，我们需要知道条目的总数，我们可以通过 <code>total()</code> 方法从 finder 中得到，当前的页码和我们每页显示的数量。</p>
+<p>如果你回到 portal，现在你会看到只有 5 个精选主题显示。 不过，我们现在需要添加页面导览。 所以打开 <code>demo_portal_view</code> 模板，在 <code>&lt;/xf:foreach&gt;</code> 标签后直接添加以下内容：</p>
+<pre><code class="language-html">&lt;xf:pagenav page=&quot;{$page}&quot; perpage=&quot;{$perPage}&quot; total=&quot;{$total}&quot; link=&quot;portal&quot; wrapperclass=&quot;block&quot; /&gt;
+</code></pre>
+<p>此时重新加载 portal 页面，只要你有 5 个以上的精选主题，现在就会在精选主题列表的底部看到页面导览。</p>
+<p>其他一些可能有助于改善这个页面的外観的东西是添加一个侧边栏，或者更准确地说，一个显示在侧边栏的小组件位置。</p>
+<p>小组件位置是在 Admin CP的 "开发" 下添加的。 进入 "小组件位置" 页面，点击 "添加小组件位置"。 输入 "位置 ID" 为 <code>demo_portal_view_sidebar</code>，"Title" 为 <code>Demo portal view: Sidebar</code> 和一个适当的描述。 确保位置已开启，并选择了正确的附加组件 ID 后，点击 "保存"。</p>
+<p>要将这个位置添加到模板中，只需在 <code>&lt;xf:title&gt;</code> 标签下面添加以下内容：</p>
+<pre><code class="language-html">&lt;xf:widgetpos id=&quot;demo_portal_view_sidebar&quot; position=&quot;sidebar&quot; /&gt;
+</code></pre>
+<p>当然，在没有添加一些小组件之前，我们还是不会看到侧边栏。 小组件本身是不指派给附加组件的，所以你为这个位置创建的小组件，如果你想在默认情况下发送一些配置好的小组件，将需要添加到 Setup class 中。</p>
+<p>为了简単起见，我们只需要复制当前指派给 <code>forum_list_sidebar</code> 位置的小组件（默认情况下）。 所以，我们将把这些添加到 Setup class 中的一个新的 <code>installStep4()</code> 方法中：</p>
+<pre><code class="language-php">public function installStep4()
+{
+    $this-&gt;createWidget('demo_portal_view_members_online', 'members_online', [
+        'positions' =&gt; ['demo_portal_view_sidebar' =&gt; 10]
+    ]);
+
+    $this-&gt;createWidget('demo_portal_view_new_posts', 'new_posts', [
+        'positions' =&gt; ['demo_portal_view_sidebar' =&gt; 20]
+    ]);
+
+    $this-&gt;createWidget('demo_portal_view_new_profile_posts', 'new_profile_posts', [
+        'positions' =&gt; ['demo_portal_view_sidebar' =&gt; 30]
+    ]);
+
+    $this-&gt;createWidget('demo_portal_view_forum_statistics', 'forum_statistics', [
+        'positions' =&gt; ['demo_portal_view_sidebar' =&gt; 40]
+    ]);
+
+    $this-&gt;createWidget('demo_portal_view_share_page', 'share_page', [
+        'positions' =&gt; ['demo_portal_view_sidebar' =&gt; 50]
+    ]);
+}
+</code></pre>
+<p>当然，别忘了自己运行这个设置步骤：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:install-step Demo/Portal 4</p>
+</div>
+<h2 id="_12">实现权限和优化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<p>现在，我们在 portal 页面中显示所有的精选主题，不管访问者是否有权限查看它们。 这不是很理想；在某些情况下，您可能希望在某些受限制的论坛上发布主题，并且只让那些可以正常视图该论坛的用户可见。</p>
+<p>要做到这一点，我们需要改变我们的代码，以便我们 "over-fetch" 我们需要显示的记录数量，过滤掉任何看不见的结果，然后将结果集切成我们想要在每页显示的实际数量。 这比听起来要简単一些。</p>
+<p>首先，请进入 Portal Controller，并将这一行：</p>
+<pre><code class="language-php">-&gt;limitByPage($page, $perPage);
+</code></pre>
+<p>更改成这样：</p>
+<pre><code class="language-php">-&gt;limit($perPage * 3);
+</code></pre>
+<p>然后下面再加上：</p>
+<pre><code class="language-php">$featuredThreads = $finder-&gt;fetch()
+    -&gt;filter(function(\Demo\Portal\Entity\FeaturedThread $featuredThread)
+    {
+        return ($featuredThread-&gt;Thread-&gt;canView());
+    })
+    -&gt;sliceToPage($page, $perPage);
+</code></pre>
+<p>最后将这行：</p>
+<pre><code class="language-php">'featuredThreads' =&gt; $finder-&gt;fetch(),
+</code></pre>
+<p>更改为：</p>
+<pre><code class="language-php">'featuredThreads' =&gt; $featuredThreads,
+</code></pre>
+<p>你可能在前面的 demo_portal_view 模板中已经发现，我们呈现的每一篇文章也指定其附件：</p>
+<pre><code class="language-plain">'attachments': $post.attach_count ? $post.Attachments : [],
+</code></pre>
+<p>现在，这将为每个帖子生成一个额外的查找。 所以，我们应该尝试对我们要显示的所有帖子进行一次查找，并提前将它们添加到帖子中。 这可能听起来比实际情况更复杂。 只要在 <code>-&gt;slice(0, $perPage, true);</code> 行下面添加以下代码即可。</p>
+<pre><code class="language-php">$threads = $featuredThreads-&gt;pluckNamed('Thread');
+$posts = $threads-&gt;pluckNamed('FirstPost', 'first_post_id');
+
+/** @var \XF\Repository\Attachment $attachRepo */
+$attachRepo = $this-&gt;repository('XF:Attachment');
+$attachRepo-&gt;addAttachmentsToContent($posts, 'post');
+</code></pre>
+<p>我们首先使用 <code>pluckNamed()</code> 方法获得一个主题的集合，然后再从主题中获得一个帖子的集合（以帖子 ID 为 key ）。 一旦我们得到了帖子，我们只需将它们传递到附件 repository 的一个特殊方法中就可以了，该方法运行一个単一的查找，并为每个帖子的附件关联 "hydrates"。</p>
+<p>最后要完成的权限相关事情是创建一个新的权限来控制谁可以手动地对主题进行 精选/取消精选。 要做到这一点，在 Admin CP 的 "开发" 中点击 "权限定义"，然后点击 "添加权限"。 "权限组" 为 "论坛"，"权限 ID" 为  <code>demoPortalFeature</code>，"Title" 应该是 <code>Can feature / unfeature threads</code>，将 "介面组" 设置为 <code>Forum moderator permissions</code>，在选择了适当的显示顺序并确保选择了您的附加组件之后，点击 "保存"。</p>
+<p>要真正使用这个权限，我们需要回到我们的继承主题 Entity，修改 <code>canFeatureUnfeature()</code> 方法。 将 <code>return true;</code> 替换为：</p>
+<pre><code class="language-php">return \XF::visitor()-&gt;hasNodePermission($this-&gt;node_id, 'demoPortalFeature');
+</code></pre>
+<p>此时，由于权限没有任何默认值，如果你去编辑任何一个帖子，你应该会发现 "精选" checkbox 不见了。 但是，如果您授予自己该权限，则该c heckbox 将再次出现。 因此，这应该表明了权限的运作是符合预期的!</p>
+<h2 id="_13">创建一些选项<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<p>我们当前每页只显示 5 个精选主题，但如果能有更多的显示选项就更好了。 创建选项很简単。 虽然不是必须的，但我们首先要创建一个新的选项组，然后向该组添加一个新的选项。</p>
+<p>在 Admin CP 的设置然后选项下点击 "添加选项组" 按钮。 我们将 "用户组 ID" 称为 <code>demoPortal</code>，并给它一个 "Demo - Portal options" 的标题。 给它一个合适的 "描述" 和 "显示顺序"，然后点击 "保存"。</p>
+<p>现在点击 "添加选项"。 将 "选项 ID" 设置为 <code>demoPortalFeaturedPerPage</code>，"Title" 设置为 <code>Featured threads per page</code>，编辑格式设置为 <code>Spin box</code>，"数据类型" 设置为 <code>Positive integer</code>，"默认值" 设置为 "10"。 点击 "保存"。</p>
+<p>要实现这一点，请回到 portal Controller，并将：</p>
+<pre><code class="language-php">$perPage = 5;
+</code></pre>
+<p>更改为：</p>
+<pre><code class="language-php">$perPage = $this-&gt;options()-&gt;demoPortalFeaturedPerPage;
+</code></pre>
+<p>增加另一个选项可能不会有什麽影响。 也许另一个有用的选项是可以将默认的排序顺序从 <code>xf_demo_portal_featured_thread.feartured_date</code> 改为 <code>xf_thread.post_date</code>。 回到 "Demo - Portal options" 组，点击 "添加选项"。</p>
+<p>将 "选项 ID" 设置为 <code>demoPortalDefaultSort</code>，"Title" 设置为 <code>Default sort order</code>，"编辑格式" 设置为 <code>Radio buttons</code>。 "格式参数" 设置如下：</p>
+<p><code>plain
+ featured_date={{ phrase('demo_portal_featured_date') }}
+ post_date={{ phrase('demo_portal_post_date') }}</code></p>
+<p>最后将 "默认值" 设置为 <code>featured_date</code>，点击 "保存"。</p>
+<p>我们需要创建用于単选按钮标签的短语，类似于我们之前创建模板修改的短语。</p>
+<p>将选项值设置为 "发布日期"。</p>
+<p>严格来说，我们可以直接更新我们的 repository 方法来使用新的选项，但是，也许值得看看自定义 finder 方法是如何运作的。 在路径 <code>src/addons/Demo/Portal/Finder/FeaturedThread.php</code> 中创建一个新文件，内容如下：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Portal\Finder;
+
+use XF\Mvc\Entity\Finder;
+
+class FeaturedThread extends Finder
+{
+    public function applyFeaturedOrder($direction = 'ASC')
+    {
+        $options = \XF::options();
+
+        if ($options-&gt;demoPortalDefaultSort == 'featured_date')
+        {
+            $this-&gt;setDefaultOrder('featured_date', $direction);
+        }
+        else
+        {
+            $this-&gt;setDefaultOrder('Thread.post_date', $direction);
+        }
+
+        return $this;
+    }
+}
+</code></pre>
+<p>正如你所看到的，我们在这里所做的只是创建了一个相当基本的类，它继承了 XF <code>Finder</code> 物件，并创建一个简単的方法来查看我们选项的值并套用适当的默认顺序。 现在我们可以更新我们的 repository 方法来取代这个方法。</p>
+<p>在我们的精选主题 repository 里面，找到：</p>
+<pre><code class="language-php">-&gt;setDefaultOrder('featured_date', 'DESC')
+</code></pre>
+<p>并改成：</p>
+<pre><code class="language-php">-&gt;applyFeaturedOrder('DESC')
+</code></pre>
+<p>最后，更新我们的 portal view 以显示适当的时间戳大抵如此 - 根据我们的选项值，可以是精选日期或发布日期。</p>
+<p>在 demo_portal_view 模板中将：</p>
+<pre><code class="language-html">&lt;li&gt;&lt;xf:date time=&quot;{$featuredThread.featured_date}&quot; /&gt;&lt;/li&gt;
+</code></pre>
+<p>更改为：</p>
+<pre><code class="language-html">&lt;li&gt;
+    &lt;xf:if is=&quot;$xf.options.demoPortalDefaultSort == 'featured_date'&quot;&gt;
+        &lt;xf:date time=&quot;{$featuredThread.featured_date}&quot; /&gt;
+    &lt;xf:else /&gt;
+        &lt;xf:date time=&quot;{$thread.post_date}&quot; /&gt;
+    &lt;/xf:if&gt;
+&lt;/li&gt;
+</code></pre>
+<h2 id="_14">在可见性变更上取消精选<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<p>为了解决这个问题，我们需要再次修改主题 Entity，但这次我们将通过 <code>entity_post_save</code> 事件来实现。 正如我们在 <a href="/entities-finders-repositories/#entity">实体生命周期</a> 中提到的，<code>_postSave()</code> 方法是在 Entity 被插入或修改后可以运行动作的地方。 最初我们会在一个主题不再可见的时候，取消对该主题的精选。</p>
+<p>所以，回到 "添加代码事件监听" 页面，这次监听 <code>entity_post_save</code> 事件。 这次的事件提示将是 <code>XF\Entity\Thread</code>。 对于运行 callback，我们将使用与之前相同的 class (<code>Dem\Portal\Listener</code>)，但是我们将在这里添加一个新的方法，命名为 <code>threadEntityPostSave</code>。 现在让我们添加这个方法，这样当我们保存监听器时，它就会出现：</p>
+<pre><code class="language-php">public static function threadEntityPostSave(\XF\Mvc\Entity\Entity $entity)
+{
+
+}
+</code></pre>
+<p>点击 "保存" 来保存监听器。</p>
+<p>这个函数的内容相当简単，我们来看一下：</p>
+<pre><code class="language-php">if ($entity-&gt;isUpdate())
+{
+    $visibilityChange = $entity-&gt;isStateChanged('discussion_state', 'visible');
+    if ($visibilityChange == 'leave')
+    {
+        $featuredThread = $entity-&gt;FeaturedThread;
+        if ($featuredThread)
+        {
+            $featuredThread-&gt;delete();
+            $entity-&gt;fastUpdate('demo_portal_featured', false);
+        }
+    }
+}
+</code></pre>
+<p>我们之前已经取消了主题的精选，但这一次我们要以主题的状态为条件。 我们可以使用 <code>isStateChanged</code> 方法检测状态变化。 这将对传递进来的 column 名和 value 返回 <code>enter</code> 或 <code>leave</code>。 例如，如果 <code>discussion_state</code> 从 <code>visible</code> 变为 <code>deleted</code>，那麽在上面的例子中，该方法将返回 <code>leave</code>。</p>
+<p>一旦我们检测到自己 "离开" 可见状态后，就可以直接确定自己有一个精选的主题关联，删除它，并更新缓存值。</p>
+<p>这只函盖了主题被暂时删除或送入批准队列的情况，我们还需要函盖主题被永久删除的情况。</p>
+<p>为此，我们需要另一个监听器，这次是针对 <code>entity_post_delete</code> 事件。 因此，使用相同的 callback class 添加该监听器，这次的方法名称为 <code>threadEntityPostDelete</code>。 在监听器 class 中添加以下代码：</p>
+<pre><code class="language-php">public static function threadEntityPostDelete(\XF\Mvc\Entity\Entity $entity)
+{
+    $featuredThread = $entity-&gt;FeaturedThread;
+    if ($featuredThread)
+    {
+        $featuredThread-&gt;delete();
+    }
+}
+</code></pre>
+<p>点击 "保存" 以保存监听器后，就可以对此进行测试了。 为了测试这个，其实你最好留意一下 xf_demo_portal_featured_thread 资料表，因为到当前为止，代码已经不会显示不可见的主题了，但重要的是不要留下孤儿数据。 一切都很顺利，我们已经非常接近完成了......</p>
+<h2 id="_15">最后一些未交待清楚的事情<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<p>说到孤儿数据，每当卸载附加组件时，我们都应该对数据库进行整理。 我们可以在我们之前创建的 Setup class 中完成这项工作。</p>
+<p>我们将创建 3 个新方法，对应我们的前 3 个安装步骤：</p>
+<pre><code class="language-php">public function uninstallStep1()
+{
+    $this-&gt;schemaManager()-&gt;alterTable('xf_forum', function(Alter $table)
+    {
+        $table-&gt;dropColumns('demo_portal_auto_feature');
+    });
+}
+
+public function uninstallStep2()
+{
+    $this-&gt;schemaManager()-&gt;alterTable('xf_thread', function(Alter $table)
+    {
+        $table-&gt;dropColumns('demo_portal_featured');
+    });
+}
+
+public function uninstallStep3()
+{
+    $this-&gt;schemaManager()-&gt;dropTable('xf_demo_portal_featured_thread');
+}
+</code></pre>
+<p>我们不需要创建卸载步骤来移除小组件，因为当小组件位置被移除时，它们会被自动移除。 对于我们创建并与附加组件相关联的任何其他数据也是如此 -- 它们将在卸载时自动删除。</p>
+<h2 id="_16">构建附加组件<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<p>任何附加组件的最后一步，就是发布它！ 这涉及到从数据库中提取 XML 文件（在软件包中提供并用于安装），计算每个文件的哈希码，并将其添加到我们的 <code>hashes.json</code> 中，并将相关文件打包成一个 ZIP 文件。</p>
+<p>值得庆幸的是，这可以通过一个 CLI 命令来完成! 只要运行下面的命令就可以了：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:build-release Demo/Portal</p>
+<p><strong>Performing add-on export.</strong></p>
+<p><strong>Exporting data for Demo - Portal to ../src/addons/Demo/Portal/_data.</strong></p>
+<p>10/10 [============================] 100%</p>
+<p><strong>Written successfully.</strong></p>
+<p><strong>Building release ZIP.</strong></p>
+<p><strong>Writing release ZIP to ../src/addons/Demo/Portal/_releases.</strong></p>
+<p><strong>Release written successfully.</strong></p>
+</div>
+<p>那麽，我们的演示插件就到此结束了！ 如果您想下载这个附加组件的原代码，请点击这里：<a href="/files/Demo-Portal-1.0.0%20Alpha.zip">Demo-Portal-1.0.0 Alpha.zip</a>。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="designing-styles/" class="btn btn-neutral float-right" title="设计样式">下一页 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="managing-the-schema/" class="btn btn-neutral" title="管理 Schema"><span class="icon icon-circle-arrow-left"></span> 上一页</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 开发者说明文档&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 构建，该文档基于 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主题</a>，并由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../managing-the-schema/" style="color: #fcfcfc;">&laquo; 上一页</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../designing-styles/" style="color: #fcfcfc">下一页 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
