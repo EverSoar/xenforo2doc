@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Controller basics - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.576591%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Controller basics";
+    var mkdocs_page_input_path = "controller-basics.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#view-reply">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">View reply</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#redirect-reply">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Redirect reply</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#error-reply">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Error reply</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#message-reply">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Message reply</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#exception-reply">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Exception reply</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#reroute-reply">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Reroute reply</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#modifying-a-controller-action-reply-properly">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Modifying a controller action reply (properly)</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Controller basics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/controller-basics.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="controller-basics">Controller basics<a class="headerlink" href="#controller-basics" title="Permanent link">&para;</a></h1>
+<p>At a basic level, Controllers are the code that is executed when you visit a page within XF. Controllers are generally responsible for handling user input and passing that user input to the appropriate place which, generally, would be to perform some sort of database action (Model) or load visual content (View).</p>
+<p>When a user clicks a link, the requested URL is routed to a specific controller and controller action. See <a href="/routing-basics">Routing basics</a>. For example, in XF if you click a URL like <code>index.php?conversations/add</code> you will be routed to the <code>XF\Pub\Controller\Conversation</code> controller and to the <code>add</code> action.</p>
+<p>If you look at this class in the file system (see <a href="/general-concepts/#autoloader">Autoloader</a> for a description of how classes and file paths map to each other) you will notice that there are a number of methods named with a prefix of <code>action</code>. All of these methods indicate a specific controller action. So, to see the code involved when viewing the conversations/add page mentioned above, look in this file for <code>public function actionAdd()</code>.</p>
+<p>XF controllers are responsible for returning a reply object which generally consist of one of the following types:</p>
+<h2 id="view-reply">View reply<a class="headerlink" href="#view-reply" title="Permanent link">&para;</a></h2>
+<p>This is one of the most common replies you will deal with during XF development. A controller which returns a view reply will usually require up to three arguments to be passed in. A view class (more on that below), a template name, and an array of <code>$viewParams</code> which is the data that should be available to the template.</p>
+<p>Here's a typical example of a controller action which returns a View reply:</p>
+<pre><code class="language-php">public function actionExample()
+{
+    $hello = 'Hello';
+    $world = 'world!';
+
+    $viewParams = [
+        'hello' =&gt; $hello,
+        'world' =&gt; $world
+    ];
+    return $this-&gt;view('Demo:Example', 'demo_example', $viewParams);
+}
+</code></pre>
+<p>The first argument is the short class name for a specific View class. This class may or may not exist (often it won't need to exist, we'll cover view classes more later) but it should have a roughly unique name for the controller and action. As with other <a href="/general-concepts/#short-class-names">Short class names</a>, the particular short class name above will resolve to <code>Demo\Pub\View\Example</code>. Again, <code>Pub</code> is inferred automatically from the controller type.</p>
+<p>The second argument is the template name. In this case, we're looking for a template named <code>demo_example</code>.</p>
+<p>The third argument is an array of template parameters/variables that should be available to the view. This array should generally be <code>key =&gt; value</code> pairs. The above example is passing two template params to the template. The <code>key</code> part of the array indicates the name of the variable available within the template. The <code>value</code> part of the array indicates the value.</p>
+<p>So, if we had the following contents in the <code>demo_example</code> template:</p>
+<pre><code class="language-html">{$hello} {$world}
+</code></pre>
+<p>The template would output the following:</p>
+<pre><code class="language-plain">Hello world!
+</code></pre>
+<h2 id="redirect-reply">Redirect reply<a class="headerlink" href="#redirect-reply" title="Permanent link">&para;</a></h2>
+<p>This reply is returned when you wish to redirect a user to a different URL after they have completed some sort of action.</p>
+<p>A common use case here is after a user has submitted data through a form you may wish to redirect them to a different page, for example returning a user to a list of items. </p>
+<p>Here's an example of a typical controller action that performs a redirect:</p>
+<pre><code class="language-php">public function actionRedirect()
+{
+    return $this-&gt;redirect($this-&gt;buildLink('demo/example'), 'This is a redirect message.', 'permanent');
+}
+</code></pre>
+<p>The first argument is the URL to redirect to. This example will redirect the user to the <code>index.php?demo/example</code> URL.</p>
+<p>The second argument will only display if the form is submitted over an AJAX request which opts to prevent redirecting. The result will be a "flash message" which appears from the top of the screen with your chosen message. You do not have to supply your own message. If it is not provided it will default to "Your changes have been saved".</p>
+<p>The third argument defaults to <code>temporary</code>, but you can also opt to set this to permanent as per the example. The only difference here is the type of HTTP response code provided by the server. Temporary is ideal in most cases, and this will respond with a 303 code. <code>permanent</code> will issue a 301 response code.</p>
+<p>Although you can trigger a permanent redirect in this way, there's actually a specific method for this, which can be used as follows. It also takes a 'message' argument, but as above it is optional.</p>
+<pre><code class="language-php">public function actionRedirect()
+{
+    return $this-&gt;redirectPermanently($this-&gt;buildLink('demo/example'));
+}
+</code></pre>
+<h2 id="error-reply">Error reply<a class="headerlink" href="#error-reply" title="Permanent link">&para;</a></h2>
+<p>As the name suggests, this reply is what you will return if you need to display an error to the user. It's somewhat simple, here's an example:</p>
+<pre><code class="language-php">public function actionError()
+{
+    return $this-&gt;error('Unfortunately the thing you are looking for could not be found.', 404);
+}
+</code></pre>
+<p>There are only two arguments supported here. The first is the error message you want to display, and the second is the HTTP response code you want the server to send. 404 would represent an appropriate response when something was not found.</p>
+<h2 id="message-reply">Message reply<a class="headerlink" href="#message-reply" title="Permanent link">&para;</a></h2>
+<p>This reply is very much similar to the error reply, and supports the same arguments. The main difference is, in terms of appearance, the message displayed is not presented as an error.</p>
+<h2 id="exception-reply">Exception reply<a class="headerlink" href="#exception-reply" title="Permanent link">&para;</a></h2>
+<p>It is sometimes necessary to interrupt the normal flow of your controller code, and reply with an Exception instead. Exception replies do not necessarily have to represent an error; for example, they can be used to force your controller to perform a redirect. However, typically, they will often be used to halt the flow of your controller to display an error, as in the following example:</p>
+<pre><code class="language-php">public function actionException()
+{
+    throw $this-&gt;exception($this-&gt;error('An unexpected error occurred'));
+}
+</code></pre>
+<p>Exception replies only accept a single argument, and actually that argument must be some other form of Reply object, such as an <a href="#error-reply">Error reply</a>. This particular example throws an exception, and the entire controller code at that point will stop, and a standard error will be displayed.</p>
+<p>Note that exception replies must be "thrown" using <code>throw</code> rather than being "returned" with <code>return</code>.</p>
+<h2 id="reroute-reply">Reroute reply<a class="headerlink" href="#reroute-reply" title="Permanent link">&para;</a></h2>
+<p>Under certain conditions, it is necessary to reroute a user to an entirely different controller or action within the same controller, without performing a full redirect, without changing the URL the user has landed on, and without having to duplicate the code of the target action.</p>
+<p>That looks a little bit like this:</p>
+<pre><code class="language-php">public function actionReroute()
+{
+    return $this-&gt;rerouteController(__CLASS__, 'error');
+}
+
+public function actionError()
+{
+    return $this-&gt;error('Oops! Something went wrong!');
+}
+</code></pre>
+<p>In this particular example, if a user navigated to the <code>index.php?demo/reroute</code> URL, they would see the error reply from the <code>actionError()</code> method. They would not be redirected, nor would the URL in their browser change; they would simply just receive the reply from the error action.</p>
+<p>The reroute reply also supports a third argument which allows various parameters to be passed from one controller action to the other. This can either be an array or a <code>ParameterBag</code> object (more on that later).</p>
+<h2 id="modifying-a-controller-action-reply-properly">Modifying a controller action reply (properly)<a class="headerlink" href="#modifying-a-controller-action-reply-properly" title="Permanent link">&para;</a></h2>
+<p>In the <a href="/general-concepts/#extending-classes">Extending classes</a> section, we've already seen how simple it is to extend a class, but extra care needs to be taken when extending a controller action that already exists.</p>
+<p>Unless you have a specific need to override an existing action entirely, and replace it with something new (which is generally not recommended), instead you should be modifying the existing reply of the parent class. That is done quite simply, as an example let's modify the view reply from the <a href="#view-reply">View reply</a> example above.</p>
+<pre><code class="language-php">public function actionExample()
+{
+    $reply = parent::actionExample();
+
+    return $reply;
+}
+</code></pre>
+<p>Assuming the above is added to an extended controller where the <code>actionExample()</code> method already exists, the above doesn't actually do anything other than return the original view reply. Let's now change the existing <code>hello</code> parameter to read "Bonjour" instead of "Hello".</p>
+<pre><code class="language-php">public function actionExample()
+{
+    $reply = parent::actionExample();
+
+    if ($reply instanceof \XF\Mvc\Reply\View)
+    {
+        $reply-&gt;setParam('hello', 'Bonjour');
+    }
+
+    return $reply;
+}
+</code></pre>
+<p>Because a controller reply can actually represent a number of different objects that have different behaviors and methods, it is imperative that we only attempt to extend the correct reply type. We do that in the example above by checking to see if the parent <code>$reply</code> object is actually a <code>View</code>  type. If we didn't do this, we extended this action and the controller action replies with a redirect instead, then there would likely be an error.  </p>
+<p>Before extending this action visiting this page would display "Hello world!". After extending it, the view will now display "Bonjour world!".</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="entities-finders-repositories/" class="btn btn-neutral float-right" title="Entities, finders, and repositories">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="routing-basics/" class="btn btn-neutral" title="Routing basics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../routing-basics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../entities-finders-repositories/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

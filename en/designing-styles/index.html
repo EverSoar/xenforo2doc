@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Designing styles - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.611047%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Designing styles";
+    var mkdocs_page_input_path = "designing-styles.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#enabling-designer-mode">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Enabling designer mode</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#enabling-designer-mode-for-a-style">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Enabling designer mode for a style</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#disabling-designer-mode-for-a-style">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Disabling designer mode for a style</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#what-is-output-and-where">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">What is output and where?</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#templates">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Templates</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#style-properties-and-groups">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Style properties and groups</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#modifying-a-specific-template">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Modifying a specific template</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#other-useful-commands">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Other useful commands</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#export-from-database">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Export from database</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#import-from-file-system">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Import from file system</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sync-templates">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Sync templates</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#revert-template">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Revert template</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Designing styles</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/designing-styles.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="designing-styles">Designing styles<a class="headerlink" href="#designing-styles" title="Permanent link">&para;</a></h1>
+<p>In XF2 we have introduced an all new way to build and edit styles called "Designer mode". Designer mode is a collection of CLI tools that allow you to modify certain templates within a style directly on the file system. It also outputs various metadata and information about style properties which is useful for version control and collaboration.</p>
+<h2 id="enabling-designer-mode">Enabling designer mode<a class="headerlink" href="#enabling-designer-mode" title="Permanent link">&para;</a></h2>
+<p>The first step to enabling designer mode is to enable it in <code>config.php</code>:</p>
+<pre><code class="language-php">$config['designer']['enabled'] = true;
+</code></pre>
+<p>Optionally, you can also specify a different path for designer mode files to exist on the file system. The following represents the default location. To change the location, add the below to your <code>config.php</code> and modify the path accordingly:</p>
+<pre><code class="language-php">$config['designer']['basePath'] = 'src/styles';
+</code></pre>
+<h2 id="enabling-designer-mode-for-a-style">Enabling designer mode for a style<a class="headerlink" href="#enabling-designer-mode-for-a-style" title="Permanent link">&para;</a></h2>
+<p>Designer mode must be explicitly enabled for each style. We enable designer mode on a style by using the CLI and specifying the style ID of the style, and choosing a "designer mode ID":</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:enable <em>[style_id]</em> <em>[designer_mode_id]</em></p>
+</div>
+<p>The designer mode ID is the identifier you will use for future commands related to designer mode. Once enabled, the current modified components of the style will be exported to the <code>[basePath]/[designer_mode_id]</code> directory.</p>
+<p>When enabling designer mode for this style if that directory already exists you will be given a choice to make as to whether we should overwrite the current contents of that directory from the style, or whether we should overwrite the current style from the current contents of that directory.</p>
+<h2 id="disabling-designer-mode-for-a-style">Disabling designer mode for a style<a class="headerlink" href="#disabling-designer-mode-for-a-style" title="Permanent link">&para;</a></h2>
+<p>To disable designer mode for a style, you just run the following CLI command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:disable <em>[designer_mode_id]</em></p>
+</div>
+<p>By default, this will keep the copy of the designer mode output on the file system. To remove the data, you can run the same command with the <code>--clear</code> option:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:disable <em>[designer_mode_id]</em> --clear</p>
+</div>
+<h2 id="what-is-output-and-where">What is output and where?<a class="headerlink" href="#what-is-output-and-where" title="Permanent link">&para;</a></h2>
+<p>It is important to remember that a style within XF only consists of what is <strong>modified in that style</strong>. This means that designer mode output will only consist of what has been modified in the style. Templates and style properties which are modified in a parent style is not output.</p>
+<h3 id="templates">Templates<a class="headerlink" href="#templates" title="Permanent link">&para;</a></h3>
+<p>Templates will be output to the <code>[basePath]/[designer_mode_id]/templates</code> directory. Within that directory you may have another directory for each type (e.g. admin, email and public).</p>
+<p>The templates will be output in HTML format and are directly editable on the file system. Changes made on the file system are imported and compiled when that template is loaded on a page. Similarly, you can revert a template by deleting it from the file system (if it was previously modified).</p>
+<h3 id="style-properties-and-groups">Style properties and groups<a class="headerlink" href="#style-properties-and-groups" title="Permanent link">&para;</a></h3>
+<p>Style properties and groups will be output to the <code>[basePath]/[designer_mode_id]/style_properties</code> and <code>[basePath]/[designer_mode_id]/style_property_groups</code> directories. They are exported in JSON format and serve as a useful way to monitor changes to these files via a version control system.</p>
+<p>It is not recommended to modify these files directly as changes to them will <strong>not</strong> be automatically imported like they are with templates.</p>
+<h2 id="modifying-a-specific-template">Modifying a specific template<a class="headerlink" href="#modifying-a-specific-template" title="Permanent link">&para;</a></h2>
+<p>Bearing in mind that a style represents components which are modified within that style only, when designer mode is enabled, the file system will also contain only components which are modified within that style only. It would not be possible to output the effective version of each template and style property.</p>
+<p>To mark a template as modified within a style, you can do it in the usual way by editing it in the Admin CP. Templates and style properties modified in the Admin CP will automatically be written out to the file system if designer mode is enabled. However, it would likely be more convenient to modify or "touch" a template using a CLI command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:touch-template <em>[designer_mode_id]</em> <em>[template_type:template_title]</em></p>
+</div>
+<p>As long as the specified template exists in a parent or the master style, it will be copied to the current style and output to the file system. You can then modify the template directly in the file system.</p>
+<p>If you would like to create an entirely custom template in your style (that doesn't exist in any other style within the tree), you can use the same command but you would just pass the <code>--custom</code> option:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:touch-template <em>[designer_mode_id]</em> <em>[template_type:template_title]</em> --custom</p>
+</div>
+<h2 id="other-useful-commands">Other useful commands<a class="headerlink" href="#other-useful-commands" title="Permanent link">&para;</a></h2>
+<p>There are a number of other useful commands relating to designer mode:</p>
+<h3 id="export-from-database">Export from database<a class="headerlink" href="#export-from-database" title="Permanent link">&para;</a></h3>
+<p>This command is usually automatically run when designer mode is enabled on a style, but if for some reason you would like to overwrite the file system copy with what is currently in the database, then you can run the following command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:export <em>[designer_mode_id]</em></p>
+</div>
+<p>It's also possible to export only specific types, e.g. <code>xf-designer:export-templates</code>.</p>
+<h3 id="import-from-file-system">Import from file system<a class="headerlink" href="#import-from-file-system" title="Permanent link">&para;</a></h3>
+<p>This command will overwrite the database copy of the style with what is on the file system:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:import <em>[designer_mode_id]</em></p>
+</div>
+<p>It's also possible to import only specific types, e.g. <code>xf-designer:import-templates</code>.</p>
+<h3 id="sync-templates">Sync templates<a class="headerlink" href="#sync-templates" title="Permanent link">&para;</a></h3>
+<p>This command is similar to importing templates (see above) but instead of overwriting everything it will only import templates and recompile them if the metadata has changed. It will also apply version number updates accordingly.</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:sync-templates <em>[designer_mode_id]</em></p>
+</div>
+<h3 id="revert-template">Revert template<a class="headerlink" href="#revert-template" title="Permanent link">&para;</a></h3>
+<p>This command can be used to revert a template, effectively deleting the custom version from the current style.</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:revert-template <em>[designer_mode_id]</em> <em>[template_type:template_title]</em></p>
+</div>
+<p>It's also possible to trigger a revert by removing the template from the file system.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="scotchbox/" class="btn btn-neutral float-right" title="Appendix: Scotch Box">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="lets-build-an-add-on/" class="btn btn-neutral" title="Let's build an add-on"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../lets-build-an-add-on/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../scotchbox/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

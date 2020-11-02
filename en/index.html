@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Developer Documentation for XenForo 2.0.">
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
+		<link href="extra.css?d=2020-11-02%2006%3A04%3A28.544311%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Getting started";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href="." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1 current"><a class="current" href=".">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#whats-new-for-developers">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">What's new for developers?</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#getting-started_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Getting started</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#downloading-xf-20">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Downloading XF 2.0</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#xf-20-requirements">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">XF 2.0 requirements</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#setting-up-a-local-server">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Setting up a local server</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#pre-built-virtual-machine">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Pre-built virtual machine</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#pre-built-stack">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Pre-built stack</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#uploading">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Uploading</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#creating-srcconfigphp">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Creating src/config.php</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#a-note-on-file-permissions">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">A note on file permissions</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#installation">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Installation</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#reinstallation">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Reinstallation</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#verifying-file-integrity">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Verifying file integrity</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#add-on-management-commands">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Add-on management commands</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#install">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Install</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#upgrade">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Upgrade</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#rebuild">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Rebuild</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#uninstall">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Uninstall</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Getting started</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/index.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="getting-started">Getting started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h1>
+<p>Welcome to XenForo 2!</p>
+<p>This documentation aims to get you started with XenForo 2.0 development. Pre-requisites for this documentation assume you
+will be familiar with, amongst other things, PHP and MySQL. It is not essential to have experience with a previous
+version of XenForo, but it would be an advantage.</p>
+<p>On the subsequent pages we will walk you through a brief overview of how to setup a local server, getting ready for
+installation, doing a clean install of XenForo 2.0, and run through some of the concepts of XF2 development.</p>
+<h2 id="whats-new-for-developers">What's new for developers?<a class="headerlink" href="#whats-new-for-developers" title="Permanent link">&para;</a></h2>
+<p>Although XenForo 2.0 adds a lot of improvements for your forums and its members, a significant amount of effort has
+been put into improving the underlying framework of XenForo. You can read more information about these changes in
+the following threads:</p>
+<ul>
+<li><a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205086" target="_blank">
+    What's new for developers in XenForo 2 (part 1)
+   </a></li>
+<li><a href="https://xenforo.com/community/threads/xenforo-2-0-development-updates-from-xf2demo.139565/post-1205088" target="_blank">
+    What's new for developers in XenForo 2 (part 2)
+   </a></li>
+</ul>
+<h2 id="getting-started_1">Getting started<a class="headerlink" href="#getting-started_1" title="Permanent link">&para;</a></h2>
+<p>Getting started with XF development is easy. You just need to download the files, upload them to a web server and
+trigger the install.</p>
+<p>If you don't have a web server, yet, don't worry, you can set one up on your local machine.</p>
+<h2 id="downloading-xf-20">Downloading XF 2.0<a class="headerlink" href="#downloading-xf-20" title="Permanent link">&para;</a></h2>
+<p>To download XF 2.0, just visit the <a href="https://xenforo.com/customers">Customer Area</a> and log in as normal. Locate the
+correct license and click the "Download XenForo" link. Select the version you wish to download, the package type and
+accept the license agreement. Finally, click the Download button to download the files.</p>
+<h2 id="xf-20-requirements">XF 2.0 requirements<a class="headerlink" href="#xf-20-requirements" title="Permanent link">&para;</a></h2>
+<p>The requirements for running XF 2.0 have changed since XF 1.5. The recommended requirements are as follows:</p>
+<ul>
+<li>PHP: 5.4.0+</li>
+<li>MySQL: 5.5+</li>
+<li>PHP extensions: MySQLi, GD (with JPEG support), PCRE, SPL, SimpleXML, DOM, JSON, iconv, ctype, cURL</li>
+</ul>
+<p><a href="https://xenforo.com/purchase/requirements-zip">Download the requirements test script.</a></p>
+<h2 id="setting-up-a-local-server">Setting up a local server<a class="headerlink" href="#setting-up-a-local-server" title="Permanent link">&para;</a></h2>
+<p>It's often more convenient to set up a local web server for development. There are generally two approaches for this:</p>
+<ol>
+<li>Install Apache (or nginx), MySQL (or MariaDB) and PHP yourself.</li>
+<li>Install a pre-built virtual machine</li>
+<li>Install a pre-built stack.</li>
+</ol>
+<p>Setting things up yourself is more complicated, but tends to give you more control over how everything is set up.</p>
+<h3 id="pre-built-virtual-machine">Pre-built virtual machine<a class="headerlink" href="#pre-built-virtual-machine" title="Permanent link">&para;</a></h3>
+<p>There are a variety of pre-built virtual machines available on the Internet, which provide the advantage of having all of the necessary services to run XenForo neatly packaged into one place, without having to install and maintain them directly on your own computer.</p>
+<p>Some of the XenForo developers use a virtual machine called <a href="https://box.scotch.io/">Scotch Box</a>, which includes everything you need to run XenForo with zero configuration required. We have a <a href="scotchbox/">step-by-step guide</a> to getting a XenForo development server up and running - you can have a working virtual web and database server up and running in just a few minutes by running a handful of commands.</p>
+<p><a href="scotchbox/">Installing Scotch Box for use with XenForo</a></p>
+<h3 id="pre-built-stack">Pre-built stack<a class="headerlink" href="#pre-built-stack" title="Permanent link">&para;</a></h3>
+<p>There are many pre-built stacks out there and they may vary in feature set, performance and reliability. Bitnami maintain a number of stacks, including <a href="https://bitnami.com/stack/lamp">LAMP</a>,
+<a href="https://bitnami.com/stack/mamp">MAMP</a> and <a href="https://bitnami.com/stack/wamp">WAMP</a> stacks for use on Linux, Mac and
+Windows respectively. They all include a fully configured installation of Apache, MySQL and PHP and include PhpMyAdmin for
+managing MySQL.</p>
+<h2 id="uploading">Uploading<a class="headerlink" href="#uploading" title="Permanent link">&para;</a></h2>
+<p>To install XF 2.0, you simply need to extract the ZIP file downloaded from the Customer Area and upload
+some of the files and directories within.</p>
+<p>Once extracted you will see a directory named <code>upload</code>. You need to go into
+that directory and upload the files and directories to your server's web root. This would usually be in a directory named
+<code>public_html</code>, <code>htdocs</code> or <code>www</code>.</p>
+<h2 id="creating-srcconfigphp">Creating src/config.php<a class="headerlink" href="#creating-srcconfigphp" title="Permanent link">&para;</a></h2>
+<p>If using the CLI to install XF 2.0, you will need to create the config.php file manually. To do this, enter the <code>src</code> directory within the XF 2.0 files you uploaded to your server. Create a new file named config.php and populate it with the host, port, username, password and database name for your MySQL server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure you create the config file in within the <code>src</code> directory. The <code>library</code> directory is only used for legacy purposes.</p>
+</div>
+<p>Once finished, it should look like the following:</p>
+<pre><code class="language-php">&lt;?php
+
+$config['db']['host'] = 'localhost';
+$config['db']['port'] = '3306';
+$config['db']['username'] = 'root';
+$config['db']['password'] = 'mypassword';
+$config['db']['dbname'] = 'xf2';
+</code></pre>
+<p>You're now ready to install!</p>
+<p>If you are using MySQL 5.5 and above and you wish to have full unicode support (for things like emoji) you should also add the following before install:</p>
+<pre><code class="language-php">$config['fullUnicode'] = true;
+</code></pre>
+<h2 id="a-note-on-file-permissions">A note on file permissions<a class="headerlink" href="#a-note-on-file-permissions" title="Permanent link">&para;</a></h2>
+<p>XenForo will need to write files to specific locations while running. In normal operation, this is limited to the <code>data</code> and <code>internal_data</code> directories (and their sub-directories). These file writes will be triggered by things like attachment uploads, so they will normally be triggered by the user PHP as running as within your web server. Therefore, it is necessary to ensure that permissions are set in these directories so that the web server can write to them. You will need to do this before installation can begin.</p>
+<p>When the CLI is involved, this situation gets trickier as there are now potentially two users that need to be able to write to the files. As such, it's important to take steps to avoid problems writing to these files. Here are a few options.</p>
+<ol>
+<li>Use the same user for the CLI and the web server. This may take the form of you switching to the web server user before running any installation or upgrade command (or any other that will write files).</li>
+<li>If available, consider applying ACLs to the <code>data</code> and <code>internal_data</code> directories. This concept varies by OS and configuration, but the general idea is described <a href="http://symfony.com/doc/current/setup/file_permissions.html">here</a>.</li>
+<li>Force specific permissions on what is written by PHP. This can be done via the src/config.php file with a line like this: <code>$config['chmodWritableValue'] = 0666;</code> This approach is potentially the simplest for development purposes.</li>
+</ol>
+<p>Note that if you are developing add-ons, you may potentially have other locations that need to be written to by the CLI and web server users. Notably, this includes the <code>_output</code> directory within add-ons. In this situation, having your web server run as your CLI user may cause the least friction. If you go down any other route, you may need to ensure that your web server can write to your entire XenForo installation; this is not recommended in production.</p>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<p>The current way to install XF 2.0 is via the new CLI system. A lot of development processes can only be performed
+using the CLI so let's get stuck into using it to install XF 2.0. To run these commands, you will need access to a
+terminal/shell, the php CLI command and the current working directory should be the root of where you uploaded the
+XF 2.0 files.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>To eliminate file permission problems, we recommend running the installer as the same user that PHP runs as via your web server. If you don't do this, you should take steps to ensure that permissions are set correctly. See the above section for more details.</p>
+</div>
+<p>To start the install, just enter the below command:</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:install</p>
+</div>
+<p>You will be asked a number of questions, such as the initial administrator username and password, board title. After this,
+the XF 2.0 database tables and master data will be imported.</p>
+<p>XF 2.0 is now installed!</p>
+<h2 id="reinstallation">Reinstallation<a class="headerlink" href="#reinstallation" title="Permanent link">&para;</a></h2>
+<p>Occasionally it may be necessary to reinstall XF2. This is particularly true during the Development Preview stage which does not support upgrading. If you are ready to do a reinstall, download the new files (if applicable) as per the <a href="#downloading-xf-20">Downloading XF 2.0</a> section above. It should generally be possible to just merge and overwrite your existing files. If you're doing a full clean re-install, you may want to save a copy of your config.php file or re-create it as per the instructions in the <a href="#creating-srcconfigphp">Creating src/config.php</a>.</p>
+<p>Before uploading the new files, you should delete the contents of your <code>data</code> and <code>internal_data</code> directories.</p>
+<p>Finally, you will just need to start the installation, similar to above. You will need to use the <code>--clear</code> option which will delete all of the existing xf_ tables.</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:install --clear</p>
+</div>
+<p>Once the re-install has been completed, you should now be able to log back on.</p>
+<p>If you have been developing add-ons, and you have chosen to keep or backup your existing <code>src/addons</code> directory, you can restore your add-on data with the <a href="/development-tools/#import-development-output">Import development output</a> command.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Be careful if you choose to back up and restore your <code>src/addons</code> directory. The <code>XF</code> directory within contains the XF master data, and should not be restored from a backup to ensure you always have the most up to date version of the files.</p>
+<p>Performing a reinstall in this way is a destructive operation and it will remove all data you have created. Additionally, bear in mind that only tables with the <code>xf_</code> prefix are cleared. This is a significant reason for the recommendation that all tables, even for add-ons, should be prefixed with <code>xf_</code>.</p>
+</div>
+<h2 id="verifying-file-integrity">Verifying file integrity<a class="headerlink" href="#verifying-file-integrity" title="Permanent link">&para;</a></h2>
+<p>When you install XF2, we perform a file integrity check in the installation. If necessary, and you can't otherwise perform the check via the page in the Admin CP, you can run the CLI command to perform that check.</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:file-check <em>[addon_id]</em></p>
+</div>
+<p>If you wish to do a file health check on all files, including XF itself, just omit the <code>[addon_id]</code> argument. For XF only, just use <code>XF</code> in place of the argument, or for a specific add-on, just specify the add-on ID you wish to check.</p>
+<h2 id="add-on-management-commands">Add-on management commands<a class="headerlink" href="#add-on-management-commands" title="Permanent link">&para;</a></h2>
+<p>In addition to the above commands for installing XF2, there are also several commands for managing add-ons.</p>
+<h3 id="install">Install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-install <em>[addon_id]</em></p>
+</div>
+<p>Installs the specified add-on, as long as it is available, and passes the file health check. If development output is available, you will be asked to confirm if you wish to use that for the installation, instead of the exported data XML files.</p>
+<h3 id="upgrade">Upgrade<a class="headerlink" href="#upgrade" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-upgrade <em>[addon_id]</em></p>
+</div>
+<p>Upgrades the specified add-on, as long as it is upgradeable, and passes the file health check. Can optionally perform import from development output.</p>
+<h3 id="rebuild">Rebuild<a class="headerlink" href="#rebuild" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-rebuild <em>[addon_id]</em></p>
+</div>
+<p>Rebuilds the master data for the specified add-on, as long as it is rebuildable, and passes the file health check. This re-imports the add-on's data. Can optionally perform import from development output.</p>
+<h3 id="uninstall">Uninstall<a class="headerlink" href="#uninstall" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf:addon-uninstall <em>[addon_id]</em></p>
+</div>
+<p>Uninstalls the specified add-on, as long as it is uninstallable.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="template-syntax/" class="btn btn-neutral float-right" title="Template syntax">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+      
+        <span style="margin-left: 15px"><a href="template-syntax/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2020-11-02 06:04:28.544311+00:00
+-->

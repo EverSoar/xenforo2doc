@@ -1,0 +1,1162 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Criteria - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.585600%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Criteria";
+    var mkdocs_page_input_path = "criteria.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#criteria-types">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Criteria types</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#criterion">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Criterion</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#rule">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Rule</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#data">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Data</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#how-criteria-system-works">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">How criteria system works</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#template">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Template</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#optionally-storing-selected-criteria">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">(Optionally) Storing selected criteria</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#criteria-object">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Criteria object</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#matching">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Matching</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#how-criteria-works-example">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">How criteria works (example)</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#extra-criteria-data">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Extra criteria data</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#adding-data-in-custom-criteria-type">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Adding data in custom criteria type</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#adding-data-to-existing-criteria-types">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Adding data to existing criteria types</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#helper_criteria-template">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">"helper_criteria" template</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#tabs">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Tabs</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#panes">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Panes</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#using-helper_criteria">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Using "helper_criteria"</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#adding-custom-criteria-type-to-helper_criteria">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Adding custom criteria type to "helper_criteria"</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#custom-userpage-criterion-example">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Custom User/Page criterion example</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#adding-template-modification">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Adding template modification</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#adding-code-event-listener">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Adding code event listener</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#handling-criterion">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Handling criterion</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#testing-trophy">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Testing (trophy)</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#testing-notice">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Testing (notice)</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#custom-criteria-type-example">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Custom criteria type example</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#criteria-type-class">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Criteria type class</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#template_1">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Template</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#matching-the-criteria">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Matching the criteria</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#testing">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Testing</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Criteria</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/criteria.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="criteria">Criteria<a class="headerlink" href="#criteria" title="Permanent link">&para;</a></h1>
+<p>When XenForo needs to test something (user/page/post...) against some <strong>user selected</strong> conditions (criteria), it uses the Criteria system.</p>
+<p>Some places, where the Criteria system is used:</p>
+<ul>
+<li>Trophies</li>
+<li>User-group promotions</li>
+<li>Forum notices</li>
+</ul>
+<p>Addons can also use this system.</p>
+<h2 id="criteria-types">Criteria types<a class="headerlink" href="#criteria-types" title="Permanent link">&para;</a></h2>
+<p>Consider the following criteria:</p>
+<ul>
+<li>User has/has no avatar</li>
+<li>User has more than 300 messages</li>
+<li>User is creating a thread right now</li>
+<li>Current user's selected navigation tab is "Members"</li>
+</ul>
+<p>The first two criteria refer to the user himself. The remaining ones refer to his current location on the forum. It appears we have different categories or <strong>types</strong> of criteria.</p>
+<p>There are two criteria types in XenForo out of the box:</p>
+<ul>
+<li>User criteria — handling criteria about the user himself</li>
+<li>Page criteria — handling criteria about user's current location + time criteria</li>
+</ul>
+<p>Some addons may also add their own criteria types.</p>
+<p>From the code perspective, criteria types are simply children of an abstract <code>AbstractCriteria</code> class. They contain code for handling the selected criteria of certain type.</p>
+<p><code>AbstractCriteria</code>, in turn, provides a general methods to work with criteria regardless of their meaning.</p>
+<h2 id="criterion">Criterion<a class="headerlink" href="#criterion" title="Permanent link">&para;</a></h2>
+<p>Criterion is a user selectable predefined condition.</p>
+<p><strong>Why selectable?</strong> Because admins/users can select them (remember trophy creation process).</p>
+<p><strong>Why predefined?</strong> Because XenForo already knows how to handle them (using criteria classes methods).</p>
+<p>Every criterion consists of two parts: <strong>rule</strong> and (optionally) <strong>data</strong>.</p>
+<h3 id="rule">Rule<a class="headerlink" href="#rule" title="Permanent link">&para;</a></h3>
+<p>The criterion rule is simply a sting in <a href="https://en.wikipedia.org/wiki/Snake_case">snake case</a> (words_are_separated_with_underscore_character).</p>
+<p>It has two essential purposes:</p>
+<ol>
+<li>It is used to distinguish criteria</li>
+<li>When performing matching, the rule is converted into a <a href="https://en.wikipedia.org/wiki/Camel_case">camel case</a> name of a method that handles this criterion (see <a href="#how-criteria-works">"How criteria works"</a>).</li>
+</ol>
+<h3 id="data">Data<a class="headerlink" href="#data" title="Permanent link">&para;</a></h3>
+<p>It is just an optional array of additional criterion data. For example, "User has posted at least X messages" criterion has a data array with one element: a number of messages.</p>
+<h2 id="how-criteria-system-works">How criteria system works<a class="headerlink" href="#how-criteria-system-works" title="Permanent link">&para;</a></h2>
+<p>In this sections, we describe how criteria system works from A to Z.</p>
+<h3 id="template">Template<a class="headerlink" href="#template" title="Permanent link">&para;</a></h3>
+<p>It all starts from template code. Here is how criteria look inside templates:</p>
+<pre><code class="language-html">&lt;xf:checkbox label=&quot;Criteria container&quot;&gt;
+
+    &lt;!-- Criterion --&gt;
+    &lt;xf:option name=&quot;foo_criteria[criterion_1_rule][rule]&quot; value=&quot;criterion_1_rule&quot; ... /&gt;
+
+    &lt;!-- Criterion with data --&gt;
+    &lt;xf:option name=&quot;bar_criteria[criterion_2_rule][rule]&quot; value=&quot;criterion_2_rule&quot; ... &gt;
+        &lt;xf:... name=&quot;bar_criteria[criterion_2_rule][data][param_1]&quot; ... /&gt;
+        &lt;xf:... name=&quot;bar_criteria[criterion_2_rule][data][param_2]&quot; ... /&gt;
+    &lt;/xf:option&gt;
+
+&lt;/xf:checkbox&gt;
+</code></pre>
+<p>As you can see, criterion is simply a checkbox with optional input fields inside (criterion data). Let's analyze the code:</p>
+<ul>
+<li><code>foo_criteria</code> and <code>bar_criteria</code> are the input containers and usually <code>foo</code> and <code>bar</code> parts refer to criteria type. For example, <code>user_criteria[...]</code> lets us know that this criteria belong to User criteria.</li>
+<li><code>value="criterion_1_rule"</code> and <code>value="criterion_2_rule"</code> are, obviously, the rules of criteria.</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that <code>criterion_1/2_rule</code> in <code>name</code> attributes may not have to be criteria rules! These are just names for input containers. You can easily write <code>&lt;xf:option name="foo[bar][rule]" value="criterion_rule" /&gt;</code> and it will work correctly. The criterion rule will be <code>criterion_rule</code>, not <code>bar</code>.</p>
+</div>
+<h3 id="optionally-storing-selected-criteria">(Optionally) Storing selected criteria<a class="headerlink" href="#optionally-storing-selected-criteria" title="Permanent link">&para;</a></h3>
+<p>Inside the controller, the criteria form data from the previous section can be filtered, encoded and saved in database columns of <code>mediumblob</code> type for better days:</p>
+<pre><code class="language-php">$fooCriteriaInput = $this-&gt;filter('foo_criteria', 'array');
+$barCriteriaInput = $this-&gt;filter('bar_criteria', 'array');
+
+$form-&gt;basicEntitySave($bazEntity, [
+    'foo_criteria' =&gt; $fooCriteriaInput,
+    'bar_criteria' =&gt; $barCriteriaInput
+]);
+</code></pre>
+<p>The example <code>$bazEntity</code> structure:</p>
+<pre><code class="language-php">public static function getStructure(Structure $structure)
+{
+    $structure-&gt;table = 'xf_baz';
+    $structure-&gt;shortName = 'XF:Baz';
+    $structure-&gt;primaryKey = 'baz_id';
+    $structure-&gt;columns = [
+        'baz_id' =&gt; ['type' =&gt; self::UINT, 'autoIncrement' =&gt; true],
+        'foo_criteria' =&gt; ['type' =&gt; self::JSON_ARRAY, 'default' =&gt; [], 'required' =&gt; 'please_select_criteria_that_must_be_met'],
+        'bar_criteria' =&gt; ['type' =&gt; self::JSON_ARRAY, 'default' =&gt; []]
+    ];
+
+    return $structure;
+}
+</code></pre>
+<h3 id="criteria-object">Criteria object<a class="headerlink" href="#criteria-object" title="Permanent link">&para;</a></h3>
+<p>For using criteria system we need to create a criteria object from selected criteria form data. This can be done via app's <code>criteria()</code> method:</p>
+<pre><code class="language-php">/** @var \Qux\Criteria\Foo $fooCriteria */
+$fooCriteria = \XF::app()-&gt;criteria('Qux:Foo', $bazEntity-&gt;foo_criteria);
+
+/** @var \Qux\Criteria\Bar $barCriteria */
+$barCriteria = \XF::app()-&gt;criteria('Qux:Bar', $bazEntity-&gt;bar_criteria);
+</code></pre>
+<p>From now, we can use all <code>AbstractCriteria</code> functionality plus everything we have additionally written in child <code>Foo</code>/<code>Bar</code> classes.</p>
+<h3 id="matching">Matching<a class="headerlink" href="#matching" title="Permanent link">&para;</a></h3>
+<p>When we want to check, whether something (User) matches the selected criteria or not, we use <code>isMatched</code> method:</p>
+<pre><code class="language-php">$visitor= \XF::visitor();
+
+if ($fooCriteria-&gt;isMatched($visitor))
+{
+    // Visitor matches all selected criteria
+}
+else
+{
+    // Visitor does not match one or more criteria
+}
+</code></pre>
+<p><code>isMacthed()</code> converts criterion rule into camel case name of a method with <code>_match</code> prefix: <code>criterion_1_rule</code> &gt; <code>_matchCriterion1Rule</code> and tries to find such a method inside criteria type class (<code>Foo</code> class in our example):</p>
+<pre><code class="language-php">// Qux/Criteria/Foo.php
+
+protected function _matchCriterion1Rule(array $data, \XF\Entity\User $user)
+{
+    /* ... Handling criteria ... */
+
+    return true; // User matches current criteria
+
+    /* OR */
+
+    return false; // User does not match current criteria
+}
+</code></pre>
+<p>If some method can't be found in class, <code>isMatched()</code> calls <code>isUnknownMatched()</code> which behaviour can be set in <code>AbstractCriteria</code> ancestors (returns <code>false</code> by default).</p>
+<p>If none criteria were selected, <code>isMatched()</code> returns <code>$matchOnEmpty</code> variable which equals <code>true</code> by default. You can change this behaviour by calling <code>$crteriaObj-&gt;setMatchOnEmpty(false)</code> <strong>before</strong> using <code>isMatched()</code> method:</p>
+<pre><code class="language-php">$visitor= \XF::visitor();
+
+$fooCriteria-&gt;setMatchOnEmpty(false);
+
+if ($fooCriteria-&gt;isMatched($visitor))
+{
+    // Visitor matches all selected criteria
+}
+else
+{
+    // Visitor does not match one or more criteria
+}
+</code></pre>
+<h2 id="how-criteria-works-example">How criteria works (example)<a class="headerlink" href="#how-criteria-works-example" title="Permanent link">&para;</a></h2>
+<p>Imagine you want to award with a trophy all users who have an avatar and have received at least 5 likes.</p>
+<p>When creating a trophy, you select "User has an avatar" (rule <code>has_avatar</code>) and "User has received at least X likes" (rule <code>like_count</code>) criteria. The last one also has a data array with one element: a number of likes.</p>
+<p>Your selected criteria stores in <code>user_criteria</code> column in <code>xf_trophy</code> table.</p>
+<p>When XenForo decides to check, whether to award a user with a trophy or not, it converts rules into camel case method names:</p>
+<ul>
+<li><code>like_count</code> &gt; <code>_matchLikeCount()</code></li>
+<li><code>has_avatar</code> &gt; <code>_matchHasAvatar()</code></li>
+</ul>
+<p>Since both of selected criteria are User criteria, XenForo addresses the User criteria class and tries to find such methods in it:</p>
+<pre><code class="language-php">// XF/Criteria/User.php
+
+//...
+protected function _matchLikeCount(array $data, \XF\Entity\User $user)
+{
+    return ($user-&gt;like_count &amp;&amp; $user-&gt;like_count &gt;= $data['likes']);
+}
+//...
+protected function _matchHasAvatar(array $data, \XF\Entity\User $user)
+{
+    return $user-&gt;user_id &amp;&amp; ($user-&gt;avatar_date || $user-&gt;gravatar);
+}
+//...
+</code></pre>
+<p>If <strong>all</strong> addressed methods return <code>true</code>, our user matches the selected criteria and therefore will be awarded with a trophy.</p>
+<p>If some methods can't be found in User criteria class, XenForo calls <code>isUnknownMatched()</code> method, which in turn fires <code>criteria_user</code> event, allowing addon makers to add their custom criteria handlers (see <a href="#custom-userpage-criterion-example">"Custom User/Page criterion example"</a>).</p>
+<h2 id="extra-criteria-data">Extra criteria data<a class="headerlink" href="#extra-criteria-data" title="Permanent link">&para;</a></h2>
+<p>Sometimes, when writing criteria template code, you need to access extra data, that is not passed with view params.</p>
+<p>This is what <code>getExtraTemplateData()</code> method exists. By default, it contains existing user groups, languages, styles, time zones.</p>
+<p>You can override this method in you custom criteria type class .</p>
+<h3 id="adding-data-in-custom-criteria-type">Adding data in custom criteria type<a class="headerlink" href="#adding-data-in-custom-criteria-type" title="Permanent link">&para;</a></h3>
+<p>Override <code>getExtraTemplateData()</code> method in your custom criteria class:</p>
+<pre><code class="language-php">public function getExtraTemplateData()
+{
+    $templateData = parent::getExtraTemplateData();
+
+    $additionalData = [];
+
+    /** @var \XF\Repository\Smilie $smilieRepo */
+    $smilieRepo = \XF::repository('XF:Smilie');
+
+    $additionalData['smilies'] = $smilieRepo-&gt;findSmiliesForList()-&gt;fetch();
+
+    return array_merge($templateData, $additionalData);
+}
+</code></pre>
+<h3 id="adding-data-to-existing-criteria-types">Adding data to existing criteria types<a class="headerlink" href="#adding-data-to-existing-criteria-types" title="Permanent link">&para;</a></h3>
+<p>You can use <code>criteria_template_data</code> event listener to add you own extra criteria data:</p>
+<pre><code class="language-php">public static function criteriaTemplateData(array &amp;$templateData)
+{
+    /** @var \XF\Repository\Smilie $smilieRepo */
+    $smilieRepo = \XF::repository('XF:Smilie');
+
+    $templateData['smilies'] = $smilieRepo-&gt;findSmiliesForList()-&gt;fetch();
+}
+</code></pre>
+<h2 id="helper_criteria-template">"helper_criteria" template<a class="headerlink" href="#helper_criteria-template" title="Permanent link">&para;</a></h2>
+<p>Whenever you as addon maker want to get a target user/admin a way to select User/Page/other addon's criteria (or even all at once), you can simply use <code>helper_criteria</code>.</p>
+<p>In short, <code>helper_criteria</code> is an admin template that allows to use criteria types checkbox-based interface in multiply places without copy-pasting the same code.</p>
+<p><code>helper_criteria</code> contains macros of <strong>two</strong> types: <code>*criteria_name*_tabs</code> and <code>*criteria_name*_panes</code> for every criteria type. Example: <code>user_tabs</code> and <code>user_panes</code> macros for User criteria type.</p>
+<h3 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Permanent link">&para;</a></h3>
+<p>Tabs are used to distinguish different criteria types within the template they are used:</p>
+<p><img alt="Criteria tabs demonstration." src="/files/images/helper_criteria_tabs_example.png" /></p>
+<p>When using tabs, the first one often contains fields/options that are not related to criteria. Then goes criteria tabs.</p>
+<p>In the image above, the first tab contains options for notice. First two tabs in the red box are related to User criteria type. The last one is related to Page criteria type.</p>
+<p>Tabs in <code>helper_criteria</code> are grouped under criteria types macros:</p>
+<pre><code class="language-html">&lt;xf:macro name=&quot;foo_tabs&quot; arg-container=&quot;&quot; arg-active=&quot;&quot;&gt;
+    &lt;xf:set var=&quot;$tabs&quot;&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}&quot;
+            role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;Foo criteria&lt;/a&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}&quot;
+           role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFooExtra') }}&quot;&gt;Foo criteria extra&lt;/a&gt;
+    &lt;/xf:set&gt;
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+            {$tabs|raw}
+        &lt;/div&gt;
+    &lt;xf:else /&gt;
+        {$tabs|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<p>In the code above, <code>foo</code> is a criteria type. It has two tabs, one for general foo criteria and another for extra foo criteria.</p>
+<h3 id="panes">Panes<a class="headerlink" href="#panes" title="Permanent link">&para;</a></h3>
+<p>Panes simply contain criteria.</p>
+<p>Just like tabs, panes in <code>helper_criteria</code> are grouped under criteria types macros:</p>
+<pre><code class="language-html">&lt;xf:macro name=&quot;foo_panes&quot; arg-container=&quot;&quot; arg-active=&quot;&quot; arg-criteria=&quot;!&quot; arg-data=&quot;!&quot;&gt;
+    &lt;xf:set var=&quot;$panes&quot;&gt;
+        &lt;li class=&quot;{{ $active == 'foo' ? ' is-active' : '' }}&quot; role=&quot;tabpanel&quot; id=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 1&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_1_rule][rule]&quot; value=&quot;criterion_1_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_2_rule][rule]&quot; value=&quot;criterion_2_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 2&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_3_rule][rule]&quot; value=&quot;criterion_3_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_4_rule][rule]&quot; value=&quot;criterion_4_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+        &lt;/li&gt;
+    &lt;/xf:set&gt;
+
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;ul class=&quot;tabPanes&quot;&gt;
+            {$panes|raw}
+        &lt;/ul&gt;
+    &lt;xf:else /&gt;
+        {$panes|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<h3 id="using-helper_criteria">Using "helper_criteria"<a class="headerlink" href="#using-helper_criteria" title="Permanent link">&para;</a></h3>
+<p>To use "helper_criteria" functionality, you need to include its macros.</p>
+<h4 id="preparing-data">Preparing data<a class="headerlink" href="#preparing-data" title="Permanent link">&para;</a></h4>
+<p>This section can be skipped if you <strong>don't have</strong> your selected criteria saved somewhere in database or the criteria type you want to use <strong>does't</strong> require any extra data.</p>
+<p>First of all, you need to retrieve saved selected criteria and create a criteria object from them. In this section, we will be using Page criteria as an example:</p>
+<pre><code class="language-php">$savedCriteria = /* Retrieve it somehow... */
+
+// Criteria object
+$criteria = $this-&gt;app()-&gt;criteria('XF:Page', $savedCriteria)-&gt;getCriteriaForTemplate();
+
+// Criteria extra data
+$criteriaData = $criteria-&gt;getExtraTemplateData();
+
+$viewParams = [
+    /* ... */
+    'criteria' =&gt; $criteria,
+    'criteriaData' =&gt; $criteriaData
+];
+
+return $this-&gt;view(/* ... */, $viewParams);
+</code></pre>
+<h4 id="including-without-tabs">Including without tabs<a class="headerlink" href="#including-without-tabs" title="Permanent link">&para;</a></h4>
+<p>To include criteria without tabs you need to use an <code>&lt;xf:macro...</code> tag with <code>arg-container</code> attribute set to <code>0</code>:</p>
+<pre><code class="language-html">&lt;xf:macro template=&quot;helper_criteria&quot; name=&quot;page_panes&quot; arg-container=&quot;0&quot; arg-criteria=&quot;{$criteria}&quot; arg-data=&quot;{$criteriaData}&quot; /&gt;
+</code></pre>
+<p>If you don't have saved criteria, you can just pass empty array <code>{{ [] }}</code> to an <code>arg-criteria</code> attribute. Don't forget to replace <code>page</code> in <code>page_panes</code> to the name of criteria type you want to use.</p>
+<p>Keep in mind that all criteria is wrapped with <code>&lt;li&gt;</code> tag so you will need to apply some CSS styling (<code>list-style-type: none;</code> for example).</p>
+<h4 id="with-tabs">With tabs<a class="headerlink" href="#with-tabs" title="Permanent link">&para;</a></h4>
+<p>In order to use criteria tabs, you will need to organise the page. Stick to the following example structure:</p>
+<pre><code class="language-html">&lt;xf:form ... class=&quot;block&quot;&gt;
+    &lt;div class=&quot;block-container&quot;&gt;
+
+        &lt;!-- Tabs --&gt;
+        &lt;h2 class=&quot;block-tabHeader tabs hScroller&quot; data-xf-init=&quot;h-scroller tabs&quot; role=&quot;tablist&quot;&gt;
+            &lt;span class=&quot;hScroller-scroll&quot;&gt;
+                &lt;!-- Main tab where fields/options are located --&gt;
+                &lt;a class=&quot;tabs-tab is-active&quot; role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;MAIN_TAB_ID&quot;&gt;Main tab title&lt;/a&gt;
+
+                &lt;!-- Criteria tabs --&gt;
+                &lt;xf:macro template=&quot;helper_criteria&quot; name=&quot;page_tabs&quot; arg-userTabTitle=&quot;Custom tab name (optionally)&quot; /&gt;
+            &lt;/span&gt;
+        &lt;/h2&gt;
+
+        &lt;!-- Panes --&gt;
+        &lt;ul class=&quot;block-body tabPanes&quot;&gt;
+            &lt;!-- Main pane --&gt;
+            &lt;li class=&quot;is-active&quot; role=&quot;tabpanel&quot; id=&quot;MAIN_TAB_ID&quot;&gt;
+                &lt;!-- Fields and options --&gt;
+            &lt;/li&gt;
+
+            &lt;!-- Criteria panes --&gt;
+            &lt;xf:macro template=&quot;helper_criteria&quot; name=&quot;page_panes&quot;
+                arg-criteria=&quot;{$criteria}&quot;
+                arg-data=&quot;{$criteriaData}&quot; /&gt;
+        &lt;/ul&gt;
+
+        &lt;xf:submitrow sticky=&quot;true&quot; icon=&quot;save&quot; /&gt;
+    &lt;/div&gt;
+&lt;/xf:form&gt;
+</code></pre>
+<p>Again, if you don't have any saved or even don't suppose to have it, pass <code>{{ [] }}</code> to an <code>arg-criteria</code> attribute.</p>
+<h3 id="adding-custom-criteria-type-to-helper_criteria">Adding custom criteria type to "helper_criteria"<a class="headerlink" href="#adding-custom-criteria-type-to-helper_criteria" title="Permanent link">&para;</a></h3>
+<p>If you want to add a custom criteria type to <code>helper_criteira</code> template, you will need to create a template modification of <code>helper_criteria</code> template.</p>
+<p>Go to "Appearance &gt; Template modifications" in ACP, switch to "Admin" tab and hit "Add template modification" button.</p>
+<p>We want to add our tab and pane at the very bottom of the template so switch "Search type" to "Regular expression".</p>
+<p>Type <code>/$/</code> in "Find" field.</p>
+<p>Finally, add the tab and the pane macros code in "Replace" field. Example:</p>
+<pre><code class="language-html">&lt;xf:macro name=&quot;foo_tabs&quot; arg-container=&quot;&quot; arg-active=&quot;&quot;&gt;
+    &lt;xf:set var=&quot;$tabs&quot;&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo' ? ' is-active' : '' }}&quot;
+            role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;Foo criteria&lt;/a&gt;
+        &lt;a class=&quot;tabs-tab{{ $active == 'foo_extra' ? ' is-active' : '' }}&quot;
+           role=&quot;tab&quot; tabindex=&quot;0&quot; aria-controls=&quot;{{ unique_id('criteriaFooExtra') }}&quot;&gt;Foo criteria extra&lt;/a&gt;
+    &lt;/xf:set&gt;
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+            {$tabs|raw}
+        &lt;/div&gt;
+    &lt;xf:else /&gt;
+        {$tabs|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+
+&lt;xf:macro name=&quot;foo_panes&quot; arg-container=&quot;&quot; arg-active=&quot;&quot; arg-criteria=&quot;!&quot; arg-data=&quot;!&quot;&gt;
+    &lt;xf:set var=&quot;$panes&quot;&gt;
+        &lt;li class=&quot;{{ $active == 'foo' ? ' is-active' : '' }}&quot; role=&quot;tabpanel&quot; id=&quot;{{ unique_id('criteriaFoo') }}&quot;&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 1&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_1_rule][rule]&quot; value=&quot;criterion_1_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_2_rule][rule]&quot; value=&quot;criterion_2_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+            &lt;xf:checkboxrow label=&quot;Criteria group 2&quot;&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_3_rule][rule]&quot; value=&quot;criterion_3_rule&quot; ... /&gt;
+                &lt;xf:option name=&quot;foo_criteria[criterion_4_rule][rule]&quot; value=&quot;criterion_4_rule&quot; ... /&gt;
+            &lt;/xf:checkboxrow&gt;
+
+        &lt;/li&gt;
+    &lt;/xf:set&gt;
+
+    &lt;xf:if is=&quot;$container&quot;&gt;
+        &lt;ul class=&quot;tabPanes&quot;&gt;
+            {$panes|raw}
+        &lt;/ul&gt;
+    &lt;xf:else /&gt;
+        {$panes|raw}
+    &lt;/xf:if&gt;
+&lt;/xf:macro&gt;
+</code></pre>
+<p>Now, you can use your criteria everywhere (see <a href="#using-helper_criteria">"Using helper_criteria"</a>).</p>
+<h2 id="custom-userpage-criterion-example">Custom User/Page criterion example<a class="headerlink" href="#custom-userpage-criterion-example" title="Permanent link">&para;</a></h2>
+<p>Let's say we want to create a criterion for checking whether our user has X or more likes on single message or not.</p>
+<p>Since our criterion refers to user, we will be creating a criterion which belongs to User criteria.</p>
+<h3 id="adding-template-modification">Adding template modification<a class="headerlink" href="#adding-template-modification" title="Permanent link">&para;</a></h3>
+<p>First of all, we need to add our criterion to User criteria list. Go to "Template modifications" page in ACP, select "Admin" tab and hit "Add template modification" button in the upper right corner.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If there is no "Admin" tab make sure you have enabled the <a href="../development-tools/#enabling-development-mode">development mode</a>!</p>
+</div>
+<p>We will be modifying the <code>helper_criteria</code> template so write it to the "Template" field. In this example I will be using <code>likes_on_single_message</code> "Modification key" for this template modification.</p>
+<p>Our criterion is about likes on messages. This means it should be under "Content and achievements" section. This means we simply need to find <code>&lt;!--[XF:user:content_bottom]--&gt;</code> and replace it with the following code:</p>
+<pre><code class="language-html">&lt;xf:option name=&quot;user_criteria[likes_on_single][rule]&quot; value=&quot;likes_on_single&quot; selected=&quot;{$criteria.likes_on_single}&quot;  label=&quot;Likes on single message:&quot;&gt;
+    &lt;xf:numberbox name=&quot;user_criteria[likes_on_single][data][likes]&quot; value=&quot;{$criteria.likes_on_single.likes}&quot; size=&quot;5&quot; min=&quot;0&quot; step=&quot;1&quot; /&gt;
+&lt;/xf:option&gt;
+
+$0
+</code></pre>
+<p>From this moment we can already see and even set a value for our criterion when creating trophies, notices and user-group promotions.</p>
+<h3 id="adding-code-event-listener">Adding code event listener<a class="headerlink" href="#adding-code-event-listener" title="Permanent link">&para;</a></h3>
+<p>We have created our criterion. But it is unknown for XenForo, which will always return <code>false</code> when matching such criteria. We need to tell XenForo, what to do when it meets unknown criteria. </p>
+<p>Go to "Development &gt; Code event listener" page and hit "Add code event listener" button.</p>
+<p>Select <code>criteria_user</code> in "Listen to event" field (<code>user</code> because our criterion belongs to User criteria). In "Execute callback" field we should specify class and method to be called when matching criteria.</p>
+<p>Create a file <code>Listener.php</code> in addon root folder if you haven't already and add a new method <code>criteriaUser</code> there:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace YOUR_ADDON_ID;
+
+class Listener
+{
+    public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &amp;$returnValue)
+    {
+
+    }
+}
+</code></pre>
+<p>You can fill "Class" and "Method" fields with <code>YOUR_ADDON_ID\Listener</code> and <code>criteriaUser</code>, respectively.</p>
+<h3 id="handling-criterion">Handling criterion<a class="headerlink" href="#handling-criterion" title="Permanent link">&para;</a></h3>
+<p>Since our <code>criteriaUser</code> method is fired for every unknown criteria, we need to make sure <code>$rule</code> equals <code>likes_on_single</code> (the rule we specified in HTML markup):</p>
+<pre><code class="language-php">public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &amp;$returnValue)
+{
+    switch ($rule)
+    {
+        case 'likes_on_single':
+            /** Handling code here! */
+            break;
+    }
+}
+</code></pre>
+<p>Now, we need to write the code that actually checks whether a user has a message with X or more likes.</p>
+<p>This can be easily achieved via simple SQL query, which selects one record from <code>xf_post</code> with more than X likes (<code>likes</code> column) and <code>user_id</code> equals currently matching user ID.</p>
+<p>So, here is the query:</p>
+<pre><code class="language-SQL">SELECT `likes` FROM `xf_post` WHERE `user_id` = ? ORDER BY `likes` DESC LIMIT 1
+</code></pre>
+<p>And the method code:</p>
+<pre><code class="language-php">public static function criteriaUser($rule, array $data, \XF\Entity\User $user, &amp;$returnValue)
+{
+    switch ($rule)
+    {
+        case 'likes_on_single':
+
+            // Getting the database
+            $db = \XF::db();
+
+            // Database query for selecting the maximum number of likes for single user post
+            $query = &quot;SELECT `likes` FROM `xf_post` WHERE `user_id` = ? ORDER BY `likes` DESC LIMIT 1&quot;;
+
+            // Retrieving the maximum number of likes
+            $likes = $db-&gt;fetchOne($query, [$user-&gt;user_id]);
+
+            // Checking that we have a result from database (we do expect a number)
+            if (is_int($likes)) {
+                // Returning true if user has a message with X or more likes or false if he has not
+                $returnValue = ($likes &gt;= $data['likes']);
+            } else {
+                $returnValue = false;
+            }
+
+            break;
+    }
+}
+</code></pre>
+<p>Pay attention to the following:</p>
+<ul>
+<li>We are using <code>$user</code> variable for retrieving currently matching user. We can use this variable since our criterion belongs to <strong>User</strong> criteria.</li>
+<li>We can access data via <code>$data</code> array. It contains data from fields <a href="#adding-template-modification">we have added</a> in template modification. We have only added one <code>&lt;xf:numberbox...</code> which <code>name</code> attribute equals <code>user_criteria[likes_on_single][data][likes]</code>. That is why we can use <code>$data['likes']</code> in the code above.</li>
+</ul>
+<p>Everything is done right now. Let's test it!</p>
+<h3 id="testing-trophy">Testing (trophy)<a class="headerlink" href="#testing-trophy" title="Permanent link">&para;</a></h3>
+<p>Create an "All for one" trophy. On "User criteria" tab, "Likes on single message" field with, for example, 5.</p>
+<p>Next, create a test message somewhere on you forum and then like it five times with five different users (or just set manually set a value of <code>likes</code> column).</p>
+<p>Then, go to "Tools &gt; Cron entries" and run "Update user trophies" cron by hitting arrows-circle button.</p>
+<p><img alt="&quot;All for one&quot; trophy awarded notification." src="/files/images/example-custom-criteria-awarded.png" /></p>
+<p>Nice!</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If you are not awarded with "All for one" trophy, try to sign out, sign in and re-running "Update user trophies" cron.</p>
+</div>
+<h3 id="testing-notice">Testing (notice)<a class="headerlink" href="#testing-notice" title="Permanent link">&para;</a></h3>
+<p>Go to "Communication &gt; Notices" and hit "Add notice" button. On "User criteria" tab, set "Likes on single message" field with, again, 5. Save the notice.</p>
+<p>Next, create a test message somewhere on you forum and then like it five times with five different users (or just set manually set a value of <code>likes</code> column).</p>
+<p>Now, you should see a notice:</p>
+<p><img alt="Notice demonstration." src="/files/images/example-custom-criteria-notice.png" /></p>
+<p>You can <a href="/files/example-sources/all-for-one-criterion-2.0.10.zip">download</a> addon sources built based on this example (2.0.10).</p>
+<h2 id="custom-criteria-type-example">Custom criteria type example<a class="headerlink" href="#custom-criteria-type-example" title="Permanent link">&para;</a></h2>
+<p>Imagine we are creating an addon (addon ID: <code>PostsRemover</code>) for removing all posts that match selected criteria. A list of available criteria:</p>
+<ul>
+<li>Post has at least X likes</li>
+<li>Post author has an X username</li>
+<li>Post was edited at least X times</li>
+<li>Post was edited no more than X times</li>
+<li>Post was published before X</li>
+<li>Post was published after X</li>
+</ul>
+<p>Obviously, for such criteria we need a new criteria type: Post criteria.</p>
+<h3 id="criteria-type-class">Criteria type class<a class="headerlink" href="#criteria-type-class" title="Permanent link">&para;</a></h3>
+<p>We should start by creating a new class <code>Post</code> that inherits <code>AbstractCriteria</code> within <code>Criteria</code> directory of our addon:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace PostsRemover\Criteria;
+
+use XF\Criteria\AbstractCriteria;
+
+class Post extends AbstractCriteria
+{
+
+}
+</code></pre>
+<p>Now we need to write code for all criteria out addon supports. In this example, I will write the code for the first three criteria from the list above:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace PostsRemover\Criteria;
+
+use XF\Criteria\AbstractCriteria;
+
+class Post extends AbstractCriteria
+{
+    // Post has at least X likes
+    protected function _matchLikeCount(array $data, \XF\Entity\Post $post)
+    {
+        return ($post-&gt;likes &amp;&amp; $post-&gt;likes &gt;= $data['likes']);
+    }
+
+    // Post author has an X username
+    protected function _matchUsername(array $data, \XF\Entity\Post $post)
+    {
+        return $post-&gt;username === $data['name'];
+    }
+
+    // Post was edited at least X times
+    protected function _matchEditedCount(array $data, \XF\Entity\Post $post)
+    {
+        return $post-&gt;edit_count &amp;&amp; $post-&gt;edit_count &gt;= $data['count'];
+    }
+
+    /* ================ Handling other criteria ================ */
+}
+</code></pre>
+<p><code>isMatched(...)</code> method used to call <code>_match</code> methods we just created accepts only User entity, we are to write a custom variation of <code>isMatched()</code>, <code>isUnknownMatched()</code> and <code>isSpecialMatched()</code> methods.</p>
+<p>Since we are creating Post criteria, we need to create our own <code>isMatchedPost()</code> method:</p>
+<pre><code class="language-php">public function isMatchedPost(\XF\Entity\Post $post)
+{
+    if (!$this-&gt;criteria)
+    {
+        return $this-&gt;matchOnEmpty;
+    }
+
+    foreach ($this-&gt;criteria AS $criterion)
+    {
+        $rule = $criterion['rule'];
+        $data = $criterion['data'];
+
+        $specialResult = $this-&gt;isSpecialMatchedPost($rule, $data, $post);
+        if ($specialResult === false)
+        {
+            return false;
+        }
+        else if ($specialResult === true)
+        {
+            continue;
+        }
+
+        $method = '_match' . \XF\Util\Php::camelCase($rule);
+        if (method_exists($this, $method))
+        {
+            $result = $this-&gt;$method($data, $post);
+            if (!$result)
+            {
+                return false;
+            }
+        }
+        else
+        {
+            if (!$this-&gt;isUnknownMatched($rule, $data, $post))
+            {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+protected function isSpecialMatchedPost($rule, array $data, \XF\Entity\Post $post)
+{
+    return null;
+}
+
+protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $post)
+{
+    return false;
+}
+</code></pre>
+<p>We simply used <code>isMatched(...)</code> method code replacing <code>$user</code> variable of User entity type with <code>$post</code> variable of Post entity type.</p>
+<p>As we do not plan to handle special and unknown criteria we return null in <code>isSpecialMatchedPost</code> and <code>false</code> in <code>isUnknownMathcedPost</code> methods.</p>
+<h3 id="template_1">Template<a class="headerlink" href="#template_1" title="Permanent link">&para;</a></h3>
+<p>Leaving the process of adding an admin route, writing a controller and doing other actions behind the scenes, let's jump right to our page's template code:</p>
+<pre><code class="language-html">&lt;xf:title&gt;Posts Remover&lt;/xf:title&gt;
+
+&lt;xf:form action=&quot;{{ link('posts-remover/remove') }}&quot; ajax=&quot;true&quot; class=&quot;block&quot;&gt;
+    &lt;div class=&quot;block-container&quot;&gt;
+        &lt;xf:checkboxrow label=&quot;Post criteria&quot;&gt;
+
+            &lt;xf:option label=&quot;Post has at least X likes&quot; name=&quot;post_criteria[like_count][rule]&quot; value=&quot;like_count&quot;&gt;
+                &lt;xf:numberbox name=&quot;post_criteria[like_count][data][likes]&quot; size=&quot;5&quot; min=&quot;0&quot; step=&quot;1&quot; /&gt;
+            &lt;/xf:option&gt;
+
+            &lt;xf:option label=&quot;Post author has an X username&quot; name=&quot;post_criteria[username][rule]&quot; value=&quot;username&quot;&gt;
+                &lt;xf:textbox name=&quot;post_criteria[username][data][name]&quot; ac=&quot;true&quot; /&gt;
+            &lt;/xf:option&gt;
+
+            &lt;xf:option label=&quot;Post was edited at least X times&quot; name=&quot;post_criteria[edited_count][rule]&quot; value=&quot;edited_count&quot;&gt;
+                &lt;xf:numberbox name=&quot;post_criteria[edited_count][data][count]&quot; size=&quot;5&quot; min=&quot;0&quot; step=&quot;1&quot; /&gt;
+            &lt;/xf:option&gt;
+
+        &lt;/xf:checkboxrow&gt;
+
+        &lt;!-- Template code for other criteria --&gt;
+
+        &lt;xf:submitrow sticky=&quot;true&quot; icon=&quot;delete&quot;/&gt;
+    &lt;/div&gt;
+&lt;/xf:form&gt;
+</code></pre>
+<h3 id="matching-the-criteria">Matching the criteria<a class="headerlink" href="#matching-the-criteria" title="Permanent link">&para;</a></h3>
+<p>In the controller of our page, we need to create a method called <code>actionRemove</code> for handling "Remove" button click:</p>
+<pre><code class="language-php">public function actionRemove()
+{
+}
+</code></pre>
+<p>Firstly, let's retrieve <code>post_criteria</code> array from page form:</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+}
+</code></pre>
+<p>Secondly, we need to create a criteria object from retrieved page form data:</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+
+    /** @var \PostsRemover\Criteria\Post $postCriteria */
+    $postCriteria = $this-&gt;app()-&gt;criteria('PostsRemover:Post', $postCriteriaInput);
+}
+</code></pre>
+<p>By default, out post <strong>will match</strong> the empty criteria (when nothing has been selected) which will result in deletion of all forum posts. To avoid this we need to manually set the result of matching the empty criteria via <code>setMatchOnEmpty()</code> method:</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+
+    /** @var \PostsRemover\Criteria\Post $postCriteria */
+    $postCriteria = $this-&gt;app()-&gt;criteria('PostsRemover:Post', $postCriteriaInput);
+
+    $postCriteria-&gt;setMatchOnEmpty(false); // If no criteria selected, nothing will be removed
+}
+</code></pre>
+<p>Finally, we need to match all forum posts against selected criteria. If the post matches the criteria, we will delete it:</p>
+<pre><code class="language-php">public function actionRemove()
+{
+    $postCriteriaInput = $this-&gt;filter('post_criteria', 'array');
+
+    /** @var \PostsRemover\Criteria\Post $postCriteria */
+    $postCriteria = $this-&gt;app()-&gt;criteria('PostsRemover:Post', $postCriteriaInput);
+
+    $postCriteria-&gt;setMatchOnEmpty(false); // If no criteria selected, nothing will be removed
+
+    // Getting all forum posts
+    $posts = $this-&gt;finder('XF:Post')-&gt;fetch();
+
+    $deletedCounter = 0;
+
+    /** @var \XF\Entity\Post $post */
+    foreach ($posts as $post)
+    {
+        if ($postCriteria-&gt;isMatchedPost($post)) // Checking the post against selected criteria
+        {
+            $post-&gt;delete(); // Deleting it if the post matches the selected criteria
+            $deletedCounter++;
+        }
+    }
+
+    return $this-&gt;message('Done! ' . $deletedCounter . ' posts were removed!');
+}
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep in mind that we use <code>isMatchedPost($post)</code> method for XenForo versions below 2.1!</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>It is generally a bad practice to retrieve all entities from database at once (<code>$this-&gt;finder('XF:Post')-&gt;fetch();</code> in the code above). There could be millions of forum posts and selecting them all at once is going to be a very long process, which might end up with an error.
+Consider using a Job system for working with dozens (100+) of database items.</p>
+</div>
+<h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
+<p>Time to test our custom criteria type!</p>
+<p>I have created three posts on my test forum. The first one was liked 500 times, the second one was edited 5 times. The third one is just an ordinary untouched post without likes.</p>
+<p><img alt="Before deleting demonstration." src="/files/images/example-custom-criteria-type-messages-before.png" /></p>
+<p>Now, on our "Posts Remover" ACP page, let's select "Post has at least X likes" (with value of 250) and "Post was edited at least X times" (wih value of 5):</p>
+<p><img alt="Selected criteria." src="/files/images/example-custom-criteria-type-remover.png" /></p>
+<p>When I hit "Delete" button, I saw a flash message telling me that nothing was deleted. Why? Obviously, because there are no posts with at least 250 likes and at least 5 edits <strong>in the same time</strong>.</p>
+<p>That is why we need to select the first criterion only, then hit "Delete". This will delete a post with 500 likes. Next, we need to select the last criterion only and preform deletion. The post with 5 edits will be removed.</p>
+<p>As a result, only one test post survived out test:</p>
+<p><img alt="After deleting demonstration." src="/files/images/example-custom-criteria-type-messages-after.png" /></p>
+<p>You can <a href="/files/example-sources/posts-remover-2.0.10.zip">download</a> addon sources built based on this example (2.0.10). You will find "Posts Remover" ACP page under "Tools" section.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="managing-the-schema/" class="btn btn-neutral float-right" title="Managing the schema">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="entities-finders-repositories/" class="btn btn-neutral" title="Entities, finders, and repositories"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../entities-finders-repositories/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../managing-the-schema/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

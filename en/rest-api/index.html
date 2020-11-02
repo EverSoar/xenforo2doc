@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>REST API - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.725655%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "REST API";
+    var mkdocs_page_input_path = "rest-api.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#api-keys">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">API keys</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#key-types">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Key types</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#key-scopes">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Key scopes</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#accessing-the-api">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Accessing the API</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#error-handling">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Error handling</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#api-endpoints">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">API endpoints</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>REST API</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/rest-api.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">&para;</a></h1>
+<p>In XenForo 2.1, a REST API was added. This allows you to programmatically interact with many areas of a XenForo installation.</p>
+<p>Accessing the API requires generating a key via the admin control panel. There is no unauthenticated access to the API and users cannot generate their own keys to access the API at this time.</p>
+<p>The API for a specific XenForo installation is accessible at <code>&lt;XenForo base URL&gt;/api/</code>. All endpoints are prefixed by this URL. For example, if XenForo is installed at <code>https://example.com/community/</code>, then the API URLs will start with <code>https://example.com/community/api/</code>. In this example, accessing a list of threads would be done via <code>https://example.com/community/api/threads/</code>.</p>
+<p>The API is enabled by default. If necessary, all API access can quickly be disabled by adding the following to <strong>src/config.php</strong>:</p>
+<pre><code class="language-php">$config['enableApi'] = false;
+</code></pre>
+<h2 id="api-keys">API keys<a class="headerlink" href="#api-keys" title="Permanent link">&para;</a></h2>
+<p>API keys are created via the admin control panel by going to <strong>Setup &gt; API keys</strong>. As generating API keys can allow access to highly privileged data, only super administrators may access this system. All super admins will receive an email when an API key is generated to ensure that the request is valid.</p>
+<p>When a key is created, a random string will be generated and this will be used to authenticate yourself with the API. It is important that this key is kept secret. If you believe an API key has been compromised, you should immediately regenerate the key and update any code using the old key.  </p>
+<h3 id="key-types">Key types<a class="headerlink" href="#key-types" title="Permanent link">&para;</a></h3>
+<p>All API access is done in the context of a specific user. For example, if I access the API as "John" and I make a request that posts a thread, that thread will have been created by "John". In most cases, the API will also respect permissions specified for this user, so they can't access data they wouldn't see when browsing the forum normally.</p>
+<p>To allow control over this, there are three types of API keys:</p>
+<ul>
+<li><strong>Guest key</strong> - this key always accesses the API as a guest user. These requests will always respect the guest permissions. For example, if guests cannot reply to threads, an API request to reply to a thread would generate a no permission error.</li>
+<li><strong>User key</strong> - this key always accesses the API as a specified user and always respects that user's permissions, similar to a guest key.</li>
+<li><strong>Super user key</strong> - this key can access the API as any user by passing an additional value into it. Optionally, this key can bypass the requesting user's permissions, allowing them to take actions or view content they would not normally have access to.</li>
+</ul>
+<p>Super user keys are very useful for integrations with other systems or applications. For example, you may integrate with a third-party CMS that creates a thread whenever you post a new article. This type of key would allow you to create a thread with a different user depending on the article author or in a forum that users normally can't post in.</p>
+<h3 id="key-scopes">Key scopes<a class="headerlink" href="#key-scopes" title="Permanent link">&para;</a></h3>
+<p>To help limit the amount of damage a compromised key can inflict, each key can control the API scopes that it can access. Scopes limit access to areas of the API, independent of the requesting user's permissions.</p>
+<p>Each endpoint in the API will be covered by one of more scopes. If the API has not been granted any of those scopes, the request will fail.</p>
+<p>For security, we recommend you only grant a key the scopes that you require. If you require additional scopes at a later time, they can be added when needed.</p>
+<h2 id="accessing-the-api">Accessing the API<a class="headerlink" href="#accessing-the-api" title="Permanent link">&para;</a></h2>
+<p>Once you know the URL to access the API and have a key, you can begin to make requests to it.</p>
+<p>All API responses will be returned in JSON format, except in cases where a binary file is specifically requested (such as when downloading an attachment). Errors will always return a response code in the 400 range. Successful requests will return a 200 code. While not commonly used, redirects will return a 300-range code.</p>
+<p>Requests bodies must be sent using the <code>application/x-www-form-urlencoded</code> encoding or, if a file is being uploaded,  the <code>multipart/form-data</code> encoding. Parameters may also be passed via the query string.</p>
+<p>All request data must use the UTF-8 character set.</p>
+<p>Requests must pass the API key to use via the <code>XF-Api-Key</code> header. This must be present in all requests.</p>
+<p>If the API key selected is a super user key, you may pass the user ID of the context user via the <code>XF-Api-User</code> header. If no user ID is passed, the context will default to a guest.</p>
+<p>If the request is made with a super user key and you wish to bypass the context user's permissions, this may be done on a per-request basis by setting the <code>api_bypass_permissions</code> parameter to 1. (This can be passed via a query string or as part of the request body.)</p>
+<h3 id="error-handling">Error handling<a class="headerlink" href="#error-handling" title="Permanent link">&para;</a></h3>
+<p>When an error is encountered, the response code will be in the 400 range. Occasionally, a 500-range error may occur, though this indicates that the server was unable to process the request. The API may be temporarily disabled or another server error has occurred.</p>
+<p>Error messages have a standardized format. Here is an example:</p>
+<pre><code class="language-json">{
+    &quot;errors&quot;: [
+        {
+            &quot;code&quot;: &quot;api_key_not_found&quot;,
+            &quot;message&quot;: &quot;API key provided in request was not found.&quot;,
+            &quot;params&quot;: []
+        }
+    ]
+}
+</code></pre>
+<p>The top level will be an object with an <code>errors</code> key. This will be an array with 1 or more entries. Each entry is an object with the following parameters:</p>
+<ul>
+<li><code>code</code> - this is a machine readable code for the error. There are many possible error codes as they are situation dependent.</li>
+<li><code>message</code> - a human readable version of the error. This may change or may be translated and should not be used to identify the type of error.</li>
+<li><code>params</code> - this is a list of key-value parameters that are relevant to the error triggered. They may supplement the error code and message to give more specific details about the error.</li>
+</ul>
+<h2 id="api-endpoints">API endpoints<a class="headerlink" href="#api-endpoints" title="Permanent link">&para;</a></h2>
+<p>The API features a number of endpoints and actions that can be taken. Additional endpoints and data may be added in the future.</p>
+<p><strong><a href="https://xenforo.com/community/pages/api-endpoints/">View the API endpoint documentation</a></strong></p>
+<p>This endpoint documentation has been generated from the API data and comments in the code. It will be expanded and updated over time.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="add-on-structure/" class="btn btn-neutral float-right" title="Add-on structure">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="template-syntax/" class="btn btn-neutral" title="Template syntax"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../template-syntax/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../add-on-structure/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

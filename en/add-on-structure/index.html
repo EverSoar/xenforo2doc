@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Add-on structure - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.562579%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Add-on structure";
+    var mkdocs_page_input_path = "add-on-structure.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#add-on-ids-and-add-ons-path">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Add-on IDs and add-ons path</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#recommended-version-string-format">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Recommended version string format</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#recommended-version-id-format">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Recommended version ID format</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#common-add-on-files-and-directories">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Common add-on files and directories</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#addonjson-file">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">addon.json file</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#hashesjson-file">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">hashes.json file</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#setupphp-file">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Setup.php file</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_data-directory">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">_data directory</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_output-directory">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">_output directory</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#setup-class">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Setup class</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Add-on structure</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/add-on-structure.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="add-on-structure">Add-on structure<a class="headerlink" href="#add-on-structure" title="Permanent link">&para;</a></h1>
+<p>In previous versions of XF, there were very few standards and conventions surrounding add-on development. We have done 
+a lot to change that in XF 2.0. Let's look at some of the changes:</p>
+<h2 id="add-on-ids-and-add-ons-path">Add-on IDs and add-ons path<a class="headerlink" href="#add-on-ids-and-add-ons-path" title="Permanent link">&para;</a></h2>
+<p>Each installed add-on must have a unique ID, and this ID dictates where on the filesystem that an add-on should store 
+its files. There are two possible formats for an add-on ID.</p>
+<p>The first "simple" type should be a single word and not contain any special characters. For example, <code>Demo</code>.</p>
+<p>Simple add-on IDs must adhere to the following rules:</p>
+<ul>
+<li>Must only contain a-z or A-Z</li>
+<li>Can contain 0-9 but not at the start of the ID</li>
+<li>Can not contain any special characters such as slashes, dashes or underscores</li>
+</ul>
+<p>The second contains a vendor prefix, so if you release add-ons under a specific brand or company, the add-on ID can 
+indicate that. For example, <code>SomeVendor/Demo</code>.</p>
+<p>The vendor type add-on ID should adhere to the following rules:</p>
+<ul>
+<li>Must only contain a-z or A-Z</li>
+<li>Can contain a single <code>/</code> character but not at the start or the end</li>
+<li>Can contain 0-9 but not at the start of either part of the add-on ID</li>
+</ul>
+<p>Once you have decided what your add-on ID is, we know exactly where the files for this add-on will be stored. All XF 2.0 add-ons are stored within a subdirectory of the <code>src/addons</code> directory. </p>
+<p>If you have a simple add-on ID, e.g. <code>Demo</code>, the files for your add-on will be stored in the following location: 
+ <code>src/addons/Demo</code>.</p>
+<p>If you have a vendor based add-on ID, e.g. <code>SomeVendor/Demo</code>, the files will be stored in the following location: 
+<code>src/addons/SomeVendor/Demo</code>.</p>
+<p>The add-on ID you choose will also become your class namespace prefix (see <a href="/general-concepts/#namespaces">Namespaces</a> for more information).</p>
+<h2 id="recommended-version-string-format">Recommended version string format<a class="headerlink" href="#recommended-version-string-format" title="Permanent link">&para;</a></h2>
+<p>XF itself uses a MAJOR.MINOR.PATCH principle (e.g. 2.0.0 for the first stable XF2 release) to its version numbering and we recommend a similar approach is taken towards the versioning of your own add-ons. In basic terms, increment the</p>
+<ul>
+<li>MAJOR version when you make major feature changes, especially changes that break backwards compatibility</li>
+<li>MINOR version when you add functionality preferably in a backwards compatible manner, and</li>
+<li>PATCH version when you make backwards-compatible bug fixes</li>
+</ul>
+<h2 id="recommended-version-id-format">Recommended version ID format<a class="headerlink" href="#recommended-version-id-format" title="Permanent link">&para;</a></h2>
+<p>Version IDs for add-ons are basic integers which are used for internal version comparisons. It allows us to more easily detect when one version is older than another. Each version of your add-on should increase the version ID by at least 1, but a convention we use internally for XF itself, is potentially useful also for add-ons. Our version IDs are in the format of <code>aabbccde</code>.</p>
+<ul>
+<li><code>aa</code> represents the major version</li>
+<li><code>bb</code> represents the minor version</li>
+<li><code>cc</code> represents the patch version</li>
+<li><code>d</code> represents the state, e.g. <code>1</code> for alpha releases, <code>3</code> for beta releases, <code>5</code> for release candidates and <code>7</code> for stable releases</li>
+<li><code>e</code> represents the state version</li>
+</ul>
+<p>For example, an add-on with version string of 1.7.3 release candidate 4 would have an ID of <code>1070354</code>. The final stable release XF2 will have an ID of <code>2000070</code>. Version 1.5.0 Beta 3 of XF had an ID of <code>1050033</code>. Stable version 99.99.99 would have an ID of <code>99999970</code>... and maybe you should slow down a bit 😉</p>
+<h2 id="common-add-on-files-and-directories">Common add-on files and directories<a class="headerlink" href="#common-add-on-files-and-directories" title="Permanent link">&para;</a></h2>
+<p>There are a number of files and directories within an add-on's directory that have a special purpose and meaning.</p>
+<h3 id="addonjson-file">addon.json file<a class="headerlink" href="#addonjson-file" title="Permanent link">&para;</a></h3>
+<p><code>addon.json</code> is a file which contains a number of pieces of information which are required to help XF 2.0 identify the 
+add-on and display information about it in the Admin CP. At minimum, your <code>addon.json</code> file should look like this:</p>
+<pre><code class="language-json">{
+    &quot;title&quot;: &quot;My Add-on by Some Company&quot;,
+    &quot;version_string&quot;: &quot;2.0.0&quot;,
+    &quot;version_id&quot;: 2000070,
+    &quot;dev&quot;: &quot;Some Company&quot;
+}
+</code></pre>
+<p>A basic file will be created for you automatically when creating the add-on.</p>
+<p>Including a valid <code>addon.json</code> file is mandatory for your addon to be recognized but you can always <a href="../development-tools/#validate-your-addonjson-file">validate your addon.json file</a>.</p>
+<h4 id="properties">Properties<a class="headerlink" href="#properties" title="Permanent link">&para;</a></h4>
+<table>
+<thead>
+<th>Property</th>
+<th>Description</th>
+</thead>
+<tbody>
+<tr>
+<td><code>legacy_addon_id</code></td>
+<td>Used to enable automatic handling of addon ID changes when upgrading from XenForo 1 to XenForo 2.</td>
+</tr>
+
+<tr>
+<td><code>title</code></td>
+<td>The title of the addon. This will show in the Admin Panel.</td>
+</tr>
+
+<tr>
+<td><code>description</code></td>
+<td>A description of the addon. This will show in the Admin Panel.</td>
+</tr>
+
+<tr>
+<td><code>version_id</code></td>
+<td>The internal ID used by XenForo to track updates to your addon. This must be incremented every release.</td>
+</tr>
+
+<tr>
+<td><code>version_string</code></td>
+<td>The human-readable addon version. This will show in the Admin Panel instead of the <code>version_id</code> property.</td>
+</tr>
+
+<tr>
+<td><code>dev</code></td>
+<td>The name of the developer of the addon. This will show in the Admin Panel.</td>
+</tr>
+
+<tr>
+<td><code>dev_url</code></td>
+<td>If set, the developer's name will show in the Admin Panel as a hyperlink, with this as the target (href).</td>
+</tr>
+
+<tr>
+<td><code>faq_url</code></td>
+<td>If set, an FAQ hyperlink will show in the Admin Panel, with this as the target (href).</td>
+</tr>
+
+<tr>
+<td><code>support_url</code></td>
+<td>If set, a support hyperlink will show in the Admin Panel, with this as the target (href).</td>
+</tr>
+
+<tr>
+<td><code>extra_urls</code></td>
+<td>This allows you to display links to other things related to the add-on (perhaps a bug reports link, a manual - whatever you like).<br>An array of JSON objects, where the key is the link text and the value is the link target (href).</td>
+</tr>
+
+<tr>
+<td><code>require</code></td>
+<td>A set of requirements that need to be met for XenForo to allow installation of the addon. See <a href="#the-requirements-property">'The requirements property'</a> for more information.</td>
+</tr>
+
+<tr>
+<td><code>icon</code></td>
+<td>The icon of the resource. This can be a Font Awesome icon name (e.g. <code>fa-shopping-bag</code>, or the path to an image file.)</td>
+</tr>
+
+</tbody>
+</table>
+
+<h5 id="the-requirements-property">The requirements property<a class="headerlink" href="#the-requirements-property" title="Permanent link">&para;</a></h5>
+<p>The require property is the standard way of blocking an add-on install or upgrade if the environment doesn't support or meet the requirements.<br />
+You can use it to require other add-ons to be installed first, certain PHP extensions to be present or enabled and/or to enforce a minimum PHP version.</p>
+<p>Here's an example snippet:</p>
+<pre><code class="language-json">...
+  &quot;require&quot;: {
+      &quot;XF&quot;: [2000010, &quot;XenForo 2.0.0+&quot;],
+      &quot;php&quot;: [&quot;5.4.0&quot;, &quot;PHP 5.4.0+&quot;],
+      &quot;php-ext/json&quot;: [&quot;*&quot;, &quot;JSON extension&quot;]
+  }
+...
+</code></pre>
+<p>Each requirement, is a named array:</p>
+<ul>
+<li>The name of the array is the product ID (e.g. <code>XF</code> or <code>php</code>).  </li>
+<li>The first array element is the version of the product (e.g. <code>2000010</code> or <code>5.4.0</code>). You can use use <code>*</code> to refer to any version of the product.  </li>
+<li>The second element is the human-readable text of that requirement and this is what's used in messages (e.g. <code>XenForo 2.0.0+</code> or <code>PHP 5.4.0+</code>).</li>
+</ul>
+<p>Here's a summary of the supported product IDs:</p>
+<table>
+<thead>
+<th>Product/Requirement Name</th>
+<th>Refers to...</th>
+<th>Value</th>
+</thead>
+<tbody>
+
+<tr>
+<td><code>XF</code></td>
+<td>The XenForo installation version.</td>
+<td>The XenForo version ID, for example <code>200010</code>.<br>You can get your current XenForo version by checking the  top of the <code>/src/XF.php</code> file for the <code>$versionId</code> definion or by printing the value of <code>\XF::$versionId</code>.</td>
+</tr>
+
+<tr>
+<td><code>php</code></td>
+<td>The PHP version.</td>
+<td>The PHP version, for example <code>5.4.0</code>.<br>It's recommended that you keep this as low as possible; updating a PHP version can be quite a complex task - especially if other add-ons conflict with newer PHP versions.</td>
+</tr>
+
+<tr>
+<td><code>php-ext/(extension name)</code></td>
+<td>A PHP extension - where <code>(extension name)</code> is the name of the extension.</td>
+<td>The PHP extension version.<br>This is checked using the PHP <code>version_compare</code> function, so it even works for version strings in the official full PHP format like <code>7.1.19-1+ubuntu16.04.1+deb.sury.org+1</code>.</td>
+</tr>
+
+<tr>
+<td><code>(any addon ID)</code></td>
+<td>Any XenForo addon such as <code>Demo/Addon</code>.<br>If you're unsure about an addon's ID, check it's <code>addon.json</code> file.</td>
+<td>The addon version ID.<br>You can refer to the <a href="#recommended-version-id-format">Recommended version ID format</a> for more information.</td>
+</tr>
+
+</tbody>
+</table>
+
+<h3 id="hashesjson-file">hashes.json file<a class="headerlink" href="#hashesjson-file" title="Permanent link">&para;</a></h3>
+<p><code>hashes.json</code> is the new way to add support for the File health check system, and the best part is -- it's generated 
+automatically!</p>
+<p>As part of the build process (more on that later) we will do a quick inventory of all your add-on's files and write the calculated hash of the file contents.</p>
+<h3 id="setupphp-file">Setup.php file<a class="headerlink" href="#setupphp-file" title="Permanent link">&para;</a></h3>
+<p><code>Setup.php</code> is the new home for any code you require to run during install, upgrade or uninstallation of your add-on.</p>
+<p>We will go into more detail about how to create a Setup class <a href="#setup-class">below</a>.</p>
+<h3 id="_data-directory">_data directory<a class="headerlink" href="#_data-directory" title="Permanent link">&para;</a></h3>
+<p>The <code>_data</code> directory is where the master data for your add-on is stored. Each add-on data type will have its own XML 
+file (rather than a single one for all types). The hashes for these files are included inside <code>hashes.json</code> so we can 
+ensure that an add-on has complete and consistent data before allowing an add-on to be installed.</p>
+<h3 id="_output-directory">_output directory<a class="headerlink" href="#_output-directory" title="Permanent link">&para;</a></h3>
+<p>The <code>_output</code> directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see <a href="/development-tools/#enabling-development-mode">Enabling development mode</a>).</p>
+<p>Each item of add-on data is stored in a separate file. Mostly they are stored as JSON files, but in the case of phrases they are stored as TXT files and for templates they are stored as HTML/CSS/LESS files. All template types are editable in the filesystem directly, and changes made to these files are written back to the database automatically on load.</p>
+<h2 id="setup-class">Setup class<a class="headerlink" href="#setup-class" title="Permanent link">&para;</a></h2>
+<p>To create a Setup class for your add-on, all you need to do is create a file named <code>Setup.php</code> in the root of your add-on directory.</p>
+<p>The Setup class should extend <code>\XF\AddOn\AbstractSetup</code> which requires, at minimum, to implement <code>install()</code>, <code>upgrade()</code> and <code>uninstall()</code> methods. Here's what a simple add-on Setup class might look like:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo;
+
+class Setup extends \XF\AddOn\AbstractSetup
+{
+    public function install(array $stepParams = [])
+    {
+        $this-&gt;schemaManager()-&gt;createTable('xf_demo', function(\XF\Db\Schema\Create $table)
+        {
+            $table-&gt;addColumn('demo_id', 'int');
+        });
+    }
+
+    public function upgrade(array $stepParams = [])
+    {
+        if ($this-&gt;addOn-&gt;version_id &lt; 1000170)
+        {
+            $this-&gt;schemaManager()-&gt;alterTable('xf_demo', function(\XF\Db\Schema\Alter $table)
+            {
+                $table-&gt;addColumn('foo', 'varchar', 10)-&gt;setDefault('');
+            });
+        }
+    }
+
+    public function uninstall(array $stepParams = [])
+    {
+        $this-&gt;schemaManager()-&gt;dropTable('xf_demo');
+    }
+}
+</code></pre>
+<p>The Setup class also supports running each of the actions in different steps. To implement this behavior your Setup class can use the <code>StepRunnerInstallTrait</code>, <code>StepRunnerUpgradeTrait</code> and/or <code>StepRunnerUninstallTrait</code> <a href="http://php.net/manual/en/language.oop5.traits.php">traits</a>. These implement the required methods automatically, and you just need to add the relevant steps, e.g. <code>installStep1()</code>, <code>upgrade1000170Step1()</code>, <code>upgrade1000170Step2()</code> and <code>uninstallStep1()</code>, where <code>1000170</code> etc. in the upgrade methods are the add-on version IDs (see <a href="#recommended-version-id-format">Recommended version ID format</a>).</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="development-tools/" class="btn btn-neutral float-right" title="Development tools">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="rest-api/" class="btn btn-neutral" title="REST API"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../rest-api/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../development-tools/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

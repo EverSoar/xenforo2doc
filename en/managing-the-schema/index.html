@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Managing the schema - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.713644%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Managing the schema";
+    var mkdocs_page_input_path = "managing-the-schema.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#the-database-adapter">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">The database adapter</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#schema-management">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Schema management</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Managing the schema</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/managing-the-schema.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="managing-the-schema">Managing the schema<a class="headerlink" href="#managing-the-schema" title="Permanent link">&para;</a></h1>
+<p>We've taken a look at some of the new approaches available for interacting with data. Of course there are specific circumstances where interacting with the database directly may be necessary.</p>
+<h2 id="the-database-adapter">The database adapter<a class="headerlink" href="#the-database-adapter" title="Permanent link">&para;</a></h2>
+<p>The default database adapter in XF2 is based on MySQL and PHP's mysqli extension. The configured database adapter is accessible in any XF class using the following:</p>
+<pre><code class="language-php">$db = \XF::db();
+</code></pre>
+<p>The adapter has a number of methods available which will execute a SQL query and then format the results into an array. For example, to access a single user record:</p>
+<pre><code class="language-php">$db = \XF::db();
+$user = $db-&gt;fetchRow('SELECT * FROM xf_user WHERE user_id = ?', 1);
+</code></pre>
+<p>The <code>$user</code> variable will now contain an array of all values from the first row found in the query result. To get a single value from that query, such as the username, you can do the following:</p>
+<pre><code class="language-php">$username = $user['username'];
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Database queries written directly and passed to the database adapter are not automatically "safe". They pose a risk of a SQL injection vulnerability if user input is not sanitised and not passed into the query without being prepared. The way to do that properly is using prepared statements, like in the example above. Parameters are represented in the query itself using the <code>?</code> placeholder. These placeholders are then replaced with the values in the next argument after they have been appropriately escaped. If you have the need to use more than a single parameter, that should be passed into the fetch type method as an array. Should the need arise, you can escape or quote values directly using <code>$db-&gt;quote($value)</code>.</p>
+<p>You can find more information about prepared statements <a href="http://php.net/manual/en/mysqli.quickstart.prepared-statements.php">here</a>.</p>
+</div>
+<p>It's also possible to query for a single value from a record. For example:</p>
+<pre><code class="language-php">$db = \XF::db();
+$username = $db-&gt;fetchOne('SELECT username FROM xf_user WHERE user_id = ?', 1);
+</code></pre>
+<p>If you have a query that needs to return multiple rows, you can use either <code>fetchAll</code>:</p>
+<pre><code class="language-php">$db = \XF::db();
+$users = $db-&gt;fetchAll('SELECT * FROM xf_user LIMIT 10');
+</code></pre>
+<p>Or <code>fetchAllKeyed</code>:</p>
+<pre><code class="language-php">$db = \XF::db();
+$users = $db-&gt;fetchAllKeyed('SELECT * FROM xf_user LIMIT 10', 'user_id');
+</code></pre>
+<p>Both of these methods will return an array of arrays that represent each user record. The difference between the <code>fetchAll</code> and <code>fetchAllKeyed</code> methods is that the returned array will be keyed differently. With <code>fetchAll</code> the array will be keyed with numerically consecutive integers. With <code>fetchAllKeyed</code> the array will be keyed by the name of the field named in the second argument.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you are using <code>fetchAllKeyed</code> note that the second argument is the field to key the array by, but the <strong>third</strong> argument is where you pass in the param values to match the <code>?</code> placeholders.</p>
+</div>
+<p>There are some other fetch type methods available including <code>fetchAllColumn</code> for grabbing an array of a specific column's values from all returned rows:</p>
+<pre><code class="language-php">$db = \XF::db();
+$usernames = $db-&gt;fetchAllColumn('SELECT username FROM xf_user LIMIT 10');
+</code></pre>
+<p>The above example would return an array of 10 usernames found from the resulting query.</p>
+<p>Finally, you may not actually want or need any data returned, in which case you can just do a plain query:</p>
+<pre><code class="language-php">$db = \XF::db();
+$db-&gt;query('DELETE FROM xf_user WHERE user_id = ?', 1);
+</code></pre>
+<h2 id="schema-management">Schema management<a class="headerlink" href="#schema-management" title="Permanent link">&para;</a></h2>
+<p>XF2 includes an all new way to manage the database schema which takes an object oriented approach to performing certain table operations. Let's first look at a traditional alter, using the database adapter like we have above:</p>
+<pre><code class="language-php">$db = \XF::db();
+$db-&gt;query(&quot;
+    ALTER TABLE xf_some_existing_table
+    ADD COLUMN new_column INT(10) UNSIGNED NOT NULL DEFAULT 0,
+    MODIFY COLUMN some_existing_column varchar(250) NOT NULL DEFAULT ''
+&quot;);
+</code></pre>
+<p>And also let's look at a typical create table query:</p>
+<pre><code class="language-php">$db = \XF::db();
+$sm = $db-&gt;getSchemaManager();
+
+$defaultTableConfig = $sm-&gt;getTableConfigSql();
+
+$db-&gt;query(&quot;
+    CREATE TABLE xf_some_table (
+        some_id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+        some_name VARCHAR(50) NOT NULL,
+        PRIMARY KEY (user_id)
+    ) {$defaultTableConfig}
+&quot;);
+</code></pre>
+<p>The alternative and preferred approach in XF2 uses the new <code>SchemaManager</code> object. Let's look at both of these queries, as performed by the schema manager, starting with the alter:</p>
+<pre><code class="language-php">$sm = \XF::db()-&gt;getSchemaManager();
+$sm-&gt;alterTable('xf_some_existing_table', function(\XF\Db\Schema\Alter $table)
+{
+    $table-&gt;addColumn('new_column', 'int')-&gt;setDefault(0);
+    $table-&gt;changeColumn('some_existing_column')-&gt;length(250);
+});
+</code></pre>
+<p>And the table creation:</p>
+<pre><code class="language-php">$sm = \XF::db()-&gt;getSchemaManager();
+$sm-&gt;createTable('xf_some_table', function(\XF\Db\Schema\Create $table)
+{
+    $table-&gt;addColumn('some_id', 'int')-&gt;autoIncrement();
+    $table-&gt;addColumn('some_name', 'varchar', 50);
+});
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you alter the existing XenForo tables, or create your own tables, you <strong>MUST</strong> specify a default value otherwise you will encounter problems when querying the table.</p>
+</div>
+<p>Both of these examples produce the exact same query as their more direct counterparts above. Though you might notice that some things are (deliberately) missing. For example, none of the examples specify a length for the <code>int</code> fields. This is simply because by omitting that, MySQL will provide it with a default, which is 10 for unsigned integers. Speaking of which, we also don't specify that the <code>some_id</code> column is unsigned. Using unsigned integers within XF is by far the most common use case, so it is automatically added. If you genuinely need the ability to support negative integers, you can reverse that with the <code>-&gt;unsigned(false)</code> method. Another omission is the lack of defining <code>NOT NULL</code> for everything. Again, this is applied automatically, but you can reverse that with <code>-&gt;nullable(true)</code>.</p>
+<p>It may not be clear from the alter example, but when changing existing fields, the existing field definition is automatically retained. This means that, rather than having to specify the full column definition, including all of the bits that haven't actually changed, you can just specify the parts you want to change.</p>
+<p>There is some other automatic inference that happens with regards to primary keys. You can explicitly define the primary key (or any other type of key) if you wish, but often auto incremented fields will usually be your primary key for the table. So in the create table example, the <code>some_id</code> field is automatically assigned as the primary key for that table.</p>
+<p>Finally, for the create table approach, we can automatically add the correct table config for the storage engine specified (which defaults to <code>InnoDB</code> but can be changed easily to other engine types).</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="lets-build-an-add-on/" class="btn btn-neutral float-right" title="Let's build an add-on">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="criteria/" class="btn btn-neutral" title="Criteria"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../criteria/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lets-build-an-add-on/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

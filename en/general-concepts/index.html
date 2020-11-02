@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>General concepts - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.652588%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "General concepts";
+    var mkdocs_page_input_path = "general-concepts.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#vendor-components">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Vendor components</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#integrated-development-environment-ide">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Integrated Development Environment (IDE)</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#autoloader">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Autoloader</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#namespaces">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Namespaces</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#short-class-names">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Short class names</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#extending-classes">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Extending classes</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#type-hinting">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Type hinting</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>General concepts</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/general-concepts.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="general-concepts">General concepts<a class="headerlink" href="#general-concepts" title="Permanent link">&para;</a></h1>
+<p>The following sections go into detail about some of the general systems and concepts you will come across while developing a XenForo add-on. If you are familiar with XenForo 1.x development, then a lot of these concepts will seem familiar to you, though it's worth reviewing them as there are some excellent new tools and features to help you develop add-ons.</p>
+<h2 id="vendor-components">Vendor components<a class="headerlink" href="#vendor-components" title="Permanent link">&para;</a></h2>
+<p>XF2 is not powered by a specifc framework as XF1 was, however, we have employed the use of certain popular, well-tested, open source packages to help with specific tasks. For example, we use a project named <a href="https://github.com/swiftmailer/swiftmailer">SwiftMailer</a> for email sending and a project named <a href="https://github.com/guzzle/guzzle">Guzzle</a> as a HTTP client. All third party projects are loaded from the <code>src/vendor</code> directory.</p>
+<p>It is not currently possible for add-on developers to add their own dependencies to this location. </p>
+<h2 id="integrated-development-environment-ide">Integrated Development Environment (IDE)<a class="headerlink" href="#integrated-development-environment-ide" title="Permanent link">&para;</a></h2>
+<p>Before starting work on XF2 development, you may want to spend some time evaluating the application with which you will actually be creating and editing PHP files. This is commonly referred to as an IDE. There are a number of options available ranging from basic Notepad to something like Sublime Text which can be expanded to have better PHP support with add-ons, up to a proper IDE, such as <a href="https://www.jetbrains.com/phpstorm/">PhpStorm</a>. Internally, we use PhpStorm as our preferred IDE. This is a premium and commercial product, but there may be free alternatives available. Either way, no one can tell you the best application for your requirements, and you should spend some time with a number of products (even free ones) and use that experience to find out your preference.</p>
+<h2 id="autoloader">Autoloader<a class="headerlink" href="#autoloader" title="Permanent link">&para;</a></h2>
+<p>XF2 uses an autoloader which is automatically generated by Composer. This allows all XF code, third party vendor code, and any add-on developer code to be automatically included throughout the entire project without having to <code>include/require</code> your classes manually.</p>
+<p>The autoload root for all XF add-ons is the <code>src/addons</code> directory. This means that all of your class names will be relative to this base location. It's also worth noting that XF2 employs a strict "class per file" pattern to naming. Each file should only contain a single class, and the name of that class should identify the exact location of the class PHP file on the file system.</p>
+<p>For example, if you want to create a new class in a file named <code>src/addons/Demo/Setup.php</code> (where <code>Demo</code> is your add-on ID) then this class will be named <code>Demo\Setup</code>. Conversely, if you had a class named <code>Demo\Entity\Thing</code> then you will know the file for this class is located in the path <code>src/addons/Demo/Entity/Thing.php</code>.</p>
+<h2 id="namespaces">Namespaces<a class="headerlink" href="#namespaces" title="Permanent link">&para;</a></h2>
+<p>Throughout XF we use <a href="http://php.net/manual/en/language.namespaces.rationale.php">namespaces</a> so that we can reference classes in the same namespace more succinctly. It is recommended that all add-ons also use namespaces. In the above example we talked about a class named <code>Demo\Setup</code>. Using namespaces, the class would actually be named simply <code>Setup</code> but the namespace will be set to <code>Demo</code>. As a more concrete example, we also talked above about a class named <code>Demo\Entity\Thing</code>. Let's see what the PHP code would look like for this class:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Entity;
+
+class Thing
+{
+
+}
+</code></pre>
+<p>If there was a class named <code>AnotherThing</code> in the <code>src/addons/Demo/Entity</code> directory, we could reference this class in the <code>Thing</code> class simply as <code>AnotherThing</code> because that class is in the same <code>Demo\Entity</code> namespace.</p>
+<h2 id="short-class-names">Short class names<a class="headerlink" href="#short-class-names" title="Permanent link">&para;</a></h2>
+<p>Occasionally, classes referenced in XF are shortened. For example, if you wish to call the <code>User</code> entity (more on entities below) then you may see the class name referenced as simply <code>XF:User</code>. The use of short class names and the full class name they resolve to, is entirely context sensitive. Therefore, in the context of a call to an entity, the short class name will resolve to the following full class name <code>XF\Entity\User</code>. The <code>XF</code> part indicates the file path (based on add-on ID), the <code>Entity</code> part is implied by calling the entity and the <code>User</code> part indicates the specific entity. Similarly when you start creating your own classes, you will also use short class names to reference your own classes. For example, if you need to create a new <code>Thing</code> entity for your <code>Demo</code> add-on, then you would write the following:</p>
+<pre><code class="language-php">\XF::em()-&gt;create('Demo:Thing');
+</code></pre>
+<p>This would resolve to the <code>Demo\Entity\Thing</code> class. Similarly, if you wanted to access a <code>Thing</code> repository, you would write it as follows:</p>
+<pre><code class="language-php">\XF::repository('Demo:Thing');
+</code></pre>
+<p>Notice how the short class names are identical. The repository call would actually resolve to <code>Demo\Repository\Thing</code>.</p>
+<h2 id="extending-classes">Extending classes<a class="headerlink" href="#extending-classes" title="Permanent link">&para;</a></h2>
+<p>A great deal number of classes in XF2 are extendable which allows developers to extend and override the core code without having to directly edit it. If you're familiar with XF1 development, you will be somewhat familiar with the following process:</p>
+<ol>
+<li>Create a Listener PHP file</li>
+<li>Create a class which will ultimately extend the original class </li>
+<li>Write a function which matches the expected callback signature for one of the <code>load_class</code> events and adds the name of your extended class</li>
+<li>Add a "Code event listener" in the Admin CP which specifies the Listener class and method name for the function mentioned above, and optionally hint as to which class is being extended</li>
+</ol>
+<p>In XF2 we have removed these events in favour of a specific system called "Class extensions". The process is as follows:</p>
+<ol>
+<li>Create a class which will ultimately extend the original class</li>
+<li>Add a "Class extension" in the Admin CP which specifies the name of the class you are extending and the name of the class which is extending it</li>
+</ol>
+<p>This clearly cuts down on some of the boilerplate required to extend classes, and also provides a dedicated UI for viewing and managing these extensions. Let's look at the process by extending the public <code>Member</code> controller, and adding a new action which displays a simple message.</p>
+<p>The first thing to do is to create an add-on. We previously outlined how to do that using the <code>xf-addon:create</code> command <a href="/development-tools/#creating-a-new-add-on">here</a>. For this example, we'll assume you created an add-on with an ID and title of "Demo".</p>
+<p>You will now have an addon.json file for this add-on in the following location <code>src/addons/Demo/addon.json</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although, strictly speaking, you can place your extended classes wherever you like within your add-on directory, it is recommended to put extended classes in a directory which easily identifies a) the add-on the class belongs to b) the type of class being extended and c) the name of the class being extended. In the following examples, we are extending the public XF Member controller so we will place our extended class in the following path: <code>src/addons/Demo/XF/Pub/Controller/Member.php</code>.</p>
+</div>
+<p>The extended class needs to exist before we add the class extension to the Admin CP. So, follow the following instructions:</p>
+<ol>
+<li>Create a new directory named <code>XF</code> inside <code>src/addons/Demo</code></li>
+<li>Create a new directory named <code>Pub</code> inside <code>src/addons/Demo/XF</code></li>
+<li>Create a new directory named <code>Controller</code> inside <code>src/addons/Demo/XF/Pub</code></li>
+<li>Create a new file named <code>Member.php</code> inside <code>src/addons/Demo/XF/Pub/Controller</code></li>
+</ol>
+<p>The initial contents of your PHP file, should be as follows:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\XF\Pub\Controller;
+
+class Member extends XFCP_Member
+{
+
+}
+</code></pre>
+<p>If you're familiar with extending PHP classes generally, but not familiar with XF, the above example may initially seem confusing. The reason for that is you may have been expecting to extend the <code>XF\Pub\Controller\Member</code> class directly, rather than <code>XFCP_Member</code>. In XF we use the "XenForo Class Proxy" system (XFCP for short) to build an "inheritance chain" which ultimately allows a single class to be extended by multiple add-ons. The convention is to reference a dummy extended class which is the current class name <code>Member</code> and prefix it with <code>XFCP_</code>.</p>
+<p>Now the class has been created, we can create the class extension on the Admin CP &gt; Development &gt; Class extensions &gt; Add class extension page.</p>
+<p>All you need to do is enter the base class name (<code>XF\Pub\Controller\Member</code>) in the first field, and the extended class name (which you just created) in the second field (<code>Demo\XF\Pub\Controller\Member</code>) and click the "Save" button.</p>
+<p>Your class extension should now be active, but currently, not doing anything. To make something happen, we need to either override an existing method within this class by creating a method of the same name as an existing one, or adding a new method entirely. Let's do the latter:</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\XF\Pub\Controller;
+
+class Member extends XFCP_Member
+{
+    public function actionHelloWorld()
+    {
+        return $this-&gt;message('Hello world!');
+    }
+}
+</code></pre>
+<p>We talk more about controllers, actions, and replies in the <a href="/controller-basics">Controller basics</a> pages, so don't particularly worry about understanding this right now.</p>
+<p>Now we've added some code to our extended controller, let's see it in action. Simply enter the following URL (relative to your board URL): <code>index.php?members/hello-world</code>. You should now see a "Hello world!" message displayed!</p>
+<p>As mentioned earlier, it is also possible to override existing methods within a class. For example, if we changed <code>actionHelloWorld()</code> with <code>actionIndex()</code> then you would no longer have a "Notable members" list, it would instead display the "Hello world!" message! This isn't quite the right way to extend an existing controller action (or any class method, in fact) but we go into more detail about that in the <a href="/controller-basics/#modifying-a-controller-action-reply-properly">Modifying a controller action reply (properly)</a> section. </p>
+<h2 id="type-hinting">Type hinting<a class="headerlink" href="#type-hinting" title="Permanent link">&para;</a></h2>
+<p>A lot of objects within XF are instantiated through factory methods. For example, if we want to instantiate a specific repository, we would write the following:</p>
+<pre><code class="language-php">$repo = \XF::repository('Demo:Thing');
+</code></pre>
+<p>This is a highly convenient and consistent way of instantiating an object. We know, just by looking at it, what object will be instantiated. The resulting code in that method knows how to return the correct object for what we've requested.</p>
+<p>Unfortunately, however, your IDE probably has no clue (at least by default). As far as the IDE is concerned, this method will return an object instance of <code>XF\Mvc\Entity\Repository</code>. That's useful to a certain extent, but there's potentially lots of methods available in the specific <code>Demo\Repository\Thing</code> object which your IDE doesn't know about. This ultimately means that when you're trying to use your <code>$repo</code> object in the code, your IDE will not be able to make suggestions or auto complete method names and the arguments it requires.</p>
+<p>This is where type hinting becomes useful, and the syntax should be supported, by standard, by most IDEs and some "PHP aware" text editors. We would just change our repository call as follows:</p>
+<pre><code class="language-php">/** @var \Demo\Repository\Thing $repo */
+$repo = \XF::repository('Demo:Thing');
+</code></pre>
+<p>The type hint above the repository call now tells the IDE that <code>$repo</code> relates to an object represented by the <code>Demo\Repository\Thing</code> class rather than the object it automatically inferred originally.</p>
+<p>Type hinting is especially useful when extending classes, too. A potential problem with our class extension methods are that essentially your classes don't extend the original class you want to extend, but instead this is proxied through a class that doesn't actually exist, e.g. <code>XFCP_Member</code> such as in the <a href="#extending-classes">example above</a>.</p>
+<p>To rectify this issue, we automatically generate a file named <code>extension_hint.php</code> and store that in your <code>_output</code> directory.</p>
+<p>This adds a reference that the IDE can read but PHP can't so that the IDE now understands that when we use <code>$this</code> inside any of the methods in this extended class that it can suggest and autocomplete methods and properties available in the Member controller or one of its parents.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="routing-basics/" class="btn btn-neutral float-right" title="Routing basics">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="development-tools/" class="btn btn-neutral" title="Development tools"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../development-tools/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../routing-basics/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

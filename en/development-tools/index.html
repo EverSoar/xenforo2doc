@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Development tools - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.620558%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Development tools";
+    var mkdocs_page_input_path = "development-tools.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#debug-mode">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Debug mode</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#enabling-development-mode">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Enabling development mode</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#development-commands">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Development commands</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#add-on-specific-commands">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Add-on specific commands</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#creating-a-new-add-on">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Creating a new add-on</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#export-_data-xml-files">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Export _data .XML files</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#bump-your-add-on-version">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Bump your add-on version</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sync-your-addonjson-to-the-database">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Sync your addon.json to the database</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#validate-your-addonjson-file">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Validate your addon.json file</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#run-a-specific-setup-step">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Run a specific Setup step</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#building-an-add-on-release">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Building an add-on release</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#customizing-the-build-process">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Customizing the build process</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#development-commands_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Development commands</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#import-development-output">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Import development output</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#export-development-output">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Export development output</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#debugging-code">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Debugging code</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#dump-a-variable">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Dump a variable</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Development tools</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/development-tools.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="development-tools">Development tools<a class="headerlink" href="#development-tools" title="Permanent link">&para;</a></h1>
+<p>XF2 provides developers with a number of built in tools you can use to expedite development of add-ons and we'll go through some of these below.</p>
+<h2 id="debug-mode">Debug mode<a class="headerlink" href="#debug-mode" title="Permanent link">&para;</a></h2>
+<p>Debug mode can be enabled in your <code>config.php</code> which will allow you to access certain development tools in the Admin CP (such as creating routes, permissions, admin navigation etd.) and it will also enable an output at the bottom of every page which details how long the page took to process, how many queries were executed to render the page and how much memory was used. A tooltip containing information about the current controller, action and template name is available on hover. You can also click on the time output and this will give you a detailed look at exactly what queries ran and the stack trace that led to that query being executed.</p>
+<p>You can enable debug mode by adding the following to <code>config.php</code>:</p>
+<pre><code class="language-php">$config['debug'] = true;
+</code></pre>
+<h2 id="enabling-development-mode">Enabling development mode<a class="headerlink" href="#enabling-development-mode" title="Permanent link">&para;</a></h2>
+<p>Development mode is a special mode, activated in your <code>config.php</code> file which will trigger XF to automatically write out your development files to your <code>_output</code> directory. This mode needs to be enabled for filesystem template editing to be enabled. As development mode will be writing files to your file system it is important to ensure you have the appropriate file permissions in place. This may vary depending on environment, but a typical configuration would be to ensure that for any add-on you are working on, you have its <code>_output</code> directory set chmod to <code>0777</code>. For example, if you are working on an add-on with an ID of <code>Demo</code>, its development output will be written out to <code>src/addons/Demo/_output</code> and therefore that directory will need to be fully writable.</p>
+<p>Enabling development mode, also enables <a href="#debug-mode">debug mode</a> automatically.</p>
+<p>To enable development mode, add the following lines to your <code>config.php</code> file:</p>
+<pre><code class="language-php">$config['development']['enabled'] = true;
+$config['development']['defaultAddOn'] = 'SomeCompany/MyAddOn';
+</code></pre>
+<p>The <code>defaultAddOn</code> value is optional, but adding that will automatically populate the specified add-on in the XF Admin CP when creating new content which will be associated to an add-on.</p>
+<p>In addition to the above, you may find it necessary to add some additional configuration, especially if you are using more than one XF installation.</p>
+<pre><code class="language-php">$config['enableMail'] = false;
+</code></pre>
+<p>This will disable all mail from being sent from your board. This is especially important if you are using a copy of live data with real users and real email addresses (though we would advise against this!).</p>
+<p>As an alternative to disabling mail directly, you may want to consider using a service such as <a href="https://mailtrap.io">MailTrap.io</a>. This provides you with a free mailbox that will receive all emails sent from your board, which is very useful for testing any emails your new add-on may be sending.</p>
+<pre><code class="language-php">$config['cookie']['prefix'] = 'anything_';
+</code></pre>
+<p>If you're using two or more XF installs on the same domain, you may experience issues with cookies being overwritten, which is caused by the installations sharing the same cookie prefix. It's therefore recommended to ensure you change the cookie prefix for each XF install you have set up. Without doing that, you will experience issues, for example, getting logged out of one XF install when logging into another.</p>
+<h2 id="development-commands">Development commands<a class="headerlink" href="#development-commands" title="Permanent link">&para;</a></h2>
+<p>XF 2.0 ships with a number of general development and add-on CLI commands which are aimed to help you develop more efficiently or even possibly automate/script some common processes.</p>
+<p>In this section we'll go through some of the common tools and explain what they do.</p>
+<h2 id="add-on-specific-commands">Add-on specific commands<a class="headerlink" href="#add-on-specific-commands" title="Permanent link">&para;</a></h2>
+<h3 id="creating-a-new-add-on">Creating a new add-on<a class="headerlink" href="#creating-a-new-add-on" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:create</p>
+</div>
+<p>The <code>xf-addon:create</code> command is how to initially set up and create a new add-on. Once it runs, all you need to answer are some basic questions:</p>
+<ul>
+<li>Enter an ID for this add-on</li>
+<li>Enter a title</li>
+<li>Enter a version ID (e.g. 1000010)</li>
+<li>Enter a version string (e.g. 1.0.0 Alpha)</li>
+</ul>
+<p>You will then be given the option to create the add-on and write out its addon.json file, and asked some questions about  whether you want to add a Setup.php file.</p>
+<h3 id="export-_data-xml-files">Export _data .XML files<a class="headerlink" href="#export-_data-xml-files" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:export <em>[addon_id]</em></p>
+</div>
+<p>This command is what you will use to export all of your add-on's data to XML files inside the <code>_data</code> directory. It exports the data from what is currently in the database (rather than from the development output files).</p>
+<h3 id="bump-your-add-on-version">Bump your add-on version<a class="headerlink" href="#bump-your-add-on-version" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:bump-version <em>[addon_id]</em> --version-id 1020370 --version-string 1.2.3</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If your version string contains spaces, you'll need to surround it with quotes.</p>
+</div>
+<p>This command takes the add-on ID for your add-on, the new version ID and the new version string. This enables you to bump the version of your add-on in a single step, without having to perform upgrades and rebuilds yourself. The options above are optional, and if they are not provided you will be prompted for them. If you only specify the version ID, we will try and infer the correct version string from that automatically if it matches our <a href="/add-on-structure/#recommended-version-id-format">Recommended version ID format</a>. Once the command completes, it updates the <code>addon.json</code> file automatically and the database with the correct version details.</p>
+<h3 id="sync-your-addonjson-to-the-database">Sync your addon.json to the database<a class="headerlink" href="#sync-your-addonjson-to-the-database" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:sync-json <em>[addon_id]</em></p>
+</div>
+<p>Sometimes you might prefer to edit the JSON file directly with certain details. This could be the version, or a new icon, or a change of title or description. Changing the JSON in this way can cause the add-on system to believe there are pending changes or that the add-on is upgradeable. A rebuild or upgrade can be a destructive operation if you haven't yet exported your current data. Therefore, running this command is recommended as a way of importing that data in without affecting your existing data.</p>
+<h3 id="validate-your-addonjson-file">Validate your addon.json file<a class="headerlink" href="#validate-your-addonjson-file" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:validate-json <em>[addon_id]</em></p>
+</div>
+<p>If you'd like to check your JSON file contains the correct content and in the correct format, you can now validate it. The validator will check that the content can be decoded, that it contains all of the correct required fields (such as title and version ID) and also checks for the presence of the optional keys (such as description and icon). If any keys are missing, you will be offered to have the issues fixed for you. We also check to see if there are any unexpected fields within the JSON file. These may be deliberate or represent typos. You can run the command manually or the command will be run automatically while building your release.</p>
+<h3 id="run-a-specific-setup-step">Run a specific Setup step<a class="headerlink" href="#run-a-specific-setup-step" title="Permanent link">&para;</a></h3>
+<p>Sometimes it's useful to check that your Setup class steps function correctly, without having to go through the process of uninstalling and reinstalling.</p>
+<p>There are three commands which help with this. These commands will only work with Setup classes that are built using the default <code>StepRunner</code> traits.</p>
+<h4 id="run-an-install-step">Run an install step<a class="headerlink" href="#run-an-install-step" title="Permanent link">&para;</a></h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:install-step <em>[addon_id]</em> <em>[step]</em></p>
+</div>
+<h4 id="run-an-upgrade-step">Run an upgrade step<a class="headerlink" href="#run-an-upgrade-step" title="Permanent link">&para;</a></h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:upgrade-step <em>[addon_id]</em> <em>[version]</em> <em>[step]</em></p>
+</div>
+<h4 id="run-an-uninstall-step">Run an uninstall step<a class="headerlink" href="#run-an-uninstall-step" title="Permanent link">&para;</a></h4>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:uninstall-step <em>[addon_id]</em> <em>[step]</em></p>
+</div>
+<h2 id="building-an-add-on-release">Building an add-on release<a class="headerlink" href="#building-an-add-on-release" title="Permanent link">&para;</a></h2>
+<p>Once all of the hard work has been done, it's a shame to have to go through a number of other processes before you can actually release it. Even the process of collecting all of the files into the correct place and creating the ZIP file manually can be time consuming and prone to errors. We can take care of that automatically, including generating the <code>hashes.json</code> file, with one simple command.</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-addon:build-release <em>[addon_id]</em></p>
+</div>
+<p>When you run this command, it will first run the <code>xf-addon:export</code> command before then collecting all of your files together into a temporary <code>_build</code> directory and writing them to a ZIP file. The finished ZIP will also include the <code>hashes.json</code> file. Once the ZIP has been created it will be saved to your <code>_releases</code> directory named and named <code>&lt;ADDON ID&gt;-&lt;VERSION STRING&gt;.zip</code>.</p>
+<h3 id="customizing-the-build-process">Customizing the build process<a class="headerlink" href="#customizing-the-build-process" title="Permanent link">&para;</a></h3>
+<p>Aside from just creating the release ZIP there may be additional files you wish to include in your ZIP, other more advanced build processes you want to run such as minifying or concatenating JS or running certain shell commands. All of this can be taken care of in your <code>build.json</code> file. This is a typical <code>build.json</code> file:</p>
+<pre><code class="language-json">{
+    &quot;additional_files&quot;: [
+        &quot;js/demo/portal&quot;
+    ],
+    &quot;minify&quot;: [
+        &quot;js/demo/portal/a.js&quot;,
+        &quot;js/demo/portal/b.js&quot;
+    ],
+    &quot;rollup&quot;: {
+        &quot;js/demo/portal/ab-rollup.js&quot;: [
+            &quot;js/demo/portal/a.min.js&quot;,
+            &quot;js/demo/portal/b.min.js&quot;
+        ]
+    },
+    &quot;exec&quot;: [
+        &quot;echo '{title} version {version_string} ({version_id}) has been built successfully!' &gt; 'src/addons/Demo/Portal/_build/built.txt'&quot;
+    ]
+}
+</code></pre>
+<p>If you have assets, such as JavaScript, which need to be served outside of your add-on directory, you can tell the build process to copy files or directories using the <code>additional_files</code> array within <code>build.json</code>. During development it isn't always feasible to keep files outside of your add-on directory, so if you prefer, you can keep the files in your add-on <code>_files</code> directory instead. When copying the additional files, we will check there first.</p>
+<p>If you ship some JS files with your add-on, you may want to minify those files for performance reasons. You can specify which files you want to minify right inside your <code>build.json</code>. You can list these as an array or you can just specify it as <code>'*'</code> which will just minify everything in your <code>js</code> directory as long as that path has JS files within it after copying the additional files to the build. Any files minified will automatically have a suffix of <code>.min.js</code> instead of <code>.js</code> and the original files will still be in the package.</p>
+<p>You may prefer to roll up your multiple JS files into a single file. If you do, you can use the <code>rollup</code> array to define that. The key is the resulting combined filename, and the items within that array are the paths to the JS files that will be combined into a single file.</p>
+<p>Finally, you may have certain processes that need to be run just before the package is built and finalised. This could be any combination of things. Ultimately, if it is a command that can be run from the shell (including PHP scripts) then you can specify it here. The example above is of course fairly useless, but it does at least demonstrate that certain placeholders can be used. These placeholders are replaced with scalar values you can get from the <code>XF\AddOn\AddOn</code> object which is generally any value available in the <code>addon.json</code> file, or the <code>AddOn</code> entity.</p>
+<h2 id="development-commands_1">Development commands<a class="headerlink" href="#development-commands_1" title="Permanent link">&para;</a></h2>
+<p>There are actually quite a few development related commands, but only the two most important ones are being covered here.</p>
+<p>To use any of these commands, you must have <a href="#enabling-development-mode">development mode</a> enabled in your
+<code>config.php</code> file.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Both of the following commands can potentially cause data loss if there is a situation whereby the database and <code>_output</code>
+directory become out of sync. It is always recommended to use a VCS (Version Control System) such as
+<a href="https://github.com">GitHub</a> to mitigate the impact of such mistakes.</p>
+</div>
+<h3 id="import-development-output">Import development output<a class="headerlink" href="#import-development-output" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-dev:import --addon <em>[addon_id]</em></p>
+</div>
+<p>Running this command will import all of the development output files from your add-on <code>_output</code> directory into the
+database.</p>
+<h3 id="export-development-output">Export development output<a class="headerlink" href="#export-development-output" title="Permanent link">&para;</a></h3>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-dev:export --addon <em>[addon_id]</em></p>
+</div>
+<p>This will export all data currently associated to your add-on in the database to files within your
+<code>_output</code> directory.</p>
+<h2 id="debugging-code">Debugging code<a class="headerlink" href="#debugging-code" title="Permanent link">&para;</a></h2>
+<p>It should be possible to set up your favourite debugger tool (XDebug, Zend Debugger etc.) to work with XF2. Though, sometimes, debugging code can be as rudimentary as just quickly seeing what value (or value type) a variable holds at a given time.</p>
+<h3 id="dump-a-variable">Dump a variable<a class="headerlink" href="#dump-a-variable" title="Permanent link">&para;</a></h3>
+<p>PHP of course has a tool built-in to handle this. You'll likely know it as <code>var_dump()</code>. XF ships with two replacements for this:</p>
+<pre><code class="language-php">\XF::dump($var);
+\XF::dumpSimple($var);
+</code></pre>
+<p>The simple version mostly just dumps out the value of a variable in plain text. For example, if you just use it to dump the value of an array, you will see an output at the top of the page like this:</p>
+<pre><code class="language-plain">array(2) {
+  [&quot;user_id&quot;] =&gt; int(1)
+  [&quot;username&quot;] =&gt; string(5) &quot;Admin&quot;
+}
+</code></pre>
+<p>This is actually the same output as a standard var_dump, but slightly modified for readability and wrapped inside <code>&lt;pre&gt;</code> tags to ensure whitespace is maintained when rendering.</p>
+<p>The alternative is actually a component named VarDumper from the Symfony project. It outputs HTML, CSS and JS to create a much more functional and potentially easier to read output. It allows you to collapse certain sections, and for certain values which can output a considerable amount of data, such as objects, it can collapse those sections automatically.  </p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="general-concepts/" class="btn btn-neutral float-right" title="General concepts">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="add-on-structure/" class="btn btn-neutral" title="Add-on structure"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../add-on-structure/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../general-concepts/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

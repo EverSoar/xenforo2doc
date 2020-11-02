@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Appendix: Scotch Box - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.749677%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Appendix: Scotch Box";
+    var mkdocs_page_input_path = "scotchbox.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#installing-scotch-box">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Installing Scotch Box</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#where-do-the-files-go">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Where do the files go?</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#stopping-and-restarting-the-server">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Stopping and restarting the server</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#offical-documentation">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Offical documentation</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#scotch-box-pro">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Scotch Box Pro</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Appendix: Scotch Box</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/scotchbox.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="appendix-scotch-box">Appendix: Scotch Box<a class="headerlink" href="#appendix-scotch-box" title="Permanent link">&para;</a></h1>
+<p>The following is a description of how to install the excellent <a href="https://box.scotch.io/">Scotch Box</a> onto your own computer, in order to have a fully operational development environment for XenForo in just a few minutes with a handful of simple commands.</p>
+<p>XenForo has a custom Scotch Box config, which provides everything you need to run XenForo, including a debugger and a performance-enhancing data cache.</p>
+<p>Scotch Box runs within a <a href="https://www.virtualbox.org/">VirtualBox</a> / <a href="https://www.vagrantup.com/">Vagrant</a> environment.</p>
+<h2 id="installing-scotch-box">Installing Scotch Box<a class="headerlink" href="#installing-scotch-box" title="Permanent link">&para;</a></h2>
+<p>Start by deciding where on your computer you want your virtual web server to keep its files. It is recommended that you choose a location within your own user home directory.</p>
+<p>In the following example locations, we will be using a directory called <em>MyServer</em>, located in the root of your own user directory, identified by your name <em>{username}</em>:</p>
+<ul>
+<li><code>/Users/{username}/MyServer</code> (Mac)</li>
+<li><code>C:\Users\{username}\MyServer</code> (Windows)</li>
+<li><code>/home/{username}/MyServer</code> (some Linux distributions)</li>
+<li><code>/users/{username}/MyServer</code> (other Linux distributions)</li>
+</ul>
+<p>Once you have chosen a location, follow these steps:</p>
+<ol>
+<li>Install <a href="https://www.virtualbox.org/">VirtualBox</a> on your computer</li>
+<li>Install <a href="https://www.vagrantup.com/">Vagrant</a> on your computer</li>
+<li>
+<p>Using a <strong>git</strong> client, clone <code>https://github.com/scotch-io/scotch-box</code> into your <em>MyServer</em> directory. Using the command line client with the Mac example location above, the command would be:</p>
+<p><code>git clone https://github.com/scotch-io/scotch-box /Users/{username}/MyServer</code></p>
+</li>
+<li>
+<p>Once the clone process is complete, download this custom <strong>Vagrantfile</strong> and overwrite the Vagrantfile that has been created at */Users/{username}/MyServer/Vagrantfile: <a href="/files/scotchbox/Vagrantfile">Download custom Vagrantfile</a>.</p>
+</li>
+<li>
+<p>When the custom Vagrantfile is in place, run the following commands:</p>
+<p><code>cd /Users/{username}/MyServer
+vagrant up</code></p>
+</li>
+</ol>
+<p>Your Scotch Box virtual machine is now created and ready to use.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Scotch Box also provides a '<a href="https://box.scotch.io/pro/">Scotch Box Pro</a>' version of their virtual machine for a reasonable purchase price. If you prefer to run Scotch Box Pro, refer to the <a href="#scotch-box-pro">section below describing the differences between configuring and running Scotch Box and Scotch Box Pro</a>. </p>
+</div>
+<h2 id="where-do-the-files-go">Where do the files go?<a class="headerlink" href="#where-do-the-files-go" title="Permanent link">&para;</a></h2>
+<p>Once your Scotch Box is up and running, you can keep your XenForo PHP and JS files on your host machine, allowing you to use your text editor or IDE of choice, while the virtual machine is responsible for compiling and serving those files through its web server.</p>
+<p>You will be able to visit your new web server in your web browser at the following address:</p>
+<p><code>http://192.168.33.10</code></p>
+<p>The web server will pull the files to be served from</p>
+<p><code>/Users/{username}/MyServer/public</code></p>
+<p>If you want your XenForo to be installed at <code>http://192.168.33.10/xenforo</code>, you should place the contents of the <code>upload</code> folder from the XenForo package into <code>/Users/{username}/MyServer/public/xenforo</code>.</p>
+<h2 id="stopping-and-restarting-the-server">Stopping and restarting the server<a class="headerlink" href="#stopping-and-restarting-the-server" title="Permanent link">&para;</a></h2>
+<p>You can stop the Scotch Box server at any time by running</p>
+<pre><code>cd /Users/{username}/MyServer
+vagrant halt
+</code></pre>
+<p>... and you can restart it by running</p>
+<pre><code>cd /Users/{username}/MyServer
+vagrant up
+
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Although Vagrant / Scotch Box will automatically shut down when you reboot your computer, it will not automatically start up again.</p>
+<p>Whenever you reboot, you will need to run the <code>vagrant up</code> command again in order to use the server.</p>
+</div>
+<h2 id="offical-documentation">Offical documentation<a class="headerlink" href="#offical-documentation" title="Permanent link">&para;</a></h2>
+<p>This guide is derived from the official Scotch Box documentation, which is located at <a href="https://box.scotch.io">https://box.scotch.io</a></p>
+<h2 id="scotch-box-pro">Scotch Box Pro<a class="headerlink" href="#scotch-box-pro" title="Permanent link">&para;</a></h2>
+<p>While the basic Scotch Box requires some additional configuration (which is handed through the custom Vagrantfile) in order to run XenForo 2, <a href="https://box.scotch.io/pro/">Scotch Box Pro</a> requires no additional configuration, and is ready to run XenForo 2 without downloading extra packages.</p>
+<p>To run Scotch Box Pro, purchase it from the Scotch Box Pro website, then run the <em>git clone</em> command provided as part of the instructions you will receive post-purchase.</p>
+<p>You can now install using the same instructions as above, with the single exception that you should download <a href="/files/scotchboxpro/Vagrantfile">this custom Vagrantfile</a> instead of the one listed in the instructions for Scotch Box.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  
+  <a href="designing-styles/" class="btn btn-neutral" title="Designing styles"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../designing-styles/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

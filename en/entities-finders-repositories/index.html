@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Entities, finders, and repositories - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.634571%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Entities, finders, and repositories";
+    var mkdocs_page_input_path = "entities-finders-repositories.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#the-finder">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">The Finder</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#where-method">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">where method</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#whereor-method">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">whereOr method</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#with-method">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">with method</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#order-limit-and-limitbypage-methods">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">order, limit and limitByPage methods</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#getquery-method">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">getQuery method</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#custom-finder-methods">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Custom finder methods</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#the-entity-system">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">The Entity system</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#entity-structure">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Entity structure</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#the-entity-life-cycle">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">The Entity life cycle</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#repositories">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Repositories</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Entities, finders, and repositories</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/entities-finders-repositories.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="entities-finders-and-repositories">Entities, finders, and repositories<a class="headerlink" href="#entities-finders-and-repositories" title="Permanent link">&para;</a></h1>
+<p>There are a number of ways to interact with data within XF2. In XF1 this was mostly geared towards writing out raw SQL statements inside Model files. The approach in XF2 has moved away from this, and we have added a number of new ways in its place. We'll first look at the preferred method for performing database queries - the finder.</p>
+<h2 id="the-finder">The Finder<a class="headerlink" href="#the-finder" title="Permanent link">&para;</a></h2>
+<p>We have introduced a new "Finder" system which allows queries to be built up programmatically in a object oriented way so that raw database queries do not need to be written. The Finder system works hand in hand with the Entity system, which we talk about in more detail below. The first argument passed into the finder method is the short class name for the Entity you want to work with. Let's just convert some of the queries mentioned in the section above to use the Finder system instead. For example, to access a single user record:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;fetchOne();
+</code></pre>
+<p>One of the main differences between the direct query approach and using the Finder is that the base unit of data returned by the Finder is not an array. In the case of a Finder object which calls the <code>fetchOne</code> method (which only returns a single row from the database), a single Entity object will be returned.</p>
+<p>Let's look at a slightly different approach which will return multiple rows:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limit(10)-&gt;fetch();
+</code></pre>
+<p>This example will query 10 records from the xf_user table, and it will return them as an <code>ArrayCollection</code> object. This is a special object which acts similarly to an array, in that it is traversable (you can loop through it) and it has some special methods that can tell you the total number of entries it has, grouping by certain values, or other array like operations such as filtering, merging, getting the first or last entry etc.</p>
+<p>Finder queries generally should be expected to retrieve all columns from a table, so there's no specific equivalent to fetch only certain values certain columns.</p>
+<p>Instead, to get a single value, you would just fetch one entity and read the value directly from that:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$username = $finder-&gt;where('user_id', 1)-&gt;fetchOne()-&gt;username;
+</code></pre>
+<p>Similarly, to get an array of values from a single column, you can use the <code>pluckFrom</code> method:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$usernames = $finder-&gt;limit(10)-&gt;pluckFrom('username')-&gt;fetch();
+</code></pre>
+<p>So far we've seen the Finder apply somewhat simple where and limit constraints. So let's look at the Finder in more detail, including a bit more detail about the <code>where</code> method itself.</p>
+<h3 id="where-method">where method<a class="headerlink" href="#where-method" title="Permanent link">&para;</a></h3>
+<p>The <code>where</code> method can support up to three arguments. The first being the condition itself, e.g. the column you are querying. The second would ordinarily be the operator. The third is the value being searched for. If you supply only two arguments, as you have seen above, then it automatically implies the operator is <code>=</code>. Below is a list of the other operators which are valid:</p>
+<ul>
+<li><code>=</code></li>
+<li><code>&lt;&gt;</code></li>
+<li><code>!=</code></li>
+<li><code>&gt;</code></li>
+<li><code>&gt;=</code></li>
+<li><code>&lt;</code></li>
+<li><code>&lt;=</code></li>
+<li><code>LIKE</code></li>
+<li><code>BETWEEN</code></li>
+</ul>
+<p>So, we could get a list of the valid users who registered in the last 7 days:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;where('user_state', 'valid')-&gt;where('register_date', '&gt;=', time() - 86400 * 7)-&gt;fetch();
+</code></pre>
+<p>As you can see you can call the <code>where</code> method as many times as you like, but in addition to that, you can choose to pass in an array as the only argument of the method, and build up your conditions in a single call. The array method supports two types, both of which we can use on the query we built above:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;where([
+    'user_state' =&gt; 'valid',
+    ['register_date', '&gt;=', time() - 86400 * 7]
+])
+-&gt;fetch();
+</code></pre>
+<p>It wouldn't usually be recommended or clear to mix the usage like this, but it does demonstrate the flexibility of the method somewhat. Now that the conditions are in an array, we can either specify the column name (as the array key) and value for an implied <code>=</code> operator or we can actually define another array containing the column, operator and value.</p>
+<h3 id="whereor-method">whereOr method<a class="headerlink" href="#whereor-method" title="Permanent link">&para;</a></h3>
+<p>With the above examples, both conditions need to be met, i.e. each condition is joined by the <code>AND</code> operator. However, sometimes it is necessary to only meet part of your condition, and this is possible by using the <code>whereOr</code> method. For example, if you wanted to search for users who are either not valid or have posted zero messages, you can build that as follows:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;whereOr(
+    ['user_state', '&lt;&gt;', 'valid'],
+    ['message_count', 0]
+)-&gt;fetch();
+</code></pre>
+<p>Similar to the example in the previous section, as well as passing up to two conditions as separate arguments, you can also just pass an array of conditions to the first argument:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;whereOr([
+    ['user_state', '&lt;&gt;', 'valid'],
+    ['message_count', 0],
+    ['is_banned', 1]
+])-&gt;fetch();
+</code></pre>
+<h3 id="with-method">with method<a class="headerlink" href="#with-method" title="Permanent link">&para;</a></h3>
+<p>The <code>with</code> method is essentially equivalent to using the <code>INNER|LEFT JOIN</code> syntax, though it relies upon the Entity having had its "Relations" defined. We won't go into that until the next page, but this should just give you an understanding of how it works. Let's now use the Thread finder to retrieve a specific thread:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:Thread');
+$thread = $finder-&gt;with('Forum', true)-&gt;where('thread_id', 123)-&gt;fetchOne();
+</code></pre>
+<p>This query will fetch the Thread entity where the <code>thread_id = 123</code> but it will also do a join with the xf_forum table, behind the scenes. In terms of controlling how to do an <code>INNER JOIN</code> rather than a <code>LEFT JOIN</code>, that is what the second argument is for. In this case we've set the "must exist" argument to true, so it will flip the join syntax to using <code>INNER</code> rather than the default <code>LEFT</code>.</p>
+<p>We'll go into more detail about how to access the data fetched from this join in the next section.</p>
+<p>It's also possible to pass an array of relations into the <code>with</code> method to do multiple joins.</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:Thread');
+$thread = $finder-&gt;with(['Forum', 'User'], true)-&gt;where('thread_id', 123)-&gt;fetchOne();
+</code></pre>
+<p>This would join to the xf_user table to get the thread author too. However, with the second argument there still being <code>true</code>, we might not need to do an <code>INNER</code> join for the user join, so, we could just chain the methods instead:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:Thread');
+$thread = $finder-&gt;with('Forum', true)-&gt;with('User')-&gt;where('thread_id', 123)-&gt;fetchOne();
+</code></pre>
+<h3 id="order-limit-and-limitbypage-methods">order, limit and limitByPage methods<a class="headerlink" href="#order-limit-and-limitbypage-methods" title="Permanent link">&para;</a></h3>
+<h4 id="order-method">order method<a class="headerlink" href="#order-method" title="Permanent link">&para;</a></h4>
+<p>This method allows you to modify your query so the results are fetched in a specific order. It takes two arguments, the first is the column name, and the second is, optionally, the direction of the sort. So, if you wanted to list the 10 users who have the most messages, you could build the query like this:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;order('message_count', 'DESC')-&gt;limit(10);
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Now is probably a good time to mention that finder methods can mostly be called in any order. For example: <code>$threads = $finder-&gt;limit(10)-&gt;where('thread_id', '&gt;', 123)-&gt;order('post_date')-&gt;with('User')-&gt;fetch();</code>
+Although if you wrote a MySQL query in that order you'd certainly encounter some syntax issues, the Finder system will still build it all in the correct order and the above code, although odd looking and probably not recommended, is perfectly valid.</p>
+</div>
+<p>As with a standard MySQL query, it is possible to order a result set on multiple columns. To do that, you can just call the order method again. It's also possible to pass multiple order clauses into the order method using an array. </p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;order('message_count', 'DESC')-&gt;order('register_date')-&gt;limit(10);
+</code></pre>
+<h4 id="limit-method">limit method<a class="headerlink" href="#limit-method" title="Permanent link">&para;</a></h4>
+<p>We've already seen how to limit a query to a specific number of records being returned:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limit(10)-&gt;fetch();
+</code></pre>
+<p>However, there's actually an alternative to calling the limit method directly:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;fetch(10);
+</code></pre>
+<p>It's possible to pass your limit directly into the <code>fetch()</code> method. It's also worth noting that the <code>limit</code> (and <code>fetch</code>) method supports two arguments. The first obviously being the limit, the second being the offset.</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limit(10, 100)-&gt;fetch();
+</code></pre>
+<p>The offset value here essentially means the first 100 results will be discarded, and the first 10 after that will be returned. This kind of approach is useful for providing paginated results, though we actually also have an easier way to do that...</p>
+<h4 id="limitbypage-method">limitByPage method<a class="headerlink" href="#limitbypage-method" title="Permanent link">&para;</a></h4>
+<p>This method is a sort of helper method which ultimately sets the appropriate limit and offset based on the "page" you're currently viewing and how many "per page" you require.</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limitByPage(3, 20);
+</code></pre>
+<p>In this case, the limit is going to be set to 20 (which is our per page value) and the offset is going to be set to 40 because we're starting on page 3.</p>
+<p>Occasionally, it is necessary for us to grab additional more data than the limit. Over-fetching can be useful to help detect whether you have additional data to display after the current page, or if you have a need to filter the initial result set down based on permissions. We can do that with the third argument: </p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;limitByPage(3, 20, 1);
+</code></pre>
+<p>This will get a total of up to <strong>21</strong> users (20 + 1) starting at page 3.</p>
+<h3 id="getquery-method">getQuery method<a class="headerlink" href="#getquery-method" title="Permanent link">&para;</a></h3>
+<p>When you first start working with the finder, as intuitive as it is, you may occasionally wonder whether you're using it correctly, and whether it is going to build the query you expect it to. We have a method named <code>getQuery</code> which can tell us the current query that will be built with the current finder object. For example:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User')
+    -&gt;where('user_id', 1);
+
+\XF::dumpSimple($finder-&gt;getQuery());
+</code></pre>
+<p>This will output something similar to:</p>
+<pre><code class="language-plain">string(67) &quot;SELECT `xf_user`.*
+FROM `xf_user`
+WHERE (`xf_user`.`user_id` = 1)&quot;
+</code></pre>
+<p>You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the <code>dumpSimple</code> method in the <a href="/development-tools/#dump-a-variable">Dump a variable</a> section.</p>
+<h3 id="custom-finder-methods">Custom finder methods<a class="headerlink" href="#custom-finder-methods" title="Permanent link">&para;</a></h3>
+<p>So far we have seen the finder object get setup with an argument similar to <code>XF:User</code> and <code>XF:Thread</code>. For the most part, this identifies the Entity class the finder is working with and will resolve to, for example, <code>XF\Entity\User</code>. However, it can additionally represent a finder class. Finder classes are optional, but they serve as a way to add custom finder methods to specific finder types. To see this in action, let's look at the finder class that relates to <code>XF:User</code> which can be found in the <code>XF\Finder\User</code> class.</p>
+<p>Here's an example finder method from that class:</p>
+<pre><code class="language-php">public function isRecentlyActive($days = 180)
+{
+    $this-&gt;where('last_activity', '&gt;', time() - ($days * 86400));
+    return $this;
+}
+</code></pre>
+<p>What this allows us to do is to now call that method on any User finder object. So if we take an example earlier:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$users = $finder-&gt;isRecentlyActive(20)-&gt;order('message_count', 'DESC')-&gt;limit(10);
+</code></pre>
+<p>This query, which earlier just returned 10 users in descending message count order, will now return the 10 users in that order who have been recently active in the last 20 days.</p>
+<p>Even though for a lot of entity types a finder class doesn't exist, it is still possible to extend these non existent classes in the same way as mentioned in the <a href="/development-tools/#extending-classes">Extending classes</a> section.</p>
+<h2 id="the-entity-system">The Entity system<a class="headerlink" href="#the-entity-system" title="Permanent link">&para;</a></h2>
+<p>If you're familiar with XF1, you may be familiar with some of the concepts behind Entities because they have ultimately derived from the DataWriter system there. In case you're not so familiar with them, the following section should give you some idea.</p>
+<h3 id="entity-structure">Entity structure<a class="headerlink" href="#entity-structure" title="Permanent link">&para;</a></h3>
+<p>The <code>Structure</code> object consists of a number of properties which define the structure of the Entity and the database table it relates to. The structure object itself is setup inside the entity it relates to. Let's look at some of the common properties from the User entity:</p>
+<h4 id="table">Table<a class="headerlink" href="#table" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;table = 'xf_user';
+</code></pre>
+<p>This tells the Entity which database table to use when updating and inserting records, and also tells the Finder which table to read from when building queries to execute. Additionally, it plays a part in knowing which other tables your query needs to join to.</p>
+<h4 id="short-name">Short name<a class="headerlink" href="#short-name" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;shortName = 'XF:User';
+</code></pre>
+<p>This is the just the short class name of both the Entity itself and the Finder class (if applicable).</p>
+<h4 id="content-type">Content type<a class="headerlink" href="#content-type" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;contentType = 'user';
+</code></pre>
+<p>This defines what content type this Entity represents. This will not be needed in most entity structures. It is used to connect to specific things used by the "content type" system (which will be covered in another section).</p>
+<h4 id="primary-key">Primary key<a class="headerlink" href="#primary-key" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;primaryKey = 'user_id';
+</code></pre>
+<p>Defines the column which represents the primary key in the database table. If a table supports more than a single column as a primary key, then this can be defined as an array.</p>
+<h4 id="columns">Columns<a class="headerlink" href="#columns" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;columns = [
+    'user_id' =&gt; ['type' =&gt; self::UINT, 'autoIncrement' =&gt; true, 'nullable' =&gt; true, 'changeLog' =&gt; false],
+    'username' =&gt; ['type' =&gt; self::STR, 'maxLength' =&gt; 50,
+        'required' =&gt; 'please_enter_valid_name'
+    ]
+    // and many more columns ...
+];
+</code></pre>
+<p>This is a key part of the configuration of the entity as this goes into a lot of detail to explain the specifics of each database column that the Entity is responsible for. This tells us the type of data that is expected, whether a value is required, what format it should match, whether it should be a unique value, what its default value is, and much more.</p>
+<p>Based on the <code>type</code>, the entity manager knows whether to encode or decode a value in a certain way. This may be a somewhat simple process of casting a value to a string or an integer, or slightly more complicated such as using <code>json_encode()</code> on an array when writing to the database or using <code>json_decode()</code> on a JSON string when reading from the database so that the value is correctly returned to the entity object as an array without us needing to manually do that. It can also support comma separated values being encoded/decoded appropriately.</p>
+<p>Occasionally it is necessary to do some additional verification or modification of a value before it is written. As an example, in the User entity, look at the <code>verifyStyleId()</code> method. When a value is set on the <code>style_id</code> field, we automatically check to see if a method named <code>verifyStyleId()</code> exists, and if it does, we run the value through that first.</p>
+<h4 id="behaviors">Behaviors<a class="headerlink" href="#behaviors" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;behaviors = [
+    'XF:ChangeLoggable' =&gt; []
+];
+</code></pre>
+<p>This is an array of behavior classes which should be used by this entity. Behavior classes are a way of allowing certain code to be reused generically across multiple entity types (only when the entity changes, not on reads). A good example of this is the <code>XF:Likeable</code> behavior which is able to automatically execute certain actions on entities which support content which can be "liked". This includes automatically recalculating counts when visibility changes occur within the content and automatically deleting likes when the content is deleted. </p>
+<h4 id="getters">Getters<a class="headerlink" href="#getters" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;getters = [
+    'is_super_admin' =&gt; true,
+    'last_activity' =&gt; true
+];
+</code></pre>
+<p>Getter methods are automatically called when the named fields are called. For example, if we request <code>is_super_admin</code> from a User entity, this will automatically check for, and use the <code>getIsSuperAdmin()</code> method. The interesting thing to note about this is that the xf_user table doesn't actually have a field named <code>is_super_admin</code>. This actually exists on the Admin entity, but we have added it as a getter method as a shorthand way of accessing that value. Getter methods can also be used to override the values of existing fields directly, which is the case for the <code>last_activity</code> value here. <code>last_activity</code> is actually a cached value which is updated usually when a user logs out. However, we store the user's latest activity date in the xf_session_activity table, so we can use this <code>getLastActivity</code> method to return that value instead of the cached last activity value. Should you ever have a need to bypass the getter method entirely, and just get the true entity value, just suffix the column name with an underscore, e.g. <code>$user-&gt;last_activity_</code>.</p>
+<p>Because an entity is just like any other PHP object, you can add more methods to them. A common use case for this is for adding things like permission check methods that can be called on the entity itself.</p>
+<h4 id="relations">Relations<a class="headerlink" href="#relations" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;relations = [
+    'Admin' =&gt; [
+        'entity' =&gt; 'XF:Admin',
+        'type' =&gt; self::TO_ONE,
+        'conditions' =&gt; 'user_id',
+        'primary' =&gt; true
+    ]
+];
+</code></pre>
+<p>This is how Relations are defined. What are relations? They define the relationship between entities which can be used to perform join queries to other tables or fetch records associated to an entity on the fly. If we remember the <code>with</code> method on the finder, if we wanted to fetch a specific user and preemptively fetch the user's Admin record (if it exists) then we would do something like the following:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;with('Admin')-&gt;fetchOne();
+</code></pre>
+<p>This will use the information defined in the user entity for the <code>Admin</code> relation and the details of the <code>XF:Admin</code> entity structure to know that this user query should perform a <code>LEFT JOIN</code> on the xf_admin table and the <code>user_id</code> column. To access the admin last login date from the user entity:</p>
+<pre><code class="language-php">$lastLogin = $user-&gt;Admin-&gt;last_login; // returns timestamp of the last admin login
+</code></pre>
+<p>However, it's not always necessary to do a join in a finder to get related information for an entity. For example, if we take the above example without the <code>with</code> method call:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;fetchOne();
+$lastLogin = $user-&gt;Admin-&gt;last_login; // returns timestamp of the last admin login
+</code></pre>
+<p>We still get the <code>last_login</code> value here. It does this by performing the additional query to get the Admin entity on the fly.</p>
+<p>The example above uses the <code>TO_ONE</code> type, and this relation, therefore, relates one entity to one other entity. We also have a <code>TO_MANY</code> type.</p>
+<p>It is not possible to fetch an entire <code>TO_MANY</code> relation (e.g. with a join / <code>with</code> method on the finder), but at the cost of a query it is possible to read that at any time on the fly, such as in the final <code>last_login</code> example above.</p>
+<p>One such relation that is defined on the User entity is the <code>ConnectedAccounts</code> relation:</p>
+<pre><code class="language-php">$structure-&gt;relations = [
+    'ConnectedAccounts' =&gt; [
+        'entity' =&gt; 'XF:UserConnectedAccount',
+        'type' =&gt; self::TO_MANY,
+        'conditions' =&gt; 'user_id',
+        'key' =&gt; 'provider'
+    ]
+];
+</code></pre>
+<p>This relation is able to return the records from the xf_user_connected_account table that match the current user ID as a <code>FinderCollection</code>. This is similar to the <code>ArrayCollection</code> object we mentioned in <a href="#the-finder">The Finder</a> section above. The relation definition specifies that the collection should be keyed by the <code>provider</code> field.</p>
+<p>Although it isn't possible to fetch multiple records while performing a finder query, it is possible to use a <code>TO_MANY</code> relation to fetch a <strong>single</strong> record from that relation. As an example, if we wanted to see if the user was associated to a specific connected account provider, we can at least fetch that while querying:</p>
+<pre><code class="language-php">$finder = \XF::finder('XF:User');
+$user = $finder-&gt;where('user_id', 1)-&gt;with('ConnectedAccounts|facebook')-&gt;fetchOne();
+</code></pre>
+<h4 id="options">Options<a class="headerlink" href="#options" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">$structure-&gt;options = [
+    'custom_title_disallowed' =&gt; preg_split('/\r?\n/', $options-&gt;disallowedCustomTitles),
+    'admin_edit' =&gt; false,
+    'skip_email_confirm' =&gt; false
+];
+</code></pre>
+<p>Entity options are a way of modifying the behavior of the entity under certain conditions. For example, if we set <code>admin_edit</code> to true (which is the case when editing a user in the Admin CP), then certain checks will be skipped such as to allow a user's email address to be empty.</p>
+<h3 id="the-entity-life-cycle">The Entity life cycle<a class="headerlink" href="#the-entity-life-cycle" title="Permanent link">&para;</a></h3>
+<p>The Entity plays a significant job in terms of managing the life cycle of a record within the database. As well as reading values from it, and writing values to it, the Entity can be used to delete records and trigger certain events when all of these actions occur so that certain tasks can be performed, or certain associated records can be updated as well. Let's look at some of these events that happen when an entity is saving:</p>
+<ul>
+<li><code>_preSave()</code> - This happens before the save process begins, and is primarily used to perform any additional pre-save validations or to set additional data before the save happens.</li>
+<li><code>_postSave()</code> - After the data has been saved, but before any transactions are committed, this method is called and you can use it to perform any additional work that should trigger after an entity has been saved.</li>
+</ul>
+<p>There are additionally <code>_preDelete()</code> and <code>_postDelete()</code> which work in a similar way, but when a delete is happening.</p>
+<p>The Entity is also able to give information on its current state. For example, there is an <code>isInsert()</code> and <code>isUpdate()</code> method so you can detect whether this is a new record being inserted or an existing record being updated. There is an <code>isChanged()</code> method which can tell you whether a specific field has changed since the last save.</p>
+<p>Let's look at some real examples of these methods in action, in the User entity.</p>
+<pre><code class="language-php"> protected function _preSave()
+ {
+    if ($this-&gt;isChanged('user_group_id') || $this-&gt;isChanged('secondary_group_ids'))
+    {
+        $groupRepo = $this-&gt;getUserGroupRepo();
+        $this-&gt;display_style_group_id = $groupRepo-&gt;getDisplayGroupIdForUser($this);
+    }
+
+    // ...
+ }
+
+ protected function _postSave()
+ {
+    // ...
+
+    if ($this-&gt;isUpdate() &amp;&amp; $this-&gt;isChanged('username') &amp;&amp; $this-&gt;getExistingValue('username') != null)
+    {
+        $this-&gt;app()-&gt;jobManager()-&gt;enqueue('XF:UserRenameCleanUp', [
+            'originalUserId' =&gt; $this-&gt;user_id,
+            'originalUserName' =&gt; $this-&gt;getExistingValue('username'),
+            'newUserName' =&gt; $this-&gt;username
+        ]);
+    }
+
+    // ...
+</code></pre>
+<p>In the <code>_preSave()</code> example we fetch and cache the new display group ID for a user based on their changed user groups. In the <code>_postSave()</code> example, we trigger a job to run after a user's name has been changed.</p>
+<h2 id="repositories">Repositories<a class="headerlink" href="#repositories" title="Permanent link">&para;</a></h2>
+<p>Repositories are a new concept for XF2, but you might not be blamed for comparing them to the "Model" objects from XF1. We don't have a model object in XF2 because we have much better places and ways to fetch and write data to the database. So, rather than having a massive class which contains all of the queries your add-on needs, and all of the various different ways to manipulate those queries, we have the finder which adds a lot more flexibility.</p>
+<p>It's also worth bearing in mind that in XF1 the Model objects were a bit of a "dumping ground" for so many things. Many of which are now redundant. For example, in XF1 all of the permission rebuilding code was in the permission model. In XF2, we have specific services and objects which handle this.</p>
+<p>So, what are Repositories? They correspond with an entity and a finder and hold methods which generally return a finder object setup for a specific purpose. Why not just return the result of the finder query? Well, if we return the finder object itself then it serves as a useful extension point for add-ons to extend that and modify the finder object before the entity or collection is returned.</p>
+<p>Repositories may also contain some specific methods for things like cache rebuilding.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="criteria/" class="btn btn-neutral float-right" title="Criteria">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="controller-basics/" class="btn btn-neutral" title="Controller basics"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../controller-basics/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../criteria/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

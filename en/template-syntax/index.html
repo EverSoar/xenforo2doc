@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Template syntax - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.761688%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Template syntax";
+    var mkdocs_page_input_path = "template-syntax.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#best-practices">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Best practices</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#useful-information">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Useful information</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#commenting-up-your-templates">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Commenting up your templates</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#including-another-template-in-a-template">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Including another template in a template</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#template-macros">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Template macros</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#defining-a-macro">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Defining a macro</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#including-using-macros">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Including &amp; using macros</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#template-control-structures">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Template control structures</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#if-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">If tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#elseelse-if-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Else/Else-If tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#for-each-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">For-each tag</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#template-tags">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Template tags</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#avatar-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Avatar tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#breadcrumb-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Breadcrumb tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#button-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Button tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#callback-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Callback tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#css-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">CSS tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#js-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">JS tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#set-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Set tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#likes-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Likes tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sidebar-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Sidebar tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sidenav-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">SideNav tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#title-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Title tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#widget-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Widget tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#useractivity-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserActivity tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#userbanners-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserBanners tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#userblurb-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserBlurb tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#username-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Username tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#usertitle-tag">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">UserTitle tag</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#sectioned-tags">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Sectioned tags</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Template syntax</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/template-syntax.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="template-syntax">Template syntax<a class="headerlink" href="#template-syntax" title="Permanent link">&para;</a></h1>
+<p>The XenForo 2 template syntax is a powerful tool for both developers and forum administrators, giving you complete control over the layout of your XenForo pages.</p>
+<h2 id="best-practices">Best practices<a class="headerlink" href="#best-practices" title="Permanent link">&para;</a></h2>
+<ul>
+<li>XenForo tags, by convention, are <code>lowercase</code>.</li>
+<li>All XenForo tags are prefixed with the <code>xf:</code> namespace.</li>
+</ul>
+<h2 id="useful-information">Useful information<a class="headerlink" href="#useful-information" title="Permanent link">&para;</a></h2>
+<h3 id="commenting-up-your-templates">Commenting up your templates<a class="headerlink" href="#commenting-up-your-templates" title="Permanent link">&para;</a></h3>
+<p>If you want to comment out some template code (or an inspirational message) that you don't want viewable in the final page source, you can use the <code>xf:comment</code> tag.</p>
+<pre><code class="language-html">&lt;xf:comment&gt;
+If you stop seeing the world in terms of what you like
+and what you dislike and saw things for what they truly are in themselves,
+you will find a great deal more peace in your life.
+&lt;/xf:comment&gt;
+</code></pre>
+<h3 id="including-another-template-in-a-template">Including another template in a template<a class="headerlink" href="#including-another-template-in-a-template" title="Permanent link">&para;</a></h3>
+<p>The <code>xf:include</code> tag allows you to include a different template in your current template.</p>
+<pre><code class="language-html">&lt;xf:include template=&quot;my_template&quot; /&gt;
+</code></pre>
+<p>Simply set the <code>template</code> attribute to the name of the template you want to include.</p>
+<h2 id="template-macros">Template macros<a class="headerlink" href="#template-macros" title="Permanent link">&para;</a></h2>
+<p>Template macros are a very powerful aspect of the XenForo template syntax.</p>
+<p>You should generally use a macro any place you would use a function or subroutine in a programming language.
+For non-programmers, I'd summarize this as: <strong>either</strong> use a macro any place you want to produce the same thing multiple times in multiple different files <strong>or</strong> to produce something different under different circumstances (this would probably make more sense if you check the guide on defining a macro).</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For readability reasons, you should not use a macro tag as a variable. You should instead use the Set tag and treat the variable as you would any template variable.</p>
+</div>
+<h3 id="defining-a-macro">Defining a macro<a class="headerlink" href="#defining-a-macro" title="Permanent link">&para;</a></h3>
+<pre><code class="language-html">&lt;xf:macro
+    name=&quot;my_macro_name&quot;&gt;
+
+    &lt;!-- Your macro content --&gt;
+
+&lt;/xf:macro&gt;
+</code></pre>
+<p>At its simplest, a macro can be defined with a <code>name</code> attribute and the content you want repeated inside the macro tag.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you're using a macro in multiple files, it's best practice to put the macro in it's own template.</p>
+</div>
+<h4 id="macro-arguments">Macro arguments<a class="headerlink" href="#macro-arguments" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:macro
+    name=&quot;my_macro_name&quot;
+    arg-message=&quot;My amazing macro message!&quot;&gt;
+
+    &lt;h1&gt;Message&lt;/h1&gt;
+    &lt;p&gt;{$message}&lt;/p&gt;
+
+&lt;/xf:macro&gt;
+</code></pre>
+<p>In this example, a macro is defined with a default value for <code>arg-message</code> (<code>My amazing macro message!</code>).
+This value would be overridden if the macro was called with the message argument.</p>
+<p>Sometimes it's necessary to mark an argument as required. This can be done by setting the argument value to <code>!</code> in the macro definition.</p>
+<h3 id="including-using-macros">Including &amp; using macros<a class="headerlink" href="#including-using-macros" title="Permanent link">&para;</a></h3>
+<pre><code class="language-html">&lt;xf:macro template=&quot;my_macro_template&quot; name=&quot;my_macro_name&quot; /&gt;
+</code></pre>
+<p>At it's simplest, you include a macro by setting the <code>name</code> attribute and leaving the tag empty.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When using a macro tag, you should use the self-closing form of the tag to allow someone to more easily distinguish the difference between a definition and usage of a macro.</p>
+</div>
+<h4 id="macro-arguments_1">Macro arguments<a class="headerlink" href="#macro-arguments_1" title="Permanent link">&para;</a></h4>
+<p>You can also provide arguments to the macro:</p>
+<pre><code class="language-html">&lt;xf:macro template=&quot;my_macro_template&quot; name=&quot;my_macro_name&quot; arg-argName=&quot;argValue&quot; /&gt;
+</code></pre>
+<p>Where <code>argName</code> is the name of the macro argument.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You should use <code>lowerCamelCase</code> for your macro argument names.</p>
+</div>
+<h2 id="template-control-structures">Template control structures<a class="headerlink" href="#template-control-structures" title="Permanent link">&para;</a></h2>
+<p>The XenForo 2 template syntax supports certain control structures to make certain tasks easier to achieve.</p>
+<h3 id="if-tag">If tag<a class="headerlink" href="#if-tag" title="Permanent link">&para;</a></h3>
+<p>The if template tag can be used to conditionally display some HTML or a part of a template.</p>
+<pre><code class="language-html">&lt;!-- Shows content only if a user is signed in... --&gt;
+&lt;xf:if is=&quot;$xf.visitor.user_id&quot;&gt;
+    &lt;!-- Do something... --&gt;
+&lt;/xf:if&gt;
+</code></pre>
+<p>The if tag takes the following attributes:</p>
+<ul>
+<li><code>is</code> - The condition which, when met, the tags contents should be shown.</li>
+</ul>
+<h4 id="conditions">Conditions<a class="headerlink" href="#conditions" title="Permanent link">&para;</a></h4>
+<p>The <code>is</code> attribute supports a few logical operators:</p>
+<ul>
+<li><code>OR</code> - Used to link alternative conditions. (Alternatives: <code>||</code>)</li>
+<li><code>AND</code> - Used to link additional conditions. (Alternatives: <code>&amp;&amp;</code>)</li>
+<li><code>!</code> - Place before a condition to invert it. (Known as: 'not') </li>
+<li><code>XOR</code> - Returns true if only one of two conditions is true. (Known as: Exclusive OR)</li>
+</ul>
+<h3 id="elseelse-if-tag">Else/Else-If tag<a class="headerlink" href="#elseelse-if-tag" title="Permanent link">&para;</a></h3>
+<p>The else and else-if tags are used in conjunction with the if tag to conditionally display HTML in the way that the name suggests.</p>
+<p><strong>Example usage of else:</strong></p>
+<pre><code class="language-html">&lt;xf:if is=&quot;$xf.visitor.is_admin&quot;&gt;
+    &lt;!-- Content here will only be shown to Administrators... --&gt;
+&lt;xf:else /&gt;
+    &lt;!-- Content here will be shown to anyone who is not an Administrator! --&gt;
+&lt;/xf:if&gt;
+</code></pre>
+<p><strong>Example usage of else-if:</strong></p>
+<pre><code class="language-html">&lt;xf:if is=&quot;$xf.visitor.is_admin&quot;&gt;
+
+    &lt;!-- Content here will only be shown to Administrators... --&gt;
+
+&lt;xf:elseif is=&quot;$xf.visitor.is_moderator&quot; /&gt;
+    &lt;!--
+        Content here will only be shown to Moderators
+        (excluding users who are also Administrators).
+    --&gt;
+&lt;xf:else /&gt;
+    &lt;!-- 
+        Content here will be shown to anyone who is not
+        an Administrator, or a Moderator.
+    --&gt;
+&lt;/xf:if&gt;
+</code></pre>
+<p>As you can see, once a condition has been met, the rest of the if statement is ignored. (So, in this case, if the user is an Administrator, the top <code>xf:if</code> section is run but then the rest of the if statement is ignored.)</p>
+<h3 id="for-each-tag">For-each tag<a class="headerlink" href="#for-each-tag" title="Permanent link">&para;</a></h3>
+<p>The for-each tag allows you to loop over an array of items, printing a block of HTML for each item.</p>
+<pre><code class="language-html">&lt;xf:set var=&quot;$names&quot; value=&quot;{{ ['Patrick', 'Theresa', 'Kimball', 'Wayne', 'Grace'] }}&quot; /&gt;
+
+&lt;xf:foreach loop=&quot;$names&quot; key=&quot;$key&quot; value=&quot;$name&quot; i=&quot;$i&quot;&gt;
+    &lt;p&gt;Hello there, {$name}. This is name number {$i}. Array key of this element: {$key}&lt;/p&gt;
+&lt;/xf:foreach&gt;
+</code></pre>
+<p>The for-each tag takes the following attributes:</p>
+<ul>
+<li><code>loop</code> - The array to loop over.</li>
+<li><code>key</code> - A variable name to use in the loop to get current element's array key. Can be integer (ordinary array) or string (associative array).</li>
+<li><code>value</code> - A variable name to use within the loop, containing the current array item.</li>
+<li><code>i</code> -  A variable name to use in the loop for the current index.</li>
+</ul>
+<h4 id="example-output">Example Output<a class="headerlink" href="#example-output" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Hello there, Patrick. This is name number 1.</p>
+<p>Hello there, Theresa. This is name number 2.</p>
+<p>Hello there, Kimball. This is name number 3.</p>
+<p>Hello there, Wayne. This is name number 4.</p>
+<p>Hello there, Grace. This is name number 5.</p>
+</blockquote>
+<h2 id="template-tags">Template tags<a class="headerlink" href="#template-tags" title="Permanent link">&para;</a></h2>
+<h3 id="avatar-tag">Avatar tag<a class="headerlink" href="#avatar-tag" title="Permanent link">&para;</a></h3>
+<p>Inserts a user's avatar in the page.</p>
+<pre><code class="language-html">&lt;xf:avatar user=&quot;{$xf.visitor}&quot; size=&quot;o&quot; canonical=&quot;true&quot; /&gt;
+</code></pre>
+<p>The avatar tag takes the following attributes:</p>
+<ul>
+<li><code>user</code> - The XenForo User object to generate the avatar for.</li>
+<li><code>size</code> - The size of the image to generate. (See image sizes)</li>
+<li><code>canonical</code> - Whether to use the full SEO-friendly URL. This value is only respected for <code>custom</code> avatars.</li>
+<li><code>notooltip</code> - Whether the tool-tip displayed when hovering over the avatar should be disabled.</li>
+<li><code>forcetype</code> - Can be used to force getting the <code>gravatar</code> or <code>custom</code> avatars by setting the value to either of those.</li>
+<li><code>defaultname</code> - The username to use if the <code>user</code> attribute contains an invalid user.</li>
+</ul>
+<h4 id="image-sizes">Image sizes<a class="headerlink" href="#image-sizes" title="Permanent link">&para;</a></h4>
+<p>If an avatar of invalid size is provided, the code will fallback to size '<code>s</code>'.</p>
+<ul>
+<li><code>o</code> - <code>384px</code></li>
+<li><code>h</code> - <code>384px</code></li>
+<li><code>l</code> - <code>192px</code></li>
+<li><code>m</code> - <code>96px</code></li>
+<li><code>s</code> - <code>48px</code></li>
+</ul>
+<h3 id="breadcrumb-tag">Breadcrumb tag<a class="headerlink" href="#breadcrumb-tag" title="Permanent link">&para;</a></h3>
+<p>Modifies the page breadcrumb.</p>
+<pre><code class="language-html">&lt;xf:breadcrumb href=&quot;{{ link('my_page') }}&quot;&gt;{{ phrase('my_page_name') }}&lt;/xf:breadcrumb&gt;
+</code></pre>
+<p>The breadcrumb tag takes the following attributes:</p>
+<ul>
+<li><code>href</code> - The link to set for the final element in the breadcrumb.</li>
+</ul>
+<p>The value of the tag can be used to set the name of the final element in the breadcrumb.</p>
+<h4 id="alternative-uses">Alternative uses<a class="headerlink" href="#alternative-uses" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:breadcrumb source=&quot;$category.getBreadcrumbs(false)&quot; /&gt;
+</code></pre>
+<p>You can also define your own breadcrumb programmatically by calling your function in the <code>source</code> attribute of the breadcrumb tag.</p>
+<p>The <code>source</code> parameter essentially takes an array of objects with <code>href</code> and <code>value</code> attributes (multidimensional array), where each object is a breadcrumb element.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you want to change the root breadcrumb, you can change the "Root breadcrumb" option in the "Basic board information" options section.</p>
+</div>
+<h3 id="button-tag">Button tag<a class="headerlink" href="#button-tag" title="Permanent link">&para;</a></h3>
+<p>Adds a button element with the appropriate classes and optionally an icon.</p>
+<pre><code class="language-html">&lt;xf:button icon=&quot;save&quot;&gt;&lt;/xf:button&gt;
+</code></pre>
+<p>The button tag takes the following attributes:</p>
+<ul>
+<li><code>icon</code> - The icon class to apply to the button. (See button icons)</li>
+</ul>
+<h4 id="button-icons">Button icons<a class="headerlink" href="#button-icons" title="Permanent link">&para;</a></h4>
+<p>By default, XenForo buttons support the following icons (created with CSS):</p>
+<ul>
+<li><code>add</code></li>
+<li><code>confirm</code></li>
+<li><code>write</code></li>
+<li><code>import</code></li>
+<li><code>export</code></li>
+<li><code>download</code></li>
+<li><code>disable</code></li>
+<li><code>edit</code></li>
+<li><code>save</code></li>
+<li><code>reply</code></li>
+<li><code>quote</code></li>
+<li><code>purchase</code></li>
+<li><code>payment</code></li>
+<li><code>convert</code></li>
+<li><code>search</code></li>
+<li><code>sort</code></li>
+<li><code>upload</code></li>
+<li><code>attach</code></li>
+<li><code>login</code></li>
+<li><code>rate</code></li>
+<li><code>config</code></li>
+<li><code>refresh</code></li>
+<li><code>translate</code></li>
+<li><code>vote</code></li>
+<li><code>result</code></li>
+<li><code>history</code></li>
+<li><code>cancel</code></li>
+<li><code>preview</code></li>
+<li><code>conversation</code></li>
+<li><code>bolt</code></li>
+<li><code>list</code></li>
+<li><code>prev</code></li>
+<li><code>next</code></li>
+<li><code>markRead</code></li>
+<li><code>notificationsOn</code></li>
+<li><code>notificationsOff</code></li>
+<li><code>merge</code></li>
+<li><code>move</code></li>
+<li><code>copy</code></li>
+<li><code>approve</code></li>
+<li><code>unapprove</code></li>
+<li><code>delete</code></li>
+<li><code>undelete</code></li>
+<li><code>stick</code></li>
+<li><code>unstick</code></li>
+<li><code>lock</code></li>
+<li><code>unlock</code></li>
+</ul>
+<h3 id="callback-tag">Callback tag<a class="headerlink" href="#callback-tag" title="Permanent link">&para;</a></h3>
+<p>Executes a PHP Callback method.</p>
+<pre><code class="language-html">&lt;xf:callback class=&quot;Vendor\Addon\Class&quot; method=&quot;getX&quot; params=&quot;['abc']&quot;&gt;&lt;/xf:callback&gt;
+</code></pre>
+<p>The callback tag takes the following attributes:</p>
+<ul>
+<li><code>class</code> - The class (from the root namespace) containing the method to run.</li>
+<li><code>method</code> - The method to run. (See callback methods)</li>
+<li><code>params</code> - An array of parameters to provide to the method.</li>
+</ul>
+<h4 id="callback-methods">Callback methods<a class="headerlink" href="#callback-methods" title="Permanent link">&para;</a></h4>
+<p>For a method to be considered a callback method, it must be named appropriately or it will throw an error '<code>callback_method_x_does_not_appear_to_indicate_read_only</code>'. For it to be considered read-only, the method name must begin with one of the following prefixes:</p>
+<ul>
+<li><code>are</code></li>
+<li><code>can</code></li>
+<li><code>count</code></li>
+<li><code>data</code></li>
+<li><code>display</code></li>
+<li><code>does</code></li>
+<li><code>exists</code></li>
+<li><code>fetch</code></li>
+<li><code>filter</code></li>
+<li><code>find</code></li>
+<li><code>get</code></li>
+<li><code>has</code></li>
+<li><code>is</code></li>
+<li><code>pluck</code></li>
+<li><code>print</code></li>
+<li><code>render</code></li>
+<li><code>return</code></li>
+<li><code>show</code></li>
+<li><code>total</code></li>
+<li><code>validate</code></li>
+<li><code>verify</code></li>
+<li><code>view</code></li>
+</ul>
+<h3 id="css-tag">CSS tag<a class="headerlink" href="#css-tag" title="Permanent link">&para;</a></h3>
+<p>Includes a CSS or LESS template file.</p>
+<pre><code class="language-html">&lt;xf:css src=&quot;mycss_file.css&quot;  /&gt;
+</code></pre>
+<p>The CSS tag takes the following attributes:</p>
+<ul>
+<li><code>src</code> - The CSS or LESS template file to include.</li>
+</ul>
+<h4 id="alternative-uses_1">Alternative uses<a class="headerlink" href="#alternative-uses_1" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:css&gt;
+html, body {
+ font-family: &quot;Roboto&quot;, sans-serif;
+}
+&lt;/xf:css&gt;
+</code></pre>
+<p>If the CSS tag is not empty, anything in the tag will be converted into inline CSS.</p>
+<h4 id="further-notes">Further notes<a class="headerlink" href="#further-notes" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>For [CSS], forget about calling them as files. Copy and paste them into new templates.</p>
+</blockquote>
+<p>Chris D, XenForo developer <strong>Source</strong>: <a href="https://xenforo.com/community/threads/including-external-library-js-and-css.136153/post-1185631">https://xenforo.com/community/threads/including-external-library-js-and-css.136153/post-1185631</a></p>
+<h3 id="js-tag">JS tag<a class="headerlink" href="#js-tag" title="Permanent link">&para;</a></h3>
+<p>Includes a JavaScript file.</p>
+<pre><code class="language-html">&lt;xf:js src=&quot;myaddon/vendor/scripts/myjs_file.js&quot;  /&gt;
+</code></pre>
+<p>The JS tag takes the following attributes:</p>
+<ul>
+<li><code>src</code> - The JS file to include in the template.</li>
+<li><code>prod</code> - The JS file to include in the template, only for production mode.</li>
+<li><code>dev</code> - The JS file to include in the template, only for development mode.</li>
+<li><code>min</code> - Whether or not to include the minified version of the file. (Replaces <code>.js</code> with <code>.min.js</code>)        -   Respected only in production mode.</li>
+<li><code>addon</code> - Whether or not the development JS URL should be used.        -   Respected only in development mode.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>src</code> tag cannot be used in conjunction with either the <code>prod</code> or <code>dev</code> tags.</p>
+</div>
+<h4 id="alternative-uses_2">Alternative uses<a class="headerlink" href="#alternative-uses_2" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:js&gt;
+alert(&quot;The truth hurts, I know. It's biologically based actually.&quot;);
+&lt;/xf:js&gt;
+</code></pre>
+<p>If the JS tag is not empty, anything in the tag will be converted to inline JS.</p>
+<h4 id="further-notes_1">Further notes<a class="headerlink" href="#further-notes_1" title="Permanent link">&para;</a></h4>
+<p>JavaScript files are served relative to the <code>/js</code> directory. Although not recommended, you can also include external resources with this tag.</p>
+<p>A good example of this tag is in the <code>editor</code> template.</p>
+<h3 id="set-tag">Set tag<a class="headerlink" href="#set-tag" title="Permanent link">&para;</a></h3>
+<p>The set tag allows you to create a reference to another variable or create a new variable. You should use the set tag anywhere you would use a variable in a programming language.</p>
+<pre><code class="language-html">&lt;xf:set var=&quot;$visitor&quot; value=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Do not use the Set tag for a group of elements you wish to use in multiple templates, you should instead use the Macro Tag.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The variable name (<code>var</code> attribute) must begin with a <code>$</code>.</p>
+</div>
+<p>The set tag takes the following attributes:</p>
+<ul>
+<li><code>var</code> - The name of the variable you wish to define (essentially, the alias).</li>
+<li><code>value</code> - A variable to reference to or a variable value.</li>
+</ul>
+<h4 id="alternative-uses_3">Alternative uses<a class="headerlink" href="#alternative-uses_3" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:set var=&quot;$myVariableName&quot;&gt;
+My Variable Value!
+This could be a callback, or simply a group of phrases.
+&lt;/xf:set&gt;
+</code></pre>
+<p>When the <code>value</code> attribute is not provided, and the tag is not empty, the variable value will be set to the contents of the tag.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>When you use the Set tag in this form, the value will be escaped and the resulting value will be a string.
+The <code>value</code> attribute, whilst not supporting HTML or HTML-like tags does not have this limitation.</p>
+</div>
+<h3 id="likes-tag">Likes tag<a class="headerlink" href="#likes-tag" title="Permanent link">&para;</a></h3>
+<p>Displays the number of likes on a post and a few of the users who've liked the post.</p>
+<pre><code class="language-html">&lt;xf:likes content=&quot;{$post}&quot; url=&quot;&quot; /&gt;
+</code></pre>
+<p>The likes tag takes the following attributes:</p>
+<ul>
+<li><code>content</code> - The <code>XF\Entity\Post</code> or <code>XF\Entity\ProfilePost</code> entity to display the 'likes' text for.</li>
+<li><code>url</code> - The URL to display when the 'likes' text is clicked.</li>
+</ul>
+<h4 id="format">Format<a class="headerlink" href="#format" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>You, tlisbon, kcho and 2 others</p>
+</blockquote>
+<p>The format is [👍 <code>abc</code> and x others] (where the 👍 'thumbs up' emoji represents the 'likes' icon and <code>abc</code> represents the usernames of the last three users who liked the post.)</p>
+<h3 id="sidebar-tag">Sidebar tag<a class="headerlink" href="#sidebar-tag" title="Permanent link">&para;</a></h3>
+<p>See <a href="#sectioned-tags">Sectioned Tags</a>.</p>
+<h3 id="sidenav-tag">SideNav tag<a class="headerlink" href="#sidenav-tag" title="Permanent link">&para;</a></h3>
+<p>See <a href="#sectioned-tags">Sectioned Tags</a>.</p>
+<h3 id="title-tag">Title tag<a class="headerlink" href="#title-tag" title="Permanent link">&para;</a></h3>
+<p>Sets the page's title, both on the page in the <code>h1</code> tag and in the browser tab.</p>
+<pre><code class="language-html">&lt;xf:title&gt;{{ phrase('my_page_title') }}&lt;/xf:title&gt;
+</code></pre>
+<h4 id="further-notes_2">Further notes<a class="headerlink" href="#further-notes_2" title="Permanent link">&para;</a></h4>
+<p>Whilst the title can, of course, be hardcoded, it is <strong>highly recommended</strong> that you use a phrase, both for internationalization and for the added customizability on the site administrator's end.</p>
+<h3 id="widget-tag">Widget tag<a class="headerlink" href="#widget-tag" title="Permanent link">&para;</a></h3>
+<p>Includes a widget in the page, or adds a widget to a widget position.</p>
+<pre><code class="language-html">&lt;xf:widget key=&quot;widget_name&quot; /&gt;
+</code></pre>
+<p>The widget tag takes the following attributes:</p>
+<ul>
+<li><code>key</code> - The widget key, as defined in the widget settings.</li>
+<li><code>position</code> - If set, changes the position that the widget will be rendered.</li>
+<li><code>class</code> - Not to be confused with HTML class, this is the PHP class containing the widget definition.<ul>
+<li><code>title</code> - When the <code>class</code> attribute is used, you can use the <code>title</code> attribute to set the widget title.</li>
+<li>You can also provide widget-specific options as attributes when the <code>class</code> attribute is used.</li>
+</ul>
+</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The <code>class</code> tag cannot be used in conjunction with the <code>key</code> tag.</p>
+</div>
+<h3 id="useractivity-tag">UserActivity tag<a class="headerlink" href="#useractivity-tag" title="Permanent link">&para;</a></h3>
+<p>Displays the status of a user, in terms of their last action and when that action occurred.</p>
+<pre><code class="language-html">&lt;xf:useractivity user=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<p>The UserActivity tag takes the following attributes:</p>
+<ul>
+<li><code>user</code> - The user to display the status of.</li>
+</ul>
+<h4 id="format_1">Format<a class="headerlink" href="#format_1" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>Viewing page <em>Latest Case Files</em> · 4 minutes ago</p>
+</blockquote>
+<p>The format is <strong>[Activity Name]</strong>  <strong>· [Time]</strong></p>
+<h3 id="userbanners-tag">UserBanners tag<a class="headerlink" href="#userbanners-tag" title="Permanent link">&para;</a></h3>
+<p>Displays the user's banners in a horizontal list.</p>
+<pre><code class="language-html">&lt;xf:userbanners user=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<p>The UserBanners tag takes the following attributes:</p>
+<ul>
+<li><code>user</code> - The user to display the user banners of.</li>
+</ul>
+<h4 id="example">Example<a class="headerlink" href="#example" title="Permanent link">&para;</a></h4>
+<p><img alt="An example result of the UserBanners tag." src="/files/images/example-userbanners-tag.png" /></p>
+<p>An example result of the UserBanners tag.</p>
+<h3 id="userblurb-tag">UserBlurb tag<a class="headerlink" href="#userblurb-tag" title="Permanent link">&para;</a></h3>
+<p>Displays a one-line summary of a user's profile.</p>
+<pre><code class="language-html">&lt;xf:userblurb user=&quot;${xf.visitor}&quot; /&gt;
+</code></pre>
+<p>The UserBlurb tag takes the following attributes:</p>
+<ul>
+<li><code>user</code> - The XenForo User Object to display the blurb of.</li>
+</ul>
+<h4 id="format_2">Format<a class="headerlink" href="#format_2" title="Permanent link">&para;</a></h4>
+<blockquote>
+<p>FBI Consultant · 43 · From United States of America</p>
+</blockquote>
+<p>The format is <strong>[Role / Custom Title] · Age · Location</strong></p>
+<h3 id="username-tag">Username tag<a class="headerlink" href="#username-tag" title="Permanent link">&para;</a></h3>
+<p>Displays the user's username, optionally with a tool-tip.</p>
+<pre><code class="language-html">&lt;xf:username user=&quot;{$xf.visitor.username}&quot; notooltip=&quot;true&quot; /&gt;
+</code></pre>
+<p>The Username tag takes the following attributes:</p>
+<ul>
+<li><code>user</code> - The XenForo User Object to display the name of.</li>
+<li><code>notooltip</code> - Whether or not the tool-tip should be disabled.</li>
+<li><code>href</code> - The link to navigate to when the username is clicked.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The tool-tip will not be displayed if an <code>href</code> is set, as it won't work and might be misleading to users.</p>
+</div>
+<h3 id="usertitle-tag">UserTitle tag<a class="headerlink" href="#usertitle-tag" title="Permanent link">&para;</a></h3>
+<p>Displays the user's title.</p>
+<pre><code class="language-html">&lt;xf:usertitle user=&quot;{$xf.visitor}&quot; /&gt;
+</code></pre>
+<p>The UserTitle tag takes the following attributes:</p>
+<ul>
+<li><code>user</code> - The XenForo User Object to display the user title of.</li>
+</ul>
+<h3 id="sectioned-tags">Sectioned tags<a class="headerlink" href="#sectioned-tags" title="Permanent link">&para;</a></h3>
+<p>Sectioned Tags all call the function <code>modifySectionedHtml</code>.
+The HTML element that they change is simply the tag name. So the <code>sidebar</code> tag will modify the sidebar HTML, etc.</p>
+<h4 id="example_1">Example<a class="headerlink" href="#example_1" title="Permanent link">&para;</a></h4>
+<pre><code class="language-html">&lt;xf:sidebar&gt;
+ &lt;h1&gt;My Magical Sidebar!&lt;/h1&gt;
+&lt;/xf:sidebar&gt;
+</code></pre>
+<h4 id="common-attributes">Common attributes<a class="headerlink" href="#common-attributes" title="Permanent link">&para;</a></h4>
+<ul>
+<li><code>mode</code> - The mode of the modification. (See Modification modes)</li>
+</ul>
+<h4 id="modification-modes">Modification modes<a class="headerlink" href="#modification-modes" title="Permanent link">&para;</a></h4>
+<p>By default, the modification mode is <code>replace</code>. (i.e. if the attribute is not specified.)</p>
+<ul>
+<li><code>prepend</code> - Places the contents of the tag at the beginning of the element's HTML.</li>
+<li><code>append</code> - Places the contents of the tag at the end of the element's HTML.</li>
+<li><code>replace</code> - Replaces the element's HTML with the contents of the tag.</li>
+</ul>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="rest-api/" class="btn btn-neutral float-right" title="REST API">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="" class="btn btn-neutral" title="Getting started"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href=".." style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../rest-api/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

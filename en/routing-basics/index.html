@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>Routing basics - XenForo 2.0 Developer Documentation</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A04%3A28.738666%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Routing basics";
+    var mkdocs_page_input_path = "routing-basics.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>Documentation</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Getting started</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Template syntax</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Add-on structure</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Development tools</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">General concepts</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Routing basics</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#a-simple-example">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">A simple example</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#route-prefix">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Route prefix</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#section-context">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Section context</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#controller">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Controller</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#controller-actions">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Controller actions</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#a-more-advanced-example-route-formats">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">A more advanced example (route formats)</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#route-parameters">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Route parameters</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#sub-names">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Sub-names</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Controller basics</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Entities, finders, and repositories</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Criteria</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Managing the schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Let's build an add-on</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Designing styles</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">Appendix: Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>Documentation</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Routing basics</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/routing-basics.md"
+          class="icon icon-github"> Edit on GitHub</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="routing-basics">Routing basics<a class="headerlink" href="#routing-basics" title="Permanent link">&para;</a></h1>
+<p>Within a PHP application, like XF2, we need a way of being able to take a user request for a specific URL, understand which controller, action and what data that URL represents, so that can present the appropriate response to the user. The concept of converting a URL to a location within the code is known as "Routing".</p>
+<p>In XF2, routing is almost entirely managed from one location within the Admin CP. That location is <code>Admin CP &gt; Development &gt; Routes</code>. Routes are grouped by one of two types, Public and Admin types and they provide the routing of requests within the Public and Admin apps respectively.</p>
+<h2 id="a-simple-example">A simple example<a class="headerlink" href="#a-simple-example" title="Permanent link">&para;</a></h2>
+<p>On the Routes page (see above) you should see an entry listed for <code>account/</code>. This is a public route and provides the routing for requests to the URL <code>index.php?account/</code>. This particular route is pretty simple; it only consists of a small amount of configuration. Notably, it consists of a "Route prefix", a section context and a controller class. Let's understand those bits in more detail:</p>
+<h3 id="route-prefix">Route prefix<a class="headerlink" href="#route-prefix" title="Permanent link">&para;</a></h3>
+<p>The route prefix is essentially the bit after <code>index.php?</code> and before the first <code>/</code>. It is the first step in identifying which controller to route the request to.</p>
+<h3 id="section-context">Section context<a class="headerlink" href="#section-context" title="Permanent link">&para;</a></h3>
+<p>The section context tells the navigation systems within XF which navigation item should be selected when a visitor is viewing a page routed to by this route. For public routes, the section context should be the ID of the top level navigation entry. For admin routes, this should refer to the ID of the most specific admin navigation entry (regardless of depth).  </p>
+<p>In the case of the account route, the section context doesn't necessarily apply by default, because we do not have an "account" navigation tab. But, to see this in action, just change the "Section context" value here to "forums", save changes and go to your account on the front end. You should now see that the "Forums" navigation tab is selected!</p>
+<h3 id="controller">Controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h3>
+<p>This is the class name of the Controller that should be called when a request matches this route. In the case of the "account/" route, we have <code>XF:Account</code> specified. This will load the Account controller. (See <a href="/general-concepts/#short-class-names">Short class names</a> for more information). The code for this is located in the following location <code>src/XF/Pub/Controller/Account.php</code>. Notice how short class names are able to resolve to an "infix" as well as a prefix (XF) and a suffix (Account). In this case, the infix for this controller (Pub) is inferred from the Account route type (public).</p>
+<h2 id="controller-actions">Controller actions<a class="headerlink" href="#controller-actions" title="Permanent link">&para;</a></h2>
+<p>Above we explained how a route is matched to a specific controller, but we don't yet know how a specific action within that controller is called. Controllers are essentially classes that contain a number of action methods and it is the part of the URL after the <a href="#route-prefix">route prefix</a> which indicates the controller action. Given a URL of <code>index.php?account/account-details</code>, you should be routed to the class <code>XF\Pub\Controller\Account</code> and the method named <code>actionAccountDetails()</code>. If a route does not specify an action, then the method called is simply <code>actionIndex()</code>.</p>
+<p>You can read more about controllers in the <a href="/controller-basics">Controller basics</a> section.</p>
+<h2 id="a-more-advanced-example-route-formats">A more advanced example (route formats)<a class="headerlink" href="#a-more-advanced-example-route-formats" title="Permanent link">&para;</a></h2>
+<p>Let's look at the <code>members/</code> route. This route is still pretty simple, like the <code>account/</code> route, but it has an additional field populated; the "Route format". To understand how that works, look at your own user profile on the front end. The URL of that profile will look something like this <code>index.php?members/your-name.1</code>. Specifically, take note of the <code>your-name.1</code> part. This is the part we're attempting to match using the "Route format".</p>
+<p>The "Route format" allows us to extract data from a request URL, so we can pass that information into the controller action so that the action can load specific information; in this case it loads the details for the requested user profile. It also helps us build links from data passed in. Here's the syntax:</p>
+<pre><code class="language-plain">:int&lt;user_id,username&gt;/:page
+</code></pre>
+<p>It's interesting to note at this point that the important part of a profile URL for finding the profile is not actually the <code>your-name</code> bit, but it is actually the user ID (<code>1</code>). To demonstrate this, change the URL and replace <code>your-name</code> with <code>not-your-name</code>. You will see that the correct profile is found, and a redirect is performed to the correct URL.</p>
+<p>The above format indicates that it's an integer based parameter. For building an outgoing link, we pull the integer from the user_id key of the data passed in. If a username key is passed into the data, it will be "slugified" and prepended to the integer ID like you see in the URL to your profile. For matching an incoming URL, this gets turned into a regular expression that matches the integer parameter format.</p>
+<p><code>:page</code> is a shortcut for generating the page-123 part of a link. In this case, it looks for the page in the link parameters. If found, it's put in the URL and then removed from the params. For incoming parsing, if matched (it can be empty), it will add the page number to the parameters passed to a controller.</p>
+<h2 id="route-parameters">Route parameters<a class="headerlink" href="#route-parameters" title="Permanent link">&para;</a></h2>
+<p>When a route is matched to a specific controller and action, any parameters in the URL are wrapped up into a special object we call the <code>ParameterBag</code>. This object is specifically designed to separate normal URL parameters with those which come from the route match. The <code>ParameterBag</code> object is passed into every controller action, and is used as follows:</p>
+<pre><code class="language-php">$userId = $params-&gt;user_id;
+</code></pre>
+<h2 id="sub-names">Sub-names<a class="headerlink" href="#sub-names" title="Permanent link">&para;</a></h2>
+<p>It is also possible to split routes into further sub-names. You can see this in action by looking at the <code>members/following</code> route. In this example, <code>following</code> is the sub-name to the route <code>members</code>. Ordinarily, a URL which looks like <code>index.php?members/following</code>, the <code>following</code> part would indicate the action, and simply match against the normal <code>members/</code> route. However, if there's a route that matches the prefix "members" and the "sub-name" following, it will be used instead. This is true here, so it builds a link like the following:</p>
+<pre><code class="language-plain">members/:int&lt;user_id,username&gt;/following/:page
+</code></pre>
+<p>For incoming route matching, this route will be tested before the basic members route; if it matches, it will be used.</p>
+<p>This sub-name system allows behavior changes, such as changing the position of parameters or sub-grouping routes into different controllers or with different params. You can see an example of the latter in the Resource Manager and Media Gallery add-ons.</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="controller-basics/" class="btn btn-neutral float-right" title="Controller basics">Next <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="general-concepts/" class="btn btn-neutral" title="General concepts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">Developer documentation for XenForo&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      Built with <a href="http://www.mkdocs.org">MkDocs</a> based on a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a> and modified by <a href="https://xenforo.com">XenForo Ltd.</a>
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../general-concepts/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../controller-basics/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
