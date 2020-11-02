@@ -1,8 +1,8 @@
 ## XenForo 2.0 開發人員說明文件
 
-引人注目的社區平台
-沒有更好的平台來發展您的社區。
-XenForo是您的客戶選擇的解決方案。
+  **引人注目的社區平台**
+  沒有更好的平台來發展您的社區。
+  XenForo是您的客戶選擇的解決方案。
 
 ### 請選擇語言
 * [English](https://eversoar.github.io/xenforo2doc/en/)
