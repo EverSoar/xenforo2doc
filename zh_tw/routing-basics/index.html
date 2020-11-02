@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>路由基礎知識 - XenForo 2.0 開發人員說明文件</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A06%3A07.581790%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u8def\u7531\u57fa\u790e\u77e5\u8b58";
+    var mkdocs_page_input_path = "routing-basics.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>開發人員說明文件</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜尋文件" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入門須知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板語法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加元件架構</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">開發工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基礎知識</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">簡單的例子</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_3">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">路由前綴</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#section-context">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Section context</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#controller">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">Controller</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#controller-action">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Controller action</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">更進階的例子（路由格式）</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_5">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">路由參數</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#sub-names">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Sub-names</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">資料實體、查找器、儲存庫</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">準則</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">創建一個附加組件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">設計樣式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附錄：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>開發人員說明文件</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首頁</a> &raquo;</li>
+    
+      
+    
+    <li>路由基礎知識</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/routing-basics.md"
+          class="icon icon-github"> 在 GitHub 上編輯</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">路由基礎知識<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在 PHP 應用程式中，像是 XF2，我們需要一種能夠接受用戶對特定 URL 的請求的方法，了解該 URL 代表的 controller、 action 和資料，以便向用戶提供適當的響應。 將一個 URL 轉換為程式碼中的一個位置的概念被稱為 "路由"。</p>
+<p>在 XF2 中，路由選擇幾乎完全由 Admin CP 中的一個位置管理。 該位置是 <code>Admin CP &gt; Development &gt; Routes</code>。 路由按兩種類型之一分組，即 Public 和 Admin 類型，它們分別在 Public 和 Admin 應用程式中提供請求的路由。</p>
+<h2 id="_2">簡單的例子<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>在路由頁面 (見上文)，你應該看到一個 <code>account/</code> 的條目。 這是一個 Public 路由，提供了對 URL <code>index.php?account/</code> 的請求的路由。 這個路由非常簡單，它只包含了少量的配置。 值得注意的是，它由一個 "路由前綴"，一個 Section context 和一個 Controller class 組成。 讓我們更詳細地了解這些部分：</p>
+<h3 id="_3">路由前綴<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>路由前綴主要是指在 <code>index.php?</code> 之後和第一個 <code>/</code> 之前的位置。 它是確定路由請求給哪個 Controller 的第一步。</p>
+<h3 id="section-context">Section context<a class="headerlink" href="#section-context" title="Permanent link">&para;</a></h3>
+<p>此 Section context 告訴 XF 中的導覽系統，當訪問者瀏覽由該路由轉到的頁面時，應該選擇哪個導覽項。 對於 Public 路由，Section context 應該是最高級別導覽項的 ID。 對於 Admin 路由，應該是最特定的管理導覽條目的 ID（無論深度）。</p>
+<p>如果是帳號路由，預設情況下，Section context 不一定適用，因為我們沒有 "account" 導覽標籤。 但是，要想看到這個 action，只需將這裡的 "Section context" 值改為 "forums"，儲存更改並在前端進入你的帳號。 現在，你應該看到 "Forums" 導覽標籤被選中了！</p>
+<h3 id="controller">Controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h3>
+<p>這是當請求與這個路由匹配時，應該被呼叫的 Controller 的 class 名。 在 "account/" 路由中，我們指定了 <code>XF:Account</code>。 這將載入 Account 控制器。 （更多資訊請參見 <a href="/general-concepts/#_4">短類名</a>）。 程式碼位於以下位置 <code>src/XF/Pub/Controller/Account.php</code>。 注意短類名是如何解析為 "infix" 以及前綴 (XF) 和後綴 (Account) 的。 在本例中，這個控制器的下標 (Pub) 是由 Account 路由類型 (public) 推斷出來的。</p>
+<h2 id="controller-action">Controller action<a class="headerlink" href="#controller-action" title="Permanent link">&para;</a></h2>
+<p>上面我們解釋了如何將路由匹配到一個特定的 Controller，但我們還不知道如何呼叫該 Controller 內的特定 action。 Controller 本質上是一個包含了許多 action 方法的 class，URL 中 <a href="#_3">路由前綴</a> 後面的部分表示 Controller 的 action。 給定一個 URL 為 <code>index.php?account/account-details</code>，你應該被路由到 <code>XF/Pub/Controller/Account</code> class 和 <code>actionAccountDetails()</code> 方法。 如果路由沒有指定 action，那麼呼叫的方法只是 <code>actionIndex()</code>。</p>
+<p>你可以在 <a href="/controller-basics">控制器基礎知識</a> 部分閱讀更多關於控制器的內容。</p>
+<h2 id="_4">更進階的例子（路由格式）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>讓我們看看 <code>members/</code> 路由。 這個路由和 <code>account/</code> 路由一樣，還是很簡單的，但是它多了一個欄位："路由格式"。 要了解它是如何工作的，看看你自己在前端的用戶個人資料。 該配置檔案的 URL 看起來會是這樣的 <code>index.php?members/your-name.1</code>。具體而言，請注意 <code>your-name.1</code> 的部分。 這是我們試圖使用 "路由格式" 來匹配的部分。</p>
+<p>"路由格式" 允許我們從請求 URL 中提取資料，因此我們可以將該資訊傳遞到 Controller action 中，以便該 action 可以載入特定的資訊；在這種情況下，它載入請求的用戶個人資料的詳細資訊。 它還可以幫助我們從傳遞進來的資料中建立連結。 下面是語法：</p>
+<pre><code class="language-plain">:int&lt;user_id,username&gt;/:page
+</code></pre>
+<p>有趣的是，此時要注意的是，個人資料 URL 中用於查詢個人資料的重要部分其實並不是 <code>your-name</code> 這一點，而實際上是用戶ID（<code>1</code>）。 為了證明這一點，改變 URL，用 <code>not-your-name</code> 代替 <code>your-name</code>。 你會看到找到了正確的個人資料，並且重新定向到了正確的 URL。</p>
+<p>上面的格式表明它是一個基於整數的參數。 在建立外部鏈結時，我們從傳入資料的 user_id key 中提取整數。 如果資料中傳遞了一個用戶名，它將被 "slugified"，就像你在你的個人資料的 URL 中看到的整數 ID 一樣。 對於匹配傳入的 URL，這將變成一個匹配整數參數格式的正規化表達式。</p>
+<p><code>:page</code> 是用於生成連結的 page-123 部分的快捷方式。 在這種情況下，它在連結參數中尋找頁面。 如果找到了，它就會被放在 URL 中，然後從參數中刪除。 對於傳入的解析，如果匹配（它可以是空的），它將把頁碼新增到傳遞給 Controller 的參數中。</p>
+<h2 id="_5">路由參數<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>當路由與特定的 Controller 和 action 匹配時，URL 中的任何參數都會被封裝到一個特殊的物件中，我們稱之為 <code>ParameterBag</code>。 這個物件專門用於將普通 URL 參數與來自路由匹配的 URL 參數分開的。 <code>ParameterBag</code> 物件被傳遞到每個 Controller action 中，使用方法如下：</p>
+<pre><code class="language-php">$userId = $params-&gt;user_id;
+</code></pre>
+<h2 id="sub-names">Sub-names<a class="headerlink" href="#sub-names" title="Permanent link">&para;</a></h2>
+<p>也可以將路由分割成更多的 Sub-names。 你可以通過 <code>members/following</code> 路由來看到這個 action。 在這個例子中，<code>following</code> 是路由 <code>members</code> 的 Sub-names。 通常情況下，看起來像 <code>index.php?members/following</code> 的 URL，<code>following</code> 的部分將表示 action，並簡單地與普通的 <code>members/</code> 路由進行匹配。 但是，如果有一個路由匹配了前綴 "members" 和後面的 "Sub-names"，就會被使用。 這裡也是如此，所以它建立了一個像是下面的連結：</p>
+<pre><code class="language-plain">members/:int&lt;user_id,username&gt;/following/:page
+</code></pre>
+<p>對於傳入路由的匹配，該路由將在基本成員路由之前進行測試；如果匹配，則使用該路由。</p>
+<p>這種 sub-name 系統允許行為改變，例如改變參數的位置或者將路由分組到不同的 Controller 中或使用不同的參數。 您可以在資源管理器和媒體庫附加元件中看到後者的例子。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="controller-basics/" class="btn btn-neutral float-right" title="控制器基礎知識">下一頁 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="general-concepts/" class="btn btn-neutral" title="通用概念"><span class="icon icon-circle-arrow-left"></span> 上一頁</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 開發者說明文件&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 構建，該文檔基於 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主題</a>，並由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../general-concepts/" style="color: #fcfcfc;">&laquo; 上一頁</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../controller-basics/" style="color: #fcfcfc">下一頁 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

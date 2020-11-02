@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>通用概念 - XenForo 2.0 開發人員說明文件</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A06%3A07.526740%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u901a\u7528\u6982\u5ff5";
+    var mkdocs_page_input_path = "general-concepts.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>開發人員說明文件</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜尋文件" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入門須知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板語法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加元件架構</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">開發工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#vendor">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">Vendor 元件</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#ide">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">整合開發環境 (IDE)</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">自動載入器</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">命名空間</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">短類名</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_5">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">繼承類</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_6">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">類型提示</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">資料實體、查找器、儲存庫</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">準則</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">創建一個附加組件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">設計樣式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附錄：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>開發人員說明文件</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首頁</a> &raquo;</li>
+    
+      
+    
+    <li>通用概念</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/general-concepts.md"
+          class="icon icon-github"> 在 GitHub 上編輯</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">通用概念<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>以下部分將詳細介紹開發 XenForo 附加元件時將會遇到的一些通用系統和概念。 如果您熟悉 XenForo 1.x 的開發，那麼這些概念中的很多內容您都會覺得很熟悉，不過值得回顧一下，因為有一些優秀的新工具和功能可以幫助您開發附加元件。</p>
+<h2 id="vendor">Vendor 元件<a class="headerlink" href="#vendor" title="Permanent link">&para;</a></h2>
+<p>XF2 並不像 XF1 那樣由一個特定的框架來驅動，然而，我們使用了某些流行的、經過良好測試的、開源的軟體包來幫助完成特定的任務。 例如，我們使用一個名為 <a href="https://github.com/swiftmailer/swiftmailer">SwiftMailer</a> 的項目來發送電子郵件，以及一個名為 <a href="https://github.com/guzzle/guzzle">Guzzle</a> 的項目作為 HTTP 客戶端。 所有的第三方項目都是從 <code>src/vendor</code> 目錄下載入的。</p>
+<p>目前，附加元件開發者還不能將自己的依賴關係添加到這個位置。</p>
+<h2 id="ide">整合開發環境 (IDE)<a class="headerlink" href="#ide" title="Permanent link">&para;</a></h2>
+<p>在開始 XF2 開發工作之前，你可能需要花一些時間來評估你將實際建立和編輯 PHP 檔案的應用程式。 這通常被稱為 IDE。 有許多可用的選項，從基本的記事本到像 Sublime Text 這樣可以通過附加元件擴展以獲得更好的 PHP 支持的東西，直到一個合適的 IDE，如 <a href="https://www.jetbrains.com/phpstorm/">PhpStorm</a>。 在內部，我們使用 PhpStorm 作為我們的首選 IDE。 這是一個高級的商業產品，但也有可能是免費的。 無論哪種方式，沒有人能告訴你最符合您需求的最佳應用程序是哪個，你應該花些時間多使用一些產品（甚至是免費的），並使用這些經驗來找出你的喜好。</p>
+<h2 id="_2">自動載入器<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>XF2 使用一個由 Composer 自動產生的自動載入器。 這允許所有的 XF 程式碼、第三方供應商程式碼，以及任何附加元件的開發者程式碼在整個項目中自動包含進去，而不需要手動 <code>include/require</code> 你的 class。</p>
+<p>所有 XF 附加元件的自動載入根目錄是 <code>src/addons</code> 目錄。 這意味著你所有的 class 名都會相對於這個基礎位置。 值得注意的是，XF2 採用了嚴格的 "每個檔案一個類" 的命名模式。 每個檔案應該只包含一個類，而且這個類的名字應該確定該類的 PHP 檔案在檔案系統中的確切位置。</p>
+<p>例如，如果你想在一個名為 <code>src/addons/Demo/Setup.php</code> 的檔案中建立一個新的 class（其中 <code>Demo</code> 是你的 附加元件 ID），那麼這個 class 將被命名為 <code>Demo\Setup</code>。 相反，如果你有一個名為 <code>Demo\Entity\Thing</code> 的 class，那麼你會知道這個 class 的檔案位於路徑 <code>src/addons/Demo/Entity/Thing.php</code> 中。</p>
+<h2 id="_3">命名空間<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>在整個 XF 中，我們使用了 <a href="http://php.net/manual/en/language.namespaces.rationale.php">命名空間</a>，這樣我們可以更簡潔地參考同一名稱空間中的類。建議所有的附加元件也使用名稱空間。 在上面的例子中，我們談到了一個名為 <code>Demo\Setup</code> 的類。 使用命名空間，這個類實際上會被簡單地命名為 <code>Setup</code>，但命名空間會被設定為 <code>Demo</code>。 作為一個更具體的例子，我們在上面也談到了一個名為 <code>Demo\Entity\Thing</code> 的類。 讓我們來看看這個類的 PHP 程式碼是什麼樣子的：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\Entity;
+
+class Thing
+{
+
+}
+</code></pre>
+<p>如果在 <code>src/addons/Demo/Entity</code> 目錄下有一個名為 <code>AnotherThing</code> 的 class，我們可以在 <code>Thing</code> class 中簡單地將這個 class 引用為 <code>AnotherThing</code>，因為這個 class 在同一個 <code>Demo\Entity</code> 命名空間中。</p>
+<h2 id="_4">短類名<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>偶爾，XF 中參考的 class 會被縮短。 例如，如果您希望呼叫 <code>User</code> 實體（更多關於實體的內容見下文），那麼您可能會看到被引用的 class 名只是 <code>XF:User</code>。 短類名的使用和它們所解析的全類名，完全是依照 context sensitive 的。 因此，在呼叫實體的 context 中，短類名將解析為以下全類名 <code>XF/Entity/User</code>。 <code>XF</code> 部分表示檔案路徑 (基於附加的 ID )，<code>Entity</code> 部分是通過呼叫實體暗示的，<code>User</code> 部分表示特定的實體。 同樣當你開始建立自己的 class 時，你也會使用簡短的 class 名來引用自己的 class。 例如，如果你需要為你的 <code>Demo</code> 附加元件建立一個新的 <code>Thing</code> 實體，那麼你會寫出以下內容。</p>
+<pre><code class="language-php">\XF::em()-&gt;create('Demo:Thing');
+</code></pre>
+<p>這將解析為 <code>Demo\Entity\Thing</code> class。 同樣，如果你想訪問一個 <code>Thing</code> 儲存庫，你可以這樣寫。</p>
+<pre><code class="language-php">\XF::repository('Demo:Thing');
+</code></pre>
+<p>請注意這些短類名是如何相同的。 儲存庫的呼叫實際上會解析為 <code>Demo\Repository\Thing</code>。</p>
+<h2 id="_5">繼承類<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>XF2 中大多數的 class 都是可繼承的，這使得開發人員可以繼承和覆蓋核心程式碼，而無需直接編輯它。 如果你熟悉 XF1 的開發，你會對下面的過程有些熟悉：</p>
+<ol>
+<li>建立一個監聽器 PHP 檔案</li>
+<li>建立一個 class，該 class 最終將繼承原有的 class</li>
+<li>編寫一個 function，該 function 與預期的 <code>load_class</code> 事件的 callback 簽章相符合，並新增繼承 class 的名稱</li>
+<li>在 Admin CP 中新增一個 "程式碼事件監聽器"，指定上述 function 的監聽器 class 和 method 名，並可選地提示繼承的是哪個 class</li>
+</ol>
+<p>在 XF2 中，我們去掉了這些事件，而採用了一個名為 "Class extensions" 的特定系統。 這個過程如下。</p>
+<ol>
+<li>建立一個 class，該 class 最終將繼承原有的 class</li>
+<li>在 Admin CP 中新增一個 "Class extension"，指定你要繼承的 class 的名稱和正在繼承的 class 的名稱。</li>
+</ol>
+<p>這顯然減少了一些繼承 class 所需的模板，也提供了一個專門的 UI 來查看和管理這些繼承。 讓我們通過繼承 public <code>Member</code> controller 來看看這個過程，並新增一個新的動作來顯示一個簡單的訊息。</p>
+<p>首先要做的是建立一個附加元件。 我們之前已經介紹過如何使用 <code>xf-addon:create</code> 指令 <a href="/development-tools/#_6">在這裡</a>。 在這個例子中，我們將假設你建立了一個 ID 和標題為 "Demo" 的附加元件。</p>
+<p>現在，您將在以下位置中出現此附加元件的 addon.json 檔案 <code>src/addons/Demo/addon.json</code>。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>雖然嚴格來說，你可以把繼承 class 放在附加元件目錄下任何你喜歡的地方，但建議把繼承 class 放在一個容易識別的目錄下<br>
+a) class 所屬的附加元件<br>
+b) 被繼承 的 class 類型<br>
+c) 被繼承的 class 名稱<br>
+在下面的例子中，我們要繼承 public 的 XF Member Controller，所以我們將我們的繼承 class 放在下面的路徑中： <code>src/addons/Demo/XF/Pub/Controller/Member.php</code>。</p>
+</div>
+<p>在我們將 Class extension 新增到 Admin CP 之前，繼承的 class 需要存在。 所以，請按照下面的說明進行操作：</p>
+<ol>
+<li>在 <code>src/addons/Demo</code> 內新建一個名為 <code>XF</code> 的目錄。</li>
+<li>在 <code>src/addons/Demo/XF</code> 內新建一個名為 <code>Pub</code> 的目錄。</li>
+<li>在 <code>src/addons/Demo/XF/Pub</code> 內新建一個名為 <code>Controller</code> 的目錄。</li>
+<li>在 <code>src/addons/Demo/XF/Pub/Controller</code> 內新建一個名為 <code>Member.php</code> 的檔案。</li>
+</ol>
+<p>你的PHP檔案初始內容，應該如下所示：</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\XF\Pub\Controller;
+
+class Member extends XFCP_Member
+{
+
+}
+</code></pre>
+<p>如果你對一般的 PHP class 繼承比較熟悉，但對 XF 不熟悉，上面的例子最初可能會讓你感到困惑。 原因是你可能期望直接繼承 <code>XF\Pub\Controller\Member</code> 類目錄，而不是 <code>XFCP_Member</code>。 在 XF 中，我們使用 "XenForo Class Proxy" 系統（簡稱 XFCP ）來構建一個 "inheritance chain"，最終允許一個 class 被多個附加元件繼承。 慣例是參考一個虛擬的繼承 class，也就是目前的 class 名 <code>Member</code>，並以 <code>XFCP_</code> 為前綴。</p>
+<p>現在 class 已經建立好了，我們可以在 Admin CP &gt; 開發 &gt; Class extensions &gt; 新增 Class extensions 頁面上創建 Class extension。</p>
+<p>你需要做的就是在第一個欄位中輸入基本 class 名（<code>XF\Pub\Controller\Member</code>），在第二個欄位中輸入繼承 class 名（你剛剛建立的）（<code>Demo\XF\Pub\Controller\Member</code>），然後點選 "儲存" 按鈕。</p>
+<p>你的 Class extension 現在應該是被啟用的，但目前沒有做任何事情。 要做一些事情，我們需要通過建立一個與現有 method 同名的 method 來 override 這個 class 中的現有 method，或者建立一個全新的 method。 讓我們來做後者，建立全新的 method。</p>
+<pre><code class="language-php">&lt;?php
+
+namespace Demo\XF\Pub\Controller;
+
+class Member extends XFCP_Member
+{
+    public function actionHelloWorld()
+    {
+        return $this-&gt;message('Hello world!');
+    }
+}
+</code></pre>
+<p>我們在 <a href="/controller-basics">Controller 基礎知識</a> 的頁面中會更多的講到 Controller 、 Action 和 Reply，所以現在不用特別擔心了解這些。</p>
+<p>現在我們已經新增了一些程式碼到我們的繼承 Controller 中，讓我們來看看它的運作。 簡單地輸入以下網址 (相對於你的論壇URL): <code>index.php?members/hello-world</code>。 現在你應該會看到一個 "Hello world!" 的訊息！</p>
+<p>如前所述，在一個 class 中也可以覆蓋現有的方法。 例如，如果我們將 <code>actionHelloWorld()</code> 改為 <code>actionIndex()</code>，那麼你將不再有 "Notable members" 列表，而是顯示 "Hello world!" 訊息！ 事實上，這並不是繼承現有 Controller 動作（或任何 class 方法）的正確方式，但我們會在 <a href="/controller-basics/#controller-action-properly">修改 Controller Action Reply（properly）</a> 一節中詳細介紹。</p>
+<h2 id="_6">類型提示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<p>XF 中的很多物件都是通過工廠方法實體化的。 例如，如果我們想實體化一個特定的儲存庫，我們會寫以下內容：</p>
+<pre><code class="language-php">$repo = \XF::repository('Demo:Thing');
+</code></pre>
+<p>這是一種非常方便和一致的實體化物件的方式。 我們只要看一眼，就知道會實體化什麼物件。 該方法中產生的程式碼知道如何為我們請求的東西返回正確的物件。</p>
+<p>然而，不幸的是，你的 IDE 可能不知道（至少預設情況下是這樣）。 就 IDE 而言，這個方法將返回一個 <code>XF\Mvc\Entity\Repository</code> 的物件實體。 這在一定程度上是有用的，但是在特定的 <code>Demo\Repository\Thing</code> 物件中可能有很多方法是你的 IDE 不知道的。 這最終意味著，當你試圖在程式碼中使用你的 <code>$repo</code> 物件時，你的 IDE 將無法提出建議或自動完成方法名和它所需要的參數。</p>
+<p>這就是類型提示的用處，而且大多數 IDE 和一些能夠 "識別 PHP" 的文字編輯器都應該標準地支援這種語法。 我們只需將儲存庫的呼叫修改如下：</p>
+<pre><code class="language-php">/** @var \Demo\Repository\Thing $repo */
+$repo = \XF::repository('Demo:Thing');
+</code></pre>
+<p>儲存庫呼叫上面的類型提示現在告訴 IDE，<code>$repo</code> 涉及到一個由 <code>Demo\Repository\Thing</code> class 表示的物件，而不是原來自動推斷的物件。</p>
+<p>類型提示在繼承 class 的時候也特別有用。 我們的 Class extension 方法有一個潛在的問題，那就是基本上你的 class 並沒有繼承你要繼承的原 class，而是通過一個實際上並不存在的 class 來代理這個 class，比如 <a href="#_5">上面例子</a> 中的 <code>XFCP_Member</code>。</p>
+<p>為了解決這個問題，我們會自動產生一個名為 <code>extension_hint.php</code> 的檔案，並將其儲存在你的 <code>_output</code> 目錄下。</p>
+<p>這就增加了一個 IDE 可以讀取但 PHP 不能讀取的參考，所以 IDE 現在可以理解，當我們在這個繼承 class 的任何方法中使用 <code>$this</code> 時，它可以建議並自動完成在 Member Controller 或其父類中可用的方法和屬性。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="routing-basics/" class="btn btn-neutral float-right" title="路由基礎知識">下一頁 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="development-tools/" class="btn btn-neutral" title="開發工具"><span class="icon icon-circle-arrow-left"></span> 上一頁</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 開發者說明文件&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 構建，該文檔基於 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主題</a>，並由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../development-tools/" style="color: #fcfcfc;">&laquo; 上一頁</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../routing-basics/" style="color: #fcfcfc">下一頁 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

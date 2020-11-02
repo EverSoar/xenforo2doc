@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>管理 Schema - XenForo 2.0 開發人員說明文件</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A06%3A07.567778%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u7ba1\u7406 Schema";
+    var mkdocs_page_input_path = "managing-the-schema.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>開發人員說明文件</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜尋文件" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入門須知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板語法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加元件架構</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">開發工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">資料實體、查找器、儲存庫</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">準則</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_1">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">資料庫適配器</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">綱要管理</font>
+            </font>
+        </a>
+    </li>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">創建一個附加組件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../designing-styles/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">設計樣式</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附錄：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>開發人員說明文件</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首頁</a> &raquo;</li>
+    
+      
+    
+    <li>管理 Schema</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/managing-the-schema.md"
+          class="icon icon-github"> 在 GitHub 上編輯</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="schema">管理 Schema<a class="headerlink" href="#schema" title="Permanent link">&para;</a></h1>
+<p>我們已經看了一些可用於與資料交互的新方法。 當然，在一些特定情況下，可能需要直接與資料庫進行交互。</p>
+<h2 id="_1">資料庫適配器<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>XF2 中預設的資料庫適配器是基於 MySQL 和 PHP 的 mysqli 擴展。 在任何 XF 類中都可以使用以下方法訪問設定的資料庫適配器：</p>
+<pre><code class="language-php">$db = \XF::db();
+</code></pre>
+<p>適配器有許多可用的方法，這些方法將執行一個 SQL 查詢，然後將結果格式化為一個陣列。 例如，要訪問一個用戶記錄：</p>
+<pre><code class="language-php">$db = \XF::db();
+$user = $db-&gt;fetchRow('SELECT * FROM xf_user WHERE user_id = ?', 1);
+</code></pre>
+<p><code>$user</code> 變數現在將包含一個陣列，其中包含查詢結果集中第一行的所有值。 要想從該查詢中獲得單一的值，例如用戶名，可以執行以下操作：</p>
+<pre><code class="language-php">$username = $user['username'];
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>直接編寫並傳遞給資料庫適配器的資料庫查詢並非自動 "安全"。 如果用戶的輸入沒有經過清除，並且沒有經過準備就傳入查詢，它們就會帶來 SQL 隱碼攻擊漏洞的風險。 正確的方法是使用準備好的語句，就像上面的例子一樣。 在查詢本身中使用 <code>?</code> 佔位符來表示參數。 這些佔位符經過適當的轉義後，會被下一個參數中的值替換。 如果你需要使用的參數不止一個，那應該以陣列的形式傳遞到 fetch 類型方法中。 如有必要，你可以直接使用 <code>$db-&gt;quote($value)</code> 對值進行轉義或引用。</p>
+<p>您可以 <a href="http://php.net/manual/en/mysqli.quickstart.prepared-statements.php">在這裡</a> 找到更多關於準備好的語句資訊。</p>
+</div>
+<p>也可以從一條記錄中查詢一個值。 例如：</p>
+<pre><code class="language-php">$db = \XF::db();
+$username = $db-&gt;fetchOne('SELECT username FROM xf_user WHERE user_id = ?', 1);
+</code></pre>
+<p>如果你有一個需要返回多條記錄的查詢，你可以使用 <code>fetchAll</code>：</p>
+<pre><code class="language-php">$db = \XF::db();
+$users = $db-&gt;fetchAll('SELECT * FROM xf_user LIMIT 10');
+</code></pre>
+<p>或者 <code>fetchAllKeyed</code>：</p>
+<pre><code class="language-php">$db = \XF::db();
+$users = $db-&gt;fetchAllKeyed('SELECT * FROM xf_user LIMIT 10', 'user_id');
+</code></pre>
+<p>這兩種方法都將返回一個代表每個用戶記錄的陣列。 <code>fetchAll</code> 和 <code>fetchAllKeyed</code> 方法之間的區別是，返回的陣列的 key 值不同。 使用 <code>fetchAll</code> 方法時，陣列將用連續的數字整數進行 key 鎖定。 用 <code>fetchAllKeyed</code> 方法，陣列將用第二個參數中命名的欄位名進行 key 鎖定。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果你使用 <code>fetchAllKeyed</code>，請注意第二個參數是要對陣列進行 key 鎖定的欄位，但 <strong>第三個</strong> 參數是你傳遞 param 值以匹配 <code>?</code> 佔位符的地方。</p>
+</div>
+<p>還有一些其他獲取類型的方法，包括 <code>fetchAllColumn</code>，用於從所有返回的 rows 中抓取一個特定 column 的值的陣列：</p>
+<pre><code class="language-php">$db = \XF::db();
+$usernames = $db-&gt;fetchAllColumn('SELECT username FROM xf_user LIMIT 10');
+</code></pre>
+<p>上面的例子將返回一個從結果查詢中找到的 10 個用戶名的陣列。</p>
+<p>最後，你可能並不想要或不需要返回任何資料，在這種情況下，你可以只做一個普通查詢：</p>
+<pre><code class="language-php">$db = \XF::db();
+$db-&gt;query('DELETE FROM xf_user WHERE user_id = ?', 1);
+</code></pre>
+<h2 id="_2">綱要管理<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>XF2 包含了一種全新的管理資料庫模式的方式，它採用物件導向的方式來執行某些表的操作。 讓我們先看看傳統的改變，使用資料庫適配器，就像我們上面的那樣。</p>
+<pre><code class="language-php">$db = \XF::db();
+$db-&gt;query(&quot;
+    ALTER TABLE xf_some_existing_table
+    ADD COLUMN new_column INT(10) UNSIGNED NOT NULL DEFAULT 0,
+    MODIFY COLUMN some_existing_column varchar(250) NOT NULL DEFAULT ''
+&quot;);
+</code></pre>
+<p>我們也來看看一個典型的建立資料表查詢：</p>
+<pre><code class="language-php">$db = \XF::db();
+$sm = $db-&gt;getSchemaManager();
+
+$defaultTableConfig = $sm-&gt;getTableConfigSql();
+
+$db-&gt;query(&quot;
+    CREATE TABLE xf_some_table (
+        some_id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+        some_name VARCHAR(50) NOT NULL,
+        PRIMARY KEY (user_id)
+    ) {$defaultTableConfig}
+&quot;);
+</code></pre>
+<p>在 XF2 中，另一種和首選的方法是使用新的 <code>SchemaManager</code> 物件。 讓我們來看看這兩個由模式管理器執行的查詢，首先是 alter：</p>
+<pre><code class="language-php">$sm = \XF::db()-&gt;getSchemaManager();
+$sm-&gt;alterTable('xf_some_existing_table', function(\XF\Db\Schema\Alter $table)
+{
+    $table-&gt;addColumn('new_column', 'int')-&gt;setDefault(0);
+    $table-&gt;changeColumn('some_existing_column')-&gt;length(250);
+});
+</code></pre>
+<p>還有資料表的建立：</p>
+<pre><code class="language-php">$sm = \XF::db()-&gt;getSchemaManager();
+$sm-&gt;createTable('xf_some_table', function(\XF\Db\Schema\Create $table)
+{
+    $table-&gt;addColumn('some_id', 'int')-&gt;autoIncrement();
+    $table-&gt;addColumn('some_name', 'varchar', 50);
+});
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>當您更改現有的 XenForo 資料表或建立自己的資料表時，<strong>必須</strong> 指定一個預設值，否則在查詢資料表時將會遇到問題。</p>
+</div>
+<p>這兩個例子產生的查詢結果和上面更直接的例子完全一樣。 不過你可能會注意到，有些東西是（故意）遺漏的。 例如，沒有一個例子為 <code>int</code> 欄位指定一個長度。 這只是因為省略了這一點，MySQL 會給它提供一個預設值，對於無符號整數來說是 10。說到這裡，我們也沒有指定 <code>some_id</code> column 是無符號的。 在 XF 內使用無符號整數是目前最常見的使用案例，所以會自動新增。 如果你真正需要支持負整數的能力，你可以用 <code>-&gt;unsigned(false)</code> 方法反過來。 另一個遺漏是沒有為所有的東西定義 <code>NOT NULL</code>。 同樣，這是自動應用的，但你可以用 <code>-&gt;nullable(true)</code> 來扭轉這種情況。</p>
+<p>從 alter 的例子中可能看不清楚，但是當改變現有的欄位時，現有的欄位定義會自動保留。 這意味著，你不必指定整個 column 的定義，包括所有沒有實際改變的部分，你可以只指定你要改變的部分。</p>
+<p>關於 Primary Key，還有一些其他的自動推斷。 如果你願意的話，你可以明確地定義 Primary Key（或任何其他類型的 Key ），但通常自動遞增的欄位通常會成為你的資料表的 Primary Key。 所以在建立資料表的例子中，<code>some_id</code> 欄位被自動分配為該資料表的 Primary Key。</p>
+<p>最後，對於建立資料表的方法，我們可以為指定的儲存引擎自動新增正確的資料表設定（預設為 <code>InnoDB</code>，但可以很容易地改變為其他引擎類型）。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="lets-build-an-add-on/" class="btn btn-neutral float-right" title="創建一個附加組件">下一頁 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="criteria/" class="btn btn-neutral" title="準則"><span class="icon icon-circle-arrow-left"></span> 上一頁</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 開發者說明文件&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 構建，該文檔基於 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主題</a>，並由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../criteria/" style="color: #fcfcfc;">&laquo; 上一頁</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../lets-build-an-add-on/" style="color: #fcfcfc">下一頁 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>

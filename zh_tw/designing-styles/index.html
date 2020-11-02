@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <meta name="author" content="XenForo Ltd.">
+  
+  <link rel="shortcut icon" href="../img/favicon.ico">
+  <title>設計樣式 - XenForo 2.0 開發人員說明文件</title>
+	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
+	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+		<link href="../extra.css?d=2020-11-02%2006%3A06%3A07.482830%2B00%3A00" rel="stylesheet">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u8a2d\u8a08\u6a23\u5f0f";
+    var mkdocs_page_input_path = "designing-styles.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+
+  
+  
+
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+
+  <script src="../js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        
+
+        <div class="dropdown">
+          <div class="lang_btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="icon fa-globe"></i>
+          </div>
+
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
+            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+          </div>
+        </div>
+        <a href=".." class="icon icon-home"> XenForo 2.0<br>開發人員說明文件</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜尋文件" title="Type search term here" />
+  </form>
+</div>
+        
+
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+                    <li class="toctree-l1"><a class="" href="..">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">入門須知</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../template-syntax/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">模板語法</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../rest-api/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">REST API</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../add-on-structure/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附加元件架構</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../development-tools/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">開發工具</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../general-concepts/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">通用概念</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../routing-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">路由基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../controller-basics/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">控制器基礎知識</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../entities-finders-repositories/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">資料實體、查找器、儲存庫</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../criteria/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">準則</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../managing-the-schema/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">管理 Schema</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../lets-build-an-add-on/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">創建一個附加組件</font>
+    </font>
+</a>
+
+                    </li>
+                    <li class="toctree-l1 current"><a class="current" href="./">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">設計樣式</font>
+    </font>
+</a>
+
+    <ul class="subnav">
+    <li class="toctree-l2">
+    	<a href="#_2">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">開啟設計師模式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_3">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">開啟樣式設計師模式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_4">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">關閉樣式設計師模式</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_5">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">什麼是輸出，在哪裡輸出？</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_6">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">模板</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_7">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">樣式屬性和群組</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    <li class="toctree-l2">
+    	<a href="#_8">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">修改特定模板</font>
+            </font>
+        </a>
+    </li>
+    <li class="toctree-l2">
+    	<a href="#_9">
+    		<font style="vertical-align: inherit;">
+                <font style="vertical-align: inherit;">其他有用的指令</font>
+            </font>
+        </a>
+    </li>
+    <ul>
+        <li>
+	    	<a class="toctree-l3" href="#_10">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">從資料庫中匯出</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_11">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">從檔案系統匯入</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_12">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">同步模板</font>
+	            </font>
+	        </a>
+    	</li>
+        <li>
+	    	<a class="toctree-l3" href="#_13">
+	    		<font style="vertical-align: inherit;">
+	                <font style="vertical-align: inherit;">還原模板</font>
+	            </font>
+	        </a>
+    	</li>
+    </ul>
+    </ul>
+
+                    </li>
+                    <li class="toctree-l1"><a class="" href="../scotchbox/">
+    <font style="vertical-align: inherit;">
+        <font style="vertical-align: inherit;">附錄：Scotch Box</font>
+    </font>
+</a>
+
+                    </li>
+        </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">XenForo 2.0<br>開發人員說明文件</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">首頁</a> &raquo;</li>
+    
+      
+    
+    <li>設計樣式</li>
+    <li class="wy-breadcrumbs-aside">
+      
+        <a href="https://github.com/EverSoar/XF2-Doc/edit/master/docs/designing-styles.md"
+          class="icon icon-github"> 在 GitHub 上編輯</a>
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+	<h1 id="_1">設計樣式<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
+<p>在 XF2 中，我們引入了一種全新的方式來建立和編輯樣式，稱為 "設計師模式"。 設計師模式是一個 CLI 工具集合，允許您直接在檔案系統中修改樣式中的某些模板。 它還輸出各種 metadata 和樣式屬性資訊，這對版本控制和協同合作非常有幫助。</p>
+<h2 id="_2">開啟設計師模式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>開啟設計師模式的第一步是在 <code>config.php</code> 中啟用它。</p>
+<pre><code class="language-php">$config['designer']['enabled'] = true;
+</code></pre>
+<p>您也可以選擇為設計器模式檔案指定不同的路徑存在於檔案系統中。 以下是預設路徑。 要改變路徑，請在你的 <code>config.php</code> 中新增以下內容，並相應修改路徑。</p>
+<pre><code class="language-php">$config['designer']['basePath'] = 'src/styles';
+</code></pre>
+<h2 id="_3">開啟樣式設計師模式<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>設計師模式必須為每個樣式明確啟用。 我們通過使用 CLI 和指定樣式的樣式 ID，並選擇 "設計師模式 ID" 來啟用樣式的設計師模式：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:enable <em>[style_id]</em> <em>[designer_mode_id]</em></p>
+</div>
+<p>設計師模式 ID 是未來與設計師模式相關的指令中使用的識別符號。 一旦開啟，目前修改後的樣式元件將被匯出到 <code>[basePath]/[designer_mode_id]</code> 目錄中。</p>
+<p>當開啟該樣式的設計師模式時，如果該目錄已經存在，你會有一個選擇，即我們是否應該從樣式中覆蓋該目錄的當前內容，或者是否應該從該目錄的當前內容中覆蓋目前樣式。</p>
+<h2 id="_4">關閉樣式設計師模式<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>要關閉某個樣式的設計師模式，您只需執行以下 CLI 指令。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:disable <em>[designer_mode_id]</em></p>
+</div>
+<p>預設情況下，這將在檔案系統中保留設計師模式的輸出副本。 要刪除資料，你可以用 <code>--clear</code> 選項執行同樣的指令。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:disable <em>[designer_mode_id]</em> --clear</p>
+</div>
+<h2 id="_5">什麼是輸出，在哪裡輸出？<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>重要的是要記住，XF 中的樣式只由在該樣式中 <strong>修改的內容</strong> 組成。 這意味著設計師模式的輸出將只包括在樣式中被修改的內容。 在父樣式中被修改的模板和樣式屬性不會被輸出。</p>
+<h3 id="_6">模板<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>模板將被輸出到 <code>[basePath]/[designer_mode_id]/templates</code> 目錄中。 在該目錄中，您可以為每種類型（如 admin、email 和 public）設定另一個目錄。</p>
+<p>模板將以 HTML 格式輸出，並可在檔案系統中直接編輯。 在檔案系統上所做的更改會在該模板載入到頁面時被匯入並編譯。 同樣，您也可以通過從檔案系統中刪除模板（如果它以前被修改過）來恢復它。</p>
+<h3 id="_7">樣式屬性和群組<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>樣式屬性和群組將被輸出到 <code>[basePath]/[designer_mode_id]/style_properties</code> 和 <code>[basePath]/[designer_mode_id]/style_property_groups</code> 目錄下。 它們以 JSON 格式匯出，作為一種有用的方式，通過版本控制系統監控這些檔案的變化。</p>
+<p>不建議直接修改這些檔案，因為對它們的修改 <strong>不會</strong> 像模板那樣自動匯入。</p>
+<h2 id="_8">修改特定模板<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>考慮到一個樣式只代表在該樣式中被修改的元件，當設計師模式開啟時，檔案系統也將只包含在該樣式中被修改的元件。 這樣就無法輸出每個模板和樣式屬性的有效版本。</p>
+<p>要將一個模板標記為樣式中已修改的，您可以通過在 Admin CP 中編輯它的常規方式進行。 如果啟用了設計器模式，在 Admin CP 中修改的模板和樣式屬性將自動寫入檔案系統。 然而，使用 CLI 指令來修改或 "touch" 一個模板可能會更方便。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:touch-template <em>[designer_mode_id]</em> <em>[template_type:template_title]</em></p>
+</div>
+<p>只要指定的模板存在於父樣式或主樣式中，它就會被複製到目前樣式中，並輸出到檔案系統中。 然後你可以直接在檔案系統中修改模板。</p>
+<p>如果你想在你的樣式中建立一個完全自定義的模板（在樹狀結構中的任何其他樣式中都不存在），你可以使用同樣的指令，但你只需要傳遞 <code>--custom</code> 選項：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:touch-template <em>[designer_mode_id]</em> <em>[template_type:template_title]</em> --custom</p>
+</div>
+<h2 id="_9">其他有用的指令<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>還有其他一些與設計師模式有關的有用指令：</p>
+<h3 id="_10">從資料庫中匯出<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
+<p>當設計師模式被啟用時，這個指令通常會自動執行，但如果出於某種原因，你想用目前資料庫中的內容覆蓋檔案系統副本，那麼你可以執行以下指令：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:export <em>[designer_mode_id]</em></p>
+</div>
+<p>也可以只匯出特定的類型，例如 <code>xf-designer:export-templates</code>。</p>
+<h3 id="_11">從檔案系統匯入<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<p>這條指令將用檔案系統中的內容覆蓋資料庫中的樣式副本：</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:import <em>[designer_mode_id]</em></p>
+</div>
+<p>也可以只匯入特定的類型，例如 <code>xf-designer:import-templates</code>。</p>
+<h3 id="_12">同步模板<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
+<p>該指令類似於匯入模板（見上文），但它不會覆蓋所有內容，而只會匯入模板，並在 metadata 發生變化時重新編譯。 它還會相應地應用版本號更新。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:sync-templates <em>[designer_mode_id]</em></p>
+</div>
+<h3 id="_13">還原模板<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>這個指令可以用來恢復模板，有效地從目前樣式中刪除自定義版本。</p>
+<div class="admonition terminal">
+<p class="admonition-title">Terminal</p>
+<p><em>$</em> php cmd.php xf-designer:revert-template <em>[designer_mode_id]</em> <em>[template_type:template_title]</em></p>
+</div>
+<p>也可以通過從檔案系統中刪除模板來觸發還原。</p>
+
+            </div>
+          </div>
+          
+
+<div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+  
+  <a href="scotchbox/" class="btn btn-neutral float-right" title="附錄：Scotch Box">下一頁 <span class="icon icon-circle-arrow-right"></span></a>
+  
+  
+  <a href="lets-build-an-add-on/" class="btn btn-neutral" title="創建一個附加組件"><span class="icon icon-circle-arrow-left"></span> 上一頁</a>
+  
+</div>
+
+
+<footer>
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+    <p><a href="https://xenforo.com/" target="_blank">XenForo 開發者說明文件&trade; &copy; 2017-2018 XenForo Ltd.</a></p>
+    
+    <p>
+      使用 <a href="http://www.mkdocs.org">MkDocs</a> 構建，該文檔基於 <a href="https://readthedocs.org">Read the Docs</a> 提供的 <a href="https://github.com/snide/sphinx_rtd_theme">主題</a>，並由 <a href="https://xenforo.com">XenForo Ltd</a> 修改。
+    </p>
+  </div>
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+          <a href="https://github.com/EverSoar/XF2-Doc/" class="fa fa-github" style="float: left; color: #fcfcfc"> GitHub</a>
+      
+      
+        <span><a href="../lets-build-an-add-on/" style="color: #fcfcfc;">&laquo; 上一頁</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../scotchbox/" style="color: #fcfcfc">下一頁 &raquo;</a></span>
+      
+    </span>
+</div>
+    <script>var base_url = '..';</script>
+    <script src="../js/theme.js" defer></script>
+      <script src="../search/main.js" defer></script>
+
+</body>
+</html>
