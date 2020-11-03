@@ -8,11 +8,11 @@
   <meta name="description" content="XenForo 2.0 開發人員說明文件。">
   <meta name="author" content="XenForo Ltd.">
   
-  <link rel="shortcut icon" href="./img/favicon.ico">
+  <link rel="shortcut icon" href="img/favicon.ico">
   <title>XenForo 2.0 開發人員說明文件</title>
 	<link rel="stylesheet" href="./css/theme.css" type="text/css" />
 	<link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-		<link href="./extra.css?d=2020-11-02%2006%3A06%3A07.396136%2B00%3A00" rel="stylesheet">
+		<link href="extra.css?d=2020-11-03%2011%3A44%3A52.933650%2B00%3A00" rel="stylesheet">
 
   
   <script>
@@ -52,9 +52,9 @@
           </div>
 
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
-            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
-            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+            <a class="dropdown-item" id="en" href="#">English</a>
+            <a class="dropdown-item" id="zh_tw" href="#">繁體中文</a>
+            <a class="dropdown-item" id="zh_cn" href="#">简体中文</a>
           </div>
         </div>
         <a href="." class="icon icon-home"> XenForo 2.0<br>開發人員說明文件</a>
@@ -77,134 +77,134 @@
 
     <ul class="subnav">
     <li class="toctree-l2">
-    	<a href="#_2">
-    		<font style="vertical-align: inherit;">
+        <a href="#_2">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">開發人員有什麼新功能？</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_3">
-    		<font style="vertical-align: inherit;">
+        <a href="#_3">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">入門須知</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#xf-20">
-    		<font style="vertical-align: inherit;">
+        <a href="#xf-20">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">下載 XF 2.0</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#xf-20_1">
-    		<font style="vertical-align: inherit;">
+        <a href="#xf-20_1">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">XF 2.0 環境要求</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_4">
-    		<font style="vertical-align: inherit;">
+        <a href="#_4">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">設置本地伺服器</font>
             </font>
         </a>
     </li>
     <ul>
         <li>
-	    	<a class="toctree-l3" href="#_5">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">預先構建的虛擬機</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_5">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">預先構建的虛擬機</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#stack">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">預構建 Stack</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#stack">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">預構建 Stack</font>
+                </font>
+            </a>
+        </li>
     </ul>
     <li class="toctree-l2">
-    	<a href="#_6">
-    		<font style="vertical-align: inherit;">
+        <a href="#_6">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">上傳</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#srcconfigphp">
-    		<font style="vertical-align: inherit;">
+        <a href="#srcconfigphp">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">創建 src/config.php</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_7">
-    		<font style="vertical-align: inherit;">
+        <a href="#_7">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">關於檔案權限說明</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_8">
-    		<font style="vertical-align: inherit;">
+        <a href="#_8">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">安裝</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_9">
-    		<font style="vertical-align: inherit;">
+        <a href="#_9">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">重新安裝</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_10">
-    		<font style="vertical-align: inherit;">
+        <a href="#_10">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">驗證檔案完整性</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#add-on">
-    		<font style="vertical-align: inherit;">
+        <a href="#add-on">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">Add-on 管理指令</font>
             </font>
         </a>
     </li>
     <ul>
         <li>
-	    	<a class="toctree-l3" href="#_11">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">安裝</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_11">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">安裝</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_12">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">升級</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_12">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">升級</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_13">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">重建</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_13">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">重建</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_14">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">解除安裝</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_14">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">解除安裝</font>
+                </font>
+            </a>
+        </li>
     </ul>
     </ul>
 
@@ -425,7 +425,7 @@ $config['db']['dbname'] = 'xf2';
 <p>您會被問到許多問題，例如初始管理員用戶名和密碼，板塊標題。 此後，將匯入 XF 2.0 資料庫表和主要的資料。</p>
 <p>XF 2.0 現在已安裝完成！</p>
 <h2 id="_9">重新安裝<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
-<p>有時可能需要重新安裝 XF2。 在不支持升級的 "開發預覽" 階段尤其如此。 如果準備好重新安裝，請按照上面的 <a href="#downloading-xf-20">下載 XF 2.0</a> 部分下載新檔案（如果適用）。 一般來說，應該可以合併和覆蓋現有檔案。 如果要進行完全乾淨的重新安裝，則可能需要保存 config.php 檔案的副本，或者按照 <a href="#creating-srcconfigphp">創建 src/config.php</a> 中的說明重新創建它。</p>
+<p>有時可能需要重新安裝 XF2。 在不支持升級的 "開發預覽" 階段尤其如此。 如果準備好重新安裝，請按照上面的 <a href="#xf-20">下載 XF 2.0</a> 部分下載新檔案（如果適用）。 一般來說，應該可以合併和覆蓋現有檔案。 如果要進行完全乾淨的重新安裝，則可能需要保存 config.php 檔案的副本，或者按照 <a href="#srcconfigphp">創建 src/config.php</a> 中的說明重新創建它。</p>
 <p>在上傳新檔案之前，您應該刪除 <code>data</code> 和 <code>internal_data</code> 目錄的內容。</p>
 <p>最後，您只需要開始安裝即可，與上面類似。 您將需要使用此 <code>--clear</code> 選項來刪除所有現有的 xf_ 資料表。</p>
 <div class="admonition terminal">
@@ -516,13 +516,13 @@ $config['db']['dbname'] = 'xf2';
     </span>
 </div>
     <script>var base_url = '.';</script>
-    <script src="./js/theme.js" defer></script>
-      <script src="./search/main.js" defer></script>
-
+    <script src="js/theme.js" defer></script>
+    <script src="js/lang.js" defer></script>
+      <script src="search/main.js" defer></script>
 </body>
 </html>
 
 <!--
 MkDocs version : 1.1.2
-Build Date UTC : 2020-11-02 06:06:07.396136+00:00
+Build Date UTC : 2020-11-03 11:44:52.933650+00:00
 -->

@@ -12,7 +12,7 @@
   <title>模板語法 - XenForo 2.0 開發人員說明文件</title>
 	<link rel="stylesheet" href="../css/theme.css" type="text/css" />
 	<link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
-		<link href="../extra.css?d=2020-11-02%2006%3A06%3A07.596804%2B00%3A00" rel="stylesheet">
+		<link href="../extra.css?d=2020-11-03%2011%3A52%3A58.000130%2B00%3A00" rel="stylesheet">
 
   
   <script>
@@ -52,9 +52,9 @@
           </div>
 
           <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/en/">English</a>
-            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_tw/">繁體中文</a>
-            <a class="dropdown-item" href="https://eversoar.github.io/xenforo2doc/zh_cn/">简体中文</a>
+            <a class="dropdown-item" id="en" href="#">English</a>
+            <a class="dropdown-item" id="zh_tw" href="#">繁體中文</a>
+            <a class="dropdown-item" id="zh_cn" href="#">简体中文</a>
           </div>
         </div>
         <a href=".." class="icon icon-home"> XenForo 2.0<br>開發人員說明文件</a>
@@ -84,222 +84,222 @@
 
     <ul class="subnav">
     <li class="toctree-l2">
-    	<a href="#_2">
-    		<font style="vertical-align: inherit;">
+        <a href="#_2">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">最佳示例</font>
             </font>
         </a>
     </li>
     <li class="toctree-l2">
-    	<a href="#_3">
-    		<font style="vertical-align: inherit;">
+        <a href="#_3">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">有幫助的訊息</font>
             </font>
         </a>
     </li>
     <ul>
         <li>
-	    	<a class="toctree-l3" href="#_4">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">對模板進行註釋</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_4">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">對模板進行註釋</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_5">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">在模板中加入另一個模板</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_5">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">在模板中加入另一個模板</font>
+                </font>
+            </a>
+        </li>
     </ul>
     <li class="toctree-l2">
-    	<a href="#_6">
-    		<font style="vertical-align: inherit;">
+        <a href="#_6">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">模板巨集</font>
             </font>
         </a>
     </li>
     <ul>
         <li>
-	    	<a class="toctree-l3" href="#_7">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">定義巨集</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_7">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">定義巨集</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_9">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">加入和使用巨集</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_9">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">加入和使用巨集</font>
+                </font>
+            </a>
+        </li>
     </ul>
     <li class="toctree-l2">
-    	<a href="#_11">
-    		<font style="vertical-align: inherit;">
+        <a href="#_11">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">模板控制結構</font>
             </font>
         </a>
     </li>
     <ul>
         <li>
-	    	<a class="toctree-l3" href="#if">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">If 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#if">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">If 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#elseelse-if">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Else/Else-If 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#elseelse-if">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Else/Else-If 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#for-each">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">For-each 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#for-each">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">For-each 標籤</font>
+                </font>
+            </a>
+        </li>
     </ul>
     <li class="toctree-l2">
-    	<a href="#_14">
-    		<font style="vertical-align: inherit;">
+        <a href="#_14">
+            <font style="vertical-align: inherit;">
                 <font style="vertical-align: inherit;">模板標籤</font>
             </font>
         </a>
     </li>
     <ul>
         <li>
-	    	<a class="toctree-l3" href="#_15">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">頭像標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_15">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">頭像標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_17">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">頁面路徑導覽列標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_17">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">頁面路徑導覽列標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#_19">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">按鈕標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#_19">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">按鈕標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#callback">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Callback 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#callback">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Callback 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#css">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">CSS 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#css">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">CSS 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#js">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">JS 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#js">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">JS 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#set">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Set 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#set">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Set 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#likes">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Likes 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#likes">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Likes 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#sidebar">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Sidebar 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#sidebar">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Sidebar 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#sidenav">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">SideNav 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#sidenav">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">SideNav 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#title">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Title 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#title">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Title 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#widget">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Widget 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#widget">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Widget 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#useractivity">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">UserActivity 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#useractivity">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">UserActivity 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#userbanners">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">UserBanners 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#userbanners">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">UserBanners 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#userblurb-tag">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">UserBlurb tag</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#userblurb-tag">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">UserBlurb tag</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#username">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Username 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#username">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Username 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#usertitle">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">UserTitle 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#usertitle">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">UserTitle 標籤</font>
+                </font>
+            </a>
+        </li>
         <li>
-	    	<a class="toctree-l3" href="#sectioned">
-	    		<font style="vertical-align: inherit;">
-	                <font style="vertical-align: inherit;">Sectioned 標籤</font>
-	            </font>
-	        </a>
-    	</li>
+            <a class="toctree-l3" href="#sectioned">
+                <font style="vertical-align: inherit;">
+                    <font style="vertical-align: inherit;">Sectioned 標籤</font>
+                </font>
+            </a>
+        </li>
     </ul>
     </ul>
 
@@ -938,7 +938,7 @@ alert(&quot;真相很傷人，我知道。其實這是基於生物學上的。&q
 </div>
     <script>var base_url = '..';</script>
     <script src="../js/theme.js" defer></script>
+    <script src="../js/lang.js" defer></script>
       <script src="../search/main.js" defer></script>
-
 </body>
 </html>
