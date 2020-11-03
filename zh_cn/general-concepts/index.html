@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hans-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hans-CN" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -300,7 +300,7 @@ class Thing
 <li>在 Admin CP 中添加一个 "Class extension"，指定你要继承的 class 的名称和正在继承的 class 的名称。</li>
 </ol>
 <p>这显然减少了一些继承 class 所需的模板，也提供了一个专门的 UI 来查看和管理这些继承。 让我们通过继承 public <code>Member</code> controller 来看看这个过程，并添加一个新的动作来显示一个简単的消息。</p>
-<p>首先要做的是创建一个附加组件。 我们之前已经介绍过如何使用 <code>xf-addon:create</code> 命令 <a href="/development-tools/#_6">在这里</a>。 在这个例子中，我们将假设你创建了一个 ID 和标题为 "Demo" 的附加组件。</p>
+<p>首先要做的是创建一个附加组件。 我们之前已经介绍过如何使用 <code>xf-addon:create</code> 命令 <a href="../development-tools/#_6">在这里</a>。 在这个例子中，我们将假设你创建了一个 ID 和标题为 "Demo" 的附加组件。</p>
 <p>现在，您将在以下位置中出现此附加组件的 addon.json 文件 <code>src/addons/Demo/addon.json</code>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -343,9 +343,9 @@ class Member extends XFCP_Member
     }
 }
 </code></pre>
-<p>我们在 <a href="/controller-basics">Controller 基础知识</a> 的页面中会更多的讲到 Controller 、 Action 和 Reply，所以现在不用特别担心了解这些。</p>
+<p>我们在 <a href="../controller-basics">Controller 基础知识</a> 的页面中会更多的讲到 Controller 、 Action 和 Reply，所以现在不用特别担心了解这些。</p>
 <p>现在我们已经添加了一些代码到我们的继承 Controller 中，让我们来看看它的运作。 简単地输入以下网址 (相对于你的论坛URL): <code>index.php?members/hello-world</code>。 现在你应该会看到一个 "Hello world!" 的消息！</p>
-<p>如前所述，在一个 class 中也可以复盖现有的方法。 例如，如果我们将 <code>actionHelloWorld()</code> 改为 <code>actionIndex()</code>，那麽你将不再有 "Notable members" 列表，而是显示 "Hello world!" 消息！ 事实上，这并不是继承现有 Controller 动作（或任何 class 方法）的正确方式，但我们会在 <a href="/controller-basics/#controller-action-properly">修改 Controller Action Reply（properly）</a> 一节中详细介绍。</p>
+<p>如前所述，在一个 class 中也可以复盖现有的方法。 例如，如果我们将 <code>actionHelloWorld()</code> 改为 <code>actionIndex()</code>，那麽你将不再有 "Notable members" 列表，而是显示 "Hello world!" 消息！ 事实上，这并不是继承现有 Controller 动作（或任何 class 方法）的正确方式，但我们会在 <a href="../controller-basics/#controller-action-properly">修改 Controller Action Reply（properly）</a> 一节中详细介绍。</p>
 <h2 id="_6">类型提示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>XF 中的很多物件都是通过工厂方法实体化的。 例如，如果我们想实体化一个特定的保存库，我们会写以下内容：</p>
 <pre><code class="language-php">$repo = \XF::repository('Demo:Thing');

@@ -419,7 +419,7 @@ $users = $finder-&gt;limitByPage(3, 20, 1);
 FROM `xf_user`
 WHERE (`xf_user`.`user_id` = 1)&quot;
 </code></pre>
-<p>You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the <code>dumpSimple</code> method in the <a href="/development-tools/#dump-a-variable">Dump a variable</a> section.</p>
+<p>You probably won't need it very often, but it can be useful if the finder isn't quite returning the results you expected. Read more about the <code>dumpSimple</code> method in the <a href="../development-tools/#dump-a-variable">Dump a variable</a> section.</p>
 <h3 id="custom-finder-methods">Custom finder methods<a class="headerlink" href="#custom-finder-methods" title="Permanent link">&para;</a></h3>
 <p>So far we have seen the finder object get setup with an argument similar to <code>XF:User</code> and <code>XF:Thread</code>. For the most part, this identifies the Entity class the finder is working with and will resolve to, for example, <code>XF\Entity\User</code>. However, it can additionally represent a finder class. Finder classes are optional, but they serve as a way to add custom finder methods to specific finder types. To see this in action, let's look at the finder class that relates to <code>XF:User</code> which can be found in the <code>XF\Finder\User</code> class.</p>
 <p>Here's an example finder method from that class:</p>
@@ -434,7 +434,7 @@ WHERE (`xf_user`.`user_id` = 1)&quot;
 $users = $finder-&gt;isRecentlyActive(20)-&gt;order('message_count', 'DESC')-&gt;limit(10);
 </code></pre>
 <p>This query, which earlier just returned 10 users in descending message count order, will now return the 10 users in that order who have been recently active in the last 20 days.</p>
-<p>Even though for a lot of entity types a finder class doesn't exist, it is still possible to extend these non existent classes in the same way as mentioned in the <a href="/development-tools/#extending-classes">Extending classes</a> section.</p>
+<p>Even though for a lot of entity types a finder class doesn't exist, it is still possible to extend these non existent classes in the same way as mentioned in the <a href="../development-tools/#extending-classes">Extending classes</a> section.</p>
 <h2 id="the-entity-system">The Entity system<a class="headerlink" href="#the-entity-system" title="Permanent link">&para;</a></h2>
 <p>If you're familiar with XF1, you may be familiar with some of the concepts behind Entities because they have ultimately derived from the DataWriter system there. In case you're not so familiar with them, the following section should give you some idea.</p>
 <h3 id="entity-structure">Entity structure<a class="headerlink" href="#entity-structure" title="Permanent link">&para;</a></h3>

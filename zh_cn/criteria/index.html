@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hans-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hans-CN" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -623,7 +623,7 @@ protected function _matchHasAvatar(array $data, \XF\Entity\User $user)
 <p><code>helper_criteria</code> 包含 <strong>两个</strong> 类型的巨集：<code>*criteria_name*_tabs</code> 和 <code>*criteria_name*_panes</code>，适用于每个准则类型。 例如：用户准则类型的 <code>user_tabs</code> 和 <code>user_panes</code> 巨集。</p>
 <h3 id="_15">标签<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>标签用于区分他们所使用模板内的不同准则类型：</p>
-<p><img alt="准则标签演示。" src="/files/images/helper_criteria_tabs_example.png" /></p>
+<p><img alt="准则标签演示。" src="../files/images/helper_criteria_tabs_example.png" /></p>
 <p>使用标签时，第一个标签往往包含与准则无关的字段/选项。 然后到准则标签。</p>
 <p>在上图中，第一个标签包含通知的选项。 红框中的前两个标签与用户准则类型有关。 最后一个与页面准则类型有关。</p>
 <p><code>helper_criteria</code> 中的标签被归类在准则类型巨集下：</p>
@@ -875,7 +875,7 @@ class Listener
 <p>创建一个 "人人为我" 的成就。 在 "用户准则" 标签上，"単则留言的点賛数" 字段，例如，5。</p>
 <p>接下来，在你论坛的某处创建一个测试留言，然后用五个不同的用户点賛五次（或者直接手动设置 <code>likes</code> 栏的值）。</p>
 <p>然后，进入 "工具 &gt; 计画任务"，通过点击运行按钮 (循环-箭头) "更新用户成就值" 计画。</p>
-<p><img alt="获得 &quot;人人为我&quot; 成就通知。" src="/files/images/example-custom-criteria-awarded.png" /></p>
+<p><img alt="获得 &quot;人人为我&quot; 成就通知。" src="../files/images/example-custom-criteria-awarded.png" /></p>
 <p>很好！</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -885,8 +885,8 @@ class Listener
 <p>进入 "联系 &gt; 通知"，点击 "添加通知" 按钮。 在 "用户准则" 标签上，将 "単则留言的点賛数" 字段同样设置为 5。 保存通知。</p>
 <p>接下来，在你论坛的某处创建一个测试留言，然后用五个不同的用户点賛五次（或者直接手动设置 <code>likes</code> 栏的值）。</p>
 <p>现在，你应该会看到一则通知：</p>
-<p><img alt="通知演示。" src="/files/images/example-custom-criteria-notice.png" /></p>
-<p>你可以 <a href="/files/example-sources/all-for-one-criterion-2.0.10.zip">下载</a> 基于这个范例构建的附加组件资源 (2.0.10)。</p>
+<p><img alt="通知演示。" src="../files/images/example-custom-criteria-notice.png" /></p>
+<p>你可以 <a href="../files/example-sources/all-for-one-criterion-2.0.10.zip">下载</a> 基于这个范例构建的附加组件资源 (2.0.10)。</p>
 <h2 id="_25">自定义准则类型范例<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
 <p>想象一下，我们正在创建一个附加组件（附加组件 ID：<code>PostsRemover</code>），用于删除所有符合选定准则的帖子。 一个可用准则的列表：</p>
 <ul>
@@ -1098,14 +1098,14 @@ protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $pos
 <h3 id="_28">测试<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <p>是时候测试我们的自定义准则类型了！</p>
 <p>我在我的测试论坛上创建了三个帖子。 第一个帖子被点賛 500 次，第二个帖子被编辑 5 次。 第三个只是一个原封不动的没有被点赞的帖子。</p>
-<p><img alt="在删除演示之前。" src="/files/images/example-custom-criteria-type-messages-before.png" /></p>
+<p><img alt="在删除演示之前。" src="../files/images/example-custom-criteria-type-messages-before.png" /></p>
 <p>现在，在我们的 "帖子删除器" Admin CP 页面上，让我们选择 "帖子至少有 X 个点賛数"（值为 250）和 "帖子至少被编辑过 X 次"（值为 5）。</p>
-<p><img alt="选定的准则。" src="/files/images/example-custom-criteria-type-remover.png" /></p>
+<p><img alt="选定的准则。" src="../files/images/example-custom-criteria-type-remover.png" /></p>
 <p>当我按下 "删除" 键时，我看到一条即时消息，告诉我什麽都没有删除。 为什麽呢？ 很显然，因为在 <strong>同一时间内</strong> 没有至少 250 个点賛数和至少编辑过 5 次的帖子。</p>
 <p>所以我们只需要选择第一个准则，然后点击 "删除"。 这样就会删除一个有 500 个点賛数的帖子。 接下来，我们只需要选择最后一个准则，然后预先进行删除。 有编辑过 5 次的帖子将被删除。</p>
 <p>结果，只有一个测试帖子在测试中幸存下来：</p>
-<p><img alt="在删除演示之后。" src="/files/images/example-custom-criteria-type-messages-after.png" /></p>
-<p>你可以 <a href="/files/example-sources/posts-remover-2.0.10.zip">下载</a> 基于这个范例 (2.0.10) 所构建的插件原代码。 在 Admin CP 里你可以在 "工具" 的部分找到 "帖子删除器"。</p>
+<p><img alt="在删除演示之后。" src="../files/images/example-custom-criteria-type-messages-after.png" /></p>
+<p>你可以 <a href="../files/example-sources/posts-remover-2.0.10.zip">下载</a> 基于这个范例 (2.0.10) 所构建的插件原代码。 在 Admin CP 里你可以在 "工具" 的部分找到 "帖子删除器"。</p>
 
             </div>
           </div>

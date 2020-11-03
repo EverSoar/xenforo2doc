@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,11 +8,11 @@
   <meta name="description" content="XenForo 2.0 開發人員說明文件。">
   <meta name="author" content="XenForo Ltd.">
   
-  <link rel="shortcut icon" href="img/favicon.ico">
+  <link rel="shortcut icon" href="./img/favicon.ico">
   <title>XenForo 2.0 開發人員說明文件</title>
 	<link rel="stylesheet" href="./css/theme.css" type="text/css" />
 	<link rel="stylesheet" href="./css/theme_extra.css" type="text/css" />
-		<link href="extra.css?d=2020-11-02%2006%3A06%3A07.396136%2B00%3A00" rel="stylesheet">
+		<link href="./extra.css?d=2020-11-02%2006%3A06%3A07.396136%2B00%3A00" rel="stylesheet">
 
   
   <script>
@@ -373,8 +373,8 @@
 <p>自己進行設置比較複雜，但往往可以讓您更好地控制所有設置。</p>
 <h3 id="_5">預先構建的虛擬機<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
 <p>網路上有多種預構建的虛擬機，這些虛擬機的優勢在於，將所需的所有服務以整齊的方式打包到一個地方即可運行 XenForo，而不必直接在自己的計算機上安裝和維護它們。</p>
-<p>一些 XenForo 開發人員使用名為 <a href="https://box.scotch.io/">Scotch Box</a> 的虛擬機，它包含了運行 XenForo 所需的一切，無需任何配置。 我們有逐步安裝和運行 XenForo 開發伺服器的 <a href="/scotchbox">逐步指南</a> - 您可以通過運行一些指令，在短短幾分鐘內就使虛擬網路和資料庫伺服器正常運行。</p>
-<p><a href="/scotchbox">安裝用於 XenForo 的 Scotch Box 虛擬機</a></p>
+<p>一些 XenForo 開發人員使用名為 <a href="https://box.scotch.io/">Scotch Box</a> 的虛擬機，它包含了運行 XenForo 所需的一切，無需任何配置。 我們有逐步安裝和運行 XenForo 開發伺服器的 <a href="./scotchbox">逐步指南</a> - 您可以通過運行一些指令，在短短幾分鐘內就使虛擬網路和資料庫伺服器正常運行。</p>
+<p><a href="./scotchbox">安裝用於 XenForo 的 Scotch Box 虛擬機</a></p>
 <h3 id="stack">預構建 Stack<a class="headerlink" href="#stack" title="Permanent link">&para;</a></h3>
 <p>那裡有許多預構建 Stack，它們在功能集，效能和可靠性方面可能會有所不同。Bitnami 維護許多 Stack，包括分別用於 Linux，Mac 和 Windows 的 <a href="https://bitnami.com/stack/lamp">LAMP</a>,
 <a href="https://bitnami.com/stack/mamp">MAMP</a> 和 <a href="https://bitnami.com/stack/wamp">WAMP</a> Stacks。 它們都包括對 Apache，MySQL 和 PHP 的完全配置安裝，並包括用於管理 MySQL 的 PhPMyAdmin。</p>
@@ -433,7 +433,7 @@ $config['db']['dbname'] = 'xf2';
 <p><em>$</em> php cmd.php xf:install --clear</p>
 </div>
 <p>重新安裝完成後，您現在應該可以重新登錄了。</p>
-<p>如果您正在開發附加元件，並且選擇保留或備份現有 <code>src/addons</code> 目錄，則可以使用 <a href="/development-tools/#_15">匯入開發輸出</a> 指令來還原附加元件資料。</p>
+<p>如果您正在開發附加元件，並且選擇保留或備份現有 <code>src/addons</code> 目錄，則可以使用 <a href="./development-tools/#_15">匯入開發輸出</a> 指令來還原附加元件資料。</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>如果選擇備份和還原 <code>src/addons</code> 目錄，請小心。 其中的 <code>XF</code> 目錄包含 XF 主要的資料，因此不應從備份中還原，以確保您始終擁有最新版本的檔案。</p>
@@ -516,8 +516,8 @@ $config['db']['dbname'] = 'xf2';
     </span>
 </div>
     <script>var base_url = '.';</script>
-    <script src="js/theme.js" defer></script>
-      <script src="search/main.js" defer></script>
+    <script src="./js/theme.js" defer></script>
+      <script src="./search/main.js" defer></script>
 
 </body>
 </html>

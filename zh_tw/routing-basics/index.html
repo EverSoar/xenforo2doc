@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -275,10 +275,10 @@
 <p>此 Section context 告訴 XF 中的導覽系統，當訪問者瀏覽由該路由轉到的頁面時，應該選擇哪個導覽項。 對於 Public 路由，Section context 應該是最高級別導覽項的 ID。 對於 Admin 路由，應該是最特定的管理導覽條目的 ID（無論深度）。</p>
 <p>如果是帳號路由，預設情況下，Section context 不一定適用，因為我們沒有 "account" 導覽標籤。 但是，要想看到這個 action，只需將這裡的 "Section context" 值改為 "forums"，儲存更改並在前端進入你的帳號。 現在，你應該看到 "Forums" 導覽標籤被選中了！</p>
 <h3 id="controller">Controller<a class="headerlink" href="#controller" title="Permanent link">&para;</a></h3>
-<p>這是當請求與這個路由匹配時，應該被呼叫的 Controller 的 class 名。 在 "account/" 路由中，我們指定了 <code>XF:Account</code>。 這將載入 Account 控制器。 （更多資訊請參見 <a href="/general-concepts/#_4">短類名</a>）。 程式碼位於以下位置 <code>src/XF/Pub/Controller/Account.php</code>。 注意短類名是如何解析為 "infix" 以及前綴 (XF) 和後綴 (Account) 的。 在本例中，這個控制器的下標 (Pub) 是由 Account 路由類型 (public) 推斷出來的。</p>
+<p>這是當請求與這個路由匹配時，應該被呼叫的 Controller 的 class 名。 在 "account/" 路由中，我們指定了 <code>XF:Account</code>。 這將載入 Account 控制器。 （更多資訊請參見 <a href="../general-concepts/#_4">短類名</a>）。 程式碼位於以下位置 <code>src/XF/Pub/Controller/Account.php</code>。 注意短類名是如何解析為 "infix" 以及前綴 (XF) 和後綴 (Account) 的。 在本例中，這個控制器的下標 (Pub) 是由 Account 路由類型 (public) 推斷出來的。</p>
 <h2 id="controller-action">Controller action<a class="headerlink" href="#controller-action" title="Permanent link">&para;</a></h2>
 <p>上面我們解釋了如何將路由匹配到一個特定的 Controller，但我們還不知道如何呼叫該 Controller 內的特定 action。 Controller 本質上是一個包含了許多 action 方法的 class，URL 中 <a href="#_3">路由前綴</a> 後面的部分表示 Controller 的 action。 給定一個 URL 為 <code>index.php?account/account-details</code>，你應該被路由到 <code>XF/Pub/Controller/Account</code> class 和 <code>actionAccountDetails()</code> 方法。 如果路由沒有指定 action，那麼呼叫的方法只是 <code>actionIndex()</code>。</p>
-<p>你可以在 <a href="/controller-basics">控制器基礎知識</a> 部分閱讀更多關於控制器的內容。</p>
+<p>你可以在 <a href="../controller-basics">控制器基礎知識</a> 部分閱讀更多關於控制器的內容。</p>
 <h2 id="_4">更進階的例子（路由格式）<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
 <p>讓我們看看 <code>members/</code> 路由。 這個路由和 <code>account/</code> 路由一樣，還是很簡單的，但是它多了一個欄位："路由格式"。 要了解它是如何工作的，看看你自己在前端的用戶個人資料。 該配置檔案的 URL 看起來會是這樣的 <code>index.php?members/your-name.1</code>。具體而言，請注意 <code>your-name.1</code> 的部分。 這是我們試圖使用 "路由格式" 來匹配的部分。</p>
 <p>"路由格式" 允許我們從請求 URL 中提取資料，因此我們可以將該資訊傳遞到 Controller action 中，以便該 action 可以載入特定的資訊；在這種情況下，它載入請求的用戶個人資料的詳細資訊。 它還可以幫助我們從傳遞進來的資料中建立連結。 下面是語法：</p>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -300,7 +300,7 @@ class Thing
 <li>在 Admin CP 中新增一個 "Class extension"，指定你要繼承的 class 的名稱和正在繼承的 class 的名稱。</li>
 </ol>
 <p>這顯然減少了一些繼承 class 所需的模板，也提供了一個專門的 UI 來查看和管理這些繼承。 讓我們通過繼承 public <code>Member</code> controller 來看看這個過程，並新增一個新的動作來顯示一個簡單的訊息。</p>
-<p>首先要做的是建立一個附加元件。 我們之前已經介紹過如何使用 <code>xf-addon:create</code> 指令 <a href="/development-tools/#_6">在這裡</a>。 在這個例子中，我們將假設你建立了一個 ID 和標題為 "Demo" 的附加元件。</p>
+<p>首先要做的是建立一個附加元件。 我們之前已經介紹過如何使用 <code>xf-addon:create</code> 指令 <a href="../development-tools/#_6">在這裡</a>。 在這個例子中，我們將假設你建立了一個 ID 和標題為 "Demo" 的附加元件。</p>
 <p>現在，您將在以下位置中出現此附加元件的 addon.json 檔案 <code>src/addons/Demo/addon.json</code>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
@@ -343,9 +343,9 @@ class Member extends XFCP_Member
     }
 }
 </code></pre>
-<p>我們在 <a href="/controller-basics">Controller 基礎知識</a> 的頁面中會更多的講到 Controller 、 Action 和 Reply，所以現在不用特別擔心了解這些。</p>
+<p>我們在 <a href="../controller-basics">Controller 基礎知識</a> 的頁面中會更多的講到 Controller 、 Action 和 Reply，所以現在不用特別擔心了解這些。</p>
 <p>現在我們已經新增了一些程式碼到我們的繼承 Controller 中，讓我們來看看它的運作。 簡單地輸入以下網址 (相對於你的論壇URL): <code>index.php?members/hello-world</code>。 現在你應該會看到一個 "Hello world!" 的訊息！</p>
-<p>如前所述，在一個 class 中也可以覆蓋現有的方法。 例如，如果我們將 <code>actionHelloWorld()</code> 改為 <code>actionIndex()</code>，那麼你將不再有 "Notable members" 列表，而是顯示 "Hello world!" 訊息！ 事實上，這並不是繼承現有 Controller 動作（或任何 class 方法）的正確方式，但我們會在 <a href="/controller-basics/#controller-action-properly">修改 Controller Action Reply（properly）</a> 一節中詳細介紹。</p>
+<p>如前所述，在一個 class 中也可以覆蓋現有的方法。 例如，如果我們將 <code>actionHelloWorld()</code> 改為 <code>actionIndex()</code>，那麼你將不再有 "Notable members" 列表，而是顯示 "Hello world!" 訊息！ 事實上，這並不是繼承現有 Controller 動作（或任何 class 方法）的正確方式，但我們會在 <a href="../controller-basics/#controller-action-properly">修改 Controller Action Reply（properly）</a> 一節中詳細介紹。</p>
 <h2 id="_6">類型提示<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
 <p>XF 中的很多物件都是通過工廠方法實體化的。 例如，如果我們想實體化一個特定的儲存庫，我們會寫以下內容：</p>
 <pre><code class="language-php">$repo = \XF::repository('Demo:Thing');

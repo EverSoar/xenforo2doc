@@ -625,7 +625,7 @@ protected function _matchHasAvatar(array $data, \XF\Entity\User $user)
 <p><code>helper_criteria</code> contains macros of <strong>two</strong> types: <code>*criteria_name*_tabs</code> and <code>*criteria_name*_panes</code> for every criteria type. Example: <code>user_tabs</code> and <code>user_panes</code> macros for User criteria type.</p>
 <h3 id="tabs">Tabs<a class="headerlink" href="#tabs" title="Permanent link">&para;</a></h3>
 <p>Tabs are used to distinguish different criteria types within the template they are used:</p>
-<p><img alt="Criteria tabs demonstration." src="/files/images/helper_criteria_tabs_example.png" /></p>
+<p><img alt="Criteria tabs demonstration." src="../files/images/helper_criteria_tabs_example.png" /></p>
 <p>When using tabs, the first one often contains fields/options that are not related to criteria. Then goes criteria tabs.</p>
 <p>In the image above, the first tab contains options for notice. First two tabs in the red box are related to User criteria type. The last one is related to Page criteria type.</p>
 <p>Tabs in <code>helper_criteria</code> are grouped under criteria types macros:</p>
@@ -876,7 +876,7 @@ class Listener
 <p>Create an "All for one" trophy. On "User criteria" tab, "Likes on single message" field with, for example, 5.</p>
 <p>Next, create a test message somewhere on you forum and then like it five times with five different users (or just set manually set a value of <code>likes</code> column).</p>
 <p>Then, go to "Tools &gt; Cron entries" and run "Update user trophies" cron by hitting arrows-circle button.</p>
-<p><img alt="&quot;All for one&quot; trophy awarded notification." src="/files/images/example-custom-criteria-awarded.png" /></p>
+<p><img alt="&quot;All for one&quot; trophy awarded notification." src="../files/images/example-custom-criteria-awarded.png" /></p>
 <p>Nice!</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -886,8 +886,8 @@ class Listener
 <p>Go to "Communication &gt; Notices" and hit "Add notice" button. On "User criteria" tab, set "Likes on single message" field with, again, 5. Save the notice.</p>
 <p>Next, create a test message somewhere on you forum and then like it five times with five different users (or just set manually set a value of <code>likes</code> column).</p>
 <p>Now, you should see a notice:</p>
-<p><img alt="Notice demonstration." src="/files/images/example-custom-criteria-notice.png" /></p>
-<p>You can <a href="/files/example-sources/all-for-one-criterion-2.0.10.zip">download</a> addon sources built based on this example (2.0.10).</p>
+<p><img alt="Notice demonstration." src="../files/images/example-custom-criteria-notice.png" /></p>
+<p>You can <a href="../files/example-sources/all-for-one-criterion-2.0.10.zip">download</a> addon sources built based on this example (2.0.10).</p>
 <h2 id="custom-criteria-type-example">Custom criteria type example<a class="headerlink" href="#custom-criteria-type-example" title="Permanent link">&para;</a></h2>
 <p>Imagine we are creating an addon (addon ID: <code>PostsRemover</code>) for removing all posts that match selected criteria. A list of available criteria:</p>
 <ul>
@@ -1099,14 +1099,14 @@ Consider using a Job system for working with dozens (100+) of database items.</p
 <h3 id="testing">Testing<a class="headerlink" href="#testing" title="Permanent link">&para;</a></h3>
 <p>Time to test our custom criteria type!</p>
 <p>I have created three posts on my test forum. The first one was liked 500 times, the second one was edited 5 times. The third one is just an ordinary untouched post without likes.</p>
-<p><img alt="Before deleting demonstration." src="/files/images/example-custom-criteria-type-messages-before.png" /></p>
+<p><img alt="Before deleting demonstration." src="../files/images/example-custom-criteria-type-messages-before.png" /></p>
 <p>Now, on our "Posts Remover" ACP page, let's select "Post has at least X likes" (with value of 250) and "Post was edited at least X times" (wih value of 5):</p>
-<p><img alt="Selected criteria." src="/files/images/example-custom-criteria-type-remover.png" /></p>
+<p><img alt="Selected criteria." src="../files/images/example-custom-criteria-type-remover.png" /></p>
 <p>When I hit "Delete" button, I saw a flash message telling me that nothing was deleted. Why? Obviously, because there are no posts with at least 250 likes and at least 5 edits <strong>in the same time</strong>.</p>
 <p>That is why we need to select the first criterion only, then hit "Delete". This will delete a post with 500 likes. Next, we need to select the last criterion only and preform deletion. The post with 5 edits will be removed.</p>
 <p>As a result, only one test post survived out test:</p>
-<p><img alt="After deleting demonstration." src="/files/images/example-custom-criteria-type-messages-after.png" /></p>
-<p>You can <a href="/files/example-sources/posts-remover-2.0.10.zip">download</a> addon sources built based on this example (2.0.10). You will find "Posts Remover" ACP page under "Tools" section.</p>
+<p><img alt="After deleting demonstration." src="../files/images/example-custom-criteria-type-messages-after.png" /></p>
+<p>You can <a href="../files/example-sources/posts-remover-2.0.10.zip">download</a> addon sources built based on this example (2.0.10). You will find "Posts Remover" ACP page under "Tools" section.</p>
 
             </div>
           </div>

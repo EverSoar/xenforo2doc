@@ -304,7 +304,7 @@ indicate that. For example, <code>SomeVendor/Demo</code>.</p>
  <code>src/addons/Demo</code>.</p>
 <p>If you have a vendor based add-on ID, e.g. <code>SomeVendor/Demo</code>, the files will be stored in the following location: 
 <code>src/addons/SomeVendor/Demo</code>.</p>
-<p>The add-on ID you choose will also become your class namespace prefix (see <a href="/general-concepts/#namespaces">Namespaces</a> for more information).</p>
+<p>The add-on ID you choose will also become your class namespace prefix (see <a href="../general-concepts/#namespaces">Namespaces</a> for more information).</p>
 <h2 id="recommended-version-string-format">Recommended version string format<a class="headerlink" href="#recommended-version-string-format" title="Permanent link">&para;</a></h2>
 <p>XF itself uses a MAJOR.MINOR.PATCH principle (e.g. 2.0.0 for the first stable XF2 release) to its version numbering and we recommend a similar approach is taken towards the versioning of your own add-ons. In basic terms, increment the</p>
 <ul>
@@ -472,7 +472,7 @@ automatically!</p>
 file (rather than a single one for all types). The hashes for these files are included inside <code>hashes.json</code> so we can 
 ensure that an add-on has complete and consistent data before allowing an add-on to be installed.</p>
 <h3 id="_output-directory">_output directory<a class="headerlink" href="#_output-directory" title="Permanent link">&para;</a></h3>
-<p>The <code>_output</code> directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see <a href="/development-tools/#enabling-development-mode">Enabling development mode</a>).</p>
+<p>The <code>_output</code> directory is not required for a successful installation of an add-on, and shouldn't be included when releasing the add-on. This directory is purely for development purposes and is only used if development mode is enabled (see <a href="../development-tools/#enabling-development-mode">Enabling development mode</a>).</p>
 <p>Each item of add-on data is stored in a separate file. Mostly they are stored as JSON files, but in the case of phrases they are stored as TXT files and for templates they are stored as HTML/CSS/LESS files. All template types are editable in the filesystem directly, and changes made to these files are written back to the database automatically on load.</p>
 <h2 id="setup-class">Setup class<a class="headerlink" href="#setup-class" title="Permanent link">&para;</a></h2>
 <p>To create a Setup class for your add-on, all you need to do is create a file named <code>Setup.php</code> in the root of your add-on directory.</p>

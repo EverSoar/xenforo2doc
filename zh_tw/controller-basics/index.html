@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -257,8 +257,8 @@
               
 	<h1 id="_1">控制器基礎知識<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h1>
 <p>在基本層面上，Controller 是當你在 XF 中訪問一個頁面時執行的程式碼。 在基本層面上，Controller 一般負責處理用戶的輸入，並將用戶的輸入傳遞到適當的地方，通常是執行某種資料庫操作（Model）或載入視覺化內容（View）。</p>
-<p>當用戶點選連結時，請求的 URL 會被路由導到特定的 Controller 和 Controller action。 參見 <a href="/routing-basics">路由基礎知識</a>。 例如，在 XF 中，如果你點選一個類似於 <code>index.php?conversations/add</code> 的 URL，你將被路由導到 <code>XF\Pub\Controller\Conversation</code> Controller 和 <code>add</code> action。</p>
-<p>如果你在檔案系統中查看這個 class（參見 <a href="/general-concepts/#_2">自動載入器</a>，以了解 class 和檔案路徑如何相互映射的描述），你會注意到有許多方法以 <code>action</code> 為前綴命名。 所有這些方法都表示一個特定的 Controller action。 所以，要想在查看上面提到的 conversations/add 頁面時看到相關程式碼，請在這個檔案中查詢 <code>public function actionAdd()</code>。</p>
+<p>當用戶點選連結時，請求的 URL 會被路由導到特定的 Controller 和 Controller action。 參見 <a href="../routing-basics">路由基礎知識</a>。 例如，在 XF 中，如果你點選一個類似於 <code>index.php?conversations/add</code> 的 URL，你將被路由導到 <code>XF\Pub\Controller\Conversation</code> Controller 和 <code>add</code> action。</p>
+<p>如果你在檔案系統中查看這個 class（參見 <a href="../general-concepts/#_2">自動載入器</a>，以了解 class 和檔案路徑如何相互映射的描述），你會注意到有許多方法以 <code>action</code> 為前綴命名。 所有這些方法都表示一個特定的 Controller action。 所以，要想在查看上面提到的 conversations/add 頁面時看到相關程式碼，請在這個檔案中查詢 <code>public function actionAdd()</code>。</p>
 <p>XF Controller 負責返回一個 reply 物件，該物件一般包括以下類型之一：</p>
 <h2 id="view">View 回應<a class="headerlink" href="#view" title="Permanent link">&para;</a></h2>
 <p>這是 XF 開發過程中最常見的回應之一。 一個返回 View 回應的 Controller 通常需要傳遞多達三個參數。 一個 View class (下面會有更多的介紹)，一個模板名稱，以及一個由 <code>$viewParams</code> 組成的陣列，這個陣列是模板應該有的資料。</p>
@@ -275,7 +275,7 @@
     return $this-&gt;view('Demo:Example', 'demo_example', $viewParams);
 }
 </code></pre>
-<p>第一個參數是一個特定 View class 的簡短 class 名。 這個 class 可能存在，也可能不存在（通常情況下，它不需要存在，我們在後面會介紹更多地 View class ），但它應該有一個 Controller 和 action 的大致唯一名稱。 與其他 <a href="/general-concepts/#_4">短類名</a> 一樣，上面的特定短類名將解析為 <code>Demo/Pub/View/Example</code>。 同樣，<code>Pub</code> 是由 Controller 類型自動推斷出來的。</p>
+<p>第一個參數是一個特定 View class 的簡短 class 名。 這個 class 可能存在，也可能不存在（通常情況下，它不需要存在，我們在後面會介紹更多地 View class ），但它應該有一個 Controller 和 action 的大致唯一名稱。 與其他 <a href="../general-concepts/#_4">短類名</a> 一樣，上面的特定短類名將解析為 <code>Demo/Pub/View/Example</code>。 同樣，<code>Pub</code> 是由 Controller 類型自動推斷出來的。</p>
 <p>第二個參數是模板名稱。 在本例中，我們正在尋找一個名為 <code>demo_example</code> 的模板。</p>
 <p>第三個參數是 應該提供給 view 模板 參數/值 的陣列。 這個陣列一般應該是一對 <code>key =&gt; value</code>。 上面的例子是將兩個模板參數傳遞給模板。 陣列中的 <code>key</code> 部分表示模板中可用的變數名稱。 陣列中的 <code>value</code> 部分表示值。</p>
 <p>因此，如果我們在 <code>demo_example</code> 模板中有以下內容：</p>
@@ -337,7 +337,7 @@ public function actionError()
 <p>在這個特殊的例子中，如果用戶導覽到 <code>index.php?demo/reroute</code> URL，他們會看到 <code>actionError()</code> 方法的錯誤回應。 他們不會被重新導向，瀏覽器中的 URL 也不會改變，他們只是收到錯誤 action 的回應。</p>
 <p>重定路由回應還支持第三個參數，它允許將各種參數從一個 Controller action 傳遞到另一個 Controller。 這可以是一個陣列或一個 <code>ParameterBag</code> 物件（稍後將詳細介紹）。</p>
 <h2 id="controller-action-properly">修改 Controller Action 回應 （properly）<a class="headerlink" href="#controller-action-properly" title="Permanent link">&para;</a></h2>
-<p>在 <a href="/general-concepts/#_5">繼承 class</a> 章節中，我們已經看到了繼承一個 class 是多麼的簡單，但是當繼承一個已經存在的 Controller action 時，需要格外小心。</p>
+<p>在 <a href="../general-concepts/#_5">繼承 class</a> 章節中，我們已經看到了繼承一個 class 是多麼的簡單，但是當繼承一個已經存在的 Controller action 時，需要格外小心。</p>
 <p>除非你有特殊的需求，需要完全覆蓋一個現有的 action，並用新的東西來代替它（一般不建議這樣做），否則你應該修改父類的現有回應。 這非常簡單，舉個例子，讓我們修改上面 <a href="#view">view 回應</a> 例子中的 view 回應。</p>
 <pre><code class="language-php">public function actionExample()
 {

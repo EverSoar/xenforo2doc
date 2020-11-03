@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hans-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hans-CN" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -398,7 +398,7 @@ class Setup extends AbstractSetup
 }
 </code></pre>
 <p>我们已经谈过一点关于 Setup 类的内容。 我们将把安装、升级和卸载过程分成不同的步骤。</p>
-<p>让我们从导入一些有用的 Schema 类开始。 如果你想了解更多关于它们的信息，你可以参考 <a href="/managing-the-schema">管理 Schema 部分</a>。 
+<p>让我们从导入一些有用的 Schema 类开始。 如果你想了解更多关于它们的信息，你可以参考 <a href="../managing-the-schema">管理 Schema 部分</a>。 
 在最后一个 <code>use</code> 声明之后，添加以下几行：</p>
 <pre><code class="language-php">use XF\Db\Schema\Alter;
 use XF\Db\Schema\Create;
@@ -467,7 +467,7 @@ class Setup extends \XF\AddOn\AbstractSetup
 <p>到当前为止，我们已经在 <code>xf_forum</code> 资料表中添加了一 column，现在是时候继承论坛 Entity 结构了。 我们需要这样做，以便 Entity 知道我们的新 column，并且可以通过 Entity 向其读写数据。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>以下步骤需要激活 <a href="/development-tools/#_3">开发模式</a>。 记得在 <code>config.php</code> 中设置 <code>Demo/Portal</code> 为 <code>defaultAddOn</code> 值。</p>
+<p>以下步骤需要激活 <a href="../development-tools/#_3">开发模式</a>。 记得在 <code>config.php</code> 中设置 <code>Demo/Portal</code> 为 <code>defaultAddOn</code> 值。</p>
 </div>
 <p>这个过程的第一步是创建一个 "代码事件监听器"。 这可以在开发下的 Admin CP 中，点击 "代码事件监听器" 链接，然后点击 "添加代码事件监听器" 按钮。</p>
 <p>我们需要监听 <code>entity_structure</code> 事件。 我们将使用它来修改默认的论坛 Entity 结构，以添加我们新创建的 <code>demo_portal_auto_feature</code> column。</p>
@@ -523,7 +523,7 @@ class Listener
     'primary' =&gt; true
 ];
 </code></pre>
-<p>有关 <a href="/entities-finders-repositories/#relations">关联</a> 的更多信息，请参见关联。 点击 "保存" 来保存监听器。</p>
+<p>有关 <a href="../entities-finders-repositories/#relations">关联</a> 的更多信息，请参见关联。 点击 "保存" 来保存监听器。</p>
 <h2 id="_5">创建一个新实体<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
 <p>上面在 <code>installStep3()</code> 中，我们创建了一个新资料表。 我们需要创建一个 Entity 来与这个资料表交互并创建新的记录。 因为这是一个全新的 Entity，我们除了在 <code>src/addons/Demo/Portal/Entity/FeaturedThread.php</code> 中创建 class 之外，不需要做任何其他的事情，它的架构看起来象这样：</p>
 <pre><code class="language-php">&lt;?php
@@ -599,8 +599,8 @@ class Forum extends XFCP_Forum
 
 }
 </code></pre>
-<p>更多信息请参见 <a href="/general-concepts/#_5">继承类</a> 和 <a href="/general-concepts/#_6">类型提示</a>。</p>
-<p>点击保存，保存 Class extension。 现在我们可以添加一些代码了。 我们需要继承的特定方法是一个名为 <code>saveTypeData</code> 的 protected 函数。 当继承任何类中现有的方法时，检查原始方法是很重要的，原因有几个。 第一个原因是我们要确保我们在继承方法中使用的参数与我们要继承的方法相匹配。 第二个原因是，我们需要知道这个方法实际上是做什麽的。 例如，这个方法应该返回某个特定类型的东西，还是某个物件？ 这在大多数 Controller action 中肯定是这样的，我们在 <a href="/controller-basics/#controller-action-properly">修改 Controller action 回应（properly）</a> 一节中提到过。 然而，虽然这个方法是在一个 Controller 内，但实际上它本身并不是一个 Controller action。 事实上，这个方法是一个 "void" 方法；它不需要返回任何东西。 然而，我们应该始终确保我们在继承方法中调用父类方法，所以我们只需添加新方法本身，而不需要添加新的代码：</p>
+<p>更多信息请参见 <a href="../general-concepts/#_5">继承类</a> 和 <a href="../general-concepts/#_6">类型提示</a>。</p>
+<p>点击保存，保存 Class extension。 现在我们可以添加一些代码了。 我们需要继承的特定方法是一个名为 <code>saveTypeData</code> 的 protected 函数。 当继承任何类中现有的方法时，检查原始方法是很重要的，原因有几个。 第一个原因是我们要确保我们在继承方法中使用的参数与我们要继承的方法相匹配。 第二个原因是，我们需要知道这个方法实际上是做什麽的。 例如，这个方法应该返回某个特定类型的东西，还是某个物件？ 这在大多数 Controller action 中肯定是这样的，我们在 <a href="../controller-basics/#controller-action-properly">修改 Controller action 回应（properly）</a> 一节中提到过。 然而，虽然这个方法是在一个 Controller 内，但实际上它本身并不是一个 Controller action。 事实上，这个方法是一个 "void" 方法；它不需要返回任何东西。 然而，我们应该始终确保我们在继承方法中调用父类方法，所以我们只需添加新方法本身，而不需要添加新的代码：</p>
 <pre><code class="language-php">protected function saveTypeData(FormAction $form, \XF\Entity\Node $node, \XF\Entity\AbstractNode $data)
 {
     parent::saveTypeData($form, $node, $data);
@@ -712,7 +712,7 @@ class Portal extends \XF\Pub\Controller\AbstractController
 }
 </code></pre>
 <p>现在，这还不能完全正常运作，因为我们还没有创建模板，但这已经足够了，至少证明了我们的 Route 和 Controller 是相互沟通的。 所以访问 <code>index.php?portal</code> 至少应该显示 '模板错误'。</p>
-<p>正如在 <a href="/controller-basics/#view">View 回应</a> 一节中提到的，第一个参数是一个 View class，但我们并不需要实际创建这个类。 如果有必要，这个 class 可以由其他附加组件继承，即使它不存在。 第二个参数是模板，我们现在需要在路径 <code>src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html</code> 中创建这个模板。 当前，这个模板应该简単地包含以下内容。</p>
+<p>正如在 <a href="../controller-basics/#view">View 回应</a> 一节中提到的，第一个参数是一个 View class，但我们并不需要实际创建这个类。 如果有必要，这个 class 可以由其他附加组件继承，即使它不存在。 第二个参数是模板，我们现在需要在路径 <code>src/addons/Demo/Portal/_output/templates/public/demo_portal_view.html</code> 中创建这个模板。 当前，这个模板应该简単地包含以下内容。</p>
 <pre><code class="language-html">&lt;xf:title&gt;Portal&lt;/xf:title&gt;
 </code></pre>
 <p>如果我们现在访问 portal 页面，模板错误就会消失，虽然我们仍然会有一个看起来相当空白的页面，但至少现在会有 "Portal" 标题。</p>
@@ -1179,7 +1179,7 @@ class FeaturedThread extends Finder
 &lt;/li&gt;
 </code></pre>
 <h2 id="_14">在可见性变更上取消精选<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
-<p>为了解决这个问题，我们需要再次修改主题 Entity，但这次我们将通过 <code>entity_post_save</code> 事件来实现。 正如我们在 <a href="/entities-finders-repositories/#entity">实体生命周期</a> 中提到的，<code>_postSave()</code> 方法是在 Entity 被插入或修改后可以运行动作的地方。 最初我们会在一个主题不再可见的时候，取消对该主题的精选。</p>
+<p>为了解决这个问题，我们需要再次修改主题 Entity，但这次我们将通过 <code>entity_post_save</code> 事件来实现。 正如我们在 <a href="../entities-finders-repositories/#entity">实体生命周期</a> 中提到的，<code>_postSave()</code> 方法是在 Entity 被插入或修改后可以运行动作的地方。 最初我们会在一个主题不再可见的时候，取消对该主题的精选。</p>
 <p>所以，回到 "添加代码事件监听" 页面，这次监听 <code>entity_post_save</code> 事件。 这次的事件提示将是 <code>XF\Entity\Thread</code>。 对于运行 callback，我们将使用与之前相同的 class (<code>Dem\Portal\Listener</code>)，但是我们将在这里添加一个新的方法，命名为 <code>threadEntityPostSave</code>。 现在让我们添加这个方法，这样当我们保存监听器时，它就会出现：</p>
 <pre><code class="language-php">public static function threadEntityPostSave(\XF\Mvc\Entity\Entity $entity)
 {
@@ -1255,7 +1255,7 @@ public function uninstallStep3()
 <p><strong>Writing release ZIP to ../src/addons/Demo/Portal/_releases.</strong></p>
 <p><strong>Release written successfully.</strong></p>
 </div>
-<p>那麽，我们的演示插件就到此结束了！ 如果您想下载这个附加组件的原代码，请点击这里：<a href="/files/Demo-Portal-1.0.0%20Alpha.zip">Demo-Portal-1.0.0 Alpha.zip</a>。</p>
+<p>那麽，我们的演示插件就到此结束了！ 如果您想下载这个附加组件的原代码，请点击这里：<a href="../files/Demo-Portal-1.0.0%20Alpha.zip">Demo-Portal-1.0.0 Alpha.zip</a>。</p>
 
             </div>
           </div>

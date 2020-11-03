@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -301,7 +301,7 @@
  <code>src/addons/Demo</code>。</p>
 <p>如果你有一個基於廠商的附加元件 ID，例如 <code>SomeVendor/Demo</code>，檔案將儲存在以下位置：
 <code>src/addons/SomeVendor/Demo</code>。</p>
-<p>您選擇的附加元件 ID 也將成為您的類別命名空間前綴（更多資訊請參見 <a href="/general-concepts/#_3">命名空間</a>）。</p>
+<p>您選擇的附加元件 ID 也將成為您的類別命名空間前綴（更多資訊請參見 <a href="../general-concepts/#_3">命名空間</a>）。</p>
 <h2 id="_2">建議版本字串格式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>XF 本身使用 MAJOR.MINOR.PATCH 原則（例如 2.0.0 代表第一個穩定的 XF2 版本）來進行版本編號，我們建議對您自己的附加元件的版本編號採取類似的方法。 基本上，在版本號中增加</p>
 <ul>
@@ -331,7 +331,7 @@
 }
 </code></pre>
 <p>建立附加元件時，會自動為您建立一個基本檔案。</p>
-<p>包含一個有效的 <code>addon.json</code> 檔案是你的附加元件被識別的必要條件，你可以隨時 <a href="/development-tools/#addonjson_1">驗證你的 addon.json 檔案</a>。</p>
+<p>包含一個有效的 <code>addon.json</code> 檔案是你的附加元件被識別的必要條件，你可以隨時 <a href="../development-tools/#addonjson_1">驗證你的 addon.json 檔案</a>。</p>
 <h4 id="_4">屬性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -450,7 +450,7 @@
 <h3 id="_data">_data 目錄<a class="headerlink" href="#_data" title="Permanent link">&para;</a></h3>
 <p><code>_data</code> 目錄是儲存您的附加元件主要資料的地方。 每個附加元件的資料類型都會有自己的 XML 檔案（而不是所有類型的單個檔案）。這些檔案的雜湊值被包含在 <code>hashes.json</code> 中，因此我們可以在允許安裝附加元件之前確保附加元件擁有完整和一致的資料。</p>
 <h3 id="_output">_output 目錄<a class="headerlink" href="#_output" title="Permanent link">&para;</a></h3>
-<p><code>_output</code> 目錄不是成功安裝附加元件所必需的，而且在發佈附加元件時也不應該包括在內。 這個目錄純粹是為了開發目的，只有在啟用開發模式時才會使用（參見 <a href="/development-tools/#_3">啟用開發模式</a>）。</p>
+<p><code>_output</code> 目錄不是成功安裝附加元件所必需的，而且在發佈附加元件時也不應該包括在內。 這個目錄純粹是為了開發目的，只有在啟用開發模式時才會使用（參見 <a href="../development-tools/#_3">啟用開發模式</a>）。</p>
 <p>每項附加元件資料都儲存在一個單獨的檔案中。 大多數情況下，它們被儲存成 JSON 檔案，但對於短語，它們被儲存為 TXT 檔案，對於模板，它們被儲存為 HTML/CSS/LESS 檔案。 所有的模板類型都可以在檔案系統中直接編輯，對這些檔案的修改會在載入時自動寫回資料庫。</p>
 <h2 id="setup">Setup 類<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>要為您的附加元件建立一個 Setup 類，您需要做的就是在您附加元件目錄的根目錄下建立一個名為 <code>Setup.php</code> 的檔案。</p>

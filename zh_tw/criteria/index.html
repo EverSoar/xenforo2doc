@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -623,7 +623,7 @@ protected function _matchHasAvatar(array $data, \XF\Entity\User $user)
 <p><code>helper_criteria</code> 包含 <strong>兩個</strong> 類型的巨集：<code>*criteria_name*_tabs</code> 和 <code>*criteria_name*_panes</code>，適用於每個準則類型。 例如：用戶準則類型的 <code>user_tabs</code> 和 <code>user_panes</code> 巨集。</p>
 <h3 id="_15">標籤<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>標籤用於區分他們所使用模板內的不同準則類型：</p>
-<p><img alt="準則標籤演示。" src="/files/images/helper_criteria_tabs_example.png" /></p>
+<p><img alt="準則標籤演示。" src="../files/images/helper_criteria_tabs_example.png" /></p>
 <p>使用標籤時，第一個標籤往往包含與準則無關的欄位/選項。 然後到準則標籤。</p>
 <p>在上圖中，第一個標籤包含通知的選項。 紅框中的前兩個標籤與用戶準則類型有關。 最後一個與頁面準則類型有關。</p>
 <p><code>helper_criteria</code> 中的標籤被歸類在準則類型巨集下：</p>
@@ -875,7 +875,7 @@ class Listener
 <p>建立一個 "人人為我" 的成就。 在 "用戶準則" 標籤上，"單則留言的點讚數" 欄位，例如，5。</p>
 <p>接下來，在你論壇的某處建立一個測試留言，然後用五個不同的用戶點讚五次（或者直接手動設定 <code>likes</code> 欄的值）。</p>
 <p>然後，進入 "工具 &gt; 計畫任務"，通過點擊執行按鈕 (循環-箭頭) "更新用戶成就值" 計畫。</p>
-<p><img alt="獲得 &quot;人人為我&quot; 成就通知。" src="/files/images/example-custom-criteria-awarded.png" /></p>
+<p><img alt="獲得 &quot;人人為我&quot; 成就通知。" src="../files/images/example-custom-criteria-awarded.png" /></p>
 <p>很好！</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -885,8 +885,8 @@ class Listener
 <p>進入 "聯絡 &gt; 通知"，點選 "新增通知" 按鈕。 在 "用戶準則" 標籤上，將 "單則留言的點讚數" 欄位同樣設定為 5。 儲存通知。</p>
 <p>接下來，在你論壇的某處建立一個測試留言，然後用五個不同的用戶點讚五次（或者直接手動設定 <code>likes</code> 欄的值）。</p>
 <p>現在，你應該會看到一則通知：</p>
-<p><img alt="通知演示。" src="/files/images/example-custom-criteria-notice.png" /></p>
-<p>你可以 <a href="/files/example-sources/all-for-one-criterion-2.0.10.zip">下載</a> 基於這個範例構建的附加元件資源 (2.0.10)。</p>
+<p><img alt="通知演示。" src="../files/images/example-custom-criteria-notice.png" /></p>
+<p>你可以 <a href="../files/example-sources/all-for-one-criterion-2.0.10.zip">下載</a> 基於這個範例構建的附加元件資源 (2.0.10)。</p>
 <h2 id="_25">自定義準則類型範例<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h2>
 <p>想像一下，我們正在建立一個附加元件（附加元件 ID：<code>PostsRemover</code>），用於刪除所有符合選定準則的帖子。 一個可用準則的列表：</p>
 <ul>
@@ -1098,14 +1098,14 @@ protected function isUnknownMatchedPost($rule, array $data, \XF\Entity\Post $pos
 <h3 id="_28">測試<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <p>是時候測試我們的自定義準則類型了！</p>
 <p>我在我的測試論壇上建立了三個帖子。 第一個帖子被點讚 500 次，第二個帖子被編輯 5 次。 第三個只是一個原封不動的沒有被點讚的帖子。</p>
-<p><img alt="在刪除演示之前。" src="/files/images/example-custom-criteria-type-messages-before.png" /></p>
+<p><img alt="在刪除演示之前。" src="../files/images/example-custom-criteria-type-messages-before.png" /></p>
 <p>現在，在我們的 "帖子刪除器" Admin CP 頁面上，讓我們選擇 "帖子至少有 X 個點讚數"（值為 250）和 "帖子至少被編輯過 X 次"（值為 5）。</p>
-<p><img alt="選定的準則。" src="/files/images/example-custom-criteria-type-remover.png" /></p>
+<p><img alt="選定的準則。" src="../files/images/example-custom-criteria-type-remover.png" /></p>
 <p>當我按下 "刪除" 鍵時，我看到一條即時消息，告訴我什麼都沒有刪除。 為什麼呢？ 很顯然，因為在 <strong>同一時間內</strong> 沒有至少 250 個點讚數和至少編輯過 5 次的帖子。</p>
 <p>所以我們只需要選擇第一個準則，然後點選 "刪除"。 這樣就會刪除一個有 500 個點讚數的帖子。 接下來，我們只需要選擇最後一個準則，然後預先進行刪除。 有編輯過 5 次的帖子將被刪除。</p>
 <p>結果，只有一個測試帖子在測試中倖存下來：</p>
-<p><img alt="在刪除演示之後。" src="/files/images/example-custom-criteria-type-messages-after.png" /></p>
-<p>你可以 <a href="/files/example-sources/posts-remover-2.0.10.zip">下載</a> 基於這個範例 (2.0.10) 所構建的插件原始碼。 在 Admin CP 裡你可以在 "工具" 的部分找到 "帖子刪除器"。</p>
+<p><img alt="在刪除演示之後。" src="../files/images/example-custom-criteria-type-messages-after.png" /></p>
+<p>你可以 <a href="../files/example-sources/posts-remover-2.0.10.zip">下載</a> 基於這個範例 (2.0.10) 所構建的插件原始碼。 在 Admin CP 裡你可以在 "工具" 的部分找到 "帖子刪除器"。</p>
 
             </div>
           </div>

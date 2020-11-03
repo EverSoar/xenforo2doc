@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hans-CN" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hans-CN" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -301,7 +301,7 @@
  <code>src/addons/Demo</code>。</p>
 <p>如果你有一个基于厂商的附加组件 ID，例如 <code>SomeVendor/Demo</code>，文件将保存在以下位置：
 <code>src/addons/SomeVendor/Demo</code>。</p>
-<p>您选择的附加组件 ID 也将成为您的类别命名空间前缀（更多信息请参见 <a href="/general-concepts/#_3">命名空间</a>）。</p>
+<p>您选择的附加组件 ID 也将成为您的类别命名空间前缀（更多信息请参见 <a href="../general-concepts/#_3">命名空间</a>）。</p>
 <h2 id="_2">建议版本字符串格式<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
 <p>XF 本身使用 MAJOR.MINOR.PATCH 原则（例如 2.0.0 代表第一个稳定的 XF2 版本）来进行版本编号，我们建议对您自己的附加组件的版本编号采取类似的方法。 基本上，在版本号中增加</p>
 <ul>
@@ -331,7 +331,7 @@
 }
 </code></pre>
 <p>创建附加组件时，会自动为您创建一个基本文件。</p>
-<p>包含一个有效的 <code>addon.json</code> 文件是你的附加组件被识别的必要条件，你可以随时 <a href="/development-tools/#addonjson_1">验证你的 addon.json 文件</a>。</p>
+<p>包含一个有效的 <code>addon.json</code> 文件是你的附加组件被识别的必要条件，你可以随时 <a href="../development-tools/#addonjson_1">验证你的 addon.json 文件</a>。</p>
 <h4 id="_4">属性<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
 <table>
 <thead>
@@ -450,7 +450,7 @@
 <h3 id="_data">_data 目录<a class="headerlink" href="#_data" title="Permanent link">&para;</a></h3>
 <p><code>_data</code> 目录是保存您的附加组件主要数据的地方。 每个附加组件的数据类型都会有自己的 XML 文件（而不是所有类型的単个文件）。这些文件的哈希值被包含在 <code>hashes.json</code> 中，因此我们可以在允许安装附加组件之前确保附加组件拥有完整和一致的数据。</p>
 <h3 id="_output">_output 目录<a class="headerlink" href="#_output" title="Permanent link">&para;</a></h3>
-<p><code>_output</code> 目录不是成功安装附加组件所必需的，而且在发布附加组件时也不应该包括在内。 这个目录纯粹是为了开发目的，只有在激活开发模式时才会使用（参见 <a href="/development-tools/#_3">激活开发模式</a>）。</p>
+<p><code>_output</code> 目录不是成功安装附加组件所必需的，而且在发布附加组件时也不应该包括在内。 这个目录纯粹是为了开发目的，只有在激活开发模式时才会使用（参见 <a href="../development-tools/#_3">激活开发模式</a>）。</p>
 <p>每项附加组件数据都保存在一个単独的文件中。 大多数情况下，它们被保存成 JSON 文件，但对于短语，它们被保存为 TXT 文件，对于模板，它们被保存为 HTML/CSS/LESS 文件。 所有的模板类型都可以在文件系统中直接编辑，对这些文件的修改会在加载时自动写回数据库。</p>
 <h2 id="setup">Setup 类<a class="headerlink" href="#setup" title="Permanent link">&para;</a></h2>
 <p>要为您的附加组件创建一个 Setup 类，您需要做的就是在您附加组件目录的根目录下创建一个名为 <code>Setup.php</code> 的文件。</p>

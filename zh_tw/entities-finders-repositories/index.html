@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="zh-Hant-TW" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="zh-Hant-TW" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -419,7 +419,7 @@ $users = $finder-&gt;limitByPage(3, 20, 1);
 FROM `xf_user`
 WHERE (`xf_user`.`user_id` = 1)&quot;
 </code></pre>
-<p>你可能不會經常需要它，但如果 finder 沒有返回你所期望的結果，那它可能會很有幫助。 在 <a href="/development-tools/#dump">Dump 變數</a> 部分閱讀更多關於 <code>dumpSimple</code> 方法的內容。</p>
+<p>你可能不會經常需要它，但如果 finder 沒有返回你所期望的結果，那它可能會很有幫助。 在 <a href="../development-tools/#dump">Dump 變數</a> 部分閱讀更多關於 <code>dumpSimple</code> 方法的內容。</p>
 <h3 id="finder_1">自定義 finder 方法<a class="headerlink" href="#finder_1" title="Permanent link">&para;</a></h3>
 <p>到目前為止，我們已經看到 finder 物件被設定了一個類似於 <code>XF:User</code> 和 <code>XF:Thread</code> 的參數。 在大多數情況下，這標識了 finder 正在處理的 Entity 類，並將解析為，例如，<code>XF/Entity/User</code>。 然而，它也可以另外代表一個 finder 類。 finder 類是可選的，但它們可以作為一種方法來為特定的 finder 類型新增自定義 finder 方法。 為了看到這一點，讓我們看看與 <code>XF:User</code> 相關的 finder 類，它可以在 <code>XF\FinderUser</code> 類中找到。</p>
 <p>下面示例是該 class 中的一個 finder 方法：</p>
@@ -434,7 +434,7 @@ WHERE (`xf_user`.`user_id` = 1)&quot;
 $users = $finder-&gt;isRecentlyActive(20)-&gt;order('message_count', 'DESC')-&gt;limit(10);
 </code></pre>
 <p>這個查詢，之前只是按照留言數降序返回 10 個用戶，現在將按這個順序返回最近 20 天內活躍的 10 個用戶。</p>
-<p>儘管對於很多 Entity 類型來說，finder 類是不存在的，但仍然可以通過 <a href="/general-concepts/#_5">繼承類</a> 一節中提到的相同方式來繼承這些不存在的類。</p>
+<p>儘管對於很多 Entity 類型來說，finder 類是不存在的，但仍然可以通過 <a href="../general-concepts/#_5">繼承類</a> 一節中提到的相同方式來繼承這些不存在的類。</p>
 <h2 id="the-entity-system">The Entity system (實體系統)<a class="headerlink" href="#the-entity-system" title="Permanent link">&para;</a></h2>
 <p>如果您熟悉 XF1，您可能會熟悉 Entity 背後的一些概念，因為它們最終是從那裡的 DataWriter 系統衍生出來的。 如果您對它們不是很熟悉，下面的部分應該會讓您有所了解。</p>
 <h3 id="entity-structure">Entity structure (實體結構)<a class="headerlink" href="#entity-structure" title="Permanent link">&para;</a></h3>
