@@ -8,3 +8,5 @@
 * [English](https://eversoar.github.io/xenforo2doc/en/)
 * [繁體中文](https://eversoar.github.io/xenforo2doc/zh_tw/)
 * [简体中文](https://eversoar.github.io/xenforo2doc/zh_cn/)
+
+支援簡繁中文切換時，只置換URL語言網址，方便對照用，但不支援中英切換。
